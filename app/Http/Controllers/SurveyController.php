@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendSurveyLink;
+
 class SurveyController extends Controller
 {
     /**
@@ -45,8 +48,9 @@ class SurveyController extends Controller
     }
   
 
-    public function userResult($token)
+    public function userResult(Request $request)
     {
+        $token = $request->token;
         $customer = Customer::where('token', 'like', $token)->first();
         $score = Score::create([
             'customer_id' => $customer->id,
@@ -232,6 +236,15 @@ class SurveyController extends Controller
             }
 
         }
+
+        //send survey email with its own data
+        $data = [
+            'name'          => $customer->first_name,
+            'surveyLink'    => url($customer->survey_url) //url helper to take the base url of the project
+        ];
+
+        Mail::to('email@example.com')
+            ->send(new SendSurveyLink($data));
 
        return redirect('/survey')->with("success", "Survey received and saved successfully");
     }

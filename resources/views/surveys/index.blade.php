@@ -23,12 +23,13 @@
                             <tr>
                                 <td>{{$customer->first_name}}</td>
                                 <td>{{$customer->email}}</td>
-                                <td>
+                                <td><a href="{{ url($customer->survey_url) }}" class="btn btn-link" style="color:purple;">Go To Results</a></td>
+                                {{-- <td>
                                     <form action="{{$customer->survey_url}}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-link" style="color:purple;">Go To Results</button>
                                     </form>
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>
