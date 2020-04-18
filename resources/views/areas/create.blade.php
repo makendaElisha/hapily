@@ -12,8 +12,8 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" name="title" value="{{old('symptom')}}" class="form-control" id="title" placeholder="Enter text">
+                            <label for="name">name</label>
+                            <input type="text" name="name" value="{{old('symptom')}}" class="form-control" id="name" placeholder="Enter text">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

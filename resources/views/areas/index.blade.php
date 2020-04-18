@@ -13,14 +13,14 @@
                 <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Title</th>
+                            <th>name</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($areasOfLife as $areaOfLife)
                             <tr>
-                                <td>{{$areaOfLife->title}}</td>
+                                <td>{{$areaOfLife->name}}</td>
                                 <td>
                                     <a href="/area-of-life/{{$areaOfLife->id}}/edit" style="color:green;">Edit</a>
                                     |

@@ -15,7 +15,7 @@ class CreateAreaOfLivesTable extends Migration
     {
         Schema::create('area_of_lives', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
+            $table->string('name');
             $table->timestamps();
         });
     }

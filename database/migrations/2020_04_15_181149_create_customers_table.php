@@ -16,23 +16,22 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->bigIncrements('id');
             // $table->unsignedBigInteger('survey_id')->nullable();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email'); //Make it unique ?
-            $table->date('birth');
-            $table->string('gender');
-            $table->integer('postal_code');
-            $table->boolean('haveKids');
-            $table->string('time_invest_willingness');
-            $table->string('money_invest_willingness');
-            $table->boolean('call_opt_in');
-            $table->string('phone_number');
-            $table->boolean('newsletter_opt_in');
-            $table->string('network_id');
-            $table->string('submit_date');
-            $table->string('start_date');
-            $table->string('survey_url');
-            $table->string('token');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('email')->nullable(); //Make it unique ?
+            $table->date('birth')->nullable();
+            $table->string('gender')->nullable();
+            $table->integer('postal_code')->nullable();
+            $table->string('time_invest_willingness')->nullable();
+            $table->string('money_invest_willingness')->nullable();
+            $table->boolean('call_opt_in')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->boolean('newsletter_opt_in')->nullable();
+            $table->string('network_id')->nullable();
+            $table->string('submit_date')->nullable();
+            $table->string('start_date')->nullable();
+            $table->string('survey_url')->nullable();
+            $table->string('token')->nullable();
             $table->timestamps();
         });
     }

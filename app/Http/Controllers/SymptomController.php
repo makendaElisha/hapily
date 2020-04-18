@@ -40,7 +40,7 @@ class SymptomController extends Controller
     {
         //validation
         $this->validate($request, [
-            'symptom_title' => 'string|required',
+            'name' => 'string|required',
             'instant_help' => 'string|required',
             'res_prio' => 'required',
             'fear' => 'required',
@@ -55,7 +55,7 @@ class SymptomController extends Controller
 
         //Create Symptom
         $symptom = Symptom::create([
-            "symptom_title" => Request('symptom_title'),
+            "name" => Request('name'),
             'area_of_life_id' => $areaOfLife->id,
             'instant_help' => Request('instant_help'),
             'res_prio' => Request('res_prio'),
@@ -106,7 +106,7 @@ class SymptomController extends Controller
 
         //validation
         $this->validate($request, [
-            'symptom_title' => 'string|required',
+            'name' => 'string|required',
             'instant_help' => 'string|required',
             'res_prio' => 'required',
             'fear' => 'required',
@@ -120,7 +120,7 @@ class SymptomController extends Controller
         ]);
 
         //Update Symptom
-            $symptom->symptom_title = Request('symptom_title');
+            $symptom->name = Request('name');
             $symptom->instant_help = Request('instant_help');
             $symptom->res_prio = Request('res_prio');
             $symptom->fear = Request('fear');

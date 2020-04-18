@@ -10,7 +10,7 @@
                 <div class="mT-30">
                     <form>
                         <div class="form-group">
-                            <label for="inputAddress">Title</label>
+                            <label for="inputAddress">name</label>
                             <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

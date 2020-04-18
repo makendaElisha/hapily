@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Entities\Survey;
 use App\Entities\Question;
-use App\Entities\Mapping;
+use App\Entities\Symptom;
+use App\Entities\AreaOfLife;
 use App\Entities\Answer;
 use App\Entities\Customer;
+use App\Entities\Score;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 class SurveyController extends Controller
 {
@@ -45,66 +48,83 @@ class SurveyController extends Controller
     public function userResult($token)
     {
         $customer = Customer::where('token', 'like', $token)->first();
-
-        // $userAnswers = Answer::where('customer_id', $customer->id)->get();
-
-        // $userSymptoms = Answer::where('customer_id', $customer->id)
-        //                         ->where('reference', 'like', 'symptoms_%')->get();
-
-        // $userScores = Answer::where('customer_id', $customer->id)
-        //                         ->where('reference', 'like', 'score_%')->get();
+        $score = Score::create([
+            'customer_id' => $customer->id,
+        ]);
 
         $getAreas = Question::where('reference', 'like', 'symptoms_%')->pluck('reference');
-        
-        $allAreasResults = [];
-        $totalAllAreasHappiness = 0;
-        $percentageMaxPotential = 0;
+        $data = [];
+        $userScore = 0;
+        $maxPotential = 0; 
 
         foreach ($getAreas as $area) {
             $areaObject = (object)[];
+            $stgToRemove = ['symptoms_', '_user'];
+            $areaName = str_replace($stgToRemove, '', $area);
+
             $areaObject->name = str_replace('symptoms_','', $area);
             $symptoms = Answer::where('customer_id', $customer->id)
-                                        ->where('reference', 'like', $area)->get();
+                                        ->where('reference', 'like', $area)
+                                        ->leftJoin('symptoms', 'answers.name', '=', 'symptoms.name')
+                                        ->orderBy('anger', 'DESC')
+                                        ->get();
 
             $stg = str_replace('symptoms', 'score', $area);
             $baseScore = (int) Answer::where('customer_id', $customer->id)
                                             ->where('reference', 'like', $stg)
-                                            ->pluck('title')
+                                            ->pluck('name')
                                             ->first();
             $maxSubNumber = 50 * $baseScore / 100;
-            $symptomsNumber = 7; //Real value to be calculated
+
+            
+            $areaId = AreaOfLife::where('name', $areaName)->first();
+            $symptomsNumber = count(Symptom::where('area_of_life_id', $areaId->id)->get());
             $selectedSymptomsNumber = count($symptoms);
-            $pointPerSymptom = $maxSubNumber / $symptomsNumber;
+
+            //All division exceptions to be attended.
+            try {
+                $pointPerSymptom = $maxSubNumber / $symptomsNumber;
+            } catch (\Exception $exception) {
+                $pointPerSymptom = 0;
+            }
+
             $totalScoreSymptoms = $pointPerSymptom * $selectedSymptomsNumber;
 
-
-            $scoreAreaOfLife = (int) floor($baseScore - $totalScoreSymptoms);
+            $areaScore = (int) floor($baseScore - $totalScoreSymptoms);
             
-            $totalAllAreasHappiness += $scoreAreaOfLife;
+            $score->$areaName = $areaScore;
+            $score->save();
 
-            $averageHappinessPerArea = 25; //Real value to be calculated
+            $userScore += $areaScore;
+
+            $getPerAreaScores = Score::pluck($areaName);
+            $averageAreaScore = is_null($getPerAreaScores) ? 0 : (($getPerAreaScores)->sum() / count($getPerAreaScores));
 
             $areaObject->symptoms = $symptoms;
-            $areaObject->scoreAreaOfLife = $scoreAreaOfLife;
-            $areaObject->averageHappinessPerArea = $averageHappinessPerArea;
+            $areaObject->areaScore = $areaScore;
+            $areaObject->averageAreaScore = $averageAreaScore;
 
-            array_push($allAreasResults, $areaObject);
+            array_push($data, $areaObject);
         }
+    
+        $score->total_areas = $userScore;
+        $score->save();
 
-        $percentageMaxPotential = round($totalAllAreasHappiness  * 100 / (10 * count($getAreas))); 
         $numberAreas = count($getAreas);
-        $totalScoreAverage = 0; //Must we recalculate everytime or me store it?
-        $averagePerArea = 0; //Must recalculate for each or once!
-
+        $maxPotential = round($userScore  * 100 / (10 * $numberAreas)); 
+        
+        $averageScores = Score::pluck('total_areas');
+        $averageHappinessAllParticipants = is_null($averageScores) ? 0 : (($averageScores)->sum() / count($averageScores));
 
 
         return view('surveys.result', compact([
             'customer', 
-            'allAreasResults', 
-            'percentageMaxPotential',
-            'totalAllAreasHappiness',
+            'data', 
+            'maxPotential',
+            'userScore',
             'numberAreas',
-            ]));
+            'averageHappinessAllParticipants'
+        ]));
 
     }
 
@@ -112,7 +132,7 @@ class SurveyController extends Controller
     public function receiveSurvey(Request $request)
     {
         try{
-            $fileApi = File::get("E:/AA/file.txt");
+            $fileApi = File::get("simulate/survey_api.txt");
             $dataJson = substr($fileApi, 0, strrpos( $fileApi, '}') + 1);
             $dataArray = json_decode($dataJson, true);
 
@@ -123,25 +143,21 @@ class SurveyController extends Controller
 
         if($dataArray){
             
-            $resultToken = md5(uniqid(rand(), true));
+            $resultToken = md5(uniqid(rand(), true)); //Make shorter
             $answers = $dataArray["form_response"]["answers"];
             $questions = $dataArray["form_response"]["definition"]["fields"];
 
             //Create A New Customer User
             $customer = Customer::create([
-                // "name" => $answers[0]["text"],
-                // "email" => $answers[0]["email"],
                 'first_name' => $answers[0]["text"],
                 'last_name' => $answers[0]["text"],
                 'email' => $answers[1]["email"],
                 'birth' => $answers[2]["date"],
                 'gender' => $answers[3]["choice"]["label"],
                 'postal_code' => $answers[4]["number"],
-                'haveKids' => $answers[5]["boolean"],
                 'time_invest_willingness' => $answers[21]["choice"]["label"],
                 'money_invest_willingness' => $answers[22]["choice"]["label"],
                 'call_opt_in' => $answers[23]["boolean"],
-                // 'phone_number' => $answers[0][" "],
                 'phone_number' => "0999015",
                 'newsletter_opt_in' => $answers[24]["boolean"],
                 'network_id' => "10",
@@ -154,9 +170,9 @@ class SurveyController extends Controller
            // Create questions
             foreach ($questions as $question) {
                 Question::create([
-                    'title' =>$question['title'],
-                    'reference' =>$question['ref'],
-                    'customer_id' =>$customer->id,
+                    'name' => $question['title'],
+                    'reference' => $question['ref'],
+                    'customer_id' => $customer->id,
                 ]);
             } // TO BE REMOVED
 
@@ -166,15 +182,15 @@ class SurveyController extends Controller
                     $question = Question::where('reference', $answer['field']['ref'])->first();
                     !is_null($question) ? $question_id = $question->id : $question_id = null;
                     
-                    $title = $answer['choice']['label'];
-                    $mapping = Mapping::where('symptom_title', $title)->first();
-                    !is_null($mapping) ? $res_prio = $mapping->res_prio : $res_prio = null;
+                    $name = $answer['choice']['label'];
+                    // $symptom = Symptom::where('name', $name)->first();
+                    // !is_null($symptom) ? $res_prio = $symptom->res_prio : $res_prio = null;
 
                     Answer::create([
-                        'title' => $title,
+                        'name' => $name,
                         'reference' => $answer['field']['ref'],
                         'customer_id' => $customer->id,
-                        'res_prio' => $res_prio,
+                        // 'res_prio' => $res_prio,
                         'question_id' => $question_id,
                     ]);
                 }elseif(array_key_exists('choices', $answer)) {
@@ -182,16 +198,15 @@ class SurveyController extends Controller
                         $question = Question::where('reference', $answer['field']['ref'])->first();
                         !is_null($question) ? $question_id = $question->id : $question_id = null;
                         
-                        $title = $item;
-                        $mapping = Mapping::where('symptom_title', $title)->first();
-                        !is_null($mapping) ? $res_prio = $mapping->res_prio : $res_prio = null;
-
+                        $name = $item;
+                        // $symptom = Symptom::where('name', $name)->first();
+                        // !is_null($symptom) ? $res_prio = $symptom->res_prio : $res_prio = null;
 
                         Answer::create([
-                            'title' =>$title,
+                            'name' =>$name,
                             'reference' => $answer['field']['ref'],
-                            'customer_id' =>$customer->id,
-                            'res_prio' => $res_prio,
+                            'customer_id' => $customer->id,
+                            // 'res_prio' => $res_prio,
                             'question_id' => $question_id,
                         ]);
                     }
@@ -200,20 +215,19 @@ class SurveyController extends Controller
                     $question = Question::where('reference', $answer['field']['ref'])->first();
                     !is_null($question) ? $question_id = $question->id : $question_id = null;
                     
-                    $title = $answer['field']['ref'];
-                    $mapping = Mapping::where('symptom_title', $title)->first();
-                    !is_null($mapping) ? $res_prio = $mapping->res_prio : $res_prio = null;
+                    $name = $answer['field']['ref'];
+                    // $symptom = Symptom::where('name', $name)->first();
+                    // !is_null($symptom) ? $res_prio = $symptom->res_prio : $res_prio = null;
 
                     $key = array_keys($answer)[1];
 
                     Answer::create([
-                        'reference' => $title,
+                        'reference' => $name,
                         'customer_id' => $customer->id,
-                        'title' => $answer[$key],
-                        'res_prio' => $res_prio,
+                        'name' => $answer[$key],
+                        // 'res_prio' => $res_prio,
                         'question_id' => $question_id,
                     ]);
-                    
                 }
             }
 

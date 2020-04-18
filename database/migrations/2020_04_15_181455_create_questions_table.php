@@ -16,7 +16,7 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('customer_id')->nullable();
-            $table->string('title')->nullable();
+            $table->string('name')->nullable();
             $table->string('reference')->nullable();
             $table->timestamps();
 

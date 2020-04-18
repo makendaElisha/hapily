@@ -11,14 +11,14 @@
                 <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Title</th>
+                            <th>name</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($areasOfLife->symptoms as $symptom)
                             <tr>
-                                <td>{{$areaOfLife->title}}</td>
+                                <td>{{$areaOfLife->name}}</td>
                                 <td>
                                     <a href="/mapping/area-of-life/{{$areaOfLife->id}}/symptom/{{$symptom->id}}/edit" style="color:green;">Edit</a>
                                     <a href="/mapping/area-of-life/{{$areaOfLife->id}}/symptom/{{$symptom->id}}/delete" style="color:red;">Go to mapping</a>

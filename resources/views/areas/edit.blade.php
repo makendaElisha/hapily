@@ -13,8 +13,8 @@
                         @method('PUT')
 
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" name="title" value="{{old('title', $areaOfLife->title)}}" class="form-control" id="title" placeholder="Enter text">
+                            <label for="name">name</label>
+                            <input type="text" name="name" value="{{old('name', $areaOfLife->name)}}" class="form-control" id="name" placeholder="Enter text">
                         </div>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>

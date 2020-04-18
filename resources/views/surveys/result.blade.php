@@ -38,8 +38,8 @@
       <div class="greeting-text">
         <div class="bold-text">Hey {{$customer->first_name}},</div>
         <p class="paragraph">schön, dass du den Test abgeschlossen hast und deinem Glück auf die Sprünge helfen willst :-) Deine aktuelle Situation sowie die Ursachen dafür besser zu verstehen, ist der erste Schritt in Richtung eines erfüllteren und zufriedeneren Lebens.<br>‍</p>
-        <p>Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$totalAllAreasHappiness}} von {{$numberAreas * 10}} Punkten</strong></p>
-        <p class="paragraph-2">Im Durchschnitt erreichen Teilnehmer einen Score von 38. In der folgenden Grafik kannst du dein Glückslevel pro Lebensbereich ablesen und mit dem Durchschnitt der anderen Teilnehmer vergleichen.</p>
+        <p>Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$userScore}} von {{$numberAreas * 10}} Punkten</strong></p>
+        <p class="paragraph-2">Im Durchschnitt erreichen Teilnehmer einen Score von {{$averageHappinessAllParticipants}}. In der folgenden Grafik kannst du dein Glückslevel pro Lebensbereich ablesen und mit dem Durchschnitt der anderen Teilnehmer vergleichen.</p>
       </div>
       <div class="score-elements">
         <h3 class="heading-6">Dein Happiness-Score pro Lebensbereich</h3>
@@ -49,14 +49,14 @@
               <div class="score-column1-col1 w-col w-col-6">
                 <div class="score-column1-col1-container">
                   <h5 class="score-column-heading5-centered">Dein <br>Happiness-Score</h5>
-                  <div class="organge-score">{{$totalAllAreasHappiness}}</div>
-                  <div class="score-grey-text">Durchschnitt aller <br>Teilnehmer: 38</div>
+                  <div class="organge-score">{{$userScore}}</div>
+                  <div class="score-grey-text">Durchschnitt aller <br>Teilnehmer: {{$averageHappinessAllParticipants}}</div>
                 </div>
               </div>
               <div class="score-column1-col2 w-col w-col-6">
                 <div class="score-column1-col2-container">
                   <h5 class="score-column-heading5-centered">Dein Score liegt<br></h5>
-                  <div class="red-score-with-big-padding">{{$percentageMaxPotential}}%</div>
+                  <div class="red-score-with-big-padding">{{$maxPotential}}%</div>
                   <div class="score-grey-text">unter deinem <br>maximalen Potenzial</div>
                 </div>
               </div>
@@ -75,19 +75,19 @@
               
               <div class="score-progress-bar-container">
 
-                @foreach ($allAreasResults as $area)
+                @foreach ($data as $area)
                   <div class="progress-bar-wrapper">
                     <div class="embed-score-pogress-bar-label-container">
                       {{-- <div class="embeded-score-label">Beruf &amp; Karriere</div> --}}
                       <div class="embeded-score-label">{{$area->name}}</div>
-                      <div class="embeded-score-label">{{$area->scoreAreaOfLife}}</div>
+                      <div class="embeded-score-label">{{$area->areaScore}}</div>
                     </div>
                     <div class="embeded-score-progress-bar-career w-embed">
                       <div style="width: 100%;">
-                        <div class="" style="position: relative; width: 40%; height: 16px; border-right: 1px solid #dd22ef;"></div>
+                        <div class="" style="position: relative; width: {{$area->averageAreaScore * 10}}%; height: 16px; border-right: 1px solid #dd22ef;"></div>
                       </div>
                       <div class="progress" style="background-color: #ffeadd; border-radius: 10px; margin-top: -16px;">
-                        <div class="progress-bar" role="progressbar" style="width: {{$area->scoreAreaOfLife * 10}}%; background-color: #33dd93; border-radius: 10px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" style="width: {{$area->areaScore * 10}}%; background-color: #33dd93; border-radius: 10px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     </div>
                   </div>
@@ -118,7 +118,7 @@
       <div class="section-analyse-text">In der Glücksforschung ist man sich einig, dass es - obwohl Glück für jeden etwas anderes bedeuten kann - ein paar <strong>Glücksfaktoren</strong> gibt, die für alle Menschen gelten. Dazu gehören z.B., dass wir einem <strong>erfüllenden Beruf</strong> nachgehen, <strong>liebevolle Beziehungen</strong> pflegen, physisch und mental <strong>gesund</strong> sind und einen <strong>Sinn</strong> in unserem Leben erkennen.<br><br>Lass uns nun einen tieferen Blick auf <strong>deine Potenziale</strong> pro Lebensbereich werfen:<br></div>
     </div>
     
-    @foreach ($allAreasResults as $area)
+    @foreach ($data as $area)
       <div class="life-area-container">
         <div class="life-area-container-header"><img src="{{ asset('all/images/ring_icon.svg')}}" alt="" class="life-area-partnerschaft-image">
           <h3 class="life-area-header">{{$area->name}}</h3>
@@ -127,8 +127,8 @@
               <div class="score-column1-col1 w-col w-col-6">
                 <div class="life-area-score-container1">
                   <h5 class="score-column-heading5-centered">Dein <br>Happiness-Score</h5>
-                  <div class="red-score">{{$area->scoreAreaOfLife}}</div>
-                  <div class="score-grey-text">Durchschnitt aller <br>Teilnehmer: xxx</div>
+                  <div class="red-score">{{$area->areaScore}}</div>
+                  <div class="score-grey-text">Durchschnitt aller <br>Teilnehmer: {{$area->averageAreaScore}}</div>
                 </div>
               </div>
               <div class="score-column1-col2 w-col w-col-6">
@@ -145,7 +145,7 @@
 
       @foreach ($area->symptoms as $key => $symptom)
         <div class="section-analyse-purple-header-container">
-          <h4 class="purple-header">{{$key + 1}}. {{$symptom->title}}</h4>
+          <h4 class="purple-header">{{$key + 1}}. {{$symptom->name}}</h4>
           <p class="normal-text">{{$symptom->instant_help}}.</p>
           <p class="centered-paragraph"><strong>12,3%</strong> aller Teilnehmer teilen diese Herausforderung</p>
         </div>
@@ -155,7 +155,7 @@
               <div class="books-recommandation-column1-container">
                 <div class="book-cover-container"><img src="{{ asset('all/images/book-cover.png')}}" alt="" class="book-cover-image"></div>
                 <div class="recommanded-book-header">Unser Buch-Tipp</div>
-                <div class="recommanded-book-normal-text">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea modo exercitation ullamco laboris nisi.</div>
+                <div class="recommanded-book-normal-text">{{$symptom->book_description}}</div>
                 <div class="recommanded-book-purple-link">&gt; Bestellen</div>
               </div>
             </div>
@@ -163,7 +163,7 @@
               <div class="book-recommandation-column2-container">
                 <div class="book-coach-container"><img src="{{ asset('all/images/coach-cover.png')}}" alt="" class="coach-cover-image"></div>
                 <div class="recommanded-book-header">Unser Coaching-Tipp</div>
-                <div class="recommanded-book-normal-text">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea modo exercitation ullamco laboris nisi.</div>
+                <div class="recommanded-book-normal-text">{{$symptom->recom_program}}</div>
                 <div class="recommanded-book-purple-link">&gt; Mehr erfahren...</div>
               </div>
             </div>
@@ -171,17 +171,11 @@
         </div>
       @endforeach 
 
-
-
       <div class="purple-paragraph-container">
-        <p class="purple-header">&gt; 7 weitere Herausforderungen im Lebensbereich Partnerschaft anzeigen</p>
+        {{-- <p class="purple-header">&gt; 7 weitere Herausforderungen im Lebensbereich Partnerschaft anzeigen</p> --}}
       </div>
           
     @endforeach
-
-
-
-
 
   </div>
   <div class="section-text-after-analyse">

@@ -20,6 +20,6 @@ class Answer extends Model
 
     public function Mapping()
     {
-        return $this->hasOne('App\Mapping', 'symptom_title', 'title');
+        return $this->hasOne('App\Mapping', 'name', 'name');
     }
 }

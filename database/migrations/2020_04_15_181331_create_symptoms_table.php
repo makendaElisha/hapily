@@ -16,7 +16,7 @@ class CreateSymptomsTable extends Migration
         Schema::create('symptoms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('area_of_life_id')->nullable();
-            $table->string('symptom_title')->nullable();
+            $table->string('name')->nullable();
             $table->string('instant_help')->nullable();
             $table->integer('res_prio')->nullable();
             $table->integer('fear')->nullable();

@@ -7,11 +7,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="bgc-white bd bdrs-3 p-20 mB-20">
-                <h4 class="c-grey-900 mB-20">Symptoms in {{$areaOfLife->title}}</h4>
+                <h4 class="c-grey-900 mB-20">Symptoms in {{$areaOfLife->name}}</h4>
                 <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Title</th>
+                            <th>name</th>
                             <th>Instant Help</th>
                             <th>ResPrio</th>
                             <th>Fear</th>

@@ -13,11 +13,11 @@ class CreateMappingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mappings', function (Blueprint $table) {
+        Schema::create('mappings', function (Blueprint $table) { // Table must be removed, no longer needed!
             $table->bigIncrements('id');
             $table->unsignedBigInteger('area_of_life_id')->nullable();
             $table->unsignedBigInteger('symptom_id')->nullable();
-            $table->string('symptom_title')->nullable();
+            $table->string('name')->nullable();
             $table->string('instant_help')->nullable();
             $table->integer('res_prio')->nullable();
             $table->integer('fear')->nullable();

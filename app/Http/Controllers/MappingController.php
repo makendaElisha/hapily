@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
-class MappingController extends Controller
+class MappingController extends Controller  // Must Be Removed, no longer needed !!!
 {
     /**
      * Display a listing of the resource.
@@ -66,7 +66,7 @@ class MappingController extends Controller
         $mapping = Mapping::create([
             'area_of_life_id' => $areaOfLife->id,
             'symptom_id' => $symptom->id,
-            'symptom_title' => $symptom->text,
+            'name' => $symptom->text,
             'instant_help' => Request('instant_help'),
             'res_prio' => Request('selectResPrio'),
             'fear' => Request('selectFear'),
@@ -126,7 +126,7 @@ class MappingController extends Controller
         $mapping = Mapping::create([
             'area_of_life_id' => $areaOfLife->id,
             'symptom_id' => $symptom->id,
-            'symptom_title' => $symptom->text,
+            'name' => $symptom->text,
             'instant_help' => Request('instant_help'),
             'res_prio' => Request('selectResPrio'),
             'fear' => Request('selectFear'),

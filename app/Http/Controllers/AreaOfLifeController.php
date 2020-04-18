@@ -39,11 +39,11 @@ class AreaOfLifeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'string|required',
+            'name' => 'string|required',
         ]);
 
         $areaOfLife = AreaOfLife::create([
-            "title" => $request->title,
+            "name" => $request->name,
         ]);
 
         return redirect()->route('area.index')->with('success', 'Area of life created!');    
@@ -83,10 +83,10 @@ class AreaOfLifeController extends Controller
     public function update(Request $request, AreaOfLife $areaOfLife)
     {
         $this->validate($request, [
-            'title' => 'string|required',
+            'name' => 'string|required',
         ]);
 
-        $areaOfLife->title = $request->title;
+        $areaOfLife->name = $request->name;
 
         $areaOfLife->save();
 
