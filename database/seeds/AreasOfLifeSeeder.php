@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Entities\AreaOfLife;
 
-class AreasOfLifeTableSeeder extends Seeder
+class AreasOfLifeSeeder extends Seeder
 {
     /**
      * Run the database seeds.

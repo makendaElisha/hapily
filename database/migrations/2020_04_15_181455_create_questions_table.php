@@ -15,12 +15,12 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('customer_id')->nullable();
+            // $table->unsignedBigInteger('customer_id')->nullable();
             $table->string('name')->nullable();
             $table->string('reference')->nullable();
             $table->timestamps();
 
-            $table->foreign('customer_id')->references('id')->on('customers');
+            // $table->foreign('customer_id')->references('id')->on('customers');
         });
     }
 

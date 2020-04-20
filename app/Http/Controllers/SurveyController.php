@@ -149,7 +149,7 @@ class SurveyController extends Controller
             
             $resultToken = md5(uniqid(rand(), true)); //Make shorter
             $answers = $dataArray["form_response"]["answers"];
-            $questions = $dataArray["form_response"]["definition"]["fields"];
+            // $questions = $dataArray["form_response"]["definition"]["fields"];
 
             //Create A New Customer User
             $customer = Customer::create([
@@ -171,30 +171,16 @@ class SurveyController extends Controller
                 'token' => $resultToken,
             ]);
 
-           // Create questions
-            foreach ($questions as $question) {
-                Question::create([
-                    'name' => $question['title'],
-                    'reference' => $question['ref'],
-                    'customer_id' => $customer->id,
-                ]);
-            } // TO BE REMOVED
-
             //Create answers
             foreach ($answers as $answer) {
                 if (array_key_exists('choice', $answer)) {
                     $question = Question::where('reference', $answer['field']['ref'])->first();
                     !is_null($question) ? $question_id = $question->id : $question_id = null;
                     
-                    $name = $answer['choice']['label'];
-                    // $symptom = Symptom::where('name', $name)->first();
-                    // !is_null($symptom) ? $res_prio = $symptom->res_prio : $res_prio = null;
-
                     Answer::create([
-                        'name' => $name,
+                        'name' => $answer['choice']['label'],
                         'reference' => $answer['field']['ref'],
                         'customer_id' => $customer->id,
-                        // 'res_prio' => $res_prio,
                         'question_id' => $question_id,
                     ]);
                 }elseif(array_key_exists('choices', $answer)) {
@@ -202,15 +188,10 @@ class SurveyController extends Controller
                         $question = Question::where('reference', $answer['field']['ref'])->first();
                         !is_null($question) ? $question_id = $question->id : $question_id = null;
                         
-                        $name = $item;
-                        // $symptom = Symptom::where('name', $name)->first();
-                        // !is_null($symptom) ? $res_prio = $symptom->res_prio : $res_prio = null;
-
                         Answer::create([
-                            'name' =>$name,
+                            'name' =>$item,
                             'reference' => $answer['field']['ref'],
                             'customer_id' => $customer->id,
-                            // 'res_prio' => $res_prio,
                             'question_id' => $question_id,
                         ]);
                     }
@@ -218,18 +199,12 @@ class SurveyController extends Controller
                 else{
                     $question = Question::where('reference', $answer['field']['ref'])->first();
                     !is_null($question) ? $question_id = $question->id : $question_id = null;
-                    
-                    $name = $answer['field']['ref'];
-                    // $symptom = Symptom::where('name', $name)->first();
-                    // !is_null($symptom) ? $res_prio = $symptom->res_prio : $res_prio = null;
-
                     $key = array_keys($answer)[1];
 
                     Answer::create([
-                        'reference' => $name,
+                        'reference' => $answer['field']['ref'],
                         'customer_id' => $customer->id,
                         'name' => $answer[$key],
-                        // 'res_prio' => $res_prio,
                         'question_id' => $question_id,
                     ]);
                 }

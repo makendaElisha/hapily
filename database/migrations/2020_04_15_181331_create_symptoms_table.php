@@ -16,17 +16,17 @@ class CreateSymptomsTable extends Migration
         Schema::create('symptoms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('area_of_life_id')->nullable();
-            $table->string('name')->nullable();
-            $table->string('instant_help')->nullable();
+            $table->text('name')->nullable();
+            $table->text('instant_help')->nullable();
             $table->integer('res_prio')->nullable();
             $table->integer('fear')->nullable();
             $table->integer('anger')->nullable();
             $table->integer('sadness')->nullable();
             $table->string('belief')->nullable();
-            $table->string('recom_book_url')->nullable();
-            $table->string('recom_book_image')->nullable();
-            $table->string('recom_book_description')->nullable();
-            $table->string('recom_program')->nullable();
+            $table->text('recom_book_url')->nullable();
+            $table->text('recom_book_image')->nullable();
+            $table->text('recom_book_description')->nullable();
+            $table->text('recom_program')->nullable();
             $table->timestamps();
 
             $table->foreign('area_of_life_id')->references('id')->on("area_of_lives");
