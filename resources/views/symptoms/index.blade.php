@@ -3,13 +3,15 @@
 @section('content')
 
 <div class="container-fluid">
-    <h4 class="c-grey-900 mT-10 mB-20">Data Tables</h4>
-    <a href="/area/{{$areaOfLife->id}}/symptom/create" type="button" class="btn btn-primary c-white mB-10">New Symptom</a>
+    <h4 class="c-grey-900 mB-20">Symptoms in <span style="color:#DD22EF;">"{{$areaOfLife->name}}"</span> area of life</h4>
 
     <div class="row">
         <div class="col-md-12">
             <div class="bgc-white bd bdrs-3 p-20 mB-20">
-                <h4 class="c-grey-900 mB-20">Symptoms in {{$areaOfLife->name}}</h4>
+                @role('super-admin')
+                    <a href="/area/{{$areaOfLife->id}}/symptom/create" type="button" class="btn btn-primary c-white mB-10">Add New Symptom</a>
+                @endrole
+                <br />
                 <div class="col-sm-10">
                 </div>
                 <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
