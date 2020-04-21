@@ -3,14 +3,11 @@
         <div class="sidebar-logo">
             <div class="peers ai-c fxw-nw">
                 <div class="peer peer-greed">
-                    <a class="sidebar-link td-n" href="index.html">
+                    <a class="sidebar-link td-n" href="{{ url("/dashboard") }}">
                         <div class="peers ai-c fxw-nw">
                             <div class="peer">
                                 <div class="logo"><img src="{{ asset('images/hapily-logo.svg') }}" alt="Hapily" width="100" height="40" style="margin-top: 10px;"></div>
                             </div>
-                            {{-- <div class="peer peer-greed">
-                                <h5 class="lh-1 mB-0 logo-text">Adminator</h5>
-                            </div> --}}
                         </div>
                     </a>
                 </div>

@@ -22,6 +22,10 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    });
     
     //Areas of Life
     Route::get('/area-of-life', 'AreaOfLifeController@index')->name('area.index');
@@ -62,9 +66,7 @@ Route::middleware(['auth'])->group(function () {
 // });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+
 
 Route::get('/table', function () {
     return view('table');
@@ -91,8 +93,4 @@ Route::get('/surveys', function() {
 Route::get('/survey-email', function(){
     return view('surveys.email');
 });
-
-
-
-
 

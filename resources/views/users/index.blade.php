@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <h4 class="c-grey-900 mB-20">Users</h4>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="bgc-white bd bdrs-3 p-20 mB-20">
                 @if (Session::has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -33,7 +33,7 @@
                             <th>email</th>
                             <th>Joined on</th>
                             <th>Role</th>
-                            <th colspan="2">Actions</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,23 +41,23 @@
                             <tr>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
-                                <td>{{$user->created_at }}</td>
-                                <td>{{$user->getRoleNames()->first()}}</td>
+                                <td>{{Carbon\Carbon::parse($user->created_at)->format('d-m-Y') }}</td>
+                                <td>{{$user->roleName()}}</td>
                                 <td>
-                                    <a href="/user/{{$user->id}}/edit" class="btn btn-primary">Edit User</a>
-                                </td>
-                                <td>
-                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete User</button>
-                                    </form>
-                                    {{-- <a href="/user/{{$user->id}}/delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete User</a> --}}
+                                    <div class="btn-group">
+                                        <a class="btn" href="{{ url('/user/' . $user->id . '/edit')}}"><i class="c-blue-500 ti-pencil-alt"></i></a>
+                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="btn" onclick="return confirm('Are you sure you want to delete this user?')"><i class="c-red-500 ti-trash"></i></button>
+                                        </form>
+                                      </div>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>

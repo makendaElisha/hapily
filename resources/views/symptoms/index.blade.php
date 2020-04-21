@@ -34,7 +34,7 @@
                         @foreach ($areaOfLife->symptoms as $symptom)
                             <tr>
                                 <td>{{$symptom->name}}</td>
-                                <td>{{$symptom->instant_help}}</td>
+                                <td>{{str_limit($symptom->instant_help, $limit = 20, $end = '...')}}</td>
                                 <td>{{$symptom->res_prio}}</td>
                                 <td>{{$symptom->fear}}</td>
                                 <td>{{$symptom->anger}}</td>
