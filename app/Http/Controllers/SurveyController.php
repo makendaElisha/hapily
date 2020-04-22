@@ -231,5 +231,93 @@ class SurveyController extends Controller
        return redirect('/survey')->with("success", "Survey received and saved successfully");
     }
 
+    public function surveyHook(Request $request)
+    {
+        Storage::put('typeform-file.txt', $request); //Saves to file for test purpose, will be removed.
+        $fileApi = Storage::disk('local')->get('typeform-file.txt');
+
+        $start= strpos($fileApi, '{');
+        $end= strrpos( $fileApi, '}') + 1;
+        $dataJson = substr($fileApi, $start, $end);
+        $dataArray = json_decode($dataJson, true);
+
+        if($dataArray){
+            
+            $resultToken = md5(uniqid(rand(), true)); //Make shorter
+            $answers = $dataArray["form_response"]["answers"];
+            // $questions = $dataArray["form_response"]["definition"]["fields"];
+
+            //Create A New Customer User
+            $customer = Customer::create([
+                'first_name' => $answers[0]["text"],
+                'last_name' => $answers[0]["text"],
+                'email' => $answers[1]["email"],
+                'birth' => $answers[2]["date"],
+                'gender' => $answers[3]["choice"]["label"],
+                'postal_code' => $answers[4]["number"],
+                'time_invest_willingness' => $answers[21]["choice"]["label"],
+                'money_invest_willingness' => $answers[22]["choice"]["label"],
+                'call_opt_in' => $answers[23]["boolean"],
+                'phone_number' => "0999015",
+                'newsletter_opt_in' => $answers[24]["boolean"],
+                'network_id' => "10",
+                'submit_date' => $dataArray["form_response"]["submitted_at"],
+                'start_date' => $dataArray["form_response"]["landed_at"],
+                'survey_url' => "/survey/result/". $resultToken,
+                'token' => $resultToken,
+            ]);
+
+            //Create answers
+            foreach ($answers as $answer) {
+                if (array_key_exists('choice', $answer)) {
+                    $question = Question::where('reference', $answer['field']['ref'])->first();
+                    !is_null($question) ? $question_id = $question->id : $question_id = null;
+                    
+                    Answer::create([
+                        'name' => $answer['choice']['label'],
+                        'reference' => $answer['field']['ref'],
+                        'customer_id' => $customer->id,
+                        'question_id' => $question_id,
+                    ]);
+                }elseif(array_key_exists('choices', $answer)) {
+                    foreach ($answer['choices']['labels'] as $item) {
+                        $question = Question::where('reference', $answer['field']['ref'])->first();
+                        !is_null($question) ? $question_id = $question->id : $question_id = null;
+                        
+                        Answer::create([
+                            'name' =>$item,
+                            'reference' => $answer['field']['ref'],
+                            'customer_id' => $customer->id,
+                            'question_id' => $question_id,
+                        ]);
+                    }
+                }
+                else{
+                    $question = Question::where('reference', $answer['field']['ref'])->first();
+                    !is_null($question) ? $question_id = $question->id : $question_id = null;
+                    $key = array_keys($answer)[1];
+
+                    Answer::create([
+                        'reference' => $answer['field']['ref'],
+                        'customer_id' => $customer->id,
+                        'name' => $answer[$key],
+                        'question_id' => $question_id,
+                    ]);
+                }
+            }
+
+        }
+
+        //send survey email with its own data
+        $data = [
+            'name'          => $customer->first_name,
+            'surveyLink'    => url($customer->survey_url) //url helper to take the base url of the project
+        ];
+
+        Mail::to('python.gralf@gmail.com')
+            ->send(new SendSurveyLink($data));
+
+       return redirect('/survey')->with("success", "Survey received and saved successfully");
+    }
     
 }

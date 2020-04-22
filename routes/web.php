@@ -65,7 +65,7 @@ Route::middleware(['auth'])->group(function () {
 //     return view('welcome');
 // });
 
-
+Route::post('/callback/survey', 'SurveyController@surveyHook')->name('survey.surveyHook');
 
 
 Route::get('/table', function () {
