@@ -65,19 +65,25 @@ class SurveyController extends Controller
             $areaObject = (object)[];
             $stgToRemove = ['symptoms_', '_user'];
             $areaName = str_replace($stgToRemove, '', $area);
+            
+            $stgUserScore = str_replace('symptoms_','score_', $area);
+            $userSelectedScore = (int) Answer::where('customer_id', $customer->id)
+                                                ->where('reference', 'like', $stgUserScore)
+                                                ->pluck('name')
+                                                ->first();
 
             $areaObject->name = str_replace('symptoms_','', $area);
             $symptoms = Answer::where('customer_id', $customer->id)
-                                        ->where('reference', 'like', $area)
-                                        ->leftJoin('symptoms', 'answers.name', '=', 'symptoms.name')
-                                        ->orderBy('anger', 'DESC')
-                                        ->get();
+                                ->where('reference', 'like', $area)
+                                ->leftJoin('symptoms', 'answers.name', '=', 'symptoms.name')
+                                ->orderBy('res_prio', 'DESC')
+                                ->get();
 
             $stg = str_replace('symptoms', 'score', $area);
             $baseScore = (int) Answer::where('customer_id', $customer->id)
-                                            ->where('reference', 'like', $stg)
-                                            ->pluck('name')
-                                            ->first();
+                                        ->where('reference', 'like', $stg)
+                                        ->pluck('name')
+                                        ->first();
             $maxSubNumber = 50 * $baseScore / 100;
 
             
@@ -106,11 +112,12 @@ class SurveyController extends Controller
 
             $areaObject->symptoms = $symptoms;
             $areaObject->areaScore = $areaScore;
-            $areaObject->averageAreaScore = $averageAreaScore;
+            $areaObject->userSelectedScore = $userSelectedScore;
+            $areaObject->averageAreaScore = (int) $averageAreaScore;
 
             array_push($data, $areaObject);
         }
-    
+
         $score->total_areas = $userScore;
         $score->save();
 
@@ -118,7 +125,7 @@ class SurveyController extends Controller
         $maxPotential = round($userScore  * 100 / (10 * $numberAreas)); 
         
         $averageScores = Score::pluck('total_areas');
-        $averageHappinessAllParticipants = is_null($averageScores) ? 0 : (($averageScores)->sum() / count($averageScores));
+        $averageHappinessAllParticipants = is_null($averageScores) ? 0 : ( (int) ( ($averageScores)->sum() / count($averageScores)) );
 
 
         return view('surveys.result', compact([

@@ -79,7 +79,7 @@
                   <div class="progress-bar-wrapper">
                     <div class="embed-score-pogress-bar-label-container">
                       {{-- <div class="embeded-score-label">Beruf &amp; Karriere</div> --}}
-                      <div class="embeded-score-label">{{$area->name}}</div>
+                      <div class="embeded-score-label">{{strtr($area->name, ['_' => ' ', 'user' => ''])}}</div>
                       <div class="embeded-score-label">{{$area->areaScore}}</div>
                     </div>
                     <div class="embeded-score-progress-bar-career w-embed">
@@ -120,8 +120,9 @@
     
     @foreach ($data as $area)
       <div class="life-area-container">
-        <div class="life-area-container-header"><img src="{{ asset('all/images/ring_icon.svg')}}" alt="" class="life-area-partnerschaft-image">
-          <h3 class="life-area-header">{{$area->name}}</h3>
+        {{-- <div class="life-area-container-header"><img src="{{ asset('all/images/ring_icon.svg')}}" alt="" class="life-area-partnerschaft-image"> --}}
+        <div class="life-area-container-header">
+          <h3 class="life-area-header">{{strtr($area->name, ['_' => ' ', 'user' => ''])}}</h3>
           <div class="life-area-score-columns-container">
             <div class="score-column1-columns life-area-columns w-row">
               <div class="score-column1-col1 w-col w-col-6">
@@ -134,7 +135,7 @@
               <div class="score-column1-col2 w-col w-col-6">
                 <div class="life-area-score-container2">
                   <h5 class="score-column-heading5-centered">Dein Score liegt<br></h5>
-                  <div class="organge-score-life-area-score">xxx</div>
+                  <div class="organge-score-life-area-score">{{$area->userSelectedScore}}</div>
                   <div class="score-grey-text">Deine Herausforderungen stellen gleichzeitig dein Potenzial dar</div>
                 </div>
               </div>
