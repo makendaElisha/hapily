@@ -610,7 +610,7 @@ class SurveyController extends Controller
             'surveyLink'    => url($customer->survey_url) //url helper to take the base url of the project
         ];
 
-        Mail::to('ubuntu.le.kushf@gmail.com')
+        Mail::to('ubuntu.le.kush@gmail.com')
             ->send(new SendSurveyLink($data));
 
        return redirect('/survey')->with("success", "Survey received and saved successfully");
