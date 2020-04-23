@@ -62,8 +62,8 @@
               </div>
             </div>
             <ul class="socre-list w-list-unstyled">
-              <li class="list-item-score">Am <span class="green-list-text-span">glücklichsten </span>schätzt du dich im Lebensbereich <strong>Freundschaften </strong>ein, gefolgt von <strong>Beruf &amp; Karriere </strong>und <strong>Körper &amp; Gesundheit.</strong></li>
-              <li class="list-item-score">Das größte <span class="text-span-5">Verbesserungspotenzial</span> scheinst du in der Liebe zu haben.</li>
+              <li class="list-item-score">Am <span class="green-list-text-span">glücklichsten </span>schätzt du dich im Lebensbereich <strong>{{strtr($resultData[0]->name, ['_' => ' ','user' => ''])}} </strong>ein, gefolgt von <strong>{{strtr($resultData[1]->name, ['_' => ' ','user' => ''])}}</strong>und <strong>.</strong></li>
+              <li class="list-item-score">Das größte <span class="text-span-5">Verbesserungspotenzial</span> scheinst du in der {{strtr(end($resultData)->name, ['_' => ' ','user' => ''])}} zu haben.</li>
             </ul>
           </div>
           <div class="score-column2 w-col w-col-6 w-col-medium-6">
@@ -148,7 +148,7 @@
         <div class="section-analyse-purple-header-container">
           <h4 class="purple-header">{{$key + 1}}. {{$symptom->name}}</h4>
           <p class="normal-text">{{$symptom->instant_help}}.</p>
-          <p class="centered-paragraph"><strong>12,3%</strong> aller Teilnehmer teilen diese Herausforderung</p>
+          <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen diese Herausforderung</p>
         </div>
         <div class="life-area-recommandation-books-container">
           <div class="books-recommandation-columns-container w-row">

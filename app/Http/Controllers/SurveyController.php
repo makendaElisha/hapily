@@ -52,9 +52,13 @@ class SurveyController extends Controller
     {
         $token = $request->token;
         $customer = Customer::where('token', 'like', $token)->first();
-        $score = Score::create([
-            'customer_id' => $customer->id,
-        ]);
+        $score = Score::where('customer_id', $customer->id)->first();
+
+        if(is_null($score)){
+            $score = Score::create([
+                'customer_id' => $customer->id,
+            ]);
+        }
 
         $getAreas = Question::where('reference', 'like', 'symptoms_%')->pluck('reference');
         $resultData = [];
@@ -75,9 +79,12 @@ class SurveyController extends Controller
             $areaObject->name = str_replace('symptoms_','', $area);
             $symptoms = Answer::where('customer_id', $customer->id)
                                 ->where('reference', 'like', $area)
-                                ->leftJoin('symptoms', 'answers.name', '=', 'symptoms.name')
+                                ->join('symptoms', 'answers.name', '=', 'symptoms.name')
                                 ->orderBy('res_prio', 'DESC')
                                 ->get();
+            foreach($symptoms as $symptom){
+                $symptom->othersHavingThis = (int) ( count(Answer::where('name', $symptom->name)->get()) / (count(Score::all())) * 100 );
+            }
 
             $stg = str_replace('symptoms', 'score', $area);
             $baseScore = (int) Answer::where('customer_id', $customer->id)
@@ -103,7 +110,6 @@ class SurveyController extends Controller
             $areaScore = (int) floor($baseScore - $totalScoreSymptoms);
             
             $score->$areaName = $areaScore;
-            $score->save();
 
             $userScore += $areaScore;
 
@@ -126,7 +132,6 @@ class SurveyController extends Controller
         
         $averageScores = Score::pluck('total_areas');
         $averageHappinessAllParticipants = is_null($averageScores) ? 0 : ( (int) ( ($averageScores)->sum() / count($averageScores)) );
-
 
         return view('surveys.result', compact([
             'customer', 
@@ -377,81 +382,232 @@ class SurveyController extends Controller
 
     public function surveyHook(Request $request)
     {
+<<<<<<< Updated upstream
         //dd($request->all());
 
         Storage::put('typeform-file.txt', $request); //Saves to file for test purpose, will be removed.
         $fileApi = Storage::disk('local')->get('typeform-file.txt');
+=======
+        // Storage::put('typeform-file.txt', $request);
+        // $fileApi = Storage::disk('local')->get('typeform-file.txt');
+>>>>>>> Stashed changes
 
-        $start= strpos($fileApi, '{');
-        $end= strrpos( $fileApi, '}') + 1;
-        $dataJson = substr($fileApi, $start, $end);
-        $dataArray = json_decode($dataJson, true);
+        // $start= strpos($fileApi, '{');
+        // $end= strrpos( $fileApi, '}') + 1;
+        // $dataJson = substr($fileApi, $start, $end);
+        // $dataArray = json_decode($dataJson, true);
 
-        if($dataArray){
-            
-            $resultToken = md5(uniqid(rand(), true)); //Make shorter
+        $dataArray = json_decode($request->all(), true);
+
+        if ($dataArray) {
             $answers = $dataArray["form_response"]["answers"];
-            // $questions = $dataArray["form_response"]["definition"]["fields"];
-
-            //Create A New Customer User
-            $customer = Customer::create([
-                'prename' => $answers[0]["text"],
-                'last_name' => $answers[0]["text"],
-                'email' => $answers[1]["email"],
-                'birth' => $answers[2]["date"],
-                'gender' => $answers[3]["choice"]["label"],
-                'postal_code' => $answers[4]["number"],
-                'time_invest_willingness' => $answers[21]["choice"]["label"],
-                'money_invest_willingness' => $answers[22]["choice"]["label"],
-                'call_opt_in' => $answers[23]["boolean"],
-                'phone_number' => "0999015",
-                'newsletter_opt_in' => $answers[24]["boolean"],
-                'network_id' => "10",
-                'submit_date' => $dataArray["form_response"]["submitted_at"],
-                'start_date' => $dataArray["form_response"]["landed_at"],
-                'survey_url' => "/survey/result/". $resultToken,
-                'token' => $resultToken,
-            ]);
-
-            //Create answers
+            $resultToken = md5(uniqid(rand(), true)); //Make shorter
+            $customer = Customer::create();
+    
             foreach ($answers as $answer) {
-                if (array_key_exists('choice', $answer)) {
-                    $question = Question::where('reference', $answer['field']['ref'])->first();
-                    !is_null($question) ? $question_id = $question->id : $question_id = null;
-                    
-                    Answer::create([
-                        'name' => $answer['choice']['label'],
-                        'reference' => $answer['field']['ref'],
-                        'customer_id' => $customer->id,
-                        'question_id' => $question_id,
-                    ]);
-                }elseif(array_key_exists('choices', $answer)) {
-                    foreach ($answer['choices']['labels'] as $item) {
-                        $question = Question::where('reference', $answer['field']['ref'])->first();
-                        !is_null($question) ? $question_id = $question->id : $question_id = null;
+
+                $question = Question::where('reference', $answer['field']['ref'])->first();
+                !is_null($question) ? $question_id = $question->id : $question_id = null;
+
+                switch ($answer['field']['ref']) {
+                    case 'prename_user':
+                        $customer->prename = $answer['text'];
+                        $customer->last_name = $answer['text'];
+                        break;
+    
+                    case 'email_address_user':
+                        $customer->email = $answer['email'];
+                        break;
+    
+                    case 'date_of_birth_user':
+                        $customer->birth = $answer['date'];
+                        break;
+    
+                    case 'gender_user':
+                        $customer->gender = $answer['choice']['label'];
+                        break;
                         
+                    case 'postal_code_user':
+                        $customer->postal_code = $answer['number'];
+                        break;
+    
+                    case 'score_overall_happiness_user':
                         Answer::create([
-                            'name' =>$item,
+                            'name' => $answer['number'],
                             'reference' => $answer['field']['ref'],
                             'customer_id' => $customer->id,
                             'question_id' => $question_id,
                         ]);
-                    }
-                }
-                else{
-                    $question = Question::where('reference', $answer['field']['ref'])->first();
-                    !is_null($question) ? $question_id = $question->id : $question_id = null;
-                    $key = array_keys($answer)[1];
+                        break;
+                        
+                    case 'score_beruf_und_karriere_user':
+                        Answer::create([
+                            'name' => $answer['number'],
+                            'reference' => $answer['field']['ref'],
+                            'customer_id' => $customer->id,
+                            'question_id' => $question_id,
+                        ]);
+                        break;
 
-                    Answer::create([
-                        'reference' => $answer['field']['ref'],
-                        'customer_id' => $customer->id,
-                        'name' => $answer[$key],
-                        'question_id' => $question_id,
-                    ]);
+                    case 'symptoms_beruf_und_karriere_user':
+                        foreach ($answer['choices']['labels'] as $item) {
+                            Answer::create([
+                                'name' =>$item,
+                                'reference' => $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+                        break;
+
+                    case 'score_partnerschaft_user':
+                        Answer::create([
+                            'name' => $answer['number'],
+                            'reference' => $answer['field']['ref'],
+                            'customer_id' => $customer->id,
+                            'question_id' => $question->id,
+                        ]);
+                        break;
+
+                    case 'symptoms_partnerschaft_user':
+                        foreach ($answer['choices']['labels'] as $item) {
+                            Answer::create([
+                                'name' =>$item,
+                                'reference' => $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+                        break;
+    
+                    case 'score_sexualitaet_user':
+                        Answer::create([
+                            'name' => $answer['number'],
+                            'reference' => $answer['field']['ref'],
+                            'customer_id' => $customer->id,
+                            'question_id' => $question->id,
+                        ]);
+                        break;
+
+                    case 'symptoms_sexualitaet_user':
+                        foreach ($answer['choices']['labels'] as $item) {
+                            Answer::create([
+                                'name' =>$item,
+                                'reference' => $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+                        break;
+    
+                    case 'score_koerper_und_gesundheit_user':
+                        Answer::create([
+                            'name' => $answer['number'],
+                            'reference' => $answer['field']['ref'],
+                            'customer_id' => $customer->id,
+                            'question_id' => $question->id,
+                        ]);
+                        break;
+
+                    case 'symptoms_koerper_und_gesundheit_user':
+                        foreach ($answer['choices']['labels'] as $item) {
+                            Answer::create([
+                                'name' =>$item,
+                                'reference' => $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+                        break;
+                        
+                    case 'score_freundschaften_user':
+                        Answer::create([
+                            'name' => $answer['number'],
+                            'reference' => $answer['field']['ref'],
+                            'customer_id' => $customer->id,
+                            'question_id' => $question->id,
+                        ]);
+                        break;
+
+                    case 'symptoms_freundschaften_user':
+                        foreach ($answer['choices']['labels'] as $item) {
+                            Answer::create([
+                                'name' =>$item,
+                                'reference' => $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+                        break;
+    
+                    case 'score_familie_user':
+                        Answer::create([
+                            'name' => $answer['number'],
+                            'reference' => $answer['field']['ref'],
+                            'customer_id' => $customer->id,
+                            'question_id' => $question->id,
+                        ]);
+                        break;
+
+                    case 'symptoms_familie_user':
+                        foreach ($answer['choices']['labels'] as $item) {
+                            Answer::create([
+                                'name' =>$item,
+                                'reference' => $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+                        break;
+    
+                    case 'score_spiritualitaet_user':
+                        Answer::create([
+                            'name' => $answer['number'],
+                            'reference' => $answer['field']['ref'],
+                            'customer_id' => $customer->id,
+                            'question_id' => $question->id,
+                        ]);
+                        break;
+
+                    case 'symptoms_spiritualitaet_user':
+                        foreach ($answer['choices']['labels'] as $item) {
+                            Answer::create([
+                                'name' =>$item,
+                                'reference' => $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+                        break;
+    
+                    case 'time_invest_user':
+                        $customer->time_invest_willingness = $answer['choice']['label'];
+                        break;
+    
+                    case 'money_invest_user':
+                        $customer->money_invest_willingness = $answer['choice']['label'];
+                        break;
+    
+                    case 'call_optin_user':
+                        $customer->call_opt_in = $answer['boolean'];
+                        break;
+                   
+                    case 'newsletter_optin_user':
+                        $customer->newsletter_opt_in = $answer['boolean'];
+                        break;
+    
+                    case 'phone_number_user':
+                        $customer->phone_number = $answer['phone_number'];
+                        break;
                 }
+    
+                $customer->submit_date = $dataArray["form_response"]["submitted_at"];
+                $customer->start_date = $dataArray["form_response"]["landed_at"];
+                $customer->survey_url = "/survey/result/". $resultToken;
+                $customer->token = $resultToken;
+                
+                $customer->save();
             }
-
         }
 
         //send survey email with its own data

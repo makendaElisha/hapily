@@ -74,15 +74,7 @@ class QuestionsSeeder extends Seeder
          
                ]
             ],
-            [
-               "id" => "HsPHHEiFqGu4",
-               "title" => "Hast du bereits *Kinder*?",
-               "type" => "yes_no",
-               "ref" => "children_user",
-               "properties" => [
-         
-               ]
-            ],
+            
             [
                "id" => "O84QJwO9jYDI",
                "title" => "Wie gl\u00fccklich bist du allgemein mit deinem Leben? ",
