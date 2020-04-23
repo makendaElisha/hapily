@@ -21,7 +21,7 @@
                     <tbody>
                         @foreach ($customers as $customer)
                             <tr>
-                                <td>{{$customer->first_name}}</td>
+                                <td>{{$customer->prename}}</td>
                                 <td>{{$customer->email}}</td>
                                 <td><a href="{{ url($customer->survey_url) }}" class="btn btn-link" style="color:purple;">Go To Results</a></td>
                                 {{-- <td>
