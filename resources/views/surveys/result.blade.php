@@ -36,7 +36,7 @@
   <div class="section-greeting">
     <div class="section-greeting-container">
       <div class="greeting-text">
-        <div class="bold-text">Hey {{$customer->first_name}},</div>
+        <div class="bold-text">Hey {{$customer->prename}},</div>
         <p class="paragraph">schön, dass du den Test abgeschlossen hast und deinem Glück auf die Sprünge helfen willst :-) Deine aktuelle Situation sowie die Ursachen dafür besser zu verstehen, ist der erste Schritt in Richtung eines erfüllteren und zufriedeneren Lebens.<br>‍</p>
         <p>Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$userScore}} von {{$numberAreas * 10}} Punkten</strong></p>
         <p class="paragraph-2">Im Durchschnitt erreichen Teilnehmer einen Score von {{$averageHappinessAllParticipants}}. In der folgenden Grafik kannst du dein Glückslevel pro Lebensbereich ablesen und mit dem Durchschnitt der anderen Teilnehmer vergleichen.</p>
@@ -75,7 +75,7 @@
               
               <div class="score-progress-bar-container">
 
-                @foreach ($data as $area)
+                @foreach ($resultData as $area)
                   <div class="progress-bar-wrapper">
                     <div class="embed-score-pogress-bar-label-container">
                       {{-- <div class="embeded-score-label">Beruf &amp; Karriere</div> --}}
@@ -118,7 +118,7 @@
       <div class="section-analyse-text">In der Glücksforschung ist man sich einig, dass es - obwohl Glück für jeden etwas anderes bedeuten kann - ein paar <strong>Glücksfaktoren</strong> gibt, die für alle Menschen gelten. Dazu gehören z.B., dass wir einem <strong>erfüllenden Beruf</strong> nachgehen, <strong>liebevolle Beziehungen</strong> pflegen, physisch und mental <strong>gesund</strong> sind und einen <strong>Sinn</strong> in unserem Leben erkennen.<br><br>Lass uns nun einen tieferen Blick auf <strong>deine Potenziale</strong> pro Lebensbereich werfen:<br></div>
     </div>
     
-    @foreach ($data as $area)
+    @foreach ($resultData as $area)
       <div class="life-area-container">
         {{-- <div class="life-area-container-header"><img src="{{ asset('all/images/ring_icon.svg')}}" alt="" class="life-area-partnerschaft-image"> --}}
         <div class="life-area-container-header">
