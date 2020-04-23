@@ -382,15 +382,8 @@ class SurveyController extends Controller
 
     public function surveyHook(Request $request)
     {
-<<<<<<< Updated upstream
-        //dd($request->all());
-
-        Storage::put('typeform-file.txt', $request); //Saves to file for test purpose, will be removed.
-        $fileApi = Storage::disk('local')->get('typeform-file.txt');
-=======
         // Storage::put('typeform-file.txt', $request);
         // $fileApi = Storage::disk('local')->get('typeform-file.txt');
->>>>>>> Stashed changes
 
         // $start= strpos($fileApi, '{');
         // $end= strrpos( $fileApi, '}') + 1;
