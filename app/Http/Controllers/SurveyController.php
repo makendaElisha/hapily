@@ -390,7 +390,8 @@ class SurveyController extends Controller
         // $dataJson = substr($fileApi, $start, $end);
         // $dataArray = json_decode($dataJson, true);
 
-        $dataArray = json_decode($request->all(), true);
+        $dataArray = json_decode(json_encode($request->all()), true);
+        //$dataArray = $request->all();
 
         if ($dataArray) {
             $answers = $dataArray["form_response"]["answers"];
