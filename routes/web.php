@@ -56,6 +56,8 @@ Route::middleware(['auth'])->group(function () {
     //Route::post('/survey/result/{token}', 'SurveyController@userResult')->name('survey.result');
     Route::get('/survey/result/{token}', 'SurveyController@userResult')->name('survey.result');
 
+    Route::view('/profile', 'profile.index');
+
 });
 
 
