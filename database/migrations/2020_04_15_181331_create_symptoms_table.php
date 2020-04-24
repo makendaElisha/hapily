@@ -26,7 +26,9 @@ class CreateSymptomsTable extends Migration
             $table->text('recom_book_url')->nullable();
             $table->text('recom_book_image')->nullable();
             $table->text('recom_book_description')->nullable();
-            $table->text('recom_program')->nullable();
+            $table->text('recom_program_url')->nullable();
+            $table->text('recom_program_image')->nullable();
+            $table->text('recom_program_description')->nullable();
             $table->timestamps();
 
             $table->foreign('area_of_life_id')->references('id')->on("area_of_lives");
