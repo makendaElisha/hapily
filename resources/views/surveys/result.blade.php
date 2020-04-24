@@ -14,7 +14,7 @@
   <link href="{{ asset('all/css/hapily-website.webflow.css')}}" rel="stylesheet" type="text/css">
   <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
-  <link href="{{ asset('all/images/favicon.ico')}}" rel="shortcut icon" type="image/x-icon">
+  <link href="{{ asset('all/images/favicon.png')}}" rel="shortcut icon" type="image/x-icon">
   <link href="{{ asset('all/images/webclip.png')}}')}}" rel="apple-touch-icon">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -147,17 +147,17 @@
       @foreach ($area->symptoms as $key => $symptom)
         <div class="section-analyse-purple-header-container">
           <h4 class="purple-header">{{$key + 1}}. {{$symptom->name}}</h4>
-          <p class="normal-text">{{$symptom->instant_help}}.</p>
+          <p class="normal-text">{{$symptom->instant_help}}</p>
           <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen diese Herausforderung</p>
         </div>
         <div class="life-area-recommandation-books-container">
           <div class="books-recommandation-columns-container w-row">
             <div class="books-recommandation-column1 w-col w-col-6">
               <div class="books-recommandation-column1-container">
-                <div class="book-cover-container"><img src="{{ asset('all/images/book-cover.png')}}" alt="" class="book-cover-image"></div>
+                <div class="book-coach-container"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-cover-image"></a></div>
                 <div class="recommanded-book-header">Unser Buch-Tipp</div>
-                <div class="recommanded-book-normal-text">{{$symptom->book_description}}</div>
-                <div class="recommanded-book-purple-link">&gt; Bestellen</div>
+                <div class="recommanded-book-normal-text">{{str_limit($symptom->recom_book_description, 100, '...')}}</div>
+                <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}">&gt; Bestellen</a></div>
               </div>
             </div>
             <div class="books-recommandation-column2 w-col w-col-6">
@@ -170,6 +170,7 @@
             </div>
           </div>
         </div>
+        <br />
       @endforeach 
 
       <div class="purple-paragraph-container">
@@ -213,7 +214,7 @@
   <div class="section-before-footer">
     <div class="section-before-footer-container">
       <h3 class="section-before-footer-header">Wer steckt hinter dem Glücks-Test?</h3>
-      <div class="section-before-footer-text">Die Glücks-Experten Denis Martin und Marcus Börner haben hapily gegründet, um Menschen dabei zu unterstützen, die wohl wichtigste Frage für sich zu klären: Was macht ein glückliches Leben aus?<br><br>Als Autor von &quot;Managing Happiness&quot; konnte Marcus bereits unzähligen Menschen dabei helfen, sich ein erfülltes Leben zu erschaffen. Denis hat als Life Coach hunderte von Menschen auf dem Weg zu ihrem Wunschleben begleitet.<br><br>Mit hapily haben die beiden eine Akademie für persönliches Wachstum gegründet, um fortan noch viel mehr Menschen erreichen und bei ihrer Transformation begleiten zu können.<br><br>Mehr erfahren auf: <span class="blue-text">www.hapily.de</span></div>
+      <div class="section-before-footer-text">Die Glücks-Experten Denis Martin und Marcus Börner haben hapily gegründet, um Menschen dabei zu unterstützen, die wohl wichtigste Frage für sich zu klären: Was macht ein glückliches Leben aus?<br><br>Als Autor von &quot;Managing Happiness&quot; konnte Marcus bereits unzähligen Menschen dabei helfen, sich ein erfülltes Leben zu erschaffen. Denis hat als Life Coach hunderte von Menschen auf dem Weg zu ihrem Wunschleben begleitet.<br><br>Mit hapily haben die beiden eine Akademie für persönliches Wachstum gegründet, um fortan noch viel mehr Menschen erreichen und bei ihrer Transformation begleiten zu können.<br><br>Mehr erfahren auf: <span class="blue-text"><a href="https://www.hapily.de">www.hapily.de</a></span></div>
       <div class="section-before-footer-two-images-content"><img src="{{ asset('all/images/marcus-image.png')}}" width="150" height="150" srcset="{{ asset('all/images/marcus-image-p-500.png')}} 500w, images/marcus-image.png')}} 544w" sizes="(max-width: 479px) 120px, 150px" alt="" class="section-before-footer-image1"><img src="{{ asset('all/images/denis-image.png')}}" width="150" height="150" alt="" class="section-before-footer-image2"></div>
       <p class="section-before-footer-quote"><span class="green-quote">&quot;</span><strong>Jede Transformation fängt mit einer Erkenntnis und dem Willen für Veränderung an</strong><span class="green-quote">&quot;</span> <br>- Denis &amp; Marcus (Autoren, Coaches und Gründer von hapily)</p>
       <div class="section-before-footer-separator"></div>
@@ -221,9 +222,13 @@
   </div>
   <div class="footer-section-container">
     <div class="section-footer">
-      <div class="section-footer-wrapper"><img src="{{ asset('all/images/hapily_logo_primary.svg')}}" alt="" class="footer-logo">
-        <div class="footer-text-one">Impressum</div>
-        <div class="footer-text">Datenschutzbestimmungen</div><img src="{{ asset('all/images/facebook-black.svg')}}" alt="" class="footer-social-icon-facebook"><img src="{{ asset('all/images/instagram-black.svg')}}" alt="" class="footer-social-icon-instagram"><img src="{{ asset('all/images/linkedin-black.svg')}}" alt="" class="footer-social-icon-linkedin"></div>
+      <div class="section-footer-wrapper"><a href="https://hapily.de"><img src="{{ asset('all/images/hapily_logo_primary.svg')}}" alt="" class="footer-logo"></a>
+        <div class="footer-text-one"><a href="https://www.hapily.de/impressum" target="_blank" class="link-32">Impressum</a></div>
+        <div class="footer-text"><a href="https://www.hapily.de/datenschutz" target="_blank" class="link-33">Datenschutzbestimmungen</a></div>
+        <a href="https://www.facebook.com/hapily.academy" target="_blank" class="footer-facebook-link w-inline-block"><img src="{{ asset('all/images/facebook-black.svg')}}" alt="" class="footer-social-icon-facebook"></a>
+        <a href="http://instagram.com/hapily.de" target="_blank" class="footer-instagram-link w-inline-block"><img src="{{ asset('all/images/instagram-black.svg')}}" alt="" class="footer-social-icon-instagram"></a>
+        <a href="https://www.linkedin.com/company/hapily" target="_blank" class="footer-linkedin-link w-inline-block"><img src="{{ asset('all/images/linkedin-black.svg')}}" alt="" class="footer-social-icon-linkedin"></a>
+      </div>
     </div>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e87229d1e5bbf88766c2782" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

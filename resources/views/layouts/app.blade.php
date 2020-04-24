@@ -1,5 +1,9 @@
 @include('layouts.header')
-
+<style>
+    /* body {
+        font-family: Poppins, sans-serif !important;
+    } */
+</style>
 <body class="app">
     <div id="loader">
         <div class="spinner"></div>
