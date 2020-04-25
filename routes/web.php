@@ -1,5 +1,8 @@
 <?php
 
+use App\Entities\Score;
+use App\Entities\Answer;
+use App\Entities\Customer;
 use Omniphx\Forrest\Providers\Laravel\Facades\Forrest;
 
 /*
@@ -62,6 +65,89 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+
+Route::get('/leadata', function(){
+
+    $scoreCustomer      = Score::where('customer_id', 1)->first();
+    $answersCustomer    = Answer::where('customer_id', 1)->get();
+    $customerData       = Customer::where('id', 1)->first();
+
+    $symptomsCarrer         = '';
+    $symptomsLove           = '';
+    $symptomsSexuality      = '';
+    $symptomsBodayHealth    = '';
+    $symptomsFriendship     = '';
+    $symptomsFamily         = '';
+    $symptomsSpirituality   = '';
+    $symptomDefault         = '';
+
+    foreach($answersCustomer as $answer) {
+        switch ($answer->reference) {
+            case 'symptoms_beruf_und_karriere_user':
+                $symptomsCarrer .= $answer->name . '\n';
+                break;
+            case 'symptoms_partnerschaft_user':
+                $symptomsLove .= $answer->name . '\n';
+                break;
+            case 'symptoms_sexualitaet_user':
+                $symptomsSexuality .= $answer->name . '\n';
+                break;
+            case 'symptoms_koerper_und_gesundheit_user':
+                $symptomsBodayHealth .= $answer->name . '\n';
+                break;
+            case 'symptoms_freundschaften_user':
+                $symptomsFriendship .= $answer->name . '\n';
+                break;
+            case 'symptoms_familie_user':
+                $symptomsFamily .= $answer->name . '\n';
+                break;
+            case 'symptoms_spiritualitaet_user':
+                $symptomsSpirituality .= $answer->name . '\n';
+                break;
+            default:
+                $symptomDefault = 'No symptom found';
+        }
+    }
+
+    //'Gender'                        => $customerData->gender == 'Männlich' ? 'Male' : 'Female',
+    if($customerData->gender == 'Männlich'){
+        $gender = 'Male';
+    }elseif($customerData->gender == 'Weiblich'){
+        $gender = 'Female';
+    }else{
+        $gender = 'Other';
+    }
+
+    $leadSalesForce = [
+        'FirstName'                     => $customerData->prename,
+        'email'                         => $customerData->email,
+        'Gender'                        => $gender, 
+        'MobilePhone'                   => $customerData->phone_number,
+        'Overall_Happiness_Score'       => $scoreCustomer->total_areas,
+        'Happiness_Score_Career'        => $scoreCustomer->beruf_und_karriere,
+        'Happiness_Score_Love'          => $scoreCustomer->partnerschaft,
+        'Happiness_Score_Sexuality'     => $scoreCustomer->sexualitaet,
+        'Happiness_Score_Body_Health'   => $scoreCustomer->koerper_und_gesundheit,
+        'Happiness_Score_Friendship'    => $scoreCustomer->freundschaften,
+        'Happiness_Score_Family'        => $scoreCustomer->familie,
+        'Happiness_Score_Spirituality'  => $scoreCustomer->spiritualitaet,
+        'Symptoms_Career'               => $symptomsCarrer,
+        'Symptoms_Love'                 => $symptomsLove,
+        'Symptoms_Sexuality'            => $symptomsSexuality,
+        'Symptoms_Body_Health'          => $symptomsBodayHealth,
+        'Symptoms_Friendship'           => $symptomsFriendship,
+        'Symptoms_Family'               => $symptomsFamily,
+        'Symptoms_Spirituality'         => $symptomsSpirituality,
+        'Time_Invest_Willingness'       => $customerData->time_invest_willingness,
+        'Money_Invest_Willingness'      => $customerData->money_invest_willingness,
+        'Newsletter_Opt_in'             => $customerData->newsletter_opt_in,
+        'Call_Opt_in'                   => $customerData->call_opt_in,
+        'Survey_Result_URL'             => url($customerData->survey_url),
+    ];
+
+    return $leadSalesForce;
+    
+});
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
