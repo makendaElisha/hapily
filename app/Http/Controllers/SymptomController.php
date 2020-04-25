@@ -43,14 +43,16 @@ class SymptomController extends Controller
             'name' => 'string|required',
             'instant_help' => 'string|required',
             'res_prio' => 'required',
-            'fear' => 'required',
-            'anger' => 'required',
-            'sadness' => 'required',
+            // 'fear' => 'required',
+            // 'anger' => 'required',
+            // 'sadness' => 'required',
             'belief' => 'string|required',
             'recom_book_url' => 'string|required',
             'recom_book_image' => 'string|required',
             'recom_book_description' => 'string|required',
-            'recom_program' => 'string|required',
+            'recom_program_url' => 'string|required',
+            'recom_program_image' => 'string|required',
+            'recom_program_description' => 'string|required',
         ]);
 
         //Create Symptom
@@ -59,14 +61,16 @@ class SymptomController extends Controller
             'area_of_life_id' => $areaOfLife->id,
             'instant_help' => Request('instant_help'),
             'res_prio' => Request('res_prio'),
-            'fear' => Request('fear'),
-            'anger' => Request('anger'),
-            'sadness' => Request('sadness'),
+            // 'fear' => Request('fear'),
+            // 'anger' => Request('anger'),
+            // 'sadness' => Request('sadness'),
             'belief' => Request('belief'),
             'recom_book_url' => Request('recom_book_url'),
             'recom_book_image' => Request('recom_book_image'),
             'recom_book_description' => Request('recom_book_description'),
-            'recom_program' => Request('recom_program'),
+            'recom_program_url' => Request('recom_program_url'),
+            'recom_program_image' => Request('recom_program_image'),
+            'recom_program_description' => Request('recom_program_description'),
         ]);
 
         return redirect()->route('symptom.index', $areaOfLife->id);
@@ -109,28 +113,32 @@ class SymptomController extends Controller
             'name' => 'string|required',
             'instant_help' => 'string|required',
             'res_prio' => 'required',
-            'fear' => 'required',
-            'anger' => 'required',
-            'sadness' => 'required',
+            // 'fear' => 'required',
+            // 'anger' => 'required',
+            // 'sadness' => 'required',
             'belief' => 'string|required',
             'recom_book_url' => 'string|required',
             'recom_book_image' => 'string|required',
             'recom_book_description' => 'string|required',
-            'recom_program' => 'string|required',
+            'recom_program_url' => 'string|required',
+            'recom_program_image' => 'string|required',
+            'recom_program_description' => 'string|required',
         ]);
 
         //Update Symptom
             $symptom->name = Request('name');
             $symptom->instant_help = Request('instant_help');
             $symptom->res_prio = Request('res_prio');
-            $symptom->fear = Request('fear');
-            $symptom->anger = Request('anger');
-            $symptom->sadness = Request('sadness');
+            // $symptom->fear = Request('fear');
+            // $symptom->anger = Request('anger');
+            // $symptom->sadness = Request('sadness');
             $symptom->belief = Request('belief');
             $symptom->recom_book_url = Request('recom_book_url');
             $symptom->recom_book_image = Request('recom_book_image');
             $symptom->recom_book_description = Request('recom_book_description');
-            $symptom->recom_program = Request('recom_program');
+            $symptom->recom_program_url = Request('recom_program_url');
+            $symptom->recom_program_image = Request('recom_program_image');
+            $symptom->recom_program_description = Request('recom_program_description');
 
             $symptom->save();
 
@@ -144,8 +152,10 @@ class SymptomController extends Controller
      * @param  \App\Entities\Symptom  $symptom
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Symptom $symptom)
+    public function destroy(AreaOfLife $areaOfLife, Symptom $symptom)
     {
-        //
+        $symptom->delete();
+
+        return redirect()->route('symptom.index', $areaOfLife->id);
     }
 }

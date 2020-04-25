@@ -21,7 +21,10 @@
                             <th>Belief</th>
                             <th>Book url</th>
                             <th>Book img </th>
-                            <th>Recom Program</th>
+                            <th>Book description </th>
+                            <th>Recom Program url</th>
+                            <th>Recom Program image</th>
+                            <th>Recom Program description</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -37,7 +40,10 @@
                                 <td>{{$symptom->belief}}</td>
                                 <td>{{$symptom->recom_book_url}}</td>
                                 <td>{{$symptom->recom_book_image}}</td>
-                                <td>{{$symptom->recom_program}}</td>
+                                <td>{{$symptom->recom_book_description}}</td>
+                                <td>{{$symptom->recom_program_url}}</td>
+                                <td>{{$symptom->recom_program_image}}</td>
+                                <td>{{$symptom->recom_program_description}}</td>
                                 <td>
                                     <a href="/symptom/{{$symptom->id}}/area-of-life/{{$areaOfLife->id}}/edit" style="color:green;">Edit</a>
                                     <a href="/symptom/{{$symptom->id}}/area-of-life/{{$areaOfLife->id}}/delete" style="color:red;">Delete</a>

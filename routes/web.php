@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/area-of-life/{areaOfLife}', 'AreaOfLifeController@edit')->name('area.show');
 
     //Symptom
-    Route::resource('/symptom', 'SymptomController'); //To go
+    // Route::resource('/symptom', 'SymptomController'); //To go
 
     //User
     Route::resource('user', 'UserController'); //To be fixed

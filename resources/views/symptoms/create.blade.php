@@ -22,9 +22,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-1">
                                 <label for="inputCity">ResPrio</label>
-                                <select class="custom-select" id="res_prio" name="res_prio">
-                                    <option selected>Res Prio...</option>
-                                    <option value="0">0</option>
+                                <select class="custom-select" id="res_prio" name="res_prio" value="{{old('instant_help')}}">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -37,7 +35,7 @@
                                     <option value="10">10</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-1">
+                            {{-- <div class="form-group col-md-1">
                                 <label for="inputCity">Fear</label>
                                 <select class="custom-select" id="fear" name="fear">
                                     <option selected>Fear</option>
@@ -87,7 +85,7 @@
                                     <option value="9">9</option>
                                     <option value="10">10</option>
                                 </select>
-                            </div>
+                            </div> --}}
                         </div>
                         
                                                
@@ -108,8 +106,16 @@
                             <input type="text" name="recom_book_description" value="{{old('recom_book_description')}}" class="form-control" id="recom_book_description" placeholder="Enter book description">
                         </div>
                         <div class="form-group">
-                            <label for="name">Recommanded program</label>
-                            <input type="text" name="recom_program" value="{{old('recom_program')}}" class="form-control" id="recom_program" placeholder="Enter program">
+                            <label for="name">Recommanded program url</label>
+                            <input type="text" name="recom_program_url" value="{{old('recom_program_url')}}" class="form-control" id="recom_program" placeholder="Enter program">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Recommanded program image</label>
+                            <input type="text" name="recom_program_image" value="{{old('recom_program_image')}}" class="form-control" id="recom_program" placeholder="Enter program">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Recommanded program description</label>
+                            <input type="text" name="recom_program_description" value="{{old('recom_program_description')}}" class="form-control" id="recom_program" placeholder="Enter program">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
