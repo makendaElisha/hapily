@@ -91,6 +91,18 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'soql' => [
+            'driver' => 'soql',
+            'database' => null,
+            'consumerKey'    => env('SF_CONSUMER_KEY'),
+            'consumerSecret' => env('SF_CONSUMER_SECRET'),
+            'loginURL'       => env('SF_LOGIN_URL'),
+            // Only required for UserPassword authentication:
+            'username'       => env('SF_USERNAME'),
+            // Security token might need to be ammended to password unless IP Address is whitelisted
+            'password'       => env('SF_PASSWORD')
+        ],
+
     ],
 
     /*

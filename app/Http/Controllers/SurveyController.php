@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Entities\Survey;
-use App\Entities\Question;
-use App\Entities\Symptom;
-use App\Entities\AreaOfLife;
-use App\Entities\Answer;
-use App\Entities\Customer;
+use App\Entities\Lead;
 use App\Entities\Score;
+use App\Entities\Answer;
+use App\Entities\Survey;
+use App\Entities\Symptom;
+use App\Entities\Customer;
+use App\Entities\Question;
+use App\Entities\AreaOfLife;
+use App\Mail\SendSurveyLink;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SendSurveyLink;
+use Illuminate\Support\Facades\Storage;
+use Omniphx\Forrest\Providers\Laravel\Facades\Forrest;
 
 class SurveyController extends Controller
 {
@@ -606,6 +608,21 @@ class SurveyController extends Controller
             }
         }
 
+        //Create Salesforce Lead
+
+        //Get Salesforce token
+        Forrest::getmytoken(); 
+
+        //Create Lead
+        $lead = new Lead();
+        $lead->FirstName = $customer->prename;
+        $lead->LastName = $customer->prename;
+        $lead->Company = 'Hapily API - Test';
+        $lead->email = $customer->email;
+        $lead->save();
+    
+        // return $lead;
+
         //send survey email with its own data
         $data = [
             'name'          => $customer->prename,
@@ -614,6 +631,7 @@ class SurveyController extends Controller
 
         // Mail::to('ubuntu.le.kush@gmail.com')
         //     ->send(new SendSurveyLink($data));
+
 
        return redirect('/survey')->with("success", "Survey received and saved successfully");
     }

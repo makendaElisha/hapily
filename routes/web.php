@@ -1,5 +1,7 @@
 <?php
 
+use Omniphx\Forrest\Providers\Laravel\Facades\Forrest;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,6 +68,15 @@ Route::middleware(['auth'])->group(function () {
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::get('/authenticate', function() {
+    return Forrest::getmytoken();
+});
+
+Route::get('/callback/salesforce', function() {
+    Forrest::callback();
+});
+
 
 Route::post('/callback/survey', 'SurveyController@surveyHook')->name('survey.surveyHook');
 
