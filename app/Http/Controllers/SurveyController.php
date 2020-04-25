@@ -48,7 +48,6 @@ class SurveyController extends Controller
     {
         return view('surveys.create');
     }
-  
 
     public function userResult(Request $request)
     {
@@ -78,14 +77,15 @@ class SurveyController extends Controller
                                                 ->pluck('name')
                                                 ->first();
 
-            $areaObject->name = str_replace('symptoms_','', $area);
+            $areaObject->name = $this->areaInDbNameFormat($area);
             $symptoms = Answer::where('customer_id', $customer->id)
                                 ->where('reference', 'like', $area)
                                 ->join('symptoms', 'answers.name', '=', 'symptoms.name')
                                 ->orderBy('res_prio', 'DESC')
                                 ->get();
+
             foreach($symptoms as $symptom){
-                $symptom->othersHavingThis = (int) ( count(Answer::where('name', $symptom->name)->get()) / (count(Score::all())) * 100 );
+                $symptom->othersHavingThis = (int) ( count(Answer::where('name', $symptom->name)->get()) / (count(Customer::all())) * 100 );
             }
 
             $stg = str_replace('symptoms', 'score', $area);
@@ -94,7 +94,6 @@ class SurveyController extends Controller
                                         ->pluck('name')
                                         ->first();
             $maxSubNumber = 50 * $baseScore / 100;
-
             
             $areaId = AreaOfLife::where('name', $areaName)->first();
             $symptomsNumber = count(Symptom::where('area_of_life_id', $areaId->id)->get());
@@ -135,13 +134,17 @@ class SurveyController extends Controller
         $averageScores = Score::pluck('total_areas');
         $averageHappinessAllParticipants = is_null($averageScores) ? 0 : ( (int) ( ($averageScores)->sum() / count($averageScores)) );
 
+        usort($resultData, function ($item1, $item2) {
+            return $item2->areaScore <=> $item1->areaScore;
+        });
+        
         return view('surveys.result', compact([
             'customer', 
             'resultData', 
             'maxPotential',
             'userScore',
             'numberAreas',
-            'averageHappinessAllParticipants'
+            'averageHappinessAllParticipants',  
         ]));
 
     }
@@ -149,6 +152,8 @@ class SurveyController extends Controller
 
     public function receiveSurvey(Request $request)
     {
+        //Get the results' file form public location in app. 
+
         try{
             $fileApi = File::get("simulate/survey_api.txt");
             $dataJson = substr($fileApi, 0, strrpos( $fileApi, '}') + 1);
@@ -159,11 +164,15 @@ class SurveyController extends Controller
             
         }
 
+        //Check if result data is not null.
+
         if ($dataArray) {
             $answers = $dataArray["form_response"]["answers"];
             $resultToken = md5(uniqid(rand(), true)); //Make shorter
             $customer = Customer::create();
     
+            //Create Answer data.
+
             foreach ($answers as $answer) {
 
                 $question = Question::where('reference', $answer['field']['ref'])->first();
@@ -366,8 +375,54 @@ class SurveyController extends Controller
                 $customer->survey_url = "/survey/result/". $resultToken;
                 $customer->token = $resultToken;
                 
-                $customer->save();
+                $customer->save();        
+
             }
+
+            //Store scores data of current survey.
+
+            $getAreas = Question::where('reference', 'like', 'symptoms_%')->pluck('reference');
+            $userScore= 0;
+            $score = Score::create([
+                'customer_id' => $customer->id,
+            ]);
+            foreach ($getAreas as $area) {
+                $stgToRemove = ['symptoms_', '_user'];
+                $areaName = str_replace($stgToRemove, '', $area);
+                
+                $symptoms = Answer::where('customer_id', $customer->id)
+                                    ->where('reference', 'like', $area)
+                                    ->join('symptoms', 'answers.name', '=', 'symptoms.name')
+                                    ->orderBy('res_prio', 'DESC')
+                                    ->get();
+
+                $stg = str_replace('symptoms', 'score', $area);
+                $baseScore = (int) Answer::where('customer_id', $customer->id)
+                                            ->where('reference', 'like', $stg)
+                                            ->pluck('name')
+                                            ->first();
+                $maxSubNumber = 50 * $baseScore / 100;
+                
+                $areaId = AreaOfLife::where('name', $areaName)->first();
+                $symptomsNumber = count(Symptom::where('area_of_life_id', $areaId->id)->get());
+                $selectedSymptomsNumber = count($symptoms);
+
+                //All division exceptions to be attended.
+                try {
+                    $pointPerSymptom = $maxSubNumber / $symptomsNumber;
+                } catch (\Exception $exception) {
+                    $pointPerSymptom = 0;
+                }
+
+                $totalScoreSymptoms = $pointPerSymptom * $selectedSymptomsNumber;
+                $areaScore = (int) floor($baseScore - $totalScoreSymptoms);                
+                $score->$areaName = $areaScore;
+                $userScore += $areaScore;
+            }
+
+            $score->total_areas = $userScore;
+            $score->save();
+
         }
 
         //send survey email with its own data
@@ -384,16 +439,6 @@ class SurveyController extends Controller
 
     public function surveyHook(Request $request)
     {
-        //dd($request->all());
-
-        // Storage::put('typeform-file.txt', $request); //Saves to file for test purpose, will be removed.
-        // $fileApi = Storage::disk('local')->get('typeform-file.txt');
-
-        // $start= strpos($fileApi, '{');
-        // $end= strrpos( $fileApi, '}') + 1;
-        // $dataJson = substr($fileApi, $start, $end);
-        // $dataArray = json_decode($dataJson, true);
-
         $dataArray = json_decode(json_encode($request->all()), true);
         //$dataArray = $request->all();
 
@@ -634,6 +679,37 @@ class SurveyController extends Controller
 
 
        return redirect('/survey')->with("success", "Survey received and saved successfully");
+    }
+
+    //Format area of life from db format to user friendly format
+
+    public function areaInDbNameFormat($areaInDB)
+    {
+        switch ($areaInDB) {
+            case 'symptoms_beruf_und_karriere_user':
+                return 'Beruf & Karriere';
+
+            case 'symptoms_familie_user':
+                return 'Familie';
+
+            case 'symptoms_freundschaften_user':
+                return 'Freunde';
+
+            case 'symptoms_koerper_und_gesundheit_user':
+                return 'Körper & Gesundheit';
+
+            case 'symptoms_sexualitaet_user':
+                return 'Sexualität';
+
+            case 'symptoms_spiritualitaet_user':
+                return 'Spiritualität';
+
+            case 'symptoms_partnerschaft_user':
+                return 'Partnerschaft';
+            
+            default:
+                return strtr($areaInDB, ['_' => ' ','user' => '', 'symptoms' => '']);
+        }
     }
     
 }
