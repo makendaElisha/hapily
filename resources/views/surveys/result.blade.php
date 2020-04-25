@@ -62,8 +62,8 @@
               </div>
             </div>
             <ul class="socre-list w-list-unstyled">
-              <li class="list-item-score">Am <span class="green-list-text-span">glücklichsten </span>schätzt du dich im Lebensbereich <strong>{{strtr($resultData[0]->name, ['_' => ' ','user' => ''])}} </strong>ein, gefolgt von <strong>{{strtr($resultData[1]->name, ['_' => ' ','user' => ''])}}</strong>und <strong>.</strong></li>
-              <li class="list-item-score">Das größte <span class="text-span-5">Verbesserungspotenzial</span> scheinst du in der {{strtr(end($resultData)->name, ['_' => ' ','user' => ''])}} zu haben.</li>
+              <li class="list-item-score">Am <span class="green-list-text-span">glücklichsten </span>schätzt du dich im Lebensbereich <strong>{{$resultData[0]->name}} </strong>ein, gefolgt von <strong>{{$resultData[1]->name}}</strong>und <strong>{{$resultData[2]->name}}.</strong></li>
+              <li class="list-item-score">Das größte <span class="text-span-5">Verbesserungspotenzial</span> scheinst du in der {{end($resultData)->name}} zu haben.</li>
             </ul>
           </div>
           <div class="score-column2 w-col w-col-6 w-col-medium-6">
@@ -79,7 +79,7 @@
                   <div class="progress-bar-wrapper">
                     <div class="embed-score-pogress-bar-label-container">
                       {{-- <div class="embeded-score-label">Beruf &amp; Karriere</div> --}}
-                      <div class="embeded-score-label">{{strtr($area->name, ['_' => ' ', 'user' => ''])}}</div>
+                      <div class="embeded-score-label">{{$area->name}}</div>
                       <div class="embeded-score-label">{{$area->areaScore}}</div>
                     </div>
                     <div class="embeded-score-progress-bar-career w-embed">
@@ -122,7 +122,7 @@
       <div class="life-area-container">
         {{-- <div class="life-area-container-header"><img src="{{ asset('all/images/ring_icon.svg')}}" alt="" class="life-area-partnerschaft-image"> --}}
         <div class="life-area-container-header">
-          <h3 class="life-area-header">{{strtr($area->name, ['_' => ' ', 'user' => ''])}}</h3>
+          <h3 class="life-area-header">{{$area->name}}</h3>
           <div class="life-area-score-columns-container">
             <div class="score-column1-columns life-area-columns w-row">
               <div class="score-column1-col1 w-col w-col-6">
@@ -144,34 +144,44 @@
         </div>
       </div>
 
-      @foreach ($area->symptoms as $key => $symptom)
-        <div class="section-analyse-purple-header-container">
-          <h4 class="purple-header">{{$key + 1}}. {{$symptom->name}}</h4>
-          <p class="normal-text">{{$symptom->instant_help}}</p>
-          <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen diese Herausforderung</p>
-        </div>
-        <div class="life-area-recommandation-books-container">
-          <div class="books-recommandation-columns-container w-row">
-            <div class="books-recommandation-column1 w-col w-col-6">
-              <div class="books-recommandation-column1-container">
-                <div class="book-coach-container"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-cover-image"></a></div>
-                <div class="recommanded-book-header">Unser Buch-Tipp</div>
-                <div class="recommanded-book-normal-text">{{str_limit($symptom->recom_book_description, 100, '...')}}</div>
-                <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}">&gt; Bestellen</a></div>
+      @if (count($area->symptoms) == 0)
+          <div class="section-analyse-purple-header-container">
+            <p class="normal-text container" >
+              Im Bereich “Lebensbereich” hast du scheinbar keine offensichtlichen Themen, die dich unglücklich machen. Im Besten Fall gibt es hier demnach einfach wenig Verbesserungspotential für dich. Manchmal sind Themen, die uns unglücklich machen, allerdings auch unterbewusst vorhanden. Regelmäßige Reflektion und Journaling können uns dabei helfen, solche möglichen Herausforderungen aus dem Unterbewusstsein offenzulegen. Mehr dazu kannst du in unserem allgemeinen Hapily Onlinekurs erfahren 
+            </p>
+          </div>
+
+      @else
+        @foreach ($area->symptoms as $key => $symptom)
+          <div class="section-analyse-purple-header-container">
+            <h4 class="purple-header">{{$key + 1}}. {{$symptom->name}}</h4>
+            <p class="normal-text">{{$symptom->instant_help}}</p>
+            <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen diese Herausforderung</p>
+          </div>
+          <div class="life-area-recommandation-books-container">
+            <div class="books-recommandation-columns-container w-row">
+              <div class="books-recommandation-column1 w-col w-col-6">
+                <div class="books-recommandation-column1-container">
+                  <div class="book-coach-container"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-cover-image"></a></div>
+                  <div class="recommanded-book-header">Unser Buch-Tipp</div>
+                  <div class="recommanded-book-normal-text">{{str_limit($symptom->recom_book_description, 100, '...')}}</div>
+                  <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}">&gt; Bestellen</a></div>
+                </div>
               </div>
-            </div>
-            <div class="books-recommandation-column2 w-col w-col-6">
-              <div class="book-recommandation-column2-container">
-                <div class="book-coach-container"><img src="{{ asset('all/images/coach-cover.png')}}" alt="" class="coach-cover-image"></div>
-                <div class="recommanded-book-header">Unser Coaching-Tipp</div>
-                <div class="recommanded-book-normal-text">{{$symptom->recom_program}}</div>
-                <div class="recommanded-book-purple-link">&gt; Mehr erfahren...</div>
+              <div class="books-recommandation-column2 w-col w-col-6">
+                <div class="book-recommandation-column2-container">
+                  <div class="book-coach-container"><img src="{{ asset('all/images/coach-cover.png')}}" alt="" class="coach-cover-image"></div>
+                  <div class="recommanded-book-header">Unser Coaching-Tipp</div>
+                  <div class="recommanded-book-normal-text">{{$symptom->recom_program}}</div>
+                  <div class="recommanded-book-purple-link">&gt; Mehr erfahren...</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <br />
-      @endforeach 
+          <br />
+        @endforeach 
+      @endif
+
 
       <div class="purple-paragraph-container">
         {{-- <p class="purple-header">&gt; 7 weitere Herausforderungen im Lebensbereich Partnerschaft anzeigen</p> --}}
