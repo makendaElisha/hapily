@@ -38,11 +38,11 @@
       <div class="greeting-text">
         <div class="bold-text">Hey {{$customer->prename}},</div>
         <p class="paragraph">schön, dass du den Test abgeschlossen hast und deinem Glück auf die Sprünge helfen willst :-) Deine aktuelle Situation sowie die Ursachen dafür besser zu verstehen, ist der erste Schritt in Richtung eines erfüllteren und zufriedeneren Lebens.<br>‍</p>
-        <p>Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$userScore}} von {{$numberAreas * 10}} Punkten</strong></p>
+        <p class="paragraph-4">Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$userScore}} von {{$numberAreas * 10}} Punkten</strong></p>
         <p class="paragraph-2">Im Durchschnitt erreichen Teilnehmer einen Score von {{$averageHappinessAllParticipants}}. In der folgenden Grafik kannst du dein Glückslevel pro Lebensbereich ablesen und mit dem Durchschnitt der anderen Teilnehmer vergleichen.</p>
       </div>
       <div class="score-elements">
-        <h3 class="heading-6">Dein Happiness-Score pro Lebensbereich</h3>
+        <h3 class="heading-6">Dein Happiness-Score pro &quot;Lebensbereich&quot;</h3>
         <div class="score-columns w-row">
           <div class="score-column1 w-col w-col-6 w-col-medium-6">
             <div class="score-column1-columns w-row">
@@ -57,13 +57,13 @@
                 <div class="score-column1-col2-container">
                   <h5 class="score-column-heading5-centered">Dein Score liegt<br></h5>
                   <div class="red-score-with-big-padding">{{$maxPotential}}%</div>
-                  <div class="score-grey-text">unter deinem <br>maximalen Potenzial</div>
+                  <div class="score-grey-text">Unter deinem <br>maximalen Potenzial</div>
                 </div>
               </div>
             </div>
             <ul class="socre-list w-list-unstyled">
-              <li class="list-item-score">Am <span class="green-list-text-span">glücklichsten </span>schätzt du dich im Lebensbereich <strong>{{$resultData[0]->name}} </strong>ein, gefolgt von <strong>{{$resultData[1]->name}}</strong>und <strong>{{$resultData[2]->name}}.</strong></li>
-              <li class="list-item-score">Das größte <span class="text-span-5">Verbesserungspotenzial</span> scheinst du in der {{end($resultData)->name}} zu haben.</li>
+              <li class="list-item-score">Am <span class="green-list-text-span">glücklichsten </span>schätzt du dich im Lebensbereich <strong>{{$resultData[0]->name}} </strong>ein, gefolgt von <strong>{{$resultData[1]->name}}</strong> und <strong>{{$resultData[2]->name}}.</strong></li>
+              <li class="list-item-score">Das größte <span class="text-span-5">Verbesserungspotenzial</span> scheinst du im der {{end($resultData)->name}} zu haben.</li>
             </ul>
           </div>
           <div class="score-column2 w-col w-col-6 w-col-medium-6">
@@ -134,7 +134,7 @@
               </div>
               <div class="score-column1-col2 w-col w-col-6">
                 <div class="life-area-score-container2">
-                  <h5 class="score-column-heading5-centered">Dein Score liegt<br></h5>
+                  <h5 class="score-column-heading5-centered">Herausforderungen<br></h5>
                   <div class="organge-score-life-area-score">{{$area->userSelectedScore}}</div>
                   <div class="score-grey-text">Deine Herausforderungen stellen gleichzeitig dein Potenzial dar</div>
                 </div>
@@ -146,39 +146,46 @@
 
       @if (count($area->symptoms) == 0)
           <div class="section-analyse-purple-header-container">
-            <p class="normal-text container" >
+            <p class="normal-text" ><br />
               Im Bereich “Lebensbereich” hast du scheinbar keine offensichtlichen Themen, die dich unglücklich machen. Im Besten Fall gibt es hier demnach einfach wenig Verbesserungspotential für dich. Manchmal sind Themen, die uns unglücklich machen, allerdings auch unterbewusst vorhanden. Regelmäßige Reflektion und Journaling können uns dabei helfen, solche möglichen Herausforderungen aus dem Unterbewusstsein offenzulegen. Mehr dazu kannst du in unserem allgemeinen Hapily Onlinekurs erfahren 
             </p>
+            <div class="recommanded-book-purple-link" style="text-align: left;"><a href="#" class="recommanded-book-purple-link">&gt; Mehr erfahren...</a></div>
           </div>
-
       @else
         @foreach ($area->symptoms as $key => $symptom)
           <div class="section-analyse-purple-header-container">
             <h4 class="purple-header">{{$key + 1}}. {{$symptom->name}}</h4>
+            <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen deine Herausforderung</p>
             <p class="normal-text">{{$symptom->instant_help}}</p>
-            <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen diese Herausforderung</p>
           </div>
+
           <div class="life-area-recommandation-books-container">
-            <div class="books-recommandation-columns-container w-row">
-              <div class="books-recommandation-column1 w-col w-col-6">
-                <div class="books-recommandation-column1-container">
-                  <div class="book-coach-container"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-cover-image"></a></div>
-                  <div class="recommanded-book-header">Unser Buch-Tipp</div>
-                  <div class="recommanded-book-normal-text">{{str_limit($symptom->recom_book_description, 100, '...')}}</div>
-                  <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}">&gt; Bestellen</a></div>
+            <div class="life-area-recommandation-container">
+              <div class="books-recommandation-columns-container w-row">
+                <div class="books-recommandation-column1 w-col w-col-6">
+                  <div class="book-recommandation-column2-container">
+                    <div class="book-coach-container"><img src="{{ asset('all/images/coach-cover.png')}}" alt="" class="coach-cover-image"></div>
+                    <div class="recommanded-book-header">Unser Coaching-Tipp</div>
+                    <div class="recommanded-book-normal-text">{{$symptom->recom_program}}</div>
+                    <div class="recommanded-book-purple-link">&gt; Mehr erfahren...</div>                  </div>
                 </div>
-              </div>
-              <div class="books-recommandation-column2 w-col w-col-6">
-                <div class="book-recommandation-column2-container">
-                  <div class="book-coach-container"><img src="{{ asset('all/images/coach-cover.png')}}" alt="" class="coach-cover-image"></div>
-                  <div class="recommanded-book-header">Unser Coaching-Tipp</div>
-                  <div class="recommanded-book-normal-text">{{$symptom->recom_program}}</div>
-                  <div class="recommanded-book-purple-link">&gt; Mehr erfahren...</div>
+                <div class="books-recommandation-column2 w-col w-col-6">
+                  <div class="books-recommandation-column1-container">
+                    <div class="book-coach-container"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-cover-image"></a></div>
+                    <div class="recommanded-book-header">Unser Buch-Tipp</div>
+                    <div class="recommanded-book-normal-text">{{str_limit($symptom->recom_book_description, 100, '...')}}</div>
+                    <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}">&gt; Bestellen</a></div>  
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <br />
+          {{-- To do, add load/view more after 2nd symptom displayed
+          @if($key == 1)
+            <h3>Add Read More</h3>
+            @break
+          @endif --}}
         @endforeach 
       @endif
 
@@ -204,7 +211,7 @@
         <div class="_3-columns-text">Das Leben ist hart</div>
       </div>
       <div class="section-after-analyse-text-content">
-        <div class="section-after-analyse-text">This is some text inside of a div block.Wie wir bestimmte Situationen bewerten, hängt maßgeblich von unseren Erfahrungen als Kind sowie im weiteren Verlauf unseres Lebens ab.<br><br>Wenn dir damals in der Schule ein Lehrer z.B. immer wieder gesagt hat, dass du ein Versager bist, prägt sich diese Aussage in deinem Unterbewusstsein ein. Das kann zur Folge haben, dass du später als Erwachsener Herausforderungen vermeidest, weil du der Überzeugung bist, dass du sowieso scheitern wirst.<br><br>&quot;<strong>Ich bin nicht gut genug</strong>&quot; ist eine der häufigsten negativen Überzeugungen, die wir von uns haben.<br><br>Das Problem solcher <strong>limitierenden Glaubenssätze</strong> ist: Sie laufen automatisch ab - wie ein Softwareprogramm auf deinem Computer - das im Hintergrund läuft, ohne dass du es mitbekommst. Wissenschaftler gehen davon aus, dass unser Verhalten zu bis zu 90% von unserem <strong>Unterbewusstsein gesteuert</strong> wird, d.h. du handelst nur in den seltensten Fällen bewusst.</div><img src="{{ asset('all/images/male_sofa_image-small.png')}}" height="320" width="800" sizes="(max-width: 479px) 92vw, (max-width: 991px) 95vw, 800px" alt="" class="male-in-sofa-image">
+        <div class="section-after-analyse-text">Wie wir bestimmte Situationen bewerten, hängt maßgeblich von unseren Erfahrungen als Kind sowie im weiteren Verlauf unseres Lebens ab.<br><br>Wenn dir damals in der Schule ein Lehrer z.B. immer wieder gesagt hat, dass du ein Versager bist, prägt sich diese Aussage in deinem Unterbewusstsein ein. Das kann zur Folge haben, dass du später als Erwachsener Herausforderungen vermeidest, weil du der Überzeugung bist, dass du sowieso scheitern wirst.<br><br>&quot;<strong>Ich bin nicht gut genug</strong>&quot; ist eine der häufigsten negativen Überzeugungen, die wir von uns haben.<br><br>Das Problem solcher <strong>limitierenden Glaubenssätze</strong> ist: Sie laufen automatisch ab - wie ein Softwareprogramm auf deinem Computer - das im Hintergrund läuft, ohne dass du es mitbekommst. Wissenschaftler gehen davon aus, dass unser Verhalten zu bis zu 90% von unserem <strong>Unterbewusstsein gesteuert</strong> wird, d.h. du handelst nur in den seltensten Fällen bewusst.</div><img src="{{ asset('all/images/male_sofa_image-small.png')}}" height="320" width="800" sizes="(max-width: 479px) 92vw, (max-width: 991px) 95vw, 800px" alt="" class="male-in-sofa-image">
         <div class="section-after-analyse-text">Die oben aufgeführten Glaubenssätze passen zu deinen Angaben im Glücks-Test und die Wahrscheinlichkeit ist hoch, dass diese <strong>limitierenden Überzeugungen</strong> in deinem Unterbewusstsein ablaufen und <strong>dich täglich davon abhalten, dein volles Potenzial zu entfalten.<br></strong><br>Willst du dein Leben einfach nur automatisch an dir vorbeiziehen lassen? Oder möchtest du selbst die <strong>Kontrolle </strong>darüber haben, was du denkst, wie du fühlst und welche Ergebnisse du erzielst?<br><strong>Die meisten Menschen überlassen ihr Leben dem Autopiloten</strong> und kommen nicht voran. Auf diese Weise ist <strong>Unglück vorprogrammiert</strong> und ein glückliches Leben quasi unmöglich.<br></div>
       </div>
     </div>

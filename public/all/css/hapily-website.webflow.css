@@ -1555,8 +1555,8 @@
 }
 
 .organge-score {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-family: Poppins, sans-serif;
   color: #ff9f42;
   font-size: 50px;
@@ -1616,6 +1616,7 @@
 .inline-text-left {
   display: inline-block;
   font-family: Poppins, sans-serif;
+  font-weight: 600;
   text-align: left;
 }
 
@@ -1704,29 +1705,25 @@
 .life-area-container-header {
   display: block;
   padding-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 0px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  text-align: center;
+  text-align: left;
 }
 
 .life-area-header {
   margin-top: 15px;
   margin-bottom: 40px;
   font-family: Poppins, sans-serif;
-  color: #33dd93;
-  font-size: 28px;
+  color: #dd22ef;
+  font-size: 26px;
   line-height: 33px;
-  font-weight: bold;
-}
-
-.life-area-header::first-letter {
-  text-transform: capitalize;
 }
 
 .life-area-score-columns-container {
+  display: inline-block;
   width: 384px;
   margin-right: auto;
   margin-left: auto;
@@ -1739,11 +1736,14 @@
 }
 
 .purple-header {
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  /* padding-left: 10px; */
   font-family: Poppins, sans-serif;
-  color: #dd22ef;
-  font-size: 16px;
-  font-weight: 500;
+  color: #33dd93;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
 }
 
 .normal-text {
@@ -1754,17 +1754,19 @@
 }
 
 .centered-paragraph {
+  margin-bottom: 20px;
   padding-top: 20px;
   font-family: Poppins, sans-serif;
   font-size: 16px;
-  text-align: center;
+  text-align: left;
 }
 
 .life-area-recommandation-books-container {
-  width: 675px;
+  width: 800px;
   margin-top: 40px;
   margin-right: auto;
   margin-left: auto;
+  padding-left: 0px;
 }
 
 .books-recommandation-column1 {
@@ -1778,6 +1780,7 @@
 }
 
 .books-recommandation-column2 {
+  display: block;
   padding-right: 0px;
   padding-left: 0px;
   border-style: none;
@@ -1785,8 +1788,12 @@
 }
 
 .book-cover-image {
+  width: auto;
+  height: 200px;
   margin-right: auto;
   margin-left: auto;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 .book-cover-container {
@@ -1799,7 +1806,7 @@
   margin-right: auto;
   margin-bottom: 10px;
   margin-left: auto;
-  padding-top: 10px;
+  padding-top: 0px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -1858,17 +1865,16 @@
 }
 
 .books-recommandation-column1-container {
-  margin-right: 20px;
+  margin-right: 0px;
   margin-left: 20px;
   padding-right: 0px;
-  padding-left: 0px;
   border-radius: 15px;
   box-shadow: 1px 1px 10px 0 #cccece;
 }
 
 .book-recommandation-column2-container {
   margin-right: 20px;
-  margin-left: 20px;
+  margin-left: 0px;
   border-radius: 15px;
   box-shadow: 1px 1px 10px 0 #cccece;
 }
@@ -2259,8 +2265,8 @@
 }
 
 .red-score-with-big-padding {
-  padding-top: 50px;
-  padding-bottom: 30px;
+  padding-top: 40px;
+  padding-bottom: 20px;
   font-family: Poppins, sans-serif;
   color: #dd3b33;
   font-size: 50px;
@@ -2268,7 +2274,7 @@
 }
 
 .side-green-container {
-  position: absolute;
+  position: fixed;
   left: auto;
   top: 0%;
   right: 0%;
@@ -2870,6 +2876,30 @@
   text-decoration: underline;
 }
 
+.success-message {
+  background-color: #eafbf4;
+  color: #32383a;
+}
+
+.score-column-heading5-centered-new {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.paragraph-4 {
+  text-align: left;
+}
+
+.life-area-recommandation-container {
+  width: 600px;
+}
+
 @media screen and (max-width: 991px) {
   .navigation-bar {
     text-align: right;
@@ -3274,9 +3304,15 @@
   }
   .section-analyse-div-container {
     width: auto;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   .life-area-container {
     width: auto;
+  }
+  .life-area-container-header {
+    padding-right: 10px;
+    padding-left: 10px;
   }
   .life-area-partnerschaft-image {
     display: inline-block;
@@ -3284,18 +3320,24 @@
   }
   .life-area-header {
     font-size: 26px;
-    text-align: center;
+    text-align: left;
   }
   .life-area-score-columns-container {
     text-align: center;
   }
   .section-analyse-purple-header-container {
     width: auto;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .purple-header {
+    text-align: left;
   }
   .life-area-recommandation-books-container {
     width: 100%;
-    padding-right: 20px;
-    padding-left: 20px;
+    margin-left: 0px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   .purple-paragraph-container {
     width: 100%;
@@ -3308,9 +3350,13 @@
   }
   .section-greeting-container {
     width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   .section-text-after-analyse-container {
     width: auto;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   .section-green-background {
     width: 100%;
@@ -3319,6 +3365,8 @@
   }
   .section-green-container {
     width: auto;
+    padding-right: 0px;
+    padding-left: 10px;
   }
   .section-before-footer {
     width: 100%;
@@ -3327,6 +3375,8 @@
   }
   .section-before-footer-container {
     width: auto;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   .footer-section-container {
     width: 100%;
@@ -3632,14 +3682,39 @@
     margin-bottom: 0px;
   }
   .score-column1-col1 {
-    margin-right: auto;
-    margin-left: auto;
-  }
-  .life-area-score-columns-container {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 0px;
+    padding-left: 0px;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto auto;
+    grid-template-rows: auto auto;
+  }
+  .score-column1-col2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+  .life-area-score-columns-container {
+    display: block;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
@@ -3651,12 +3726,37 @@
     display: flex;
     margin-right: auto;
     margin-left: auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
   }
   .books-recommandation-column1 {
     margin-bottom: 40px;
   }
+  .recommanded-book-purple-link {
+    padding-left: 20px;
+    text-align: left;
+  }
+  .books-recommandation-column1-container {
+    width: 300px;
+    margin-left: 0px;
+  }
+  .book-recommandation-column2-container {
+    width: 300px;
+  }
   .purple-paragraph-container {
     margin-top: 60px;
+    padding-left: 10px;
   }
   .male-in-sofa-image {
     width: 100%;
@@ -3675,13 +3775,16 @@
     width: 100%;
   }
   .score-column1-col1-container {
-    margin-right: auto;
+    margin-right: 0px;
     margin-bottom: 20px;
-    margin-left: auto;
+    margin-left: 0px;
   }
   .score-column1-col2-container {
-    margin-right: auto;
-    margin-left: auto;
+    margin-right: 0px;
+    margin-left: -40px;
+  }
+  .life-area-score-container2 {
+    margin-left: -40px;
   }
   .impressum-h1 {
     margin-bottom: 0px;
@@ -3724,6 +3827,9 @@
   }
   .cookie-consent-content {
     position: static;
+  }
+  .life-area-recommandation-container {
+    width: 100%;
   }
 }
 
@@ -4063,10 +4169,10 @@
     display: -ms-flexbox;
     display: flex;
     margin-bottom: 20px;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
   }
   .score-column1-col2 {
     display: -webkit-box;
@@ -4075,20 +4181,49 @@
     display: flex;
     margin-right: auto;
     margin-left: auto;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  }
+  .section-analyse {
+    padding-left: 30px;
   }
   .life-area-score-columns-container {
+    display: block;
     width: 100%;
+    margin-right: auto;
+    margin-left: 0px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    text-align: center;
   }
   .life-area-columns {
     display: block;
     width: 100%;
   }
+  .section-analyse-purple-header-container {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .books-recommandation-column1-container {
+    width: 250px;
+  }
+  .book-recommandation-column2-container {
+    width: 250px;
+  }
   .purple-paragraph-container {
     margin-top: 60px;
+  }
+  .section-text-after-analyse {
+    padding-left: 30px;
   }
   .h3-black-heading {
     margin-bottom: 40px;
@@ -4122,11 +4257,18 @@
     height: auto;
     max-width: 100%;
   }
+  .section-green-background {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
   .section-green-lady-image {
     width: 100%;
   }
   .section-green-purple-button {
     width: 250px;
+  }
+  .section-before-footer {
+    padding-left: 30px;
   }
   .section-before-footer-two-images-content {
     display: -webkit-box;
@@ -4173,6 +4315,9 @@
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
+  }
+  .score-column1-col2-container {
+    margin-left: 0px;
   }
   .side-green-container-header {
     line-height: 22px;
@@ -4314,6 +4459,9 @@
   .link-33:hover {
     color: #0082f3;
     text-decoration: underline;
+  }
+  .paragraph-4 {
+    text-align: left;
   }
 }
 
