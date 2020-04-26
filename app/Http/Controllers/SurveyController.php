@@ -657,7 +657,7 @@ class SurveyController extends Controller
             }
         }
 
-        //Create Salesforce Lead
+        //Create Salesforce Lead N.B. This wont work because survey webhook test doesn't create score and all of that
         $this->createSalesForceLead($customer);
     
         //send survey email with its own data / TODO With mail jet
