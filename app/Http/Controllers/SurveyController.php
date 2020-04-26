@@ -426,20 +426,9 @@ class SurveyController extends Controller
 
         }
 
-        //Create Salesforce Lead / To DO & Continue
-        return $this->createSalesForceLead($customer);
-
-                //Get Salesforce token
-        // Forrest::getmytoken(); 
-
-        // //Create Lead
-        // $lead = new Lead();
-        // $lead->FirstName = $customer->prename;
-        // $lead->LastName = $customer->prename;
-        // $lead->Company = 'Hapily API - Test New Test';
-        // $lead->email = $customer->email;
-        // $lead->save();
-
+        //Create Salesforce Lead / To DO & Continue (WORKING FINE)
+        //$this->createSalesForceLead($customer);
+        
         //send survey email with its own data
         // $data = [
         //     'name'          => $customer->prename,
@@ -669,21 +658,9 @@ class SurveyController extends Controller
         }
 
         //Create Salesforce Lead
-
-        //Get Salesforce token
-        Forrest::getmytoken(); 
-
-        //Create Lead
-        $lead = new Lead();
-        $lead->FirstName = $customer->prename;
-        $lead->LastName = $customer->prename;
-        $lead->Company = 'Hapily API - Test';
-        $lead->email = $customer->email;
-        $lead->save();
+        $this->createSalesForceLead($customer);
     
-        // return $lead;
-
-        //send survey email with its own data
+        //send survey email with its own data / TODO With mail jet
         $data = [
             'name'          => $customer->prename,
             'surveyLink'    => url($customer->survey_url) //url helper to take the base url of the project
@@ -728,7 +705,9 @@ class SurveyController extends Controller
     }
 
     /**
-     *  Save Customer Info, Answer, Score 
+     * Create Salesforce Lead
+     * @param customer
+     * @return salesforce lead
     */
     public function createSalesForceLead($customer)
     {
@@ -748,25 +727,25 @@ class SurveyController extends Controller
         foreach($answersCustomer as $answer) {
             switch ($answer->reference) {
                 case 'symptoms_beruf_und_karriere_user':
-                    $symptomsCarrer .= $answer->name . '\n';
+                    $symptomsCarrer .= $answer->name . PHP_EOL;
                     break;
                 case 'symptoms_partnerschaft_user':
-                    $symptomsLove .= $answer->name . '\n';
+                    $symptomsLove .= $answer->name . PHP_EOL;
                     break;
                 case 'symptoms_sexualitaet_user':
-                    $symptomsSexuality .= $answer->name . '\n';
+                    $symptomsSexuality .= $answer->name . PHP_EOL;
                     break;
                 case 'symptoms_koerper_und_gesundheit_user':
-                    $symptomsBodayHealth .= $answer->name . '\n';
+                    $symptomsBodayHealth .= $answer->name . PHP_EOL;
                     break;
                 case 'symptoms_freundschaften_user':
-                    $symptomsFriendship .= $answer->name . '\n';
+                    $symptomsFriendship .= $answer->name. PHP_EOL;
                     break;
                 case 'symptoms_familie_user':
-                    $symptomsFamily .= $answer->name . '\n';
+                    $symptomsFamily .= $answer->name . PHP_EOL;
                     break;
                 case 'symptoms_spiritualitaet_user':
-                    $symptomsSpirituality .= $answer->name . '\n';
+                    $symptomsSpirituality .= $answer->name . PHP_EOL;
                     break;
                 default:
                     $symptomDefault = 'No symptom found';
@@ -782,44 +761,41 @@ class SurveyController extends Controller
             $gender = 'Other';
         }
     
-        $leadSalesForce = [
-            'FirstName'                     => $customerData->prename,
-            'email'                         => $customerData->email,
-            'Gender'                        => $gender, 
-            'MobilePhone'                   => $customerData->phone_number,
-            'Overall_Happiness_Score'       => $scoreCustomer->total_areas,
-            'Happiness_Score_Career'        => $scoreCustomer->beruf_und_karriere,
-            'Happiness_Score_Love'          => $scoreCustomer->partnerschaft,
-            'Happiness_Score_Sexuality'     => $scoreCustomer->sexualitaet,
-            'Happiness_Score_Body_Health'   => $scoreCustomer->koerper_und_gesundheit,
-            'Happiness_Score_Friendship'    => $scoreCustomer->freundschaften,
-            'Happiness_Score_Family'        => $scoreCustomer->familie,
-            'Happiness_Score_Spirituality'  => $scoreCustomer->spiritualitaet,
-            'Symptoms_Career'               => $symptomsCarrer,
-            'Symptoms_Love'                 => $symptomsLove,
-            'Symptoms_Sexuality'            => $symptomsSexuality,
-            'Symptoms_Body_Health'          => $symptomsBodayHealth,
-            'Symptoms_Friendship'           => $symptomsFriendship,
-            'Symptoms_Family'               => $symptomsFamily,
-            'Symptoms_Spirituality'         => $symptomsSpirituality,
-            'Time_Invest_Willingness'       => $customerData->time_invest_willingness,
-            'Money_Invest_Willingness'      => $customerData->money_invest_willingness,
-            'Newsletter_Opt_in'             => $customerData->newsletter_opt_in,
-            'Call_Opt_in'                   => $customerData->call_opt_in,
-            'Survey_Result_URL'             => url($customerData->survey_url),
-        ];
-
-        return $leadSalesForce;
-        exit();
-
         //Get Salesforce token
         Forrest::getmytoken(); 
 
-        //Create Lead
+        //Create Lead TODO: Before creating a new lead, do a Lead::where('email', $customerData->email) THIS SHOULD BE NULL
         $lead = new Lead();
-        $lead->save($leadSalesForce);
+        $lead->LastName                         = $customerData->prename; //required by SForce
+        $lead->Company                          = $customerData->prename; //required by SForce
+        $lead->FirstName                        = $customerData->prename; //required by SForce
+        $lead->email                            = $customerData->email; //required by SForce
+        $lead->Gender__c                        = $gender;
+        $lead->MobilePhone                      = $customerData->phone_number;
+        $lead->Overall_Happiness_Score__c       = $scoreCustomer->total_areas;
+        $lead->Happiness_Score_Career__c        = $scoreCustomer->beruf_und_karriere;
+        $lead->Happiness_Score_Love__c          = $scoreCustomer->partnerschaft;
+        $lead->Happiness_Score_Sexuality__c     = $scoreCustomer->sexualitaet;
+        $lead->Happiness_Score_Body_Health__c   = $scoreCustomer->koerper_und_gesundheit;
+        $lead->Happiness_Score_Friendship__c    = $scoreCustomer->freundschaften;
+        $lead->Happiness_Score_Family__c        = $scoreCustomer->familie;
+        $lead->Happiness_Score_Spirituality__c  = $scoreCustomer->spiritualitaet;
+        $lead->Symptoms_Career__c               = $symptomsCarrer;
+        $lead->Symptoms_Love__c                 = $symptomsLove;
+        $lead->Symptoms_Sexuality__c            = $symptomsSexuality;
+        $lead->Symptoms_Body_Health__c          = $symptomsBodayHealth;
+        $lead->Symptoms_Friendship__c           = $symptomsFriendship;
+        $lead->Symptoms_Family__c               = $symptomsFamily;
+        $lead->Symptoms_Spirituality__c         = $symptomsSpirituality;
+        $lead->Time_Invest_Willingness__c       = $customerData->time_invest_willingness;
+        $lead->Money_Invest_Willingness__c      = $customerData->money_invest_willingness;
+        $lead->Newsletter_Opt_in__c             = $customerData->newsletter_opt_in;
+        $lead->Call_Opt_in__c                   = $customerData->call_opt_in;
+        $lead->Survey_Result_URL__c             = url($customerData->survey_url);
+
+        $lead->save();
     
-        return $lead;
+        // return $lead;
     }
     
 }
