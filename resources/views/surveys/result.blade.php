@@ -152,6 +152,9 @@
             <div class="recommanded-book-purple-link" style="text-align: left;"><a href="#" class="recommanded-book-purple-link">&gt; Mehr erfahren...</a></div>
           </div>
       @else
+        @php
+            $supportImageExtensions = ['gif','jpg','jpeg','png'];
+        @endphp
         @foreach ($area->symptoms as $key => $symptom)
           <div class="section-analyse-purple-header-container">
             <h4 class="purple-header">{{$key + 1}}. {{$symptom->name}}</h4>
@@ -164,10 +167,24 @@
               <div class="books-recommandation-columns-container w-row">
                 <div class="books-recommandation-column1 w-col w-col-6">
                   <div class="book-recommandation-column2-container">
-                    <div class="book-coach-container"><img src="{{ asset('all/images/coach-cover.png')}}" alt="" class="coach-cover-image"></div>
+                    {{-- <div class="book-coach-container"><img src="{{ asset('all/images/coach-cover.png')}}" alt="" class="coach-cover-image"></div> --}}
+                    <div class="book-coach-container">
+                      @php
+                          $ext = strtolower(pathinfo($symptom->recom_program_image, PATHINFO_EXTENSION));
+                      @endphp
+                      @if(in_array($ext, $supportImageExtensions))
+                          <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="coach-cover-image" /></a>
+                      @else
+                        <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/coach-cover.png')}}" alt="" class="coach-cover-image"></a>
+                      @endif                
+                    </div>
+                    
                     <div class="recommanded-book-header">Unser Coaching-Tipp</div>
                     <div class="recommanded-book-normal-text">{{$symptom->recom_program}}</div>
-                    <div class="recommanded-book-purple-link">&gt; Mehr erfahren...</div>                  </div>
+                    {{-- <div class="recommanded-book-purple-link">&gt; Mehr erfahren...</div> --}}
+                    <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}">&gt; Mehr erfahren...</a></div>  
+                 
+                  </div>
                 </div>
                 <div class="books-recommandation-column2 w-col w-col-6">
                   <div class="books-recommandation-column1-container">

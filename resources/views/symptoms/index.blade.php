@@ -60,7 +60,7 @@
                                         $ext = strtolower(pathinfo($symptom->recom_program_image, PATHINFO_EXTENSION));
                                     @endphp
                                     @if(in_array($ext, $supportImageExtensions))
-                                        <a href="{{$symptom->recom_program_image}}" target="_blank"><img src="{{$symptom->recom_program_image}}" height="150" width="100" /></a>
+                                        <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" height="150" width="100" /></a>
                                     @else
                                         <a href="{{$symptom->recom_program_image}}">{{$symptom->recom_program_image}}</a>
                                     @endif
