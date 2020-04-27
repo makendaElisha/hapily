@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Entities\Lead;
 use App\Entities\Score;
 use App\Entities\Answer;
@@ -12,8 +13,8 @@ use App\Entities\Question;
 use App\Entities\AreaOfLife;
 use App\Mail\SendSurveyLink;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -427,7 +428,7 @@ class SurveyController extends Controller
         }
 
         //Create Salesforce Lead / To DO & Continue (WORKING FINE)
-        //$this->createSalesForceLead($customer);
+        $this->createSalesForceLead($customer);
         
         //send survey email with its own data
         // $data = [
@@ -657,8 +658,8 @@ class SurveyController extends Controller
             }
         }
 
-        //Create Salesforce Lead N.B. This wont work because survey webhook test doesn't create score and all of that
-        $this->createSalesForceLead($customer);
+        //Create Salesforce Lead N.B. This wont work when using webhook test because webhook doesn't create score and all of that
+        //$this->createSalesForceLead($customer);
     
         //send survey email with its own data / TODO With mail jet
         $data = [
@@ -771,6 +772,7 @@ class SurveyController extends Controller
         $lead->FirstName                        = $customerData->prename; //required by SForce
         $lead->email                            = $customerData->email; //required by SForce
         $lead->Gender__c                        = $gender;
+        $lead->Date_of_Birth__c                 = $customerData->birth;
         $lead->MobilePhone                      = $customerData->phone_number;
         $lead->Overall_Happiness_Score__c       = $scoreCustomer->total_areas;
         $lead->Happiness_Score_Career__c        = $scoreCustomer->beruf_und_karriere;

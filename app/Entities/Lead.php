@@ -15,6 +15,7 @@ class Lead extends Model
         'FirstName__c',
         'email__c',
         'Gender__c',
+        'Date_of_Birth__c',
         'MobilePhone__c',
         'Overall_Happiness_Score__c',
         'Happiness_Score_Career__c',
