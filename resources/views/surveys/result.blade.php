@@ -79,7 +79,7 @@
                   <div class="progress-bar-wrapper">
                     <div class="embed-score-pogress-bar-label-container">
                       {{-- <div class="embeded-score-label">Beruf &amp; Karriere</div> --}}
-                      <div class="embeded-score-label">{{$area->name}}</div>
+                      <div class="embeded-score-label"><a href="#{{$area->name}}" style="color: #333;">{{$area->name}}</a></div>
                       <div class="embeded-score-label">{{$area->areaScore}}</div>
                     </div>
                     <div class="embeded-score-progress-bar-career w-embed">
@@ -122,7 +122,7 @@
       <div class="life-area-container">
         {{-- <div class="life-area-container-header"><img src="{{ asset('all/images/ring_icon.svg')}}" alt="" class="life-area-partnerschaft-image"> --}}
         <div class="life-area-container-header">
-          <h3 class="life-area-header">{{$area->name}}</h3>
+          <h3 class="life-area-header" id="{{$area->name}}">{{$area->name}}</h3>
           <div class="life-area-score-columns-container">
             <div class="score-column1-columns life-area-columns w-row">
               <div class="score-column1-col1 w-col w-col-6">

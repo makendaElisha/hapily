@@ -2,6 +2,13 @@
 
 @section('content')
 
+<style>
+#symptom-read-more {
+    display: none;
+}
+
+</style>
+
 <div class="container-fluid">
     <h4 class="c-grey-900 mB-20">Symptoms in <span style="color:#DD22EF;">"{{$areaOfLife->name}}"</span> area of life</h4>
 
@@ -12,12 +19,10 @@
                     <a href="/area/{{$areaOfLife->id}}/symptom/create" type="button" class="btn btn-primary c-white mB-10">Add New Symptom</a>
                 @endrole
                 <br />
-                <div class="col-sm-10">
-                </div>
-                <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table id="survey" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>name</th>
+                            <th>Name</th>
                             <th>Instant Help</th>
                             <th>ResPrio</th>
                             {{-- <th>Fear</th>
@@ -34,23 +39,35 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $supportImageExtensions = ['gif','jpg','jpeg','png'];
+                        @endphp
                         @foreach ($areaOfLife->symptoms as $symptom)
                             <tr>
                                 <td>{{$symptom->name}}</td>
-                                <td>{{str_limit($symptom->instant_help, $limit = 20, $end = '...')}}</td>
+                                <td>{{$symptom->instant_help}}</td>
                                 <td>{{$symptom->res_prio}}</td>
                                 {{-- <td>{{$symptom->fear}}</td>
                                 <td>{{$symptom->anger}}</td>
                                 <td>{{$symptom->sadness}}</td> --}}
                                 <td>{{$symptom->belief}}</td>
-                                <td>{{$symptom->recom_book_url}}</td>
-                                <td>{{$symptom->recom_book_image}}</td>
+                                <td><a href="{{$symptom->recom_book_url}}" target="_blank">{{$symptom->recom_book_url}}</a></td>
+                                <td><a href="{{$symptom->recom_book_image}}" target="_blank"><img src="{{$symptom->recom_book_image}}" height="150" width="100" /></a></td>
                                 <td>{{$symptom->recom_book_description}}</td>
-                                <td>{{$symptom->recom_program_url}}</td>
-                                <td>{{$symptom->recom_program_image}}</td>
+                                <td><a href="{{$symptom->recom_program_url}}">{{$symptom->recom_program_url}}</a></td>
+                                <td>
+                                    @php
+                                        $ext = strtolower(pathinfo($symptom->recom_program_image, PATHINFO_EXTENSION));
+                                    @endphp
+                                    @if(in_array($ext, $supportImageExtensions))
+                                        <a href="{{$symptom->recom_program_image}}" target="_blank"><img src="{{$symptom->recom_program_image}}" height="150" width="100" /></a>
+                                    @else
+                                        <a href="{{$symptom->recom_program_image}}">{{$symptom->recom_program_image}}</a>
+                                    @endif
+                                </td>
                                 <td>{{$symptom->recom_program_description}}</td>
                                 <td>
-                                    <a href="/area/{{$areaOfLife->id}}/symptom/{{$symptom->id}}/edit" style="color:green;"><i class="c-blue-500 ti-pencil-alt"></i></a>
+                                    <a href="/area/{{$areaOfLife->id}}/symptom/{{$symptom->id}}/edit" style="color:green;"><i class="btn c-blue-500 ti-pencil-alt"></i></a>
                                     <form action="{{ route('symptom.destroy', [$areaOfLife->id, $symptom->id]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
@@ -67,3 +84,15 @@
 </div>
 
 @endsection
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#survey').dataTable({
+            "scrollY":        "600px",
+            "scrollCollapse": true,
+            "scrollX": true
+        });
+    });
+</script>
