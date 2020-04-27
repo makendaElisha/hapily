@@ -6,7 +6,7 @@
         <div class="masonry-sizer col-md-12"></div>
         <div class="masonry-item col-md-12">
             <div class="bgc-white p-20 bd">
-                <h6 class="c-grey-900">Basic Form</h6>
+                <h6 class="c-grey-900">Update Symptom: "{{ $symptom->name }}"</h6>
                 <div class="mT-30">
                     <form action="{{route('symptom.update', [$areaOfLife->id, $symptom->id])}}" method="POST">
                         @csrf
@@ -95,9 +95,13 @@
                             <label for="name">Recommanded book image</label>
                             <input type="text" name="recom_book_image" value="{{old('recom_book_image', $symptom->recom_book_image)}}" class="form-control" id="recom_book_image" placeholder="Enter book image">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="name">Recommanded book description</label>
                             <input type="text" name="recom_book_description" value="{{old('recom_book_description', $symptom->recom_book_description)}}" class="form-control" id="recom_book_description" placeholder="Enter book description">
+                        </div> --}}
+                        <div class="form-group">
+                            <label for="name">Recommanded book description</label>
+                            <textarea class="form-control" rows="4" name="recom_book_description" class="form-control" id="recom_book_description">{{old('recom_book_description', $symptom->recom_book_description)}}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="name">Recommanded program url</label>
@@ -107,12 +111,16 @@
                             <label for="name">Recommanded program image</label>
                             <input type="text" name="recom_program_image" value="{{old('recom_program_image', $symptom->recom_program_image)}}" class="form-control" id="recom_program" placeholder="Enter program">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="name">Recommanded program description</label>
                             <input type="text" name="recom_program_description" value="{{old('recom_program_description', $symptom->recom_program_description)}}" class="form-control" id="recom_program" placeholder="Enter program">
+                        </div> --}}
+                        <div class="form-group">
+                            <label for="name">Recommanded program description</label>
+                            <textarea class="form-control" rows="3" name="recom_program_description" class="form-control" id="recom_program">{{old('recom_program_description', $symptom->recom_program_description)}}</textarea>
                         </div>
    
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">Update Symptom</button>
                     </form>
                 </div>
             </div>

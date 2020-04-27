@@ -103,7 +103,10 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Recommanded book description</label>
-                            <input type="text" name="recom_book_description" value="{{old('recom_book_description')}}" class="form-control" id="recom_book_description" placeholder="Enter book description">
+                            <textarea class="form-control" rows="5" id="comment" name="recom_book_description" class="form-control" id="recom_book_description" placeholder="Enter book description">
+                                {{old('recom_book_description')}}
+                            </textarea>
+                            {{-- <input type="text" name="recom_book_description" value="{{old('recom_book_description')}}" class="form-control" id="recom_book_description" placeholder="Enter book description"> --}}
                         </div>
                         <div class="form-group">
                             <label for="name">Recommanded program url</label>
@@ -115,9 +118,12 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Recommanded program description</label>
-                            <input type="text" name="recom_program_description" value="{{old('recom_program_description')}}" class="form-control" id="recom_program" placeholder="Enter program">
+                            <textarea class="form-control" rows="5" name="recom_program_description" class="form-control" id="recom_program" placeholder="Type program description">
+                                {{old('recom_program_description')}}
+                            </textarea>
+                            {{-- <input type="text" name="recom_program_description" value="{{old('recom_program_description')}}" class="form-control" id="recom_program" placeholder="Enter program"> --}}
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Create Symtpom</button>
                     </form>
                 </div>
             </div>
