@@ -183,16 +183,16 @@
                     <div class="recommanded-book-header">Unser Coaching-Tipp</div>
                     <div class="recommanded-book-normal-text">{{$symptom->recom_program}}</div>
                     {{-- <div class="recommanded-book-purple-link">&gt; Mehr erfahren...</div> --}}
-                    <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}">&gt; Mehr erfahren...</a></div>  
+                    <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div>  
                  
                   </div>
                 </div>
                 <div class="books-recommandation-column2 w-col w-col-6">
                   <div class="books-recommandation-column1-container">
-                    <div class="book-coach-container"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-cover-image"></a></div>
+                    <div class="book-coach-container"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-cover-image"></a></div>
                     <div class="recommanded-book-header">Unser Buch-Tipp</div>
                     <div class="recommanded-book-normal-text">{{str_limit($symptom->recom_book_description, 100, '...')}}</div>
-                    <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}">&gt; Bestellen</a></div>  
+                    <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Bestellen</a></div>  
                   </div>
                 </div>
               </div>
