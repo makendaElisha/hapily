@@ -23,16 +23,17 @@
                         <div class="form-row">
                             <div class="form-group col-md-1">
                                 <label for="inputCity">Res Prio</label>
-                                <select class="custom-select" id="res_prio" name="res_prio" value="{{old('belief', $symptom->belief)}}">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                <select class="custom-select" id="res_prio" name="res_prio">
+                                    <option value="1" {{$symptom->res_prio == 1 ? "selected" : ''}}>1</option>
+                                    <option value="2" {{$symptom->res_prio == 2 ? "selected" : ''}}>2</option>
+                                    <option value="3" {{$symptom->res_prio == 3 ? "selected" : ''}}>3</option>
+                                    <option value="4" {{$symptom->res_prio == 4 ? "selected" : ''}}>4</option>
+                                    <option value="5" {{$symptom->res_prio == 5 ? "selected" : ''}}>5</option>
+                                    <option value="6" {{$symptom->res_prio == 6 ? "selected" : ''}}>6</option>
+                                    <option value="7" {{$symptom->res_prio == 7 ? "selected" : ''}}>7</option>
+                                    <option value="8" {{$symptom->res_prio == 8 ? "selected" : ''}}>8</option>
+                                    <option value="9" {{$symptom->res_prio == 9 ? "selected" : ''}}>9</option>
+                                    <option value="10" {{$symptom->res_prio == 10 ? "selected" : ''}}>10</option>
                                 </select>
                             </div>
                             {{-- <div class="form-group col-md-1">

@@ -22,7 +22,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-1">
                                 <label for="inputCity">ResPrio</label>
-                                <select class="custom-select" id="res_prio" name="res_prio" value="{{old('instant_help')}}">
+                                <select class="custom-select" id="res_prio" name="res_prio">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
