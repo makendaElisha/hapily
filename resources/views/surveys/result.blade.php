@@ -37,10 +37,10 @@
     <div class="section-greeting-container">
       <div class="greeting-text">
         <div class="bold-text">Hey {{$customer->prename}},</div>
-        <p class="paragraph">schön, dass du den Test abgeschlossen hast und deinem Glück auf die Sprünge helfen willst :-) Deine aktuelle Situation sowie die Ursachen dafür besser zu verstehen, ist der erste Schritt in Richtung eines erfüllteren und zufriedeneren Lebens.<br>‍</p>
-        <p class="paragraph-4">Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$userScore}} von {{$numberAreas * 10}} Punkten</strong></p>
+        <p class="paragraph">schön, dass du den Test abgeschlossen hast und deinem Glück auf die Sprünge helfen willst :-) Deine aktuelle Situation sowie die Ursachen dafür besser zu verstehen, ist der erste Schritt in Richtung eines erfüllteren und zufriedeneren Lebens.</p>
+        <p class="paragraph-4">Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$userScore}} von {{$numberAreas * 10}} Punkten.</strong></p>
         <p class="paragraph-2">Im Durchschnitt erreichen Teilnehmer einen Score von {{$averageHappinessAllParticipants}}. In der folgenden Grafik kannst du dein Glückslevel pro Lebensbereich ablesen und mit dem Durchschnitt der anderen Teilnehmer vergleichen.</p>
-        <p class="paragraph-2">Hier noch ein Tipp, wie du für dich das Beste aus dem Glücks-Bericht herausholst:Du kannst dir entweder einen Lebensbereich nach dem anderen anschauen oder gelangst direkt zu einem bestimmten Lebensbereich, indem du diesen anklickst (siehe Balkendiagramm). Für jede von dir im Glücks-Test angekreuzte Herausforderung erhältst du einen Sofort-Tipp von unseren Experten sowie weiterführende Hinweise. Trage dich unbedingt auch rechts für das kostenlose Online-Training ein, wenn du wissen möchtest, wie du in jedem Lebensbereich glücklicher wirst - mit sofortigen Ergebnissen!.</p>
+        <p class="paragraph-2">Hier noch ein Tipp, wie du für dich das Beste aus dem Glücks-Bericht herausholst: Du kannst dir entweder einen Lebensbereich nach dem anderen anschauen oder gelangst direkt zu einem bestimmten Lebensbereich, indem du diesen im Balkendiagramm anklickst. Für jede von dir im Glücks-Test angekreuzte Herausforderung erhältst du einen Sofort-Tipp von unseren Experten sowie weiterführende Hinweise. Trage dich unbedingt auch rechts für das kostenlose Online-Training ein. Darin erfährst du 3 praktische Tipps, mit denen du dein Glücks-Level soft steigern kannst.</p>
       </div>
       <div class="score-elements">
         <h3 class="heading-6">Dein Happiness-Score pro &quot;Lebensbereich&quot;</h3>
@@ -64,7 +64,7 @@
             </div>
             <ul class="socre-list w-list-unstyled">
               <li class="list-item-score">Am <span class="green-list-text-span">glücklichsten </span>schätzt du dich im Lebensbereich <strong>{{$resultData[0]->name}} </strong>ein, gefolgt von <strong>{{$resultData[1]->name}}</strong> und <strong>{{$resultData[2]->name}}.</strong></li>
-              <li class="list-item-score">Das größte <span class="text-span-5">Verbesserungspotenzial</span> scheinst du im der {{end($resultData)->name}} zu haben.</li>
+              <li class="list-item-score">Das größte <span class="text-span-5">Verbesserungspotenzial</span> scheinst du im der <strong>{{end($resultData)->name}}</strong> zu haben.</li>
             </ul>
           </div>
           <div class="score-column2 w-col w-col-6 w-col-medium-6">
@@ -121,7 +121,6 @@
     
     @foreach ($resultData as $area)
       <div class="life-area-container">
-        {{-- <div class="life-area-container-header"><img src="{{ asset('all/images/ring_icon.svg')}}" alt="" class="life-area-partnerschaft-image"> --}}
         <div class="life-area-container-header">
           <h3 class="life-area-header" id="{{$area->name}}">{{$area->name}}</h3>
           <div class="life-area-score-columns-container">
@@ -159,59 +158,63 @@
         @foreach ($area->symptoms as $key => $symptom)
           <div class="section-analyse-purple-header-container">
             <h4 class="purple-header">{{$key + 1}}. {{$symptom->name}}</h4>
-            <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen deine Herausforderung</p>
-            <p class="normal-text">{{$symptom->instant_help}}</p>
-          </div>
-
-          <div class="life-area-recommandation-books-container">
-            <div class="life-area-recommandation-container">
-              <div class="books-recommandation-columns-container w-row">
-                <div class="books-recommandation-column1 w-col w-col-6">
-                  <div class="book-recommandation-column2-container">
-                    {{-- <div class="book-coach-container"><img src="{{ asset('all/images/coach-cover.png')}}" alt="" class="coach-cover-image"></div> --}}
-                    <div class="book-coach-container">
-                      @php
-                          $ext = strtolower(pathinfo($symptom->recom_program_image, PATHINFO_EXTENSION));
-                      @endphp
-                      @if(in_array($ext, $supportImageExtensions))
-                          <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="coach-cover-image" /></a>
-                      @else
-                        <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/coach-cover.png')}}" alt="" class="coach-cover-image"></a>
-                      @endif                
+            <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen <span class="purple-text">deine </span> Herausforderung</p>
+            <div class="indented-content-container">
+              <div class="text-contet">
+                <p class="normal-text"><strong>Sofort-Tipp</strong></p>
+                <p class="normal-text">{{$symptom->instant_help}}</p>
+              </div>
+              <!-- coaching content here -->
+              @if(strlen($symptom->recom_program) != 0))
+                <div class="coaching-tip-content">
+                  <p class="normal-text"><strong>Coach-Tipp</strong></p>
+                  <div class="coach-image-box">
+                    <div class="coach-box-columns w-row">
+                      <div class="coach-box-col1 w-col w-col-3">
+                        @php
+                            $ext = strtolower(pathinfo($symptom->recom_program_image, PATHINFO_EXTENSION));
+                        @endphp
+                        @if(in_array($ext, $supportImageExtensions))
+                            <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="coach-image" /></a>
+                        @else
+                          <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/coach-cover.png')}}" alt="" class="coach-image"></a>
+                        @endif
+                      </div>
+                      <div class="coach-box-col2 w-col w-col-9">
+                        <div class="coach-box-conent">
+                          <p class="coach-box-content-paragraph">{{$symptom->recom_program}}</p>
+                          <div class="recommanded-book-purple-link">&gt; Mehr erfahren...</div>
+                        </div>
+                      </div>
                     </div>
-                    
-                    <div class="recommanded-book-header">Unser Coaching-Tipp</div>
-                    <div class="recommanded-book-normal-text">{{$symptom->recom_program}}</div>
-                    {{-- <div class="recommanded-book-purple-link">&gt; Mehr erfahren...</div> --}}
-                    <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div>  
-                 
                   </div>
                 </div>
-                <div class="books-recommandation-column2 w-col w-col-6">
-                  <div class="books-recommandation-column1-container">
-                    <div class="book-coach-container"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-cover-image"></a></div>
-                    <div class="recommanded-book-header">Unser Buch-Tipp</div>
-                    <div class="recommanded-book-normal-text">{{str_limit($symptom->recom_book_description, 100, '...')}}</div>
-                    <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Bestellen</a></div>  
+              @endif
+              <!-- coaching content ends here -->
+
+              <!-- book content starts here -->
+              <div class="book-tip-content">
+                <p class="normal-text"><strong>Buch-Tipp</strong></p>
+                <div class="coach-image-box">
+                  <div class="coach-box-columns w-row">
+                    <div class="coach-box-col1 w-col w-col-3"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-image"></a></div>
+                    <div class="coach-box-col2 w-col w-col-9">
+                      <div class="coach-box-conent">
+                        <p class="coach-box-content-paragraph">{{ $symptom->recom_book_description }}</p>
+                        <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+              <!-- book content ends here -->
             </div>
           </div>
-          <br />
-          {{-- To do, add load/view more after 2nd symptom displayed
-          @if($key == 1)
-            <h3>Add Read More</h3>
-            @break
-          @endif --}}
         @endforeach 
       @endif
-
-
       <div class="purple-paragraph-container">
         {{-- <p class="purple-header">&gt; 7 weitere Herausforderungen im Lebensbereich Partnerschaft anzeigen</p> --}}
       </div>
-          
     @endforeach
 
   </div>
@@ -236,7 +239,7 @@
   </div>
   <div class="section-green-background">
     <div class="section-green-container">
-      <h3 class="section-green-header"><span class="green-text">Die gute Nachricht ist</span>: Du bist deinen negativen Glaubenssätzen und den damit verbundenen Gefühlen nicht hilflos ausgeliefert.</h3>
+      <h3 class="section-green-header"><span class="green-text">Die gute Nachricht ist :</span> Du bist deinen negativen Glaubenssätzen und den damit verbundenen Gefühlen nicht hilflos ausgeliefert.</h3>
       <div class="section-green-normal-text">Aus der Neurowissenschaft sowie aus unzähligen Coachings wissen wir, dass es möglich ist, aus seinem aktuellen Leben auszubrechen und sich systematisch ein erfülltes und glückliches Leben zu erschaffen. Und zwar mit sofortigen Ergebnissen!<br><br>Aus diesem Grund haben wir ein <strong>kostenloses Glücks-Training entwickelt</strong>, in dem wir dir zeigen, wie du deine negativen Glaubenssätze durch positive Überzeugungen ersetzen kannst. Lerne noch HEUTE, was Glück wirklich bedeutet und wie du <strong>dir Schritt für Schritt dein Wunschleben</strong> kreierst.</div>
       <div class="section-green-image-text-container"><img src="{{ asset('all/images/online_traning_image.png')}}" width="320" height="216" srcset="{{ asset('all/images/online_traning_image-p-500.png')}} 500w, images/online_traning_image.png')}} 642w" sizes="(max-width: 479px) 92vw, (max-width: 767px) 346.671875px, 320px" alt="" class="section-green-lady-image">
         <div class="section-green-right-content">
