@@ -3,7 +3,7 @@
 use App\Entities\Score;
 use App\Entities\Answer;
 use App\Entities\Customer;
-use Illuminate\Filesystem\Cache;
+use Illuminate\Support\Facades\Cache;
 use Omniphx\Forrest\Providers\Laravel\Facades\Forrest;
 
 /*
@@ -168,7 +168,7 @@ Route::get('/sessions', function(){
 
     $data = [
         'session' => session()->all(),
-        'forrestVersion' => Forrest::versions(),
+        //'forrestVersion' => Forrest::versions(),
         'forrestToken' => Cache::get('forrest_token'),
     ];
 
