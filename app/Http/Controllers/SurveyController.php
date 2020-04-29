@@ -800,5 +800,41 @@ class SurveyController extends Controller
     
         // return $lead;
     }
+
+    public function curlGetTokenSalesForce()
+    {
+        $url = 'https://login.salesforce.com/services/oauth2/token';
+        $passwordAndToken = env("SF_PASSWORD") . env("SF_TOKEN_PASS");
+        
+        $curl = curl_init();
+        curl_setopt_array(
+            $curl,
+            array(
+                CURLOPT_RETURNTRANSFER => TRUE,
+                CURLOPT_URL            => $url,
+                CURLOPT_POST           => TRUE,
+                CURLOPT_POSTFIELDS     => http_build_query(
+                    array(
+                        'grant_type'    => 'password',
+                        'client_id'     => env("SF_CONSUMER_KEY"),
+                        'client_secret' => env("SF_CONSUMER_SECRET"),
+                        'username'      => env("SF_USERNAME"),
+                        'password'      => $passwordAndToken
+                    )
+                )
+            )
+        );
+
+        $response = json_decode(curl_exec($curl), true); //true to get array
+        curl_close($curl);
+
+        //A way to pass to Forrest here
+        // $this->tokenRepo->put($response); //save token response
+
+        // $this->storeVersion();
+        // $this->storeResources();
+
+        return $response;
+    }
     
 }
