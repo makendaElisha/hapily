@@ -3,6 +3,7 @@
 use App\Entities\Score;
 use App\Entities\Answer;
 use App\Entities\Customer;
+use Illuminate\Filesystem\Cache;
 use Omniphx\Forrest\Providers\Laravel\Facades\Forrest;
 
 /*
@@ -164,7 +165,14 @@ Route::get('/callback/salesforce', function() {
 });
 
 Route::get('/sessions', function(){
-    dd(session()->all());
+
+    $data = [
+        'session' => session()->all(),
+        'forrestVersion' => Forrest::versions(),
+        'forrestToken' => Cache::get('forrest_token'),
+    ];
+
+    dd($data);
 });
 
 
