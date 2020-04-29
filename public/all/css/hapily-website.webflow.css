@@ -2918,13 +2918,15 @@
 
 .coaching-tip-content {
   display: block;
+  height: 210px;
+  margin-bottom: 20px;
 }
 
 .coach-image-box {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex;
+  display: block;
 }
 
 .purple-text {
@@ -2932,24 +2934,25 @@
 }
 
 .coach-box-conent {
+  min-height: 180px;
   margin-left: 10px;
 }
 
 .coach-box-content-paragraph {
-  margin-left: 0px;
+  margin-left: -40px;
   font-family: Poppins, sans-serif;
   font-size: 16px;
   line-height: 26px;
 }
 
 .coach-image {
-  width: auto;
-  height: auto;
+  width: 160px;
+  height: 170px;
   border-radius: 15px 15px 0px 0px;
 }
 
 .coach-box-col1 {
-  height: 200px;
+  height: auto;
   padding-right: 0px;
   padding-left: 0px;
 }
@@ -2958,9 +2961,14 @@
   padding-left: 0px;
 }
 
+.book-tip-content {
+  height: 210px;
+}
+
 .book-image {
   width: auto;
-  height: auto;
+  width: 160px;
+  height: 170px;
   border-radius: 15px 15px 0px 0px;
 }
 
@@ -3826,6 +3834,9 @@
     -ms-flex-align: end;
     align-items: flex-end;
   }
+  .purple-header {
+    margin-top: 20px;
+  }
   .books-recommandation-column1 {
     margin-bottom: 40px;
   }
@@ -3927,6 +3938,10 @@
     display: block;
   }
   .coach-box-col1 {
+    display: block;
+    height: auto;
+  }
+  .book-tip-content {
     display: block;
     height: auto;
   }

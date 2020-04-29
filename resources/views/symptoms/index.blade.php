@@ -52,7 +52,7 @@
                                     <span id="{{$key + 100}}" style="display:none">
                                         {{substr($symptom->instant_help, 50)}}
                                     </span>
-                                    <button class="btn btn-link" onclick="showMore({{$key + 100}})">More...</button>
+                                    <button class="btn btn-link" onclick="showMore({{$key + 100}})">Read more...</button>
                                 </td>
                                 <td>{{$symptom->res_prio}}</td>
                                 {{-- <td>{{$symptom->fear}}</td>
@@ -68,7 +68,7 @@
                                     <span id="{{$key + 200}}" style="display:none">
                                         {{substr($symptom->recom_book_description, 50)}}
                                     </span>
-                                    <button class="btn btn-link" onclick="showMore({{$key + 200}})">More...</button>
+                                    <button class="btn btn-link" onclick="showMore({{$key + 200}})">Read more...</button>
                                 <td><a href="{{$symptom->recom_program_url}}">{{$symptom->recom_program_url}}</a></td>
                                 <td>
                                     @php
@@ -87,7 +87,7 @@
                                     <span id="{{$key + 300}}" style="display:none">
                                         {{substr($symptom->recom_program_description, 50)}}
                                     </span>
-                                    <button class="btn btn-link" onclick="showMore({{$key + 300}})">More...</button>
+                                    <button class="btn btn-link" onclick="showMore({{$key + 300}})">Read more...</button>
                                 <td>
                                     <a href="/area/{{$areaOfLife->id}}/symptom/{{$symptom->id}}/edit" style="color:green;"><i class="btn c-blue-500 ti-pencil-alt"></i></a>
                                     <form action="{{ route('symptom.destroy', [$areaOfLife->id, $symptom->id]) }}" method="POST">
@@ -121,10 +121,13 @@
 <script>
     function showMore(id) {
         var x = document.getElementById(id);
+        var nextBtn = x.nextElementSibling;
         if (x.style.display === "none") {
             x.style.display = "block";
+            nextBtn.innerHTML = "Read less...";
         } else {
             x.style.display = "none";
+            nextBtn.innerHTML = "Read more...";
         }
     }
 </script>

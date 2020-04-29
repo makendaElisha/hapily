@@ -23,7 +23,7 @@
     <h1 class="heading-5">Dein Glücks-Bericht<br></h1>
   </div>
   <div class="side-green-container">
-    <h4 class="side-green-container-header">Kostenloses Online-Training - Entfalte jetzt dein Glücks-Potenzial!</h4><a href="#" class="side-green-container-button w-button">&gt; Kostenlos anmelden</a>
+    <h4 class="side-green-container-header">Kostenloses Online-Training - Entfalte jetzt dein Glücks-Potenzial!</h4><a href="https://zoom.us/meeting/register/tJApdO-gqz0tG92IvTglSlVXSF-EPdCU6A3_" target="_blank" class="side-green-container-button w-button">&gt; Kostenlos anmelden</a>
     <h5 class="side-green-container-header-small">Was du im Training <br>lernen wirst</h5>
     <ul class="side-green-list w-list-unstyled">
       <li class="side-green-list-item">Was Glück wirklich bedeutet und was ein erfülltes Leben ausmacht.</li>
@@ -165,7 +165,7 @@
                 <p class="normal-text">{{$symptom->instant_help}}</p>
               </div>
               <!-- coaching content here -->
-              @if(strlen($symptom->recom_program) != 0))
+              {{-- @if(strlen($symptom->recom_program) != 0)) --}}
                 <div class="coaching-tip-content">
                   <p class="normal-text"><strong>Coach-Tipp</strong></p>
                   <div class="coach-image-box">
@@ -175,21 +175,21 @@
                             $ext = strtolower(pathinfo($symptom->recom_program_image, PATHINFO_EXTENSION));
                         @endphp
                         @if(in_array($ext, $supportImageExtensions))
-                            <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="coach-image" /></a>
+                            <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="book-image" /></a>
                         @else
-                          <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/coach-cover.png')}}" alt="" class="coach-image"></a>
+                          <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/hapily-coach-image.png')}}" alt="" class="coach-image"></a>
                         @endif
                       </div>
                       <div class="coach-box-col2 w-col w-col-9">
                         <div class="coach-box-conent">
-                          <p class="coach-box-content-paragraph">{{$symptom->recom_program}}</p>
-                          <div class="recommanded-book-purple-link">&gt; Mehr erfahren...</div>
+                          <p class="coach-box-content-paragraph">{{$symptom->recom_program_description}}</p>
+                          <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              @endif
+              {{-- @endif --}}
               <!-- coaching content ends here -->
 
               <!-- book content starts here -->
@@ -201,7 +201,7 @@
                     <div class="coach-box-col2 w-col w-col-9">
                       <div class="coach-box-conent">
                         <p class="coach-box-content-paragraph">
-                          @php
+                          {{-- @php
                               $textId = 'd'. $areaKey .$key. 'd'
                           @endphp
                           <span>
@@ -210,8 +210,8 @@
                             <span id="{{$textId}}" style="display:none">
                                 {{substr($symptom->recom_book_description, 200)}}
                             </span>
-                            <button class="btn btn-link" onclick="showMore({{$textId}})">More...</button>
-                          {{-- {{ $symptom->recom_book_description }} --}}
+                            <button class="btn btn-link" onclick="showMore({{$textId}})">More...</button> --}}
+                          {{ $symptom->recom_book_description }}
                         </p>
                         <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
                       </div>
@@ -272,7 +272,7 @@
       <div class="section-green-normal-text">Aus der Neurowissenschaft sowie aus unzähligen Coachings wissen wir, dass es möglich ist, aus seinem aktuellen Leben auszubrechen und sich systematisch ein erfülltes und glückliches Leben zu erschaffen. Und zwar mit sofortigen Ergebnissen!<br><br>Aus diesem Grund haben wir ein <strong>kostenloses Glücks-Training entwickelt</strong>, in dem wir dir zeigen, wie du deine negativen Glaubenssätze durch positive Überzeugungen ersetzen kannst. Lerne noch HEUTE, was Glück wirklich bedeutet und wie du <strong>dir Schritt für Schritt dein Wunschleben</strong> kreierst.</div>
       <div class="section-green-image-text-container"><img src="{{ asset('all/images/online_traning_image.png')}}" width="320" height="216" srcset="{{ asset('all/images/online_traning_image-p-500.png')}} 500w, images/online_traning_image.png')}} 642w" sizes="(max-width: 479px) 92vw, (max-width: 767px) 346.671875px, 320px" alt="" class="section-green-lady-image">
         <div class="section-green-right-content">
-          <div class="sectionn-green-right-content-text"><strong>Gratis Online-Training<br></strong><br>In dir steckt so viel Potenzial - Mache jetzt den ersten Schritt und melde dich für das kostenlose Glücks-Training an.</div><a href="#" class="section-green-purple-button w-button">&gt; Ich bin dabei!</a>
+          <div class="sectionn-green-right-content-text"><strong>Gratis Online-Training<br></strong><br>In dir steckt so viel Potenzial - Mache jetzt den ersten Schritt und melde dich für das kostenlose Glücks-Training an.</div><a href="https://zoom.us/meeting/register/tJApdO-gqz0tG92IvTglSlVXSF-EPdCU6A3_" target="_blank" class="section-green-purple-button w-button">&gt; Ich bin dabei!</a>
           <p class="section-green-right-content-small-text">Nur 100 Gratis-Plätze verfügbar - <strong>Jetzt anmelden!</strong></p>
         </div>
       </div>
@@ -281,7 +281,7 @@
   <div class="section-before-footer">
     <div class="section-before-footer-container">
       <h3 class="section-before-footer-header">Wer steckt hinter dem Glücks-Test?</h3>
-      <div class="section-before-footer-text">Die Glücks-Experten Denis Martin und Marcus Börner haben hapily gegründet, um Menschen dabei zu unterstützen, die wohl wichtigste Frage für sich zu klären: Was macht ein glückliches Leben aus?<br><br>Als Autor von &quot;Managing Happiness&quot; konnte Marcus bereits unzähligen Menschen dabei helfen, sich ein erfülltes Leben zu erschaffen. Denis hat als Life Coach hunderte von Menschen auf dem Weg zu ihrem Wunschleben begleitet.<br><br>Mit hapily haben die beiden eine Akademie für persönliches Wachstum gegründet, um fortan noch viel mehr Menschen erreichen und bei ihrer Transformation begleiten zu können.<br><br>Mehr erfahren auf: <span class="blue-text"><a href="https://www.hapily.de">www.hapily.de</a></span></div>
+      <div class="section-before-footer-text">Die Glücks-Experten Denis Martin und Marcus Börner haben hapily gegründet, um Menschen dabei zu unterstützen, die wohl wichtigste Frage für sich zu klären: Was macht ein glückliches Leben aus?<br><br>Als Autor von &quot;Managing Happiness&quot; konnte Marcus bereits unzähligen Menschen dabei helfen, sich ein erfülltes Leben zu erschaffen. Denis hat als Life Coach hunderte von Menschen auf dem Weg zu ihrem Wunschleben begleitet.<br><br>Mit hapily haben die beiden eine Akademie für persönliches Wachstum gegründet, um fortan noch viel mehr Menschen erreichen und bei ihrer Transformation begleiten zu können.<br><br>Mehr erfahren auf: <span class="blue-text"><a href="https://www.hapily.de" target="_blank">www.hapily.de</a></span></div>
       <div class="section-before-footer-two-images-content"><img src="{{ asset('all/images/marcus-image.png')}}" width="150" height="150" srcset="{{ asset('all/images/marcus-image-p-500.png')}} 500w, images/marcus-image.png')}} 544w" sizes="(max-width: 479px) 120px, 150px" alt="" class="section-before-footer-image1"><img src="{{ asset('all/images/denis-image.png')}}" width="150" height="150" alt="" class="section-before-footer-image2"></div>
       <p class="section-before-footer-quote"><span class="green-quote">&quot;</span><strong>Jede Transformation fängt mit einer Erkenntnis und dem Willen für Veränderung an</strong><span class="green-quote">&quot;</span> <br>- Denis &amp; Marcus (Autoren, Coaches und Gründer von hapily)</p>
       <div class="section-before-footer-separator"></div>
