@@ -428,7 +428,8 @@ class SurveyController extends Controller
         }
 
         //Create Salesforce Lead / To DO & Continue (WORKING FINE)
-        $this->createSalesForceLead($customer);
+        //$this->createSalesForceLead($customer);
+        $this->createLead($customer);
         
         //send survey email with its own data
         // $data = [
@@ -660,6 +661,7 @@ class SurveyController extends Controller
 
         //Create Salesforce Lead N.B. This wont work when using webhook test because webhook doesn't create score and all of that
         //$this->createSalesForceLead($customer);
+        $this->createLead($customer); //Using curl
     
         //send survey email with its own data / TODO With mail jet
         $data = [
@@ -828,23 +830,102 @@ class SurveyController extends Controller
         $response = json_decode(curl_exec($curl), true); //true to get array
         curl_close($curl);
 
-        //A way to pass to Forrest here
-        // $this->tokenRepo->put($response); //save token response
-
-        // $this->storeVersion();
-        // $this->storeResources();
-
         return $response;
     }
 
-    function createLead() {
-        $instanceUrl = "https://eu31.salesforce.com/services/data/v20.0/sobjects/Lead/";
+    function createLead($customer) {
+        //$instanceUrl = "https://eu31.salesforce.com/services/data/v20.0/sobjects/Lead/";
         $tokenParent = $this->curlGetTokenSalesForce();
         $token = $tokenParent['access_token'];
+        $instanceUrl = $tokenParent['instance_url'];
+        $postUrl = $instanceUrl . '/services/data/v20.0/sobjects/Lead/';
 
-        $content = json_encode(array("LastName" => 'Test CLR', "Company" => "Test CRL Request"));
+        //Customer Data
+        $scoreCustomer      = Score::where('customer_id', $customer->id)->first();
+        $answersCustomer    = Answer::where('customer_id', $customer->id)->get();
+        $customerData       = $customer;
     
-        $curl = curl_init($instanceUrl);
+        $symptomsCarrer         = '';
+        $symptomsLove           = '';
+        $symptomsSexuality      = '';
+        $symptomsBodayHealth    = '';
+        $symptomsFriendship     = '';
+        $symptomsFamily         = '';
+        $symptomsSpirituality   = '';
+        $symptomDefault         = '';
+    
+        foreach($answersCustomer as $answer) {
+            switch ($answer->reference) {
+                case 'symptoms_beruf_und_karriere_user':
+                    $symptomsCarrer .= $answer->name . PHP_EOL;
+                    break;
+                case 'symptoms_partnerschaft_user':
+                    $symptomsLove .= $answer->name . PHP_EOL;
+                    break;
+                case 'symptoms_sexualitaet_user':
+                    $symptomsSexuality .= $answer->name . PHP_EOL;
+                    break;
+                case 'symptoms_koerper_und_gesundheit_user':
+                    $symptomsBodayHealth .= $answer->name . PHP_EOL;
+                    break;
+                case 'symptoms_freundschaften_user':
+                    $symptomsFriendship .= $answer->name. PHP_EOL;
+                    break;
+                case 'symptoms_familie_user':
+                    $symptomsFamily .= $answer->name . PHP_EOL;
+                    break;
+                case 'symptoms_spiritualitaet_user':
+                    $symptomsSpirituality .= $answer->name . PHP_EOL;
+                    break;
+                default:
+                    $symptomDefault = 'No symptom found';
+            }
+        }
+    
+        //'Gender' => $customerData->gender == 'Männlich' ? 'Male' : 'Female',
+        if($customerData->gender == 'Männlich'){
+            $gender = 'Male';
+        }elseif($customerData->gender == 'Weiblich'){
+            $gender = 'Female';
+        }else{
+            $gender = 'Other';
+        }
+        
+        $leadContent = [
+            'FirstName'                         => $customerData->prename,
+            'LastName'                          => $customerData->prename,
+            'Company'                           => $customerData->prename,
+            'email'                             => $customerData->email,
+            'Gender__c'                         => $gender,
+            'Date_of_Birth__c'                  =>$customerData->birth,
+            'MobilePhone'                       => $customerData->phone_number,
+            'Overall_Happiness_Score__c'        => $scoreCustomer->total_areas,
+            'Happiness_Score_Career__c'         => $scoreCustomer->beruf_und_karriere,
+            'Happiness_Score_Love__c'           => $scoreCustomer->partnerschaft,
+            'Happiness_Score_Sexuality__c'      => $scoreCustomer->sexualitaet,
+            'Happiness_Score_Body_Health__c'    => $scoreCustomer->koerper_und_gesundheit,
+            'Happiness_Score_Friendship__c'     => $scoreCustomer->freundschaften,
+            'Happiness_Score_Family__c'         => $scoreCustomer->familie,
+            'Happiness_Score_Spirituality__c'   => $scoreCustomer->spiritualitaet,
+            'Symptoms_Career__c'                => $symptomsCarrer,
+            'Symptoms_Love__c'                  => $symptomsLove,
+            'Symptoms_Sexuality__c'             => $symptomsSexuality,
+            'Symptoms_Body_Health__c'           => $symptomsBodayHealth,
+            'Symptoms_Friendship__c'            => $symptomsFriendship,
+            'Symptoms_Family__c'                => $symptomsFamily,
+            'Symptoms_Spirituality__c'          => $symptomsSpirituality,
+            'Time_Invest_Willingness__c'        => $customerData->time_invest_willingness,
+            'Money_Invest_Willingness__c'       => $customerData->money_invest_willingness,
+            'Newsletter_Opt_in__c'              => $customerData->newsletter_opt_in,
+            'Call_Opt_in__c'                    => $customerData->call_opt_in,
+            'Survey_Result_URL__c'              => url($customerData->survey_url),
+        ];
+
+        //$content = json_encode(array("LastName" => 'Test CLR', "Company" => "Test CRL Request", "Overall_Happiness_Score__c" => 7, "Symptoms_Career__c" => "Symptom 1" . PHP_EOL . "Symptom 2" . PHP_EOL . "Symptom 3"));
+    
+        $content = json_encode($leadContent);
+
+        $curl = curl_init($postUrl);
         curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER,
@@ -858,7 +939,7 @@ class SurveyController extends Controller
         $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     
         if ( $status != 201 ) {
-            die("Error: call to URL $instanceUrl failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+            die("Error: call to URL $postUrl failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
         }
     
         echo "HTTP status $status creating account<br/><br/>";
