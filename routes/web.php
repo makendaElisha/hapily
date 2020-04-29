@@ -167,6 +167,8 @@ Route::get('/curl-authenticate', function() {
 
 Route::get('/tokensurvey', 'SurveyController@curlGetTokenSalesForce');
 
+Route::get('/createlead', 'SurveyController@createLead');
+
 Route::get('/callback/salesforce', function() {
     Forrest::callback();
 });

@@ -836,5 +836,42 @@ class SurveyController extends Controller
 
         return $response;
     }
+
+    function createLead() {
+        $instanceUrl = "https://eu31.salesforce.com/services/data/v20.0/sobjects/Lead/";
+        $tokenParent = $this->curlGetTokenSalesForce();
+        $token = $tokenParent['access_token'];
+
+        $content = json_encode(array("LastName" => 'Test CLR', "Company" => "Test CRL Request"));
+    
+        $curl = curl_init($instanceUrl);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER,
+                array("Authorization: OAuth $token",
+                    "Content-type: application/json"));
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+    
+        $json_response = curl_exec($curl);
+    
+        $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    
+        if ( $status != 201 ) {
+            die("Error: call to URL $instanceUrl failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+        }
+    
+        echo "HTTP status $status creating account<br/><br/>";
+    
+        curl_close($curl);
+    
+        $response = json_decode($json_response, true);
+    
+        $id = $response["id"];
+    
+        echo "New record id $id<br/><br/>";
+    
+        return $id;
+    }
     
 }
