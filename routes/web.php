@@ -146,7 +146,7 @@ Route::get('/leadata', function(){
     ];
 
     return $leadSalesForce;
-    
+
 });
 
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -161,6 +161,10 @@ Route::get('/authenticate', function() {
 
 Route::get('/callback/salesforce', function() {
     Forrest::callback();
+});
+
+Route::get('/sessions', function(){
+    dd(session()->all());
 });
 
 
