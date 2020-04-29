@@ -162,7 +162,6 @@ Route::get('/authenticate', function() {
 });
 
 Route::get('/curl-authenticate', function() {
-    // return Forrest::getmytoken();
     dd(Forrest::curlGetToken());
 });
 
