@@ -42,10 +42,18 @@
                         @php
                             $supportImageExtensions = ['gif','jpg','jpeg','png'];
                         @endphp
-                        @foreach ($areaOfLife->symptoms as $symptom)
+                        @foreach ($areaOfLife->symptoms as $key => $symptom)
                             <tr>
                                 <td>{{$symptom->name}}</td>
-                                <td>{{$symptom->instant_help}}</td>
+                                <td>
+                                    <span>
+                                        {{substr($symptom->instant_help, 0, 50)}}
+                                    </span>
+                                    <span id="{{$key + 100}}" style="display:none">
+                                        {{substr($symptom->instant_help, 50)}}
+                                    </span>
+                                    <button class="btn btn-link" onclick="showMore({{$key + 100}})">More...</button>
+                                </td>
                                 <td>{{$symptom->res_prio}}</td>
                                 {{-- <td>{{$symptom->fear}}</td>
                                 <td>{{$symptom->anger}}</td>
@@ -53,7 +61,14 @@
                                 <td>{{$symptom->belief}}</td>
                                 <td><a href="{{$symptom->recom_book_url}}" target="_blank">{{$symptom->recom_book_url}}</a></td>
                                 <td><a href="{{$symptom->recom_book_image}}" target="_blank"><img src="{{$symptom->recom_book_image}}" height="150" width="100" /></a></td>
-                                <td>{{$symptom->recom_book_description}}</td>
+                                <td>
+                                    <span>
+                                        {{substr($symptom->recom_book_description, 0, 50)}}
+                                    </span>
+                                    <span id="{{$key + 200}}" style="display:none">
+                                        {{substr($symptom->recom_book_description, 50)}}
+                                    </span>
+                                    <button class="btn btn-link" onclick="showMore({{$key + 200}})">More...</button>
                                 <td><a href="{{$symptom->recom_program_url}}">{{$symptom->recom_program_url}}</a></td>
                                 <td>
                                     @php
@@ -65,7 +80,14 @@
                                         <a href="{{$symptom->recom_program_image}}">{{$symptom->recom_program_image}}</a>
                                     @endif
                                 </td>
-                                <td>{{$symptom->recom_program_description}}</td>
+                                <td>
+                                    <span>
+                                        {{substr($symptom->recom_program_description, 0, 50)}}
+                                    </span>
+                                    <span id="{{$key + 300}}" style="display:none">
+                                        {{substr($symptom->recom_program_description, 50)}}
+                                    </span>
+                                    <button class="btn btn-link" onclick="showMore({{$key + 300}})">More...</button>
                                 <td>
                                     <a href="/area/{{$areaOfLife->id}}/symptom/{{$symptom->id}}/edit" style="color:green;"><i class="btn c-blue-500 ti-pencil-alt"></i></a>
                                     <form action="{{ route('symptom.destroy', [$areaOfLife->id, $symptom->id]) }}" method="POST">
@@ -95,4 +117,14 @@
             "scrollX": true
         });
     });
+</script>
+<script>
+    function showMore(id) {
+        var x = document.getElementById(id);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
 </script>

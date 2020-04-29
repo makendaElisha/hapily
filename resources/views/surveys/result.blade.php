@@ -119,7 +119,7 @@
       <div class="section-analyse-text">In der Glücksforschung ist man sich einig, dass es - obwohl Glück für jeden etwas anderes bedeuten kann - ein paar <strong>Glücksfaktoren</strong> gibt, die für alle Menschen gelten. Dazu gehören z.B., dass wir einem <strong>erfüllenden Beruf</strong> nachgehen, <strong>liebevolle Beziehungen</strong> pflegen, physisch und mental <strong>gesund</strong> sind und einen <strong>Sinn</strong> in unserem Leben erkennen.<br><br>Lass uns nun einen tieferen Blick auf <strong>deine Potenziale</strong> pro Lebensbereich werfen:<br></div>
     </div>
     
-    @foreach ($resultData as $area)
+    @foreach ($resultData as $areaKey => $area)
       <div class="life-area-container">
         <div class="life-area-container-header">
           <h3 class="life-area-header" id="{{$area->name}}">{{$area->name}}</h3>
@@ -200,7 +200,19 @@
                     <div class="coach-box-col1 w-col w-col-3"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-image"></a></div>
                     <div class="coach-box-col2 w-col w-col-9">
                       <div class="coach-box-conent">
-                        <p class="coach-box-content-paragraph">{{ $symptom->recom_book_description }}</p>
+                        <p class="coach-box-content-paragraph">
+                          @php
+                              $textId = 'd'. $areaKey .$key. 'd'
+                          @endphp
+                          <span>
+                            {{substr($symptom->recom_book_description, 0, 200)}}
+                          </span>
+                            <span id="{{$textId}}" style="display:none">
+                                {{substr($symptom->recom_book_description, 200)}}
+                            </span>
+                            <button class="btn btn-link" onclick="showMore({{$textId}})">More...</button>
+                          {{-- {{ $symptom->recom_book_description }} --}}
+                        </p>
                         <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
                       </div>
                     </div>
@@ -215,6 +227,23 @@
       <div class="purple-paragraph-container">
         {{-- <p class="purple-header">&gt; 7 weitere Herausforderungen im Lebensbereich Partnerschaft anzeigen</p> --}}
       </div>
+
+      <!-- belief content starts here -->
+      <div class="section-text-after-analyse-container">
+        <h3 class="h3-black-heading">Könnte es sein, dass du schon einmal eine oder mehrere der folgenden Aussagen über dich geglaubt hast?</h3>
+        @php
+            $symptomsChunks = array_chunk($area->symptoms->toArray(), 3, "preserve_keys")
+        @endphp
+     
+        @foreach ($symptomsChunks as $symptomsArray)
+          <div class="_3-columns-text-separated">
+            @foreach ($symptomsArray as $symptom)
+              <div class="_3-columns-text">{{$symptom['belief']}}</div>
+            @endforeach
+          </div>
+        @endforeach
+      </div>
+      <!-- belief content ends here -->
     @endforeach
 
   </div>
@@ -277,3 +306,14 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<script>
+  function showMore(id) {
+      var x = document.getElementById(id);
+      if (x.style.display === "none") {
+          x.style.display = "block";
+      } else {
+          x.style.display = "none";
+      }
+  }
+</script>
