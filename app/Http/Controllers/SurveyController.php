@@ -763,7 +763,8 @@ class SurveyController extends Controller
         }
     
         //Get Salesforce token
-        Forrest::getmytoken(); 
+        //Forrest::getmytoken();
+        Forrest::curlGetToken();
 
         //Create Lead TODO: Before creating a new lead, do a Lead::where('email', $customerData->email) THIS SHOULD BE NULL
         $lead = new Lead();

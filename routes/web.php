@@ -157,7 +157,13 @@ Route::get('/leadata', function(){
 // });
 
 Route::get('/authenticate', function() {
-    return Forrest::getmytoken();
+    // return Forrest::getmytoken();
+    dd(Forrest::getmytoken());
+});
+
+Route::get('/curl-authenticate', function() {
+    // return Forrest::getmytoken();
+    dd(Forrest::curlGetToken());
 });
 
 Route::get('/callback/salesforce', function() {
