@@ -997,7 +997,7 @@ class SurveyController extends Controller
             die("Error: call to URL $postUrl failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
         }
     
-        echo "HTTP status $status creating account<br/><br/>";
+        //echo "HTTP status $status creating account<br/><br/>";
     
         curl_close($curl);
     
@@ -1005,9 +1005,9 @@ class SurveyController extends Controller
     
         $id = $response["id"];
     
-        echo "New record id $id<br/><br/>";
+        //echo "New record id $id<br/><br/>";
     
-        return $id;
+        //return $id;
     }
     
 }
