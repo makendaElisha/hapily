@@ -66,6 +66,7 @@ class SurveyController extends Controller
         $resultData = [];
         $userScore = 0;
         $maxPotential = 0; 
+        $userBelives = [];
 
         foreach ($getAreas as $area) {
             $areaObject = (object)[];
@@ -139,12 +140,21 @@ class SurveyController extends Controller
             return $item2->areaScore <=> $item1->areaScore;
         });
         
+        for ($count = 0; $count < 2; $count++) { 
+            foreach ($resultData as $area) {
+                for ($i=0; $i < $area->symptoms->count(); $i++) {
+                    $i == $count ? array_push($userBelives, $area->symptoms[$count]['belief']) : $i;
+                }
+            }
+        }
+
         return view('surveys.result', compact([
             'customer', 
             'resultData', 
             'maxPotential',
             'userScore',
             'numberAreas',
+            'userBelives',
             'averageHappinessAllParticipants',  
         ]));
 

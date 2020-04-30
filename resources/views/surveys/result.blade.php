@@ -182,7 +182,17 @@
                       </div>
                       <div class="coach-box-col2 w-col w-col-9">
                         <div class="coach-box-conent">
-                          <p class="coach-box-content-paragraph">{{$symptom->recom_program_description}}</p>
+                          <p class="coach-box-content-paragraph">
+                            <span>
+                              {{substr($symptom->recom_program_description, 0, 300)}}
+                            </span>
+                            <span id="{{($areaKey + 1) *100 + $key}}" style="display:none">
+                                {{substr($symptom->recom_program_description, 300)}}
+                            </span>
+                            <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">More...</button>
+
+                            {{-- {{$symptom->recom_program_description}} --}}
+                          </p>
                           <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
                         </div>
                       </div>
@@ -201,17 +211,14 @@
                     <div class="coach-box-col2 w-col w-col-9">
                       <div class="coach-box-conent">
                         <p class="coach-box-content-paragraph">
-                          {{-- @php
-                              $textId = 'd'. $areaKey .$key. 'd'
-                          @endphp
                           <span>
-                            {{substr($symptom->recom_book_description, 0, 200)}}
+                            {{substr($symptom->recom_book_description, 0, 300)}}
                           </span>
-                            <span id="{{$textId}}" style="display:none">
-                                {{substr($symptom->recom_book_description, 200)}}
-                            </span>
-                            <button class="btn btn-link" onclick="showMore({{$textId}})">More...</button> --}}
-                          {{ $symptom->recom_book_description }}
+                          <span id="{{($areaKey + 1) *1000 + $key}}" style="display:none">
+                              {{substr($symptom->recom_book_description, 300)}}
+                          </span>
+                          <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">More...</button>
+                          {{-- {{ $symptom->recom_book_description }} --}}
                         </p>
                         <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
                       </div>
@@ -227,28 +234,27 @@
       <div class="purple-paragraph-container">
         {{-- <p class="purple-header">&gt; 7 weitere Herausforderungen im Lebensbereich Partnerschaft anzeigen</p> --}}
       </div>
-
-      <!-- belief content starts here -->
-      <div class="section-text-after-analyse-container">
-        <h3 class="h3-black-heading">Könnte es sein, dass du schon einmal eine oder mehrere der folgenden Aussagen über dich geglaubt hast?</h3>
-        @php
-            $symptomsChunks = array_chunk($area->symptoms->toArray(), 3, "preserve_keys")
-        @endphp
-     
-        @foreach ($symptomsChunks as $symptomsArray)
-          <div class="_3-columns-text-separated">
-            @foreach ($symptomsArray as $symptom)
-              <div class="_3-columns-text">{{$symptom['belief']}}</div>
-            @endforeach
-          </div>
-        @endforeach
-      </div>
-      <!-- belief content ends here -->
     @endforeach
 
   </div>
   <div class="section-text-after-analyse">
     <div class="section-text-after-analyse-container">
+      <h3 class="h3-black-heading">Könnte es sein, dass du schon einmal eine oder mehrere der folgenden Aussagen über dich geglaubt hast?</h3>
+      <!-- belief content starts here -->
+      @php
+        count($userBelives) > 9 ? $believesToShow = array_slice($userBelives, 0, 9) : $believesToShow = $userBelives;
+        $believesChunks = array_chunk($believesToShow, 3, "preserve_keys");
+      @endphp
+    
+      @foreach ($believesChunks as $believesArray)
+        <div class="_3-columns-text-separated">
+          @foreach ($believesArray as $belief)
+            <div class="_3-columns-text">{{$belief}}</div>
+          @endforeach
+        </div>
+      @endforeach
+      <!-- belief content ends here -->
+
       {{-- <h3 class="h3-black-heading">Könnte es sein, dass du schon einmal eine oder mehrere der folgenden Aussagen über dich geglaubt hast?</h3>
       <div class="_3-columns-text-separated">
         <div class="_3-columns-text">Ich genüge nicht</div>
@@ -310,10 +316,13 @@
 <script>
   function showMore(id) {
       var x = document.getElementById(id);
+      var nextBtn = x.nextElementSibling;
       if (x.style.display === "none") {
           x.style.display = "block";
+          nextBtn.innerHTML = "Read less...";
       } else {
           x.style.display = "none";
+          nextBtn.innerHTML = "Read more...";
       }
   }
 </script>
