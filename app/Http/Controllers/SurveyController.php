@@ -429,16 +429,17 @@ class SurveyController extends Controller
 
         //Create Salesforce Lead / To DO & Continue (WORKING FINE)
         //$this->createSalesForceLead($customer);
-        $this->createLead($customer);
+        //THIS IS THE ONE TO USE THAT WORKS WELL
+        //$this->createLead($customer); 
         
         //send survey email with its own data
-        // $data = [
-        //     'name'          => $customer->prename,
-        //     'surveyLink'    => url($customer->survey_url) //url helper to take the base url of the project
-        // ];
+        $data = [
+            'name'          => $customer->prename,
+            'surveyLink'    => url($customer->survey_url) //url helper to take the base url of the project
+        ];
 
-        // Mail::to($customer->email)
-        //     ->send(new SendSurveyLink($data));
+        Mail::to($customer->email)
+            ->send(new SendSurveyLink($data));
 
        return redirect('/survey')->with("success", "Survey received and saved successfully");
     }
@@ -669,8 +670,8 @@ class SurveyController extends Controller
             'surveyLink'    => url($customer->survey_url) //url helper to take the base url of the project
         ];
 
-        // Mail::to('ubuntu.le.kush@gmail.com')
-        //     ->send(new SendSurveyLink($data));
+        Mail::to($customer->email)
+            ->send(new SendSurveyLink($data));
 
 
        return redirect('/survey')->with("success", "Survey received and saved successfully");

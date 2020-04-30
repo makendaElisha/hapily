@@ -122,7 +122,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                    <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:30px;word-break:break-word;">
                       <div style="font-family:helvetica;font-size:14px;line-height:24px;text-align:left;color:#333333;">danke, dass du den Glücks-Test durchgeführt hast. Um deinen Test-Bericht aufzurufen, klicke bitte auf den folgenden Link:</div>
                     </td>
                   </tr>
@@ -130,7 +130,7 @@
                     <td align="left" vertical-align="middle" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                       <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
                         <tr>
-                          <td align="center" bgcolor="#dd22ef" role="presentation" style="border:none;border-radius:24px;cursor:auto;mso-padding-alt:10px 25px;background:#dd22ef;" valign="middle"> <a href="{{ $data['surveyLink'] }}" style="display:inline-block;background:#dd22ef;color:white;font-family:Helvetica;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:24px;"
+                          <td align="center" bgcolor="#dd22ef" role="presentation" style="border:none;border-radius:24px;cursor:auto;mso-padding-alt:10px 25px;background:#dd22ef;" valign="middle"> <a href="{{ $data['surveyLink'] }}" style="display:inline-block;background:#dd22ef;color:white;font-family:helvetica;font-size:13px;font-weight:bolder;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:24px;"
                               target="_blank">
               > Hier geht's zu deinem Glücks-Bericht
             </a> </td>
@@ -139,7 +139,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td align="left" style="font-size:0px;padding:10px 25px;padding-top:40px;padding-bottom:30px;word-break:break-word;">
+                    <td align="left" style="font-size:0px;padding:10px 25px;padding-top:30px;padding-bottom:30px;word-break:break-word;">
                       <div style="font-family:helvetica;font-size:14px;line-height:24px;text-align:left;color:#333333;">Glückliche Grüße,<br /> dein hapily-Team</div>
                     </td>
                   </tr>
@@ -197,9 +197,13 @@
                       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
                         <tr>
                           <td style="padding:4px;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#3b5998;border-radius:3px;width:20px;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
                               <tr>
-                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <img height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/facebook.png" style="border-radius:3px;display:block;" width="20" /> </td>
+                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/hapily.academy" target="_blank">
+                    <img
+                       height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/facebook.png" style="border-radius:3px;display:block;" width="20"
+                    />
+                  </a> </td>
                               </tr>
                             </table>
                           </td>
@@ -237,9 +241,13 @@
                       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
                         <tr>
                           <td style="padding:4px;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#3f729b;border-radius:3px;width:20px;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
                               <tr>
-                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <img height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/instagram.png" style="border-radius:3px;display:block;" width="20" /> </td>
+                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="http://instagram.com/hapily.de" target="_blank">
+                    <img
+                       height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/instagram.png" style="border-radius:3px;display:block;" width="20"
+                    />
+                  </a> </td>
                               </tr>
                             </table>
                           </td>
@@ -277,9 +285,13 @@
                       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
                         <tr>
                           <td style="padding:4px;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#0077b5;border-radius:3px;width:20px;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
                               <tr>
-                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <img height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/linkedin.png" style="border-radius:3px;display:block;" width="20" /> </td>
+                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.linkedin.com/company/hapily&title=&summary=&source=" target="_blank">
+                    <img
+                       height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/linkedin.png" style="border-radius:3px;display:block;" width="20"
+                    />
+                  </a> </td>
                               </tr>
                             </table>
                           </td>
@@ -352,7 +364,7 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;padding-top:20px;padding-bottom:30px;word-break:break-word;">
-                      <div style="font-family:helvetica;font-size:10px;line-height:14px;text-align:left;color:#333333;">Use of the service and website is subject to our <a href="#">Terms of Use</a> and <a href="#">Privacy Statement</a>.<br /> © 2020 hapily. All rights reserved</div>
+                      <div style="font-family:helvetica;font-size:10px;line-height:14px;text-align:left;color:#333333;">Use of the service and website is subject to our <a href="https://www.hapily.de/impressum">Terms of Use</a> and <a href="https://www.hapily.de/datenschutz">Privacy Statement</a>.<br /> © 2020 hapily. All rights reserved</div>
                     </td>
                   </tr>
                 </table>
