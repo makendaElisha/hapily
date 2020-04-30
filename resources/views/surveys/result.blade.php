@@ -189,8 +189,9 @@
                             <span id="{{($areaKey + 1) *100 + $key}}" style="display:none">
                                 {{substr($symptom->recom_program_description, 300)}}
                             </span>
-                            <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">More...</button>
-
+                            @if(strlen($symptom->recom_program_description) > 300)
+                              <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">Weiterlesen...</button>
+                            @endif
                             {{-- {{$symptom->recom_program_description}} --}}
                           </p>
                           <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
@@ -217,7 +218,9 @@
                           <span id="{{($areaKey + 1) *1000 + $key}}" style="display:none">
                               {{substr($symptom->recom_book_description, 300)}}
                           </span>
-                          <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">More...</button>
+                          @if(strlen($symptom->recom_book_description) > 300)
+                            <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">Weiterlesen...</button>
+                          @endif
                           {{-- {{ $symptom->recom_book_description }} --}}
                         </p>
                         <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
@@ -318,11 +321,11 @@
       var x = document.getElementById(id);
       var nextBtn = x.nextElementSibling;
       if (x.style.display === "none") {
-          x.style.display = "block";
-          nextBtn.innerHTML = "Read less...";
+          x.style.display = "inline";
+          nextBtn.innerHTML = "Lese weniger...";
       } else {
           x.style.display = "none";
-          nextBtn.innerHTML = "Read more...";
+          nextBtn.innerHTML = "Weiterlesen...";
       }
   }
 </script>
