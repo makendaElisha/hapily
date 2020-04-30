@@ -149,7 +149,7 @@
             <p class="normal-text" ><br />
               Im Bereich “Lebensbereich” hast du scheinbar keine offensichtlichen Themen, die dich unglücklich machen. Im Besten Fall gibt es hier demnach einfach wenig Verbesserungspotential für dich. Manchmal sind Themen, die uns unglücklich machen, allerdings auch unterbewusst vorhanden. Regelmäßige Reflektion und Journaling können uns dabei helfen, solche möglichen Herausforderungen aus dem Unterbewusstsein offenzulegen. Mehr dazu kannst du in unserem allgemeinen Hapily Onlinekurs erfahren 
             </p>
-            <div class="recommanded-book-purple-link" style="text-align: left;"><a href="#" class="recommanded-book-purple-link">&gt; Mehr erfahren...</a></div>
+            <div class="recommanded-book-purple-link" style="text-align: left;"><a href="#" class="recommanded-book-purple-link">&gt; Kaufen...</a></div>
           </div>
       @else
         @php
@@ -158,7 +158,7 @@
         @foreach ($area->symptoms as $key => $symptom)
           <div class="section-analyse-purple-header-container">
             <h4 class="purple-header">{{$key + 1}}. {{$symptom->name}}</h4>
-            <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen <span class="purple-text">deine </span> Herausforderung</p>
+            <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen deine Herausforderung</p>
             <div class="indented-content-container">
               <div class="text-contet">
                 <p class="normal-text"><strong>Sofort-Tipp</strong></p>
@@ -177,7 +177,7 @@
                         @if(in_array($ext, $supportImageExtensions))
                             <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="book-image" /></a>
                         @else
-                          <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/hapily-coach-image.png')}}" alt="" class="coach-image"></a>
+                          <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/hapily-coach-image2.png')}}" alt="" class="coach-image"></a>
                         @endif
                       </div>
                       <div class="coach-box-col2 w-col w-col-9">
@@ -194,7 +194,7 @@
                             @endif
                             {{-- {{$symptom->recom_program_description}} --}}
                           </p>
-                          <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
+                          <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Kaufen...</a></div> 
                         </div>
                       </div>
                     </div>
@@ -223,7 +223,7 @@
                           @endif
                           {{-- {{ $symptom->recom_book_description }} --}}
                         </p>
-                        <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
+                        <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Kaufen...</a></div> 
                       </div>
                     </div>
                   </div>
