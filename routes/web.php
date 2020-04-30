@@ -25,6 +25,8 @@ Route::get('/', function () {
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
+Route::get('/survey/result/{token}', 'SurveyController@userResult')->name('survey.result');
+
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
@@ -60,7 +62,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/survey', 'SurveyController@index')->name('survey.index');
     Route::get('/survey/submit', 'SurveyController@receiveSurvey')->name('survey.simulate');
     //Route::post('/survey/result/{token}', 'SurveyController@userResult')->name('survey.result');
-    Route::get('/survey/result/{token}', 'SurveyController@userResult')->name('survey.result');
+    // Route::get('/survey/result/{token}', 'SurveyController@userResult')->name('survey.result');
 
     Route::view('/profile', 'profile.index');
 

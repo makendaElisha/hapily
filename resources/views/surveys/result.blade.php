@@ -80,7 +80,7 @@
                   <div class="progress-bar-wrapper">
                     <div class="embed-score-pogress-bar-label-container">
                       {{-- <div class="embeded-score-label">Beruf &amp; Karriere</div> --}}
-                      <div class="embeded-score-label"><a href="#{{$area->name}}" style="color: #333;">{{$area->name}}</a></div>
+                      <div class="embeded-score-label"><a href="#{{$area->name}}" style="color: #333;">> {{$area->name}}</a></div>
                       <div class="embeded-score-label">{{$area->areaScore}}</div>
                     </div>
                     <div class="embeded-score-progress-bar-career w-embed">
@@ -115,7 +115,7 @@
   </div>
   <div class="section-analyse">
     <div class="section-analyse-div-container">
-      <h3 class="section-analyse-header">Deine Analyse pro Lebensbereich<br></h3>
+      <h1 class="section-analyse-header heading-6">Deine Analyse pro Lebensbereich<br></h1>
       <div class="section-analyse-text">In der Glücksforschung ist man sich einig, dass es - obwohl Glück für jeden etwas anderes bedeuten kann - ein paar <strong>Glücksfaktoren</strong> gibt, die für alle Menschen gelten. Dazu gehören z.B., dass wir einem <strong>erfüllenden Beruf</strong> nachgehen, <strong>liebevolle Beziehungen</strong> pflegen, physisch und mental <strong>gesund</strong> sind und einen <strong>Sinn</strong> in unserem Leben erkennen.<br><br>Lass uns nun einen tieferen Blick auf <strong>deine Potenziale</strong> pro Lebensbereich werfen:<br></div>
     </div>
     
@@ -194,7 +194,7 @@
                             @endif
                             {{-- {{$symptom->recom_program_description}} --}}
                           </p>
-                          <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Kaufen...</a></div> 
+                          <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
                         </div>
                       </div>
                     </div>
@@ -242,7 +242,8 @@
   </div>
   <div class="section-text-after-analyse">
     <div class="section-text-after-analyse-container">
-      <h3 class="h3-black-heading">Könnte es sein, dass du schon einmal eine oder mehrere der folgenden Aussagen über dich geglaubt hast?</h3>
+      <h3 class="section-analyse-header heading-6">Glaubenssätze<br></h3>
+      <p class="paragraph"><strong>Könnte es sein, dass du schon einmal eine oder mehrere der folgenden Aussagen über dich geglaubt hast?</strong></p><br />
       <!-- belief content starts here -->
       @php
         count($userBelives) > 9 ? $believesToShow = array_slice($userBelives, 0, 9) : $believesToShow = $userBelives;
@@ -289,7 +290,7 @@
   </div>
   <div class="section-before-footer">
     <div class="section-before-footer-container">
-      <h3 class="section-before-footer-header">Wer steckt hinter dem Glücks-Test?</h3>
+      <h3 class="section-before-footer-header heading-6">Wer steckt hinter dem Glücks-Test?</h3>
       <div class="section-before-footer-text">Die Glücks-Experten Denis Martin und Marcus Börner haben hapily gegründet, um Menschen dabei zu unterstützen, die wohl wichtigste Frage für sich zu klären: Was macht ein glückliches Leben aus?<br><br>Als Autor von &quot;Managing Happiness&quot; konnte Marcus bereits unzähligen Menschen dabei helfen, sich ein erfülltes Leben zu erschaffen. Denis hat als Life Coach hunderte von Menschen auf dem Weg zu ihrem Wunschleben begleitet.<br><br>Mit hapily haben die beiden eine Akademie für persönliches Wachstum gegründet, um fortan noch viel mehr Menschen erreichen und bei ihrer Transformation begleiten zu können.<br><br>Mehr erfahren auf: <span class="blue-text"><a href="https://www.hapily.de" target="_blank">www.hapily.de</a></span></div>
       <div class="section-before-footer-two-images-content"><img src="{{ asset('all/images/marcus-image.png')}}" width="150" height="150" srcset="{{ asset('all/images/marcus-image-p-500.png')}} 500w, images/marcus-image.png')}} 544w" sizes="(max-width: 479px) 120px, 150px" alt="" class="section-before-footer-image1"><img src="{{ asset('all/images/denis-image.png')}}" width="150" height="150" alt="" class="section-before-footer-image2"></div>
       <p class="section-before-footer-quote"><span class="green-quote">&quot;</span><strong>Jede Transformation fängt mit einer Erkenntnis und dem Willen für Veränderung an</strong><span class="green-quote">&quot;</span> <br>- Denis &amp; Marcus (Autoren, Coaches und Gründer von hapily)</p>
