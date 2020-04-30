@@ -668,6 +668,50 @@ class SurveyController extends Controller
                 
                 $customer->save();
             }
+
+            //Store scores data of current survey.
+
+            $getAreas = Question::where('reference', 'like', 'symptoms_%')->pluck('reference');
+            $userScore= 0;
+            $score = Score::create([
+                'customer_id' => $customer->id,
+            ]);
+            foreach ($getAreas as $area) {
+                $stgToRemove = ['symptoms_', '_user'];
+                $areaName = str_replace($stgToRemove, '', $area);
+                
+                $symptoms = Answer::where('customer_id', $customer->id)
+                                    ->where('reference', 'like', $area)
+                                    ->join('symptoms', 'answers.name', '=', 'symptoms.name')
+                                    ->orderBy('res_prio', 'DESC')
+                                    ->get();
+
+                $stg = str_replace('symptoms', 'score', $area);
+                $baseScore = (int) Answer::where('customer_id', $customer->id)
+                                            ->where('reference', 'like', $stg)
+                                            ->pluck('name')
+                                            ->first();
+                $maxSubNumber = 50 * $baseScore / 100;
+                
+                $areaId = AreaOfLife::where('name', $areaName)->first();
+                $symptomsNumber = count(Symptom::where('area_of_life_id', $areaId->id)->get());
+                $selectedSymptomsNumber = count($symptoms);
+
+                //All division exceptions to be attended.
+                try {
+                    $pointPerSymptom = $maxSubNumber / $symptomsNumber;
+                } catch (\Exception $exception) {
+                    $pointPerSymptom = 0;
+                }
+
+                $totalScoreSymptoms = $pointPerSymptom * $selectedSymptomsNumber;
+                $areaScore = (int) floor($baseScore - $totalScoreSymptoms);                
+                $score->$areaName = $areaScore;
+                $userScore += $areaScore;
+            }
+
+            $score->total_areas = $userScore;
+            $score->save();
         }
 
         //Create Salesforce Lead N.B. This wont work when using webhook test because webhook doesn't create score and all of that
@@ -908,7 +952,7 @@ class SurveyController extends Controller
             'Company'                           => $customerData->prename,
             'email'                             => $customerData->email,
             'Gender__c'                         => $gender,
-            'Date_of_Birth__c'                  =>$customerData->birth,
+            'Date_of_Birth__c'                  => $customerData->birth,
             'MobilePhone'                       => $customerData->phone_number,
             'Overall_Happiness_Score__c'        => $scoreCustomer->total_areas,
             'Happiness_Score_Career__c'         => $scoreCustomer->beruf_und_karriere,
