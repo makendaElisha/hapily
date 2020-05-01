@@ -12,7 +12,7 @@
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
                                 <div class="peer peer-greed"><span id="sparklinedash"></span></div>
-                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">+1.2k</span></div>
+                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">{{$totalSurveys}}</span></div>
                             </div>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
                                 <div class="peer peer-greed"><span id="sparklinedash2"></span></div>
-                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">35%</span></div>
+                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">{{$maleSexSurveys}}%</span></div>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
                                 <div class="peer peer-greed"><span id="sparklinedash3"></span></div>
-                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">55%</span></div>
+                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">{{$femaleSexSurveys}}%</span></div>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
                                 <div class="peer peer-greed"><span id="sparklinedash4"></span></div>
-                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">10%</span></div>
+                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">{{$otherSexSurveys}}%</span></div>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,16 @@
                         <div class="layers">
                             <div class="layer w-100">
                                 <div class="layers">
-                                    <div class="layer w-100">
+                                    @foreach ($areasOfLife as $key => $area)
+                                        <div class="layer w-100">
+                                            <h5 class="mB-5">{{$area->number}}</h5><small class="fw-600 c-grey-700">{{$area->name}}</small> <span class="pull-right c-grey-600 fsz-sm">{{$area->percentage}}%</span>
+                                            <div class="progress mT-10">
+                                                <div class="progress-bar bgc-deep-blue-500" role="progressbar" aria-valuenow="{{$area->percentage}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$area->percentage}}%"><span class="sr-only">{{$area->percentage}}% Complete</span></div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+
+                                    {{-- <div class="layer w-100">
                                         <h5 class="mB-5">420</h5><small class="fw-600 c-grey-700">Beruf & Karriere</small> <span class="pull-right c-grey-600 fsz-sm">50%</span>
                                         <div class="progress mT-10">
                                             <div class="progress-bar bgc-deep-purple-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%"><span class="sr-only">50% Complete</span></div>
@@ -94,12 +103,13 @@
                                         <div class="progress mT-10">
                                             <div class="progress-bar bgc-blue-grey-500" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:90%"><span class="sr-only">90% Complete</span></div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="peers pT-20 mT-20 bdT fxw-nw@lg+ jc-sb ta-c gap-10">
                                     <div class="peer">
                                         <div class="easy-pie-chart" data-size="80" data-percent="75" data-bar-color="#f44336"><span></span></div>
-                                        <h6 class="fsz-sm">New Surveys</h6></div>
+                                        {{-- <h6 class="fsz-sm">New Surveys</h6></div> --}}
+                                        <h6 class="fsz-sm">Today's Surveys: {{$todaySurvey}}</h6></div>
                                     <div class="peer">
                                         <div class="easy-pie-chart" data-size="80" data-percent="50" data-bar-color="#2196f3"><span></span></div>
                                         <h6 class="fsz-sm">New Subscriptions</h6></div>

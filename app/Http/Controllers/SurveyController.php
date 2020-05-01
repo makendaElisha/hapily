@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Entities\Lead;
 use App\Entities\Score;
 use App\Entities\Answer;
@@ -12,13 +11,16 @@ use App\Entities\Customer;
 use App\Entities\Question;
 use App\Entities\AreaOfLife;
 use App\Mail\SendSurveyLink;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+
 use Omniphx\Forrest\Providers\Laravel\Facades\Forrest;
+use Carbon\Carbon;
+use DateTime;
 
 class SurveyController extends Controller
 {
@@ -158,6 +160,47 @@ class SurveyController extends Controller
             'averageHappinessAllParticipants',  
         ]));
 
+    }
+
+    public function dashboard()
+    {
+        $today = Carbon::now()->toArray();        
+        $todaySurvey = DB::table('customers')
+                            ->whereDay('submit_date', $today['day'])
+                            ->whereMonth('submit_date', $today['month'])
+                            ->whereYear('submit_date', $today['year'])
+                            ->get()
+                            ->count();
+
+        $totalSurveys = Score::all()->count();
+        $maleSexSurveys = Customer::where('gender', 'männlich')->count() / $totalSurveys * 100;
+        $femaleSexSurveys = Customer::where('gender', 'weiblich')->count() / $totalSurveys * 100;
+        $otherSexSurveys = Customer::where('gender', 'Divers')->count() / $totalSurveys * 100;
+        $areasOfLife = [];
+
+        $getAreas = Question::where('reference', 'like', 'symptoms_%')->pluck('reference');
+        $totalSymptoms = Answer::where('reference', 'like', 'symptoms_%')->count();
+
+        foreach ($getAreas as $key => $area) {
+            $areaObject = (object)[];
+            $number = Answer::where('reference', $area)->count();
+            $percentage = $number / $totalSymptoms * 100;
+
+            $areaObject->name = $this->areaInDbNameFormat($area);
+            $areaObject->number = $number;
+            $areaObject->percentage = $percentage;
+
+            array_push($areasOfLife, $areaObject);
+        }
+
+        return view('dashboard', compact([
+            'todaySurvey',
+            'totalSurveys',
+            'maleSexSurveys',
+            'femaleSexSurveys',
+            'otherSexSurveys',
+            'areasOfLife'
+        ]));
     }
 
 
