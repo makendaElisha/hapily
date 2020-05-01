@@ -40,7 +40,7 @@
         <p class="paragraph">schön, dass du den Test abgeschlossen hast und deinem Glück auf die Sprünge helfen willst :-) Deine aktuelle Situation sowie die Ursachen dafür besser zu verstehen, ist der erste Schritt in Richtung eines erfüllteren und zufriedeneren Lebens.</p>
         <p class="paragraph-4">Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$userScore}} von {{$numberAreas * 10}} Punkten.</strong></p>
         <p class="paragraph-2">Im Durchschnitt erreichen Teilnehmer einen Score von {{$averageHappinessAllParticipants}}. In der folgenden Grafik kannst du dein Glückslevel pro Lebensbereich ablesen und mit dem Durchschnitt der anderen Teilnehmer vergleichen.</p>
-        <p class="paragraph-2">Hier noch ein Tipp, wie du für dich das Beste aus dem Glücks-Bericht herausholst: Du kannst dir entweder einen Lebensbereich nach dem anderen anschauen oder gelangst direkt zu einem bestimmten Lebensbereich, indem du diesen im Balkendiagramm anklickst. Für jede von dir im Glücks-Test angekreuzte Herausforderung erhältst du einen Sofort-Tipp von unseren Experten sowie weiterführende Hinweise. Trage dich unbedingt auch rechts für das kostenlose Online-Training ein. Darin erfährst du 3 praktische Tipps, mit denen du dein Glücks-Level soft steigern kannst.</p>
+        <p class="paragraph-2">Hier noch ein Tipp, wie du für dich das Beste aus dem Glücks-Bericht herausholst: Du kannst dir entweder einen Lebensbereich nach dem anderen anschauen oder gelangst direkt zu einem bestimmten Lebensbereich, indem du diesen im Balkendiagramm anklickst. Für jede von dir im Glücks-Test angekreuzte Herausforderung erhältst du einen Sofort-Tipp von unseren Experten sowie weiterführende Hinweise. Trage dich unbedingt auch rechts für das kostenlose Online-Training ein. Darin erfährst du 3 praktische Tipps, mit denen du dein Glücks-Level sofort steigern kannst.</p>
       </div>
       <div class="score-elements">
         <h3 class="heading-6">Dein Happiness-Score pro &quot;Lebensbereich&quot;</h3>
@@ -64,7 +64,7 @@
             </div>
             <ul class="socre-list w-list-unstyled">
               <li class="list-item-score">Am <span class="green-list-text-span">glücklichsten </span>schätzt du dich im Lebensbereich <strong>{{$resultData[0]->name}} </strong>ein, gefolgt von <strong>{{$resultData[1]->name}}</strong> und <strong>{{$resultData[2]->name}}.</strong></li>
-              <li class="list-item-score">Das größte <span class="text-span-5">Verbesserungspotenzial</span> scheinst du im der <strong>{{end($resultData)->name}}</strong> zu haben.</li>
+              <li class="list-item-score">Das größte <span class="text-span-5">Verbesserungspotenzial</span> scheinst du im Bereich <strong>{{end($resultData)->name}}</strong> zu haben.</li>
             </ul>
           </div>
           <div class="score-column2 w-col w-col-6 w-col-medium-6">
@@ -120,6 +120,7 @@
     </div>
     
     @foreach ($resultData as $areaKey => $area)
+    <div class="area-of-life-symptoms-container w-container">
       <div class="life-area-container">
         <div class="life-area-container-header">
           <h3 class="life-area-header" id="{{$area->name}}">{{$area->name}}</h3>
@@ -237,6 +238,7 @@
       <div class="purple-paragraph-container">
         {{-- <p class="purple-header">&gt; 7 weitere Herausforderungen im Lebensbereich Partnerschaft anzeigen</p> --}}
       </div>
+    </div>
     @endforeach
 
   </div>
