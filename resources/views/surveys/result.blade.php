@@ -17,6 +17,13 @@
   <link href="{{ asset('all/images/favicon.png')}}" rel="shortcut icon" type="image/x-icon">
   <link href="{{ asset('all/images/webclip.png')}}')}}" rel="apple-touch-icon">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    .moreSymtpoms:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+
 </head>
 <body>
   <div class="section-header"><img src="{{ asset('all/images/hapily_logoprimary.svg')}}" alt="" class="survey-logo">
@@ -157,87 +164,171 @@
             $supportImageExtensions = ['gif','jpg','jpeg','png'];
         @endphp
         @foreach ($area->symptoms as $key => $symptom)
-          <div class="section-analyse-purple-header-container">
-            <h4 class="purple-header">{{$key + 1}}. {{$symptom->name}}</h4>
-            <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen deine Herausforderung</p>
-            <div class="indented-content-container">
-              <div class="text-contet">
-                <p class="normal-text"><strong>Sofort-Tipp</strong></p>
-                <p class="normal-text">{{$symptom->instant_help}}</p>
-              </div>
-              <!-- coaching content here -->
-              {{-- @if(strlen($symptom->recom_program) != 0)) --}}
-                <div class="coaching-tip-content">
-                  <p class="normal-text"><strong>Coach-Tipp</strong></p>
+          @if($key <= 1)
+            <div class="section-analyse-purple-header-container">
+              <h4 class="purple-header">{{$key + 1}}. {{$symptom->name}}</h4>
+              <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen deine Herausforderung</p>
+              <div class="indented-content-container">
+                <div class="text-contet">
+                  <p class="normal-text"><strong>Sofort-Tipp</strong></p>
+                  <p class="normal-text">{{$symptom->instant_help}}</p>
+                </div>
+                <!-- coaching content here -->
+                {{-- @if(strlen($symptom->recom_program) != 0)) --}}
+                  <div class="coaching-tip-content">
+                    <p class="normal-text"><strong>Coach-Tipp</strong></p>
+                    <div class="coach-image-box">
+                      <div class="coach-box-columns w-row">
+                        <div class="coach-box-col1 w-col w-col-3">
+                          @php
+                              $ext = strtolower(pathinfo($symptom->recom_program_image, PATHINFO_EXTENSION));
+                          @endphp
+                          @if(in_array($ext, $supportImageExtensions))
+                              <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="book-image" /></a>
+                          @else
+                            <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/hapily-coach-image2.png')}}" alt="" class="coach-image"></a>
+                          @endif
+                        </div>
+                        <div class="coach-box-col2 w-col w-col-9">
+                          <div class="coach-box-conent">
+                            <p class="coach-box-content-paragraph">
+                              <span>
+                                {{substr($symptom->recom_program_description, 0, 300)}}
+                              </span>
+                              <span id="{{($areaKey + 1) *100 + $key}}" style="display:none">
+                                  {{substr($symptom->recom_program_description, 300)}}
+                              </span>
+                              @if(strlen($symptom->recom_program_description) > 300)
+                                <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">Weiterlesen...</button>
+                              @endif
+                              {{-- {{$symptom->recom_program_description}} --}}
+                            </p>
+                            <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {{-- @endif --}}
+                <!-- coaching content ends here -->
+
+                <!-- book content starts here -->
+                <div class="book-tip-content">
+                  <p class="normal-text"><strong>Buch-Tipp</strong></p>
                   <div class="coach-image-box">
                     <div class="coach-box-columns w-row">
-                      <div class="coach-box-col1 w-col w-col-3">
-                        @php
-                            $ext = strtolower(pathinfo($symptom->recom_program_image, PATHINFO_EXTENSION));
-                        @endphp
-                        @if(in_array($ext, $supportImageExtensions))
-                            <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="book-image" /></a>
-                        @else
-                          <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/hapily-coach-image2.png')}}" alt="" class="coach-image"></a>
-                        @endif
-                      </div>
+                      <div class="coach-box-col1 w-col w-col-3"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-image"></a></div>
                       <div class="coach-box-col2 w-col w-col-9">
                         <div class="coach-box-conent">
                           <p class="coach-box-content-paragraph">
                             <span>
-                              {{substr($symptom->recom_program_description, 0, 300)}}
+                              {{substr($symptom->recom_book_description, 0, 300)}}
                             </span>
-                            <span id="{{($areaKey + 1) *100 + $key}}" style="display:none">
-                                {{substr($symptom->recom_program_description, 300)}}
+                            <span id="{{($areaKey + 1) *1000 + $key}}" style="display:none">
+                                {{substr($symptom->recom_book_description, 300)}}
                             </span>
-                            @if(strlen($symptom->recom_program_description) > 300)
-                              <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">Weiterlesen...</button>
+                            @if(strlen($symptom->recom_book_description) > 300)
+                              <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">Weiterlesen...</button>
                             @endif
-                            {{-- {{$symptom->recom_program_description}} --}}
+                            {{-- {{ $symptom->recom_book_description }} --}}
                           </p>
-                          <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
+                          <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Kaufen...</a></div> 
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              {{-- @endif --}}
-              <!-- coaching content ends here -->
+                <!-- book content ends here -->
+              </div>
+            </div>
+            @if(count($area->symptoms) > 2  && $key == 1)
+              <p class="purple-header moreSymtpoms" onclick="showMoreSymptoms({{($areaKey + 1)}})">&gt; {{ count($area->symptoms) - 2 }} <span id="symptomShowMoreText-{{($areaKey + 1)}}">weitere </span>Herausforderungen im {{ $area->name }} anzeigen</p>
+            @endif
+          @endif
+          <!-- hidden symptoms start here -->
+            @if($key > 1)
+              <div class="hidden-symptoms-{{($areaKey + 1)}}" id="symptom-div-{{($areaKey + 1)}}" style="display: none;">
+                <div class="section-analyse-purple-header-container">
+                  <h4 class="purple-header">{{$key + 1}}. {{$symptom->name}}</h4>
+                  <p class="centered-paragraph"><strong>{{$symptom->othersHavingThis}}%</strong> aller Teilnehmer teilen deine Herausforderung</p>
+                  <div class="indented-content-container">
+                    <div class="text-contet">
+                      <p class="normal-text"><strong>Sofort-Tipp</strong></p>
+                      <p class="normal-text">{{$symptom->instant_help}}</p>
+                    </div>
+                    <!-- coaching content here -->
+                    {{-- @if(strlen($symptom->recom_program) != 0)) --}}
+                      <div class="coaching-tip-content">
+                        <p class="normal-text"><strong>Coach-Tipp</strong></p>
+                        <div class="coach-image-box">
+                          <div class="coach-box-columns w-row">
+                            <div class="coach-box-col1 w-col w-col-3">
+                              @php
+                                  $ext = strtolower(pathinfo($symptom->recom_program_image, PATHINFO_EXTENSION));
+                              @endphp
+                              @if(in_array($ext, $supportImageExtensions))
+                                  <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="book-image" /></a>
+                              @else
+                                <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/hapily-coach-image2.png')}}" alt="" class="coach-image"></a>
+                              @endif
+                            </div>
+                            <div class="coach-box-col2 w-col w-col-9">
+                              <div class="coach-box-conent">
+                                <p class="coach-box-content-paragraph">
+                                  <span>
+                                    {{substr($symptom->recom_program_description, 0, 300)}}
+                                  </span>
+                                  <span id="{{($areaKey + 1) *100 + $key}}" style="display:none">
+                                      {{substr($symptom->recom_program_description, 300)}}
+                                  </span>
+                                  @if(strlen($symptom->recom_program_description) > 300)
+                                    <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">Weiterlesen...</button>
+                                  @endif
+                                  {{-- {{$symptom->recom_program_description}} --}}
+                                </p>
+                                <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    {{-- @endif --}}
+                    <!-- coaching content ends here -->
 
-              <!-- book content starts here -->
-              <div class="book-tip-content">
-                <p class="normal-text"><strong>Buch-Tipp</strong></p>
-                <div class="coach-image-box">
-                  <div class="coach-box-columns w-row">
-                    <div class="coach-box-col1 w-col w-col-3"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-image"></a></div>
-                    <div class="coach-box-col2 w-col w-col-9">
-                      <div class="coach-box-conent">
-                        <p class="coach-box-content-paragraph">
-                          <span>
-                            {{substr($symptom->recom_book_description, 0, 300)}}
-                          </span>
-                          <span id="{{($areaKey + 1) *1000 + $key}}" style="display:none">
-                              {{substr($symptom->recom_book_description, 300)}}
-                          </span>
-                          @if(strlen($symptom->recom_book_description) > 300)
-                            <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">Weiterlesen...</button>
-                          @endif
-                          {{-- {{ $symptom->recom_book_description }} --}}
-                        </p>
-                        <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Kaufen...</a></div> 
+                    <!-- book content starts here -->
+                    <div class="book-tip-content">
+                      <p class="normal-text"><strong>Buch-Tipp</strong></p>
+                      <div class="coach-image-box">
+                        <div class="coach-box-columns w-row">
+                          <div class="coach-box-col1 w-col w-col-3"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-image"></a></div>
+                          <div class="coach-box-col2 w-col w-col-9">
+                            <div class="coach-box-conent">
+                              <p class="coach-box-content-paragraph">
+                                <span>
+                                  {{substr($symptom->recom_book_description, 0, 300)}}
+                                </span>
+                                <span id="{{($areaKey + 1) *1000 + $key}}" style="display:none">
+                                    {{substr($symptom->recom_book_description, 300)}}
+                                </span>
+                                @if(strlen($symptom->recom_book_description) > 300)
+                                  <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">Weiterlesen...</button>
+                                @endif
+                                {{-- {{ $symptom->recom_book_description }} --}}
+                              </p>
+                              <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Kaufen...</a></div> 
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                    <!-- book content ends here -->
                   </div>
                 </div>
               </div>
-              <!-- book content ends here -->
-            </div>
-          </div>
+            @endif
+          <!-- end hidden symptoms -->
         @endforeach 
       @endif
-      <div class="purple-paragraph-container">
-        {{-- <p class="purple-header">&gt; 7 weitere Herausforderungen im Lebensbereich Partnerschaft anzeigen</p> --}}
-      </div>
     </div>
     @endforeach
 
@@ -331,4 +422,22 @@
           nextBtn.innerHTML = "Weiterlesen...";
       }
   }
+
+  function showMoreSymptoms(id) {
+    // var divBlock = document.getElementById('symptom-div-'+id);
+    //need to use class as there many divs to turn display from none to block
+    var divBlock = document.getElementsByClassName("hidden-symptoms-"+id); 
+    var symptonMoreText = document.getElementById('symptomShowMoreText-'+id);
+
+    for (var i = 0; i < divBlock.length; i++) {
+      if (divBlock[i].style.display === "none") {
+        divBlock[i].style.display = "block";
+        symptonMoreText.innerHTML = "weniger ";
+      } else {
+        divBlock[i].style.display = "none";
+        symptonMoreText.innerHTML = "weitere ";
+      }
+    }
+  }
+
 </script>
