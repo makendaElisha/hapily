@@ -31,9 +31,7 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    });
+    Route::get('/dashboard', "surveyController@dashboard");
     
     //Areas of Life
     Route::get('/area-of-life', 'AreaOfLifeController@index')->name('area.index');
