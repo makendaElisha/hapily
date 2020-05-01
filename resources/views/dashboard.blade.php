@@ -24,7 +24,7 @@
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
                                 <div class="peer peer-greed"><span id="sparklinedash2"></span></div>
-                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">{{$maleSexSurveys}}%</span></div>
+                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500">{{number_format($maleSexSurveys, 2)}}%</span></div>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
                                 <div class="peer peer-greed"><span id="sparklinedash3"></span></div>
-                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">{{$femaleSexSurveys}}%</span></div>
+                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">{{number_format($femaleSexSurveys, 2)}}%</span></div>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <div class="layer w-100">
                             <div class="peers ai-sb fxw-nw">
                                 <div class="peer peer-greed"><span id="sparklinedash4"></span></div>
-                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">{{$otherSexSurveys}}%</span></div>
+                                <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-blue-50 c-blue-500">{{number_format($otherSexSurveys, 2)}}%</span></div>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                                 <div class="layers">
                                     @foreach ($areasOfLife as $key => $area)
                                         <div class="layer w-100">
-                                            <h5 class="mB-5">{{$area->number}}</h5><small class="fw-600 c-grey-700">{{$area->name}}</small> <span class="pull-right c-grey-600 fsz-sm">{{$area->percentage}}%</span>
+                                            <h5 class="mB-5">{{$area->number}}</h5><small class="fw-600 c-grey-700">{{$area->name}}</small> <span class="pull-right c-grey-600 fsz-sm">{{number_format($area->percentage, 2)}}%</span>
                                             <div class="progress mT-10">
                                                 <div class="progress-bar bgc-deep-blue-500" role="progressbar" aria-valuenow="{{$area->percentage}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$area->percentage}}%"><span class="sr-only">{{$area->percentage}}% Complete</span></div>
                                             </div>
