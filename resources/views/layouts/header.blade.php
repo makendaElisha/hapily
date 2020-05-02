@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link href="{{ asset('all/images/favicon.png')}}" rel="shortcut icon" type="image/x-icon">
+    <link href="{{ asset('all/images/webclip.png')}}')}}" rel="apple-touch-icon">
     <title>Hapily</title>
     <style>
         #loader {
