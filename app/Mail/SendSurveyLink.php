@@ -30,7 +30,7 @@ class SendSurveyLink extends Mailable
      */
     public function build()
     {
-        return $this->from('testergebnis@hapily.de') //Replace it with hapily email to use to send emails
+        return $this->from('hallo@hapily.de')
                     ->subject('Dein Glücks-Bericht')
                     ->view('surveys.email')
                     ->with('data', $this->data);

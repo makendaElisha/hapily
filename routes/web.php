@@ -31,7 +31,7 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/dashboard', "surveyController@dashboard");
+    Route::get('/dashboard', "SurveyController@dashboard");
     
     //Areas of Life
     Route::get('/area-of-life', 'AreaOfLifeController@index')->name('area.index');
