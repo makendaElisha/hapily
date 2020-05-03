@@ -681,9 +681,9 @@ class SurveyController extends Controller
         }
         
         if($customerData->newsletter_opt_in == null){
-            $newletter = 0;
+            $newsletter = 0;
         }else {
-            $newletter = $customerData->newsletter_opt_in;
+            $newsletter = $customerData->newsletter_opt_in;
         }
         
         if($customerData->call_opt_in == null){
