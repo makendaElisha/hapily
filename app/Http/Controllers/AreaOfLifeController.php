@@ -68,8 +68,6 @@ class AreaOfLifeController extends Controller
      */
     public function edit(AreaOfLife $areaOfLife)
     {
-        // $areaOfLife = AreaOfLife::with(['symptoms'])->find($areaOfLife);
-
         return view('areas.edit', compact('areaOfLife'));
     }
 

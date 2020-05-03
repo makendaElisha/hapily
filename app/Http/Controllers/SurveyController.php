@@ -36,12 +36,6 @@ class SurveyController extends Controller
         return view('surveys.index', compact('customers'));
     }
 
-    public function showResult(Customer $customer)
-    {
-
-        return view('surveys.index', compact('customers'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -52,6 +46,11 @@ class SurveyController extends Controller
         return view('surveys.create');
     }
 
+    /**
+     * Display the user's survey result.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function userResult(Request $request)
     {
         $token = $request->token;
@@ -161,9 +160,15 @@ class SurveyController extends Controller
         ]));
 
     }
-
+    
+    /**
+     * Display dashboard values.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function dashboard()
     {
+        //Today's surveys
         $today = Carbon::now()->toArray();        
         $todaySurvey = DB::table('customers')
                             ->whereDay('submit_date', $today['day'])
@@ -171,11 +176,25 @@ class SurveyController extends Controller
                             ->whereYear('submit_date', $today['year'])
                             ->get()
                             ->count();
+        //Total Subscriptions                   
+        $totalSubscriptions = Customer::where('newsletter_opt_in', true)->count();
 
-        $totalSurveys = Score::all()->count();
-        $maleSexSurveys = Customer::where('gender', 'männlich')->count() / $totalSurveys * 100;
-        $femaleSexSurveys = Customer::where('gender', 'weiblich')->count() / $totalSurveys * 100;
-        $otherSexSurveys = Customer::where('gender', 'Divers')->count() / $totalSurveys * 100;
+        //Total Leads
+        $totalLeads = Customer::count();
+
+        //TotalSurveys
+        $totalSurveys = Score::count();
+
+        //Male participants
+        $maleSexSurveys = Customer::where('gender', 'männlich')->count();
+
+        //Female participants
+        $femaleSexSurveys = Customer::where('gender', 'weiblich')->count();
+
+        //Other participants
+        $otherSexSurveys = Customer::where('gender', 'Divers')->count();
+
+        //Average scores per area of life
         $areasOfLife = [];
 
         $getAreas = Question::where('reference', 'like', 'symptoms_%')->pluck('reference');
@@ -183,18 +202,23 @@ class SurveyController extends Controller
 
         foreach ($getAreas as $key => $area) {
             $areaObject = (object)[];
-            $number = Answer::where('reference', $area)->count();
-            $percentage = $number / $totalSymptoms * 100;
+            $areaName = strtr($area, ['symptoms_' => '','_user' => '']);
+            $getPerAreaScores = Score::pluck($areaName);
+            $averageAreaScore = is_null($getPerAreaScores) ? 0 : (int) (($getPerAreaScores)->sum() / count($getPerAreaScores));
 
+            //Area of life name
             $areaObject->name = $this->areaInDbNameFormat($area);
-            $areaObject->number = $number;
-            $areaObject->percentage = $percentage;
+
+            //Area of life average score of all users
+            $areaObject->averageAreaScore = $averageAreaScore;
 
             array_push($areasOfLife, $areaObject);
         }
 
         return view('dashboard', compact([
             'todaySurvey',
+            'totalSubscriptions',
+            'totalLeads',
             'totalSurveys',
             'maleSexSurveys',
             'femaleSexSurveys',
@@ -203,6 +227,11 @@ class SurveyController extends Controller
         ]));
     }
 
+    /**
+     * Receive callback and store relevant data.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function surveyHook(Request $request)
     {
         $dataArray = json_decode(json_encode($request->all()), true);
@@ -478,7 +507,11 @@ class SurveyController extends Controller
     }
 
 
-    //Format area of life from db format to user friendly format
+    /**
+     * Format areas of life from db synthax to user friendly format.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function areaInDbNameFormat($areaInDB)
     {
         switch ($areaInDB) {

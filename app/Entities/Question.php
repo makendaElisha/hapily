@@ -4,17 +4,28 @@ namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Question
+ *
+ * @property int $id
+ * 
+ * @property string $name
+ * @property string $reference
+ * 
+ * @property HasMany|Symptom[] symptoms
+ * @property Carbon created_at
+ * @property Carbon updated_at
+ */
+
 class Question extends Model
 {
-    protected $guarded = []; //Change to fillable
+    protected $guarded = [];
 
-    // public function customer()
-    // {
-    //     return $this->belongsTo('App\Entities\Customer');
-    // }
-
+    /**
+     * @return HasMany|Symptom[]
+     */
     public function symptoms()
     {
-        return $this->hasMany('App\Entities\Symptom');
+        return $this->hasMany(Symptom::class);
     }
 }

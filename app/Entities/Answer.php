@@ -4,22 +4,39 @@ namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Answer
+ *
+ * @property int $id
+ * @property int $customer_id
+ * @property int $question_id
+ * 
+ * @property string $name
+ * @property string $reference
+ * 
+ * @property BelongsTo|Customer customer
+ * @property BelongsTo|Question question
+ * @property Carbon created_at
+ * @property Carbon updated_at
+ */
+
 class Answer extends Model
 {
-    protected $guarded = []; //Change to Fillable
+    protected $guarded = [];
 
+    /**
+     * @return BelongsTo|Customer
+     */
     public function customer()
     {
-        return $this->belongsTo('App\Entities\Customer');
+        return $this->belongsTo(Customer::class);
     }
 
-    // public function question()
-    // {
-    //     return $this->belongsTo('App\Entities\Question');
-    // }
-
-    public function Mapping()
+    /**
+     * @return BelongsTo|Question
+     */
+    public function question()
     {
-        return $this->hasOne('App\Mapping', 'name', 'name');
+        return $this->belongsTo(Question::class);
     }
 }
