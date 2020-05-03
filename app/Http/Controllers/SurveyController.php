@@ -235,7 +235,6 @@ class SurveyController extends Controller
     public function surveyHook(Request $request)
     {
         $dataArray = json_decode(json_encode($request->all()), true);
-        //$dataArray = $request->all();
 
         if ($dataArray) {
             $answers = $dataArray["form_response"]["answers"];
@@ -288,16 +287,18 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_beruf_und_karriere_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])) {
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
-                        break;
 
+                        break;
                     case 'score_partnerschaft_user':
                         Answer::create([
                             'name' => $answer['number'],
@@ -308,13 +309,15 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_partnerschaft_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])){
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
                         break;
     
@@ -328,13 +331,15 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_sexualitaet_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])){
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
                         break;
     
@@ -348,13 +353,15 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_koerper_und_gesundheit_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])){
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
                         break;
                         
@@ -368,13 +375,15 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_freundschaften_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])){
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
                         break;
     
@@ -388,15 +397,17 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_familie_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])){
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
+                            break;
                         }
-                        break;
     
                     case 'score_spiritualitaet_user':
                         Answer::create([
@@ -408,13 +419,15 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_spiritualitaet_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])){
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
                         break;
     
@@ -423,15 +436,28 @@ class SurveyController extends Controller
                         break;
     
                     case 'money_invest_user':
-                        $customer->money_invest_willingness = $answer['choice']['label'];
+                        if(array_key_exists('other', $answer['choice'])) {
+                            $customer->money_invest_willingness = $answer['choice']['other'];
+                        }
+
+                        if(array_key_exists('label', $answer['choice'])){
+                            $customer->money_invest_willingness = $answer['choice']['label'];
+                        }
+
                         break;
     
                     case 'call_optin_user':
                         $customer->call_opt_in = $answer['boolean'];
+                        // $answer['boolean'] === true ?
+                        //                         $customer->call_opt_in = true :
+                        //                         $customer->call_opt_in = false;
                         break;
                    
                     case 'newsletter_optin_user':
                         $customer->newsletter_opt_in = $answer['boolean'];
+                        // $answer['boolean'] === true ? 
+                        //                         $customer->newsletter_opt_in = true :
+                        //                         $customer->newsletter_opt_in = false;
                         break;
     
                     case 'phone_number_user':
@@ -642,18 +668,26 @@ class SurveyController extends Controller
         
         if($customerData->time_invest_willingness == null){
             $timeInvest = 0;
+        }else {
+            $time_invest_willingness = $customerData->time_invest_willingness;
         }
         
         if($customerData->money_invest_willingness == null){
             $moneyInvest = 0;
+        }else {
+            $money_invest_willingness = $customerData->money_invest_willingness;
         }
         
         if($customerData->newsletter_opt_in == null){
             $newletter = 0;
+        }else {
+            $newsletter_opt_in = $customerData->newsletter_opt_in;
         }
         
         if($customerData->call_opt_in == null){
             $callOptin = 0;
+        }else {
+            $call_opt_in = $customerData->call_opt_in;
         }
         
         if($customerData->call_opt_in == null){
@@ -729,7 +763,8 @@ class SurveyController extends Controller
         //Get the results' file form public location in app. 
 
         try{
-            $fileApi = File::get("simulate/survey_api.txt");
+            // $fileApi = File::get("simulate/survey_api.txt");
+            $fileApi = File::get("simulate/survey_with_nulls.txt");
             $dataJson = substr($fileApi, 0, strrpos( $fileApi, '}') + 1);
             $dataArray = json_decode($dataJson, true);
 
@@ -794,16 +829,18 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_beruf_und_karriere_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])) {
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
-                        break;
 
+                        break;
                     case 'score_partnerschaft_user':
                         Answer::create([
                             'name' => $answer['number'],
@@ -814,13 +851,15 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_partnerschaft_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])){
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
                         break;
     
@@ -834,13 +873,15 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_sexualitaet_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])){
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
                         break;
     
@@ -854,13 +895,15 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_koerper_und_gesundheit_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])){
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
                         break;
                         
@@ -874,13 +917,15 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_freundschaften_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])){
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
                         break;
     
@@ -894,15 +939,17 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_familie_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])){
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
+                            break;
                         }
-                        break;
     
                     case 'score_spiritualitaet_user':
                         Answer::create([
@@ -914,13 +961,15 @@ class SurveyController extends Controller
                         break;
 
                     case 'symptoms_spiritualitaet_user':
-                        foreach ($answer['choices']['labels'] as $item) {
-                            Answer::create([
-                                'name' =>$item,
-                                'reference' => $answer['field']['ref'],
-                                'customer_id' => $customer->id,
-                                'question_id' => $question_id,
-                            ]);
+                        if(!is_null($answer['choices']['labels'])){
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
                         break;
     
@@ -929,7 +978,14 @@ class SurveyController extends Controller
                         break;
     
                     case 'money_invest_user':
-                        $customer->money_invest_willingness = $answer['choice']['label'];
+                        if(array_key_exists('other', $answer['choice'])) {
+                            $customer->money_invest_willingness = $answer['choice']['other'];
+                        }
+
+                        if(array_key_exists('label', $answer['choice'])){
+                            $customer->money_invest_willingness = $answer['choice']['label'];
+                        }
+
                         break;
     
                     case 'call_optin_user':
@@ -1005,14 +1061,14 @@ class SurveyController extends Controller
         //THIS IS THE ONE TO USE THAT WORKS WELL
         //$this->createLead($customer); 
         
-        //send survey email with its own data
-        $data = [
-            'name'          => $customer->prename,
-            'surveyLink'    => url($customer->survey_url) //url helper to take the base url of the project
-        ];
+        // //send survey email with its own data
+        // $data = [
+        //     'name'          => $customer->prename,
+        //     'surveyLink'    => url($customer->survey_url) //url helper to take the base url of the project
+        // ];
 
-        Mail::to($customer->email)
-            ->send(new SendSurveyLink($data));
+        // Mail::to($customer->email)
+        //     ->send(new SendSurveyLink($data));
 
        return redirect('/survey')->with("success", "Survey received and saved successfully");
     }
