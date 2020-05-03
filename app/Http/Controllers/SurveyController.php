@@ -234,6 +234,8 @@ class SurveyController extends Controller
      */
     public function surveyHook(Request $request)
     {
+        Storage::prepend('survey_submission.txt', '----' . json_encode($request->all()) . '----');
+
         $dataArray = json_decode(json_encode($request->all()), true);
 
         if ($dataArray) {
@@ -669,25 +671,25 @@ class SurveyController extends Controller
         if($customerData->time_invest_willingness == null){
             $timeInvest = 0;
         }else {
-            $time_invest_willingness = $customerData->time_invest_willingness;
+            $timeInvest = $customerData->time_invest_willingness;
         }
         
         if($customerData->money_invest_willingness == null){
             $moneyInvest = 0;
         }else {
-            $money_invest_willingness = $customerData->money_invest_willingness;
+            $moneyInvest = $customerData->money_invest_willingness;
         }
         
         if($customerData->newsletter_opt_in == null){
             $newletter = 0;
         }else {
-            $newsletter_opt_in = $customerData->newsletter_opt_in;
+            $newletter = $customerData->newsletter_opt_in;
         }
         
         if($customerData->call_opt_in == null){
             $callOptin = 0;
         }else {
-            $call_opt_in = $customerData->call_opt_in;
+            $callOptin = $customerData->call_opt_in;
         }
         
         if($customerData->call_opt_in == null){
