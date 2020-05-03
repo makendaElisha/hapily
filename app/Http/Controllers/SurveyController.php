@@ -640,6 +640,28 @@ class SurveyController extends Controller
             $title = 'Other';
         }
         
+        if($customerData->time_invest_willingness == null){
+            $timeInvest = 0;
+        }
+        
+        if($customerData->money_invest_willingness == null){
+            $moneyInvest = 0;
+        }
+        
+        if($customerData->newsletter_opt_in == null){
+            $newletter = 0;
+        }
+        
+        if($customerData->call_opt_in == null){
+            $callOptin = 0;
+        }
+        
+        if($customerData->call_opt_in == null){
+            $phoneNumber = '';
+        } else {
+            $phoneNumber = $customerData->phone_number;
+        }
+        
         $leadContent = [
             'FirstName'                         => $customerData->prename,
             'LastName'                          => $customerData->prename,
@@ -648,7 +670,7 @@ class SurveyController extends Controller
             'Title'                             => $title,
             'Gender__c'                         => $gender,
             'Date_of_Birth__c'                  => $customerData->birth,
-            'MobilePhone'                       => $customerData->phone_number,
+            'MobilePhone'                       => $phoneNumber,
             'Overall_Happiness_Score__c'        => $scoreCustomer->total_areas,
             'Happiness_Score_Career__c'         => $scoreCustomer->beruf_und_karriere,
             'Happiness_Score_Love__c'           => $scoreCustomer->partnerschaft,
@@ -664,10 +686,10 @@ class SurveyController extends Controller
             'Symptoms_Friendship__c'            => $symptomsFriendship,
             'Symptoms_Family__c'                => $symptomsFamily,
             'Symptoms_Spirituality__c'          => $symptomsSpirituality,
-            'Time_Invest_Willingness__c'        => $customerData->time_invest_willingness,
-            'Money_Invest_Willingness__c'       => $customerData->money_invest_willingness,
-            'Newsletter_Opt_in__c'              => $customerData->newsletter_opt_in,
-            'Call_Opt_in__c'                    => $customerData->call_opt_in,
+            'Time_Invest_Willingness__c'        => $timeInvest,
+            'Money_Invest_Willingness__c'       => $moneyInvest,
+            'Newsletter_Opt_in__c'              => $newsletter,
+            'Call_Opt_in__c'                    => $callOptin,
             'Survey_Result_URL__c'              => url($customerData->survey_url),
         ];
     
