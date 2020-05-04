@@ -1520,7 +1520,7 @@
     margin-right: auto;
     margin-bottom: 60px;
     margin-left: auto;
-    padding-bottom: 60px;
+    padding-bottom: 0px;
   }
   
   .heading-6 {
@@ -2292,7 +2292,7 @@
     display: block;
     width: 216px;
     height: auto;
-    margin-top: 180px;
+    margin-top: 100px;
     margin-right: 5%;
     margin-left: 0px;
     padding: 10px 10px 40px;

@@ -3,6 +3,8 @@
 use App\Entities\Score;
 use App\Entities\Answer;
 use App\Entities\Customer;
+use App\Mail\SendSurveyLink;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
 use Omniphx\Forrest\Providers\Laravel\Facades\Forrest;
 
@@ -211,6 +213,15 @@ Route::get('/surveys', function() {
 // });
 
 Route::get('/survey-email', function(){
-    return view('surveys.email');
+
+    $data = [
+        'name'          => 'Test User',
+        'surveyLink'    => 'https://hapily.de'
+    ];
+
+    Mail::to('python.gralf@gmail.com')
+        ->send(new SendSurveyLink($data));
+
+    //return view('surveys.email');
 });
 
