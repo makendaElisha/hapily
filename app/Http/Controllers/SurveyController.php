@@ -204,7 +204,12 @@ class SurveyController extends Controller
             $areaObject = (object)[];
             $areaName = strtr($area, ['symptoms_' => '','_user' => '']);
             $getPerAreaScores = Score::pluck($areaName);
-            $averageAreaScore = is_null($getPerAreaScores) ? 0 : (int) (($getPerAreaScores)->sum() / count($getPerAreaScores));
+            
+            try {
+                $averageAreaScore = is_null($getPerAreaScores) ? 0 : (int) (($getPerAreaScores)->sum() / count($getPerAreaScores));
+            } catch (\Exception $exception) {
+                $averageAreaScore = 0;
+            }
 
             //Area of life name
             $areaObject->name = $this->areaInDbNameFormat($area);
@@ -299,8 +304,17 @@ class SurveyController extends Controller
                                 ]);
                             }
                         }
-
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+                        
                         break;
+
                     case 'score_partnerschaft_user':
                         Answer::create([
                             'name' => $answer['number'],
@@ -320,6 +334,14 @@ class SurveyController extends Controller
                                     'question_id' => $question_id,
                                 ]);
                             }
+                        }
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
                         }
                         break;
     
@@ -343,6 +365,15 @@ class SurveyController extends Controller
                                 ]);
                             }
                         }
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+
                         break;
     
                     case 'score_koerper_und_gesundheit_user':
@@ -365,6 +396,15 @@ class SurveyController extends Controller
                                 ]);
                             }
                         }
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+
                         break;
                         
                     case 'score_freundschaften_user':
@@ -387,6 +427,15 @@ class SurveyController extends Controller
                                 ]);
                             }
                         }
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+
                         break;
     
                     case 'score_familie_user':
@@ -408,9 +457,18 @@ class SurveyController extends Controller
                                     'question_id' => $question_id,
                                 ]);
                             }
-                            break;
                         }
-    
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+
+                        break;
+                        
                     case 'score_spiritualitaet_user':
                         Answer::create([
                             'name' => $answer['number'],
@@ -431,6 +489,15 @@ class SurveyController extends Controller
                                 ]);
                             }
                         }
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+
                         break;
     
                     case 'time_invest_user':
@@ -766,7 +833,7 @@ class SurveyController extends Controller
 
         try{
             // $fileApi = File::get("simulate/survey_api.txt");
-            $fileApi = File::get("simulate/survey_with_nulls.txt");
+            $fileApi = File::get("simulate/laaaaaast.txt");
             $dataJson = substr($fileApi, 0, strrpos( $fileApi, '}') + 1);
             $dataArray = json_decode($dataJson, true);
 
@@ -841,8 +908,17 @@ class SurveyController extends Controller
                                 ]);
                             }
                         }
-
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+                        
                         break;
+
                     case 'score_partnerschaft_user':
                         Answer::create([
                             'name' => $answer['number'],
@@ -862,6 +938,14 @@ class SurveyController extends Controller
                                     'question_id' => $question_id,
                                 ]);
                             }
+                        }
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
                         }
                         break;
     
@@ -885,6 +969,15 @@ class SurveyController extends Controller
                                 ]);
                             }
                         }
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+
                         break;
     
                     case 'score_koerper_und_gesundheit_user':
@@ -907,6 +1000,15 @@ class SurveyController extends Controller
                                 ]);
                             }
                         }
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+
                         break;
                         
                     case 'score_freundschaften_user':
@@ -929,6 +1031,15 @@ class SurveyController extends Controller
                                 ]);
                             }
                         }
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+
                         break;
     
                     case 'score_familie_user':
@@ -950,9 +1061,18 @@ class SurveyController extends Controller
                                     'question_id' => $question_id,
                                 ]);
                             }
-                            break;
                         }
-    
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+
+                        break;
+                        
                     case 'score_spiritualitaet_user':
                         Answer::create([
                             'name' => $answer['number'],
@@ -973,6 +1093,15 @@ class SurveyController extends Controller
                                 ]);
                             }
                         }
+                        if(array_key_exists('other', $answer['choices'])) {
+                            Answer::create([
+                                'name' =>$answer['choices']['other'],
+                                'reference' => 'other_'. $answer['field']['ref'],
+                                'customer_id' => $customer->id,
+                                'question_id' => $question_id,
+                            ]);
+                        }
+
                         break;
     
                     case 'time_invest_user':
