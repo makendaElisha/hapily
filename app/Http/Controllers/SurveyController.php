@@ -122,7 +122,7 @@ class SurveyController extends Controller
 
             $areaObject->symptoms = $symptoms;
             $areaObject->areaScore = $areaScore;
-            $areaObject->userSelectedScore = $userSelectedScore;
+            $areaObject->userSelectedSymptoms = $selectedSymptomsNumber;
             $areaObject->averageAreaScore = (int) $averageAreaScore;
 
             array_push($resultData, $areaObject);
@@ -832,8 +832,7 @@ class SurveyController extends Controller
         //Get the results' file form public location in app. 
 
         try{
-            // $fileApi = File::get("simulate/survey_api.txt");
-            $fileApi = File::get("simulate/laaaaaast.txt");
+            $fileApi = File::get("simulate/survey_api.txt");
             $dataJson = substr($fileApi, 0, strrpos( $fileApi, '}') + 1);
             $dataArray = json_decode($dataJson, true);
 
@@ -842,6 +841,7 @@ class SurveyController extends Controller
             
         }
 
+        die("Inside survey dummy data ");
 
         //Check if result data is not null.
 
