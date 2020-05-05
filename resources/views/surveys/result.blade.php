@@ -29,14 +29,15 @@
       bottom: 20px;
       right: 30px;
       z-index: 99;
-      font-size: 18px;
+      font-size: 16px;
       border: none;
       outline: none;
       background-color: #DD22EF;
       color: white;
       cursor: pointer;
-      padding: 15px;
+      padding: 10px;
       border-radius: 4px;
+      margin-right: 5%;
     }
 
     #myBtn:hover {
