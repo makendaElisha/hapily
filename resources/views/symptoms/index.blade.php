@@ -50,13 +50,25 @@
                                 </td>
                                 <td>{{$symptom->name}}</td>
                                 <td>
-                                    <span>
-                                        {{substr($symptom->instant_help, 0, 50)}}
-                                    </span>
-                                    <span id="{{$key + 100}}" style="display:none">
-                                        {{substr($symptom->instant_help, 50)}}
-                                    </span>
-                                    <button class="btn btn-link" onclick="showMore({{$key + 100}})">Read more...</button>
+                                    @php
+                                        $text = $symptom->instant_help;
+                                        $position = false;
+                                        if (strlen($text) > 51) {
+                                            $position = strpos($text, ' ', 50);
+                                        }
+                                    @endphp
+                                    @if ($position !== false)
+                                        <span>
+                                            {{substr($text, 0, $position)}}
+                                        </span>
+                                        <span id="{{$key + 100}}" style="display:none">
+                                            {{substr($text, $position)}}
+                                        </span>
+                                        <button class="btn btn-link" onclick="showMore({{$key + 100}})">Read more...</button>
+                                    @else
+                                        {{$text}}   
+                                    @endif
+
                                 </td>
                                 <td>{{$symptom->res_prio}}</td>
                                 <td>{{$symptom->belief}}</td>
@@ -64,13 +76,24 @@
                                     <a href="{{$symptom->recom_book_url}}" target="_blank"><img src="{{$symptom->recom_book_image}}" height="150" width="100" /></a>
                                 </td>
                                 <td>
-                                    <span>
-                                        {{substr($symptom->recom_book_description, 0, 50)}}
-                                    </span>
-                                    <span id="{{$key + 200}}" style="display:none">
-                                        {{substr($symptom->recom_book_description, 50)}}
-                                    </span>
-                                    <button class="btn btn-link" onclick="showMore({{$key + 200}})">Read more...</button>
+                                    @php
+                                        $text = $symptom->recom_book_description;
+                                        $position = false;
+                                        if (strlen($text) > 51) {
+                                            $position = strpos($text, ' ', 50);
+                                        }
+                                    @endphp
+                                    @if ($position !== false)
+                                        <span>
+                                            {{substr($text, 0, $position)}}
+                                        </span>
+                                        <span id="{{$key + 200}}" style="display:none">
+                                            {{substr($text, $position)}}
+                                        </span>
+                                        <button class="btn btn-link" onclick="showMore({{$key + 200}})">Read more...</button>
+                                    @else
+                                        {{$text}}   
+                                    @endif
                                 </td>
                                 <td>
                                     @php
@@ -86,13 +109,24 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <span>
-                                        {{substr($symptom->recom_program_description, 0, 50)}}
-                                    </span>
-                                    <span id="{{$key + 300}}" style="display:none">
-                                        {{substr($symptom->recom_program_description, 50)}}
-                                    </span>
-                                    <button class="btn btn-link" onclick="showMore({{$key + 300}})">Read more...</button>
+                                    @php
+                                        $text = $symptom->recom_program_description;
+                                        $position = false;
+                                        if (strlen($text) > 51) {
+                                            $position = strpos($text, ' ', 50);
+                                        }
+                                    @endphp
+                                    @if ($position !== false)
+                                        <span>
+                                            {{substr($text, 0, $position)}}
+                                        </span>
+                                        <span id="{{$key + 300}}" style="display:none">
+                                            {{substr($text, $position)}}
+                                        </span>
+                                        <button class="btn btn-link" onclick="showMore({{$key + 300}})">Read more...</button>
+                                    @else
+                                        {{$text}}   
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -121,7 +155,7 @@
         var x = document.getElementById(id);
         var nextBtn = x.nextElementSibling;
         if (x.style.display === "none") {
-            x.style.display = "block";
+            x.style.display = "inline";
             nextBtn.innerHTML = "Read less...";
         } else {
             x.style.display = "none";
