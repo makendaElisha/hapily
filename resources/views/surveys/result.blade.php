@@ -40,14 +40,15 @@
     }
 
     #myBtn:hover {
-      background-color: #555;
+      color: blue;
+      text-decoration: underline;
     }
 
   </style>
 
 </head>
 <body>
-  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">> Zur Übersicht</button>
   <div class="section-header"><img src="{{ asset('all/images/hapily_logoprimary.svg')}}" alt="" class="survey-logo">
     <h1 class="heading-5">Dein Glücks-Bericht<br></h1>
   </div>
