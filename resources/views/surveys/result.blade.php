@@ -27,7 +27,7 @@
       display: none;
       position: fixed;
       bottom: 20px;
-      left: 30px;
+      right: 30px;
       z-index: 99;
       font-size: 18px;
       border: none;
@@ -70,7 +70,7 @@
         <p class="paragraph">schön, dass du den Test abgeschlossen hast und deinem Glück auf die Sprünge helfen willst :-) Deine aktuelle Situation sowie die Ursachen dafür besser zu verstehen, ist der erste Schritt in Richtung eines erfüllteren und zufriedeneren Lebens.</p>
         <p class="paragraph-4">Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$userScore}} von {{$numberAreas * 10}} Punkten.</strong></p>
         <p class="paragraph-2">Im Durchschnitt erreichen Teilnehmer einen Score von {{$averageHappinessAllParticipants}}. In der folgenden Grafik kannst du dein Glücks-Level pro Lebensbereich ablesen und mit dem Durchschnitt der anderen Teilnehmer vergleichen.</p>
-        <p class="paragraph-2">Hier noch ein Tipp, wie du für dich das Beste aus dem Glücks-Bericht herausholst: Du kannst dir entweder einen Lebensbereich nach dem anderen anschauen oder gelangst direkt zu einem bestimmten Lebensbereich, indem du diesen im Balkendiagramm anklickst. Für jede von dir im Glücks-Test angekreuzte Herausforderung erhältst du einen Sofort-Tipp von unseren Experten sowie weiterführende Hinweise. Trage dich unbedingt auch rechts für das kostenlose Online-Training ein. Darin erfährst du 3 u.a. praktische Tipps, mit denen du dein Glücks-Level sofort steigern kannst.</p>
+        <p class="paragraph-2">Hier noch ein Tipp, wie du für dich das Beste aus dem Glücks-Bericht herausholst: Du kannst dir entweder einen Lebensbereich nach dem anderen anschauen oder gelangst direkt zu einem bestimmten Lebensbereich, indem du diesen im Balkendiagramm anklickst. Für jede von dir im Glücks-Test angekreuzte Herausforderung erhältst du einen Sofort-Tipp von unseren Experten sowie weiterführende Hinweise. Trage dich unbedingt auch rechts für das kostenlose Online-Training ein. Darin erfährst du u.a. 3 praktische Tipps, mit denen du dein Glücks-Level sofort steigern kannst.</p>
       </div>
       <div class="score-elements">
         <h3 class="heading-6">Dein Happiness-Score pro Lebensbereich</h3>
@@ -88,7 +88,7 @@
                 <div class="score-column1-col2-container">
                   <h5 class="score-column-heading5-centered">Dein Score liegt<br></h5>
                   <div class="red-score-with-big-padding">{{$maxPotential}}%</div>
-                  <div class="score-grey-text">Unter deinem <br>maximalen Glucks-Level</div>
+                  <div class="score-grey-text">Unter deinem <br>max. Glücks-Level</div>
                 </div>
               </div>
             </div>
@@ -180,7 +180,7 @@
             <p class="normal-text" ><br />
               Im Bereich “Lebensbereich” hast du scheinbar keine offensichtlichen Themen, die dich unglücklich machen. Im Besten Fall gibt es hier demnach einfach wenig Verbesserungspotential für dich. Manchmal sind Themen, die uns unglücklich machen, allerdings auch unterbewusst vorhanden. Regelmäßige Reflektion und Journaling können uns dabei helfen, solche möglichen Herausforderungen aus dem Unterbewusstsein offenzulegen. Mehr dazu erfährst du in unserem kostenlosen Online-Training 
             </p>
-            <div class="recommanded-book-purple-link" style="text-align: left;"><a href="#" class="recommanded-book-purple-link">&gt; Jetzt kostenlos anmelden...</a></div>
+            <div class="recommanded-book-purple-link" style="text-align: left;"><a href="https://zoom.us/meeting/register/tJApdO-gqz0tG92IvTglSlVXSF-EPdCU6A3_" class="recommanded-book-purple-link">&gt; Jetzt kostenlos anmelden...</a></div>
           </div>
       @else
         @php
@@ -265,7 +265,7 @@
               </div>
             </div>
             @if(count($area->symptoms) > 2  && $key == 1)
-              <p class="purple-header moreSymtpoms" onclick="showMoreSymptoms({{($areaKey + 1)}})">&gt; {{ count($area->symptoms) - 2 }} <span id="symptomShowMoreText-{{($areaKey + 1)}}">weitere </span>@if(count($area->symptoms) - 2 == 1)Herausforderung @else Herausforderungen @endif anzeigen</p>
+              <p class="purple-header moreSymtpoms" onclick="showMoreSymptoms({{($areaKey + 1)}})">&gt; {{ count($area->symptoms) - 2 }} <span id="symptomShowMoreText-{{($areaKey + 1)}}">weitere </span>@if(count($area->symptoms) - 2 == 1)Herausforderung @else <span id="showLessText-{{ ($areaKey + 1) }}">Herausforderungen</span> @endif anzeigen</p>
             @endif
           @endif
           <!-- hidden symptoms start here -->
@@ -282,7 +282,7 @@
                     <!-- coaching content here -->
                     {{-- @if(strlen($symptom->recom_program) != 0)) --}}
                       <div class="coaching-tip-content">
-                        <p class="normal-text"><strong>Coach-Tipp</strong></p>
+                        <p class="normal-text"><strong>Coaching-Tipp</strong></p>
                         <div class="coach-image-box">
                           <div class="coach-box-columns w-row">
                             <div class="coach-box-col1 w-col w-col-3">
@@ -359,8 +359,8 @@
   <div class="section-text-after-analyse">
     <div class="section-text-after-analyse-container">
       <h3 class="section-analyse-header heading-6">Deine Glaubenssätze<br></h3>
-      <p class="paragraph"><strong>In einigen Fällen sind unsere Herausforderungen von äußeren Faktoren bestimmt, die wir nicht beeinflussen können. Oftmals sind sie aber auch hausgemacht - weil wir Überzeugungen von uns selbst haben, die uns einschränken. Lass uns daher einmal schauen, wie es in deinem Fall aussieht…</strong></p>
-      <p class="paragraph"><strong>Könnte es sein, dass du schon einmal eine oder mehrere der folgenden Aussagen über dich geglaubt hast?</strong></p><br />
+      <p class="paragraph">In einigen Fällen sind unsere Herausforderungen von äußeren Faktoren bestimmt, die wir nicht beeinflussen können. Oftmals sind sie aber auch hausgemacht - weil wir Überzeugungen von uns selbst haben, die uns einschränken. Lass uns daher einmal schauen, wie es in deinem Fall aussieht…</p>
+      <p class="paragraph">Könnte es sein, dass du schon einmal eine oder mehrere der folgenden Aussagen über dich geglaubt hast?</p><br />
       <!-- belief content starts here -->
       @php
         count($userBelives) > 9 ? $believesToShow = array_slice($userBelives, 0, 9) : $believesToShow = $userBelives;
@@ -419,7 +419,7 @@
       <div class="section-footer-wrapper"><a href="https://hapily.de"><img src="{{ asset('all/images/hapily_logo_primary.svg')}}" alt="" class="footer-logo"></a>
         <div class="footer-text-one"><a href="https://www.hapily.de/impressum" target="_blank" class="link-32">Impressum</a></div>
         <div class="footer-text"><a href="https://www.hapily.de/datenschutz" target="_blank" class="link-33">Datenschutzbestimmungen</a></div>
-        <a href="https://www.facebook.com/hapily.academy" target="_blank" class="footer-facebook-link w-inline-block"><img src="{{ asset('all/images/facebook-black.svg')}}" alt="" class="footer-social-icon-facebook"></a>
+        <a href="https://www.facebook.com/hapily.de" target="_blank" class="footer-facebook-link w-inline-block"><img src="{{ asset('all/images/facebook-black.svg')}}" alt="" class="footer-social-icon-facebook"></a>
         <a href="http://instagram.com/hapily.de" target="_blank" class="footer-instagram-link w-inline-block"><img src="{{ asset('all/images/instagram-black.svg')}}" alt="" class="footer-social-icon-instagram"></a>
         <a href="https://www.linkedin.com/company/hapily" target="_blank" class="footer-linkedin-link w-inline-block"><img src="{{ asset('all/images/linkedin-black.svg')}}" alt="" class="footer-social-icon-linkedin"></a>
       </div>
@@ -452,14 +452,17 @@
     //need to use class as there many divs to turn display from none to block
     var divBlock = document.getElementsByClassName("hidden-symptoms-"+id); 
     var symptonMoreText = document.getElementById('symptomShowMoreText-'+id);
+    var symptomLessText = document.getElementById('showLessText-'+id);
 
     for (var i = 0; i < divBlock.length; i++) {
       if (divBlock[i].style.display === "none") {
         divBlock[i].style.display = "block";
         symptonMoreText.innerHTML = "weniger ";
+        symptomLessText.innerHTML = "";
       } else {
         divBlock[i].style.display = "none";
         symptonMoreText.innerHTML = "weitere ";
+        symptomLessText.innerHTML = "Herausforderungen";
       }
     }
   }
