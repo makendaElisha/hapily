@@ -132,7 +132,7 @@ class SurveyController extends Controller
         $score->save();
 
         $numberAreas = count($getAreas);
-        $maxPotential = round($userScore  * 100 / (10 * $numberAreas)); 
+        $maxPotential = 100 - ( round($userScore  * 100 / (10 * $numberAreas)) ); 
         
         $averageScores = Score::pluck('total_areas');
         $averageHappinessAllParticipants = is_null($averageScores) ? 0 : ( (int) ( ($averageScores)->sum() / count($averageScores)) );
