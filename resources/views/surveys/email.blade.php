@@ -127,7 +127,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td align="center" vertical-align="middle" class="btn-link" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                    <td align="left" vertical-align="middle" class="btn-link" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                       <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
                         <tr>
                           <td align="center" bgcolor="#dd22ef" role="presentation" style="border:none;border-radius:24px;cursor:auto;mso-padding-alt:10px;background:#dd22ef;" valign="middle"> <a href="{{ $data['surveyLink'] }}" style="display: inline-block; background: #dd22ef; color: #ffffff; font-family: helvetica; font-size: 13px; font-weight: normal; line-height: 100%; margin: 0; text-decoration: none; text-transform: none; padding: 10px; mso-padding-alt: 0px; border-radius: 24px;"
