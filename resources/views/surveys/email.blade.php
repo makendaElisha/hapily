@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
-  <title> </title>
+  <title>Hapily - Survey</title>
   <!--[if !mso]><!-- -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!--<![endif]-->
@@ -127,10 +127,10 @@
                     </td>
                   </tr>
                   <tr>
-                    <td align="left" vertical-align="middle" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                    <td align="center" vertical-align="middle" class="btn-link" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                       <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
                         <tr>
-                          <td align="center" bgcolor="#dd22ef" role="presentation" style="border:none;border-radius:24px;cursor:auto;mso-padding-alt:10px 25px;background:#dd22ef;" valign="middle"> <a href="Hallo {{ $data['surveyLink'] }}" style="display:inline-block;background:#dd22ef;color:white;font-family:helvetica;font-size:13px;font-weight:bolder;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:24px;"
+                          <td align="center" bgcolor="#dd22ef" role="presentation" style="border:none;border-radius:24px;cursor:auto;mso-padding-alt:10px;background:#dd22ef;" valign="middle"> <a href="{{ $data['surveyLink'] }}" style="display: inline-block; background: #dd22ef; color: #ffffff; font-family: helvetica; font-size: 13px; font-weight: normal; line-height: 100%; margin: 0; text-decoration: none; text-transform: none; padding: 10px; mso-padding-alt: 0px; border-radius: 24px;"
                               target="_blank">
               > Hier geht's zu deinem Glücks-Bericht
             </a> </td>
@@ -140,7 +140,7 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;padding-top:30px;padding-bottom:30px;word-break:break-word;">
-                      <div style="font-family:helvetica;font-size:14px;line-height:24px;text-align:left;color:#333333;">Glückliche Grüße,<br /> dein hapily-Team</div>
+                      <div style="font-family:helvetica;font-size:14px;line-height:24px;text-align:left;color:#333333;">Glückliche Grüße,<br> dein hapily-Team</div>
                     </td>
                   </tr>
                 </table>
@@ -199,10 +199,8 @@
                           <td style="padding:4px;">
                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
                               <tr>
-                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.facebook.com/hapily.academy" target="_blank">
-                    <img
-                       height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/facebook.png" style="border-radius:3px;display:block;" width="20"
-                    />
+                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.facebook.com/hapily.de" target="_blank">
+                    <img height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/facebook.png" style="border-radius:3px;display:block;" width="20">
                   </a> </td>
                               </tr>
                             </table>
@@ -244,9 +242,7 @@
                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
                               <tr>
                                 <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="http://instagram.com/hapily.de" target="_blank">
-                    <img
-                       height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/instagram.png" style="border-radius:3px;display:block;" width="20"
-                    />
+                    <img height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/instagram.png" style="border-radius:3px;display:block;" width="20">
                   </a> </td>
                               </tr>
                             </table>
@@ -288,9 +284,7 @@
                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
                               <tr>
                                 <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.linkedin.com/company/hapily" target="_blank">
-                    <img
-                       height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/linkedin.png" style="border-radius:3px;display:block;" width="20"
-                    />
+                    <img height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/linkedin.png" style="border-radius:3px;display:block;" width="20">
                   </a> </td>
                               </tr>
                             </table>
@@ -364,7 +358,7 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;padding-top:20px;padding-bottom:30px;word-break:break-word;">
-                      <div style="font-family:helvetica;font-size:10px;line-height:14px;text-align:left;color:#333333;">© 2020 hapily. All rights reserved. <a href="www.hapily.de">www.hapily.de</a><br /> <a href="https://www.hapily.de/impressum">Impressum</a> . <a href="https://www.hapily.de/datenschutz">Datenschutzerklärung</a></div>
+                      <div style="font-family:helvetica;font-size:10px;line-height:14px;text-align:left;color:#333333;">© 2020 hapily. All rights reserved. <a href="www.hapily.de">www.hapily.de</a><br> <a href="https://www.hapily.de/impressum">Impressum</a> . <a href="https://www.hapily.de/datenschutz">Datenschutzerklärung</a></div>
                     </td>
                   </tr>
                 </table>
