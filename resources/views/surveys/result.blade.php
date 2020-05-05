@@ -55,7 +55,7 @@
   </div>
   <div class="side-green-container">
     <h4 class="side-green-container-header">Kostenloses Online-Training - Entfalte jetzt dein Glücks-Potenzial!</h4><a href="https://zoom.us/meeting/register/tJApdO-gqz0tG92IvTglSlVXSF-EPdCU6A3_" target="_blank" class="side-green-container-button w-button">&gt; Kostenlos anmelden</a>
-    <h5 class="side-green-container-header-small">Was du im Training <br>lernen wirst.</h5>
+    <h5 class="side-green-container-header-small">Was du im Training <br>lernen wirst:</h5>
     <ul class="side-green-list w-list-unstyled">
       <li class="side-green-list-item">Was Glück wirklich bedeutet und was ein erfülltes Leben ausmacht.</li>
       <li class="side-green-list-item">Was dich bisher davon abgehalten hat, glücklich zu sein.</li>
