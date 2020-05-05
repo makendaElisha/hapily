@@ -37,7 +37,7 @@
       cursor: pointer;
       padding: 10px;
       border-radius: 4px;
-      margin-right: 5%;
+      margin-right: 5.5%;
     }
 
     #myBtn:hover {
@@ -55,7 +55,7 @@
   </div>
   <div class="side-green-container">
     <h4 class="side-green-container-header">Kostenloses Online-Training - Entfalte jetzt dein Glücks-Potenzial!</h4><a href="https://zoom.us/meeting/register/tJApdO-gqz0tG92IvTglSlVXSF-EPdCU6A3_" target="_blank" class="side-green-container-button w-button">&gt; Kostenlos anmelden</a>
-    <h5 class="side-green-container-header-small">Was du im Training <br>lernen wirst</h5>
+    <h5 class="side-green-container-header-small">Was du im Training <br>lernen wirst.</h5>
     <ul class="side-green-list w-list-unstyled">
       <li class="side-green-list-item">Was Glück wirklich bedeutet und was ein erfülltes Leben ausmacht.</li>
       <li class="side-green-list-item">Was dich bisher davon abgehalten hat, glücklich zu sein.</li>
@@ -179,9 +179,9 @@
       @if (count($area->symptoms) == 0)
           <div class="section-analyse-purple-header-container">
             <p class="normal-text" ><br />
-              Im Bereich “Lebensbereich” hast du scheinbar keine offensichtlichen Themen, die dich unglücklich machen. Im Besten Fall gibt es hier demnach einfach wenig Verbesserungspotential für dich. Manchmal sind Themen, die uns unglücklich machen, allerdings auch unterbewusst vorhanden. Regelmäßige Reflektion und Journaling können uns dabei helfen, solche möglichen Herausforderungen aus dem Unterbewusstsein offenzulegen. Mehr dazu erfährst du in unserem kostenlosen Online-Training 
+              Im Bereich “Lebensbereich” hast du scheinbar keine offensichtlichen Themen, die dich unglücklich machen. Im Besten Fall gibt es hier demnach einfach wenig Verbesserungspotential für dich. Manchmal sind Themen, die uns unglücklich machen, allerdings auch unterbewusst vorhanden. Regelmäßige Reflektion und Journaling können uns dabei helfen, solche möglichen Herausforderungen aus dem Unterbewusstsein offenzulegen. Mehr dazu erfährst du in unserem kostenlosen Online-Training.
             </p>
-            <div class="recommanded-book-purple-link" style="text-align: left;"><a href="https://zoom.us/meeting/register/tJApdO-gqz0tG92IvTglSlVXSF-EPdCU6A3_" class="recommanded-book-purple-link">&gt; Jetzt kostenlos anmelden...</a></div>
+            <div class="recommanded-book-purple-link" style="text-align: left;"><a href="https://zoom.us/meeting/register/tJApdO-gqz0tG92IvTglSlVXSF-EPdCU6A3_" class="recommanded-book-purple-link" target="_blank">&gt; Jetzt kostenlos anmelden...</a></div>
           </div>
       @else
         @php
