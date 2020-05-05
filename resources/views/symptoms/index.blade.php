@@ -36,6 +36,7 @@
                     <tbody>
                         @php
                             $supportImageExtensions = ['gif','jpg','jpeg','png'];
+                            $imgUrl                 = 'https://process.fs.teachablecdn.com'; //for valid image per its url
                         @endphp
                         @foreach ($areaOfLife->symptoms as $key => $symptom)
                             <tr>
@@ -74,9 +75,12 @@
                                 <td>
                                     @php
                                         $ext = strtolower(pathinfo($symptom->recom_program_image, PATHINFO_EXTENSION));
+                                        $pos = strpos($symptom->recom_program_image, $imgUrl);
                                     @endphp
                                     @if(in_array($ext, $supportImageExtensions))
                                         <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" height="150" width="100" /></a>
+                                    @elseif($pos !== false)
+                                        <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" height="100" width="150" /></a>
                                     @else
                                         <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/hapily-coach-image2.png')}}" alt=""  height="150" width="100"></a>
                                     @endif

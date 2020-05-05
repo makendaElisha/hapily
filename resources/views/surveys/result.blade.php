@@ -186,6 +186,7 @@
       @else
         @php
             $supportImageExtensions = ['gif','jpg','jpeg','png'];
+            $imgUrl   = 'https://process.fs.teachablecdn.com'; //for valid image per its url
         @endphp
         @foreach ($area->symptoms as $key => $symptom)
           @if($key <= 1)
@@ -206,9 +207,12 @@
                         <div class="coach-box-col1 w-col w-col-3">
                           @php
                               $ext = strtolower(pathinfo($symptom->recom_program_image, PATHINFO_EXTENSION));
+                              $pos = strpos($symptom->recom_program_image, $imgUrl);
                           @endphp
                           @if(in_array($ext, $supportImageExtensions))
-                              <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="book-image" /></a>
+                            <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="book-image" /></a>
+                          @elseif($pos !== false)
+                            <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="book-image" /></a>
                           @else
                             <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/hapily-coach-image2.png')}}" alt="" class="coach-image"></a>
                           @endif
@@ -289,9 +293,12 @@
                             <div class="coach-box-col1 w-col w-col-3">
                               @php
                                   $ext = strtolower(pathinfo($symptom->recom_program_image, PATHINFO_EXTENSION));
+                                  $pos = strpos($symptom->recom_program_image, $imgUrl);
                               @endphp
                               @if(in_array($ext, $supportImageExtensions))
-                                  <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="book-image" /></a>
+                                <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="book-image" /></a>
+                              @elseif($pos !== false)
+                                <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{$symptom->recom_program_image}}" class="book-image" /></a>
                               @else
                                 <a href="{{$symptom->recom_program_url}}" target="_blank"><img src="{{ asset('all/images/hapily-coach-image2.png')}}" alt="" class="coach-image"></a>
                               @endif
