@@ -696,6 +696,7 @@ class SurveyController extends Controller
         $symptomsSpirituality   = '';
         $symptomDefault         = '';
     
+        //Normal Symptoms
         foreach($answersCustomer as $answer) {
             switch ($answer->reference) {
                 case 'symptoms_beruf_und_karriere_user':
@@ -723,6 +724,36 @@ class SurveyController extends Controller
                     $symptomDefault = 'No symptom found';
             }
         }
+
+        //Saving Other Symptoms choosen by user per area of life
+        foreach($answersCustomer as $answer) {
+            switch ($answer->reference) {
+                case 'other_symptoms_beruf_und_karriere_user':
+                    $symptomsCareer .= 'Other Symptom - ' . $answer->name . PHP_EOL;
+                    break;
+                case 'other_symptoms_partnerschaft_user':
+                    $symptomsLove .= 'Other Symptom - ' . $answer->name . PHP_EOL;
+                    break;
+                case 'other_symptoms_sexualitaet_user':
+                    $symptomsSexuality .= 'Other Symptom - ' . $answer->name . PHP_EOL;
+                    break;
+                case 'other_symptoms_koerper_und_gesundheit_user':
+                    $symptomsBodayHealth .= 'Other Symptom - ' . $answer->name . PHP_EOL;
+                    break;
+                case 'other_symptoms_freundschaften_user':
+                    $symptomsFriendship .= 'Other Symptom - ' . $answer->name. PHP_EOL;
+                    break;
+                case 'other_symptoms_familie_user':
+                    $symptomsFamily .= 'Other Symptom - ' . $answer->name . PHP_EOL;
+                    break;
+                case 'other_symptoms_spiritualitaet_user':
+                    $symptomsSpirituality .= 'Other Symptom - ' . $answer->name . PHP_EOL;
+                    break;
+                default:
+                    $symptomDefault = '';
+            }
+        }
+
     
         if($customerData->gender == 'Männlich'){
             $gender = 'Male';
