@@ -220,7 +220,26 @@
                         <div class="coach-box-col2 w-col w-col-9">
                           <div class="coach-box-conent">
                             <p class="coach-box-content-paragraph">
-                              <span>
+                              @php
+                                  $programText = $symptom->recom_program_description;
+                                  $position = false;
+                                  if (strlen($programText) > 301) {
+                                      $position = strpos($programText, ' ', 300);
+                                  }
+                              @endphp
+                              @if ($position !== false)
+                                  <span>
+                                      {{substr($programText, 0, $position)}}
+                                  </span>
+                                  <span id="{{($areaKey + 1) *100 + $key}}" style="display:none">
+                                      {{substr($programText, $position)}}
+                                  </span>
+                                  <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">Weiterlesen...</button>
+                              @else
+                                  {{$programText}}   
+                              @endif
+
+                              {{-- <span>
                                 {{substr($symptom->recom_program_description, 0, 300)}}
                               </span>
                               <span id="{{($areaKey + 1) *100 + $key}}" style="display:none">
@@ -228,8 +247,7 @@
                               </span>
                               @if(strlen($symptom->recom_program_description) > 300)
                                 <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">Weiterlesen...</button>
-                              @endif
-                              {{-- {{$symptom->recom_program_description}} --}}
+                              @endif --}}
                             </p>
                             <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
                           </div>
@@ -250,6 +268,26 @@
                         <div class="coach-box-conent">
                           <p class="coach-box-content-paragraph">
                             <span>
+                              @php
+                                $bookText = $symptom->recom_book_description;
+                                $position = false;
+                                if (strlen($bookText) > 301) {
+                                    $position = strpos($bookText, ' ', 300);
+                                }
+                              @endphp
+                              @if ($position !== false)
+                                  <span>
+                                      {{substr($bookText, 0, $position)}}
+                                  </span>
+                                  <span id="{{($areaKey + 1) *500 + $key}}" style="display:none">
+                                      {{substr($bookText, $position)}}
+                                  </span>
+                                  <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *500 + $key}})">Weiterlesen...</button>
+                              @else
+                                  {{$bookText}}   
+                              @endif
+
+                            {{-- <span>
                               {{substr($symptom->recom_book_description, 0, 300)}}
                             </span>
                             <span id="{{($areaKey + 1) *1000 + $key}}" style="display:none">
@@ -257,8 +295,7 @@
                             </span>
                             @if(strlen($symptom->recom_book_description) > 300)
                               <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">Weiterlesen...</button>
-                            @endif
-                            {{-- {{ $symptom->recom_book_description }} --}}
+                            @endif --}}
                           </p>
                           <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Bestellen...</a></div> 
                         </div>
@@ -306,7 +343,27 @@
                             <div class="coach-box-col2 w-col w-col-9">
                               <div class="coach-box-conent">
                                 <p class="coach-box-content-paragraph">
-                                  <span>
+
+                                  @php
+                                    $programText = $symptom->recom_program_description;
+                                    $position = false;
+                                    if (strlen($programText) > 301) {
+                                        $position = strpos($programText, ' ', 300);
+                                    }
+                                  @endphp
+                                  @if ($position !== false)
+                                    <span>
+                                        {{substr($programText, 0, $position)}}
+                                    </span>
+                                    <span id="{{($areaKey + 1) *1000 + $key}}" style="display:none">
+                                        {{substr($programText, $position)}}
+                                    </span>
+                                    <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">Weiterlesen...</button>
+                                  @else
+                                    {{$programText}}   
+                                  @endif
+
+                                  {{-- <span>
                                     {{substr($symptom->recom_program_description, 0, 300)}}
                                   </span>
                                   <span id="{{($areaKey + 1) *100 + $key}}" style="display:none">
@@ -314,8 +371,7 @@
                                   </span>
                                   @if(strlen($symptom->recom_program_description) > 300)
                                     <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">Weiterlesen...</button>
-                                  @endif
-                                  {{-- {{$symptom->recom_program_description}} --}}
+                                  @endif --}}
                                 </p>
                                 <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
                               </div>
@@ -336,6 +392,26 @@
                             <div class="coach-box-conent">
                               <p class="coach-box-content-paragraph">
                                 <span>
+                                  @php
+                                    $bookText = $symptom->recom_book_description;
+                                    $position = false;
+                                    if (strlen($bookText) > 301) {
+                                        $position = strpos($bookText, ' ', 300);
+                                    }
+                                  @endphp
+                                  @if ($position !== false)
+                                    <span>
+                                        {{substr($bookText, 0, $position)}}
+                                    </span>
+                                    <span id="{{($areaKey + 1) *1500 + $key}}" style="display:none">
+                                        {{substr($bookText, $position)}}
+                                    </span>
+                                    <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1500 + $key}})">Weiterlesen...</button>
+                                  @else
+                                    {{$bookText}}   
+                                  @endif
+
+                                {{-- <span>
                                   {{substr($symptom->recom_book_description, 0, 300)}}
                                 </span>
                                 <span id="{{($areaKey + 1) *1000 + $key}}" style="display:none">
@@ -343,8 +419,7 @@
                                 </span>
                                 @if(strlen($symptom->recom_book_description) > 300)
                                   <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">Weiterlesen...</button>
-                                @endif
-                                {{-- {{ $symptom->recom_book_description }} --}}
+                                @endif --}}
                               </p>
                               <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Kaufen...</a></div> 
                             </div>
