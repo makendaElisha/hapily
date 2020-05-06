@@ -307,7 +307,7 @@
               </div>
             </div>
             @if(count($area->symptoms) > 2  && $key == 1)
-              <p class="purple-header moreSymtpoms" onclick="showMoreSymptoms({{($areaKey + 1)}})">&gt; {{ count($area->symptoms) - 2 }} <span id="symptomShowMoreText-{{($areaKey + 1)}}">weitere </span>@if(count($area->symptoms) - 2 == 1)<span id="showLessText-{{ ($areaKey + 1) }}">Herausforderung</span> @else <span id="showLessText-{{ ($areaKey + 1) }}">Herausforderungen</span> @endif anzeigen</p>
+              <p class="purple-header moreSymtpoms" onclick="showMoreSymptoms({{($areaKey + 1)}})">&gt; {{ count($area->symptoms) - 2 }} <span id="symptomShowMoreText-{{($areaKey + 1)}}">weitere </span>@if(count($area->symptoms) - 2 == 1)<span id="showLessTextSingular-{{ ($areaKey + 1) }}">Herausforderung</span> @else <span id="showLessTextPlural-{{ ($areaKey + 1) }}">Herausforderungen</span> @endif anzeigen</p>
             @endif
           @endif
           <!-- hidden symptoms start here -->
@@ -471,7 +471,7 @@
         <div class="_3-columns-text">Das Leben ist hart</div>
       </div> --}}
       <div class="section-after-analyse-text-content">
-        <div class="section-after-analyse-text">Wie wir bestimmte Situationen bewerten, hängt maßgeblich von unseren Erfahrungen als Kind sowie im weiteren Verlauf unseres Lebens ab.<br><br>Wenn dir damals in der Schule ein Lehrer z.B. immer wieder gesagt hat, dass du ein Versager bist, prägt sich diese Aussage in deinem Unterbewusstsein ein. Das kann zur Folge haben, dass du später als Erwachsener Herausforderungen vermeidest, weil du der Überzeugung bist, dass du sowieso scheitern wirst.<br><br>&quot;<strong>Ich bin nicht gut genug</strong>&quot; ist eine der häufigsten negativen Überzeugungen, die wir von uns haben.<br><br>Das Problem solcher <strong>limitierenden Glaubenssätze</strong> ist: Sie laufen automatisch ab - wie ein Softwareprogramm auf deinem Computer - das im Hintergrund läuft, ohne dass du es mitbekommst. Wissenschaftler gehen davon aus, dass unser Verhalten zu bis zu 90% von unserem <strong>Unterbewusstsein gesteuert</strong> wird, d.h. du handelst nur in den seltensten Fällen bewusst.</div><img src="{{ asset('all/images/male_sofa_image-small.png')}}" height="320" width="800" sizes="(max-width: 479px) 92vw, (max-width: 991px) 95vw, 800px" alt="" class="male-in-sofa-image">
+        <div class="section-after-analyse-text"><br />Wie wir bestimmte Situationen bewerten, hängt maßgeblich von unseren Erfahrungen als Kind sowie im weiteren Verlauf unseres Lebens ab.<br><br>Wenn dir damals in der Schule ein Lehrer z.B. immer wieder gesagt hat, dass du ein Versager bist, prägt sich diese Aussage in deinem Unterbewusstsein ein. Das kann zur Folge haben, dass du später als Erwachsener Herausforderungen vermeidest, weil du der Überzeugung bist, dass du sowieso scheitern wirst.<br><br>&quot;<strong>Ich bin nicht gut genug</strong>&quot; ist eine der häufigsten negativen Überzeugungen, die wir von uns haben.<br><br>Das Problem solcher <strong>limitierenden Glaubenssätze</strong> ist: Sie laufen automatisch ab - wie ein Softwareprogramm auf deinem Computer - das im Hintergrund läuft, ohne dass du es mitbekommst. Wissenschaftler gehen davon aus, dass unser Verhalten zu bis zu 90% von unserem <strong>Unterbewusstsein gesteuert</strong> wird, d.h. du handelst nur in den seltensten Fällen bewusst.</div><img src="{{ asset('all/images/male_sofa_image-small.png')}}" height="320" width="800" sizes="(max-width: 479px) 92vw, (max-width: 991px) 95vw, 800px" alt="" class="male-in-sofa-image">
         <div class="section-after-analyse-text">Die oben aufgeführten Glaubenssätze passen zu deinen Angaben im Glücks-Test und die Wahrscheinlichkeit ist hoch, dass diese <strong>limitierenden Überzeugungen</strong> in deinem Unterbewusstsein ablaufen und <strong>dich täglich davon abhalten, dein volles Potenzial zu entfalten.<br></strong><br>Willst du dein Leben einfach nur automatisch an dir vorbeiziehen lassen? Oder möchtest du selbst die <strong>Kontrolle </strong>darüber haben, was du denkst, wie du fühlst und welche Ergebnisse du erzielst?<br><strong>Die meisten Menschen überlassen ihr Leben dem Autopiloten</strong> und kommen nicht voran. Auf diese Weise ist <strong>Unglück vorprogrammiert</strong> und ein glückliches Leben quasi unmöglich.<br></div>
       </div>
     </div>
@@ -535,17 +535,20 @@
     //need to use class as there many divs to turn display from none to block
     var divBlock = document.getElementsByClassName("hidden-symptoms-"+id); 
     var symptonMoreText = document.getElementById('symptomShowMoreText-'+id);
-    var symptomLessText = document.getElementById('showLessText-'+id);
+    var showLessTextSingular = document.getElementById('showLessTextSingular-'+id);
+    var showLessTextPlural = document.getElementById('showLessTextPlural-'+id);
 
     for (var i = 0; i < divBlock.length; i++) {
       if (divBlock[i].style.display === "none") {
         divBlock[i].style.display = "block";
         symptonMoreText.innerHTML = "weniger ";
-        symptomLessText.innerHTML = "";
+        showLessTextPlural.innerHTML = "";
+        showLessTextSingular.innerHTML = "";
       } else {
         divBlock[i].style.display = "none";
         symptonMoreText.innerHTML = "weitere ";
-        symptomLessText.innerHTML = "Herausforderungen"; //to see how it looks like for one symptom
+        showLessTextPlural.innerHTML = "Herausforderungen"; //to see how it looks like for one symptom
+        showLessTextSingular.innerHTML = "Herausforderung";
       }
     }
   }
