@@ -1914,7 +1914,7 @@
     width: 800px;
     height: auto;
     margin-right: auto;
-    margin-bottom: 60px;
+    margin-bottom: 0px;
     margin-left: auto;
   }
   
@@ -1956,7 +1956,7 @@
   }
   
   .section-after-analyse-text {
-    padding-top: 20px;
+    padding-top: 0px;
     font-family: Poppins, sans-serif;
     font-size: 16px;
     line-height: 26px;
@@ -4208,17 +4208,18 @@
       padding-top: 20px;
     }
     .footer-social-icon-instagram {
-      margin-top: -54px;
-      margin-left: 60px;
+      margin-top: -24px;
+      margin-left: 34px;
       padding-top: 0px;
       padding-left: 0px;
     }
     .footer-social-icon-linkedin {
-      margin-top: -54px;
+      margin-top: -28px;
       margin-left: 30px;
       padding-top: 0px;
       padding-left: 0px;
     }
+    
     .footer-logo {
       display: block;
       padding-right: 140px;

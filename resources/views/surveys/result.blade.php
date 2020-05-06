@@ -73,7 +73,7 @@
         <p class="paragraph-2">Im Durchschnitt erreichen Teilnehmer einen Score von {{$averageHappinessAllParticipants}}. In der folgenden Grafik kannst du dein Glücks-Level pro Lebensbereich ablesen und mit dem Durchschnitt der anderen Teilnehmer vergleichen.</p>
         <p class="paragraph-2">Hier noch ein Tipp, wie du für dich das Beste aus dem Glücks-Bericht herausholst: Du kannst dir entweder einen Lebensbereich nach dem anderen anschauen oder gelangst direkt zu einem bestimmten Lebensbereich, indem du diesen im Balkendiagramm anklickst. Für jede von dir im Glücks-Test angekreuzte Herausforderung erhältst du einen Sofort-Tipp von unseren Experten sowie weiterführende Hinweise. Trage dich unbedingt auch rechts für das kostenlose Online-Training ein. Darin erfährst du u.a. 3 praktische Tipps, mit denen du dein Glücks-Level sofort steigern kannst.</p>
       </div>
-      <div class="score-elements">
+      <div class="score-elements" id="top">
         <h3 class="heading-6">Dein Happiness-Score pro Lebensbereich</h3>
         <div class="score-columns w-row">
           <div class="score-column1 w-col w-col-6 w-col-medium-6">
@@ -270,7 +270,7 @@
               </div>
             </div>
             @if(count($area->symptoms) > 2  && $key == 1)
-              <p class="purple-header moreSymtpoms" onclick="showMoreSymptoms({{($areaKey + 1)}})">&gt; {{ count($area->symptoms) - 2 }} <span id="symptomShowMoreText-{{($areaKey + 1)}}">weitere </span>@if(count($area->symptoms) - 2 == 1)Herausforderung @else <span id="showLessText-{{ ($areaKey + 1) }}">Herausforderungen</span> @endif anzeigen</p>
+              <p class="purple-header moreSymtpoms" onclick="showMoreSymptoms({{($areaKey + 1)}})">&gt; {{ count($area->symptoms) - 2 }} <span id="symptomShowMoreText-{{($areaKey + 1)}}">weitere </span>@if(count($area->symptoms) - 2 == 1)<span id="showLessText-{{ ($areaKey + 1) }}">Herausforderung</span> @else <span id="showLessText-{{ ($areaKey + 1) }}">Herausforderungen</span> @endif anzeigen</p>
             @endif
           @endif
           <!-- hidden symptoms start here -->
@@ -470,7 +470,7 @@
       } else {
         divBlock[i].style.display = "none";
         symptonMoreText.innerHTML = "weitere ";
-        symptomLessText.innerHTML = "Herausforderungen";
+        symptomLessText.innerHTML = "Herausforderungen"; //to see how it looks like for one symptom
       }
     }
   }
@@ -490,10 +490,12 @@
     }
   }
 
-  // When the user clicks on the button, scroll to the top of the document
+  // When the user clicks on the button, scroll to the top of the document (To the div with id="top")
   function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    var topDiv = document.getElementById('top');
+    //document.body.scrollTop = 600;
+    //document.documentElement.scrollTop = 600;
+    topDiv.scrollIntoView();
   }
 
 </script>
