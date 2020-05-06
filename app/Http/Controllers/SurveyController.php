@@ -530,7 +530,7 @@ class SurveyController extends Controller
                         break;
     
                     case 'phone_number_user':
-                        $customer->phone_number = $answer['phone_number'];
+                        $customer->phone_number = $answer['phone_number']; //If is_null($answer['phone_number]), make phone_number = '';
                         break;
                 }
     
@@ -687,7 +687,7 @@ class SurveyController extends Controller
         $answersCustomer    = Answer::where('customer_id', $customer->id)->get();
         $customerData       = $customer;
     
-        $symptomsCarrer         = '';
+        $symptomsCareer         = '';
         $symptomsLove           = '';
         $symptomsSexuality      = '';
         $symptomsBodayHealth    = '';
@@ -699,7 +699,7 @@ class SurveyController extends Controller
         foreach($answersCustomer as $answer) {
             switch ($answer->reference) {
                 case 'symptoms_beruf_und_karriere_user':
-                    $symptomsCarrer .= $answer->name . PHP_EOL;
+                    $symptomsCareer .= $answer->name . PHP_EOL;
                     break;
                 case 'symptoms_partnerschaft_user':
                     $symptomsLove .= $answer->name . PHP_EOL;
@@ -759,10 +759,10 @@ class SurveyController extends Controller
             $callOptin = $customerData->call_opt_in;
         }
         
-        if($customerData->call_opt_in == null){
+        if(($customerData->call_opt_in == null) && (is_null($customerData->phone_number))){
             $phoneNumber = '';
         } else {
-            $phoneNumber = $customerData->phone_number;
+            $phoneNumber = $customerData->phone_number; //Should not be null
         }
         
         $leadContent = [
@@ -782,7 +782,7 @@ class SurveyController extends Controller
             'Happiness_Score_Friendship__c'     => $scoreCustomer->freundschaften,
             'Happiness_Score_Family__c'         => $scoreCustomer->familie,
             'Happiness_Score_Spirituality__c'   => $scoreCustomer->spiritualitaet,
-            'Symptoms_Career__c'                => $symptomsCarrer,
+            'Symptoms_Career__c'                => $symptomsCareer,
             'Symptoms_Love__c'                  => $symptomsLove,
             'Symptoms_Sexuality__c'             => $symptomsSexuality,
             'Symptoms_Body_Health__c'           => $symptomsBodayHealth,
@@ -1215,7 +1215,7 @@ class SurveyController extends Controller
         $answersCustomer    = Answer::where('customer_id', $customer->id)->get();
         $customerData       = $customer;
     
-        $symptomsCarrer         = '';
+        $symptomsCareer         = '';
         $symptomsLove           = '';
         $symptomsSexuality      = '';
         $symptomsBodayHealth    = '';
@@ -1227,7 +1227,7 @@ class SurveyController extends Controller
         foreach($answersCustomer as $answer) {
             switch ($answer->reference) {
                 case 'symptoms_beruf_und_karriere_user':
-                    $symptomsCarrer .= $answer->name . PHP_EOL;
+                    $symptomsCareer .= $answer->name . PHP_EOL;
                     break;
                 case 'symptoms_partnerschaft_user':
                     $symptomsLove .= $answer->name . PHP_EOL;
@@ -1282,7 +1282,7 @@ class SurveyController extends Controller
         $lead->Happiness_Score_Friendship__c    = $scoreCustomer->freundschaften;
         $lead->Happiness_Score_Family__c        = $scoreCustomer->familie;
         $lead->Happiness_Score_Spirituality__c  = $scoreCustomer->spiritualitaet;
-        $lead->Symptoms_Career__c               = $symptomsCarrer;
+        $lead->Symptoms_Career__c               = $symptomsCareer;
         $lead->Symptoms_Love__c                 = $symptomsLove;
         $lead->Symptoms_Sexuality__c            = $symptomsSexuality;
         $lead->Symptoms_Body_Health__c          = $symptomsBodayHealth;
