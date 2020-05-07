@@ -223,7 +223,8 @@
                               @php
                                   //Making Gratis-Coaching bold
                                   if(strpos($symptom->recom_program_description, 'Gratis-Coaching') !== false){
-                                    $programText = htmlspecialchars(str_replace('Gratis-Coaching', '<b>Gratis-Coaching</b>', $symptom->recom_program_description));
+                                    //$programText = htmlspecialchars(str_replace('Gratis-Coaching', '<b>Gratis-Coaching</b>', $symptom->recom_program_description));
+                                    $programText = $symptom->recom_program_description;
                                   } else {
                                     $programText = $symptom->recom_program_description;
                                   }
@@ -352,7 +353,8 @@
                                   @php
                                       //Making Gratis-Coaching bold
                                       if(strpos($symptom->recom_program_description, 'Gratis-Coaching') !== false){
-                                         $programText = htmlspecialchars(str_replace('Gratis-Coaching', '<b>Gratis-Coaching</b>', $symptom->recom_program_description));
+                                         //$programText = htmlspecialchars(str_replace('Gratis-Coaching', '<b>Gratis-Coaching</b>', $symptom->recom_program_description));
+                                         $programText = $symptom->recom_program_description;
                                       } else {
                                         $programText = $symptom->recom_program_description;
                                       }
