@@ -536,14 +536,11 @@
     var divBlock = document.getElementsByClassName("hidden-symptoms-"+id); 
     var symptonMoreText = document.getElementById('symptomShowMoreText-'+id);
     var symptomCount = document.getElementById('totalSymptoms-'+id).innerText;
-    console.log(symptomCount);
     
     if(symptomCount == 1){
       var showLessTextSingular = document.getElementById('showLessTextSingular-'+id);
-      console.log('Singular ' + showLessTextSingular);
     } else {
       var showLessTextPlural = document.getElementById('showLessTextPlural-'+id);
-      console.log('Plural ' + showLessTextPlural);
     }
 
     for (var i = 0; i < divBlock.length; i++) {
