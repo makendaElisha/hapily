@@ -14,7 +14,8 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>email</th>
+                            <th>Email</th>
+                            <th>Submission date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -23,13 +24,8 @@
                             <tr>
                                 <td>{{$customer->prename}}</td>
                                 <td>{{$customer->email}}</td>
+                                <td>{{ \Carbon\Carbon::parse($customer->submit_date)->format('d-M-Y') }}</td>
                                 <td><a href="{{ url($customer->survey_url) }}" class="btn btn-link" style="color:purple;">Go To Results</a></td>
-                                {{-- <td>
-                                    <form action="{{$customer->survey_url}}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-link" style="color:purple;">Go To Results</button>
-                                    </form>
-                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>

@@ -221,18 +221,11 @@
                           <div class="coach-box-conent">
                             <p class="coach-box-content-paragraph">
                               @php
-                                  //Making Gratis-Coaching bold
-                                  if(strpos($symptom->recom_program_description, 'Gratis-Coaching') !== false){
-                                    //$programText = htmlspecialchars(str_replace('Gratis-Coaching', '<b>Gratis-Coaching</b>', $symptom->recom_program_description));
-                                    $programText = $symptom->recom_program_description;
-                                    //$programText = "Du wünschst dir schnelle Unterstützung? Buche jetzt ein <span style='font-weight: bold;'>Gratis-Coaching mit einem unserer Experten!";
-                                  } else {
-                                    $programText = $symptom->recom_program_description;
-                                  }
-                                  $position = false;
-                                  if (strlen($programText) > 301) {
-                                      $position = strpos($programText, ' ', 300);
-                                  }
+                                $programText = $symptom->recom_program_description;
+                                $position = false;
+                                if (strlen($programText) > 301) {
+                                  $position = strpos($programText, ' ', 300);
+                                }
                               @endphp
                               @if ($position !== false)
                                   <span>
@@ -243,18 +236,17 @@
                                   </span>
                                   <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">Weiterlesen...</button>
                               @else
-                                  {{$programText}}   
+                              {{-- Making Gratis-Coaching bold --}}
+                                @php
+                                  $pos = strpos($programText, 'Gratis-Coaching');
+                                  $length = strlen('Gratis-Coaching');
+                                @endphp
+                                @if ($pos !== false)
+                                  {{substr($programText, 0, $pos)}} <strong>Gratis-Coaching</strong> {{substr($programText, $pos + $length)}}
+                                @else
+                                  {{$programText}}
+                                @endif
                               @endif
-
-                              {{-- <span>
-                                {{substr($symptom->recom_program_description, 0, 300)}}
-                              </span>
-                              <span id="{{($areaKey + 1) *100 + $key}}" style="display:none">
-                                  {{substr($symptom->recom_program_description, 300)}}
-                              </span>
-                              @if(strlen($symptom->recom_program_description) > 300)
-                                <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">Weiterlesen...</button>
-                              @endif --}}
                             </p>
                             <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
                           </div>
@@ -293,16 +285,6 @@
                               @else
                                   {{$bookText}}   
                               @endif
-
-                            {{-- <span>
-                              {{substr($symptom->recom_book_description, 0, 300)}}
-                            </span>
-                            <span id="{{($areaKey + 1) *1000 + $key}}" style="display:none">
-                                {{substr($symptom->recom_book_description, 300)}}
-                            </span>
-                            @if(strlen($symptom->recom_book_description) > 300)
-                              <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">Weiterlesen...</button>
-                            @endif --}}
                           </p>
                           <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Bestellen...</a></div> 
                         </div>
@@ -350,16 +332,12 @@
                             <div class="coach-box-col2 w-col w-col-9">
                               <div class="coach-box-conent">
                                 <p class="coach-box-content-paragraph">
-
                                   @php
-                                      //Making Gratis-Coaching bold
-                                      if(strpos($symptom->recom_program_description, 'Gratis-Coaching') !== false){
-                                         //$programText = htmlspecialchars(str_replace('Gratis-Coaching', '<b>Gratis-Coaching</b>', $symptom->recom_program_description));
-                                         $programText = $symptom->recom_program_description;
-                                         //$programText = "Du wünschst dir schnelle Unterstützung? Buche jetzt ein <span style='font-weight: bold;'>Gratis-Coaching mit einem unserer Experten!";
-                                      } else {
-                                        $programText = $symptom->recom_program_description;
-                                      }
+                                    $programText = $symptom->recom_program_description;
+                                    $position = false;
+                                    if (strlen($programText) > 301) {
+                                      $position = strpos($programText, ' ', 300);
+                                    }
                                   @endphp
                                   @if ($position !== false)
                                     <span>
@@ -370,18 +348,17 @@
                                     </span>
                                     <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">Weiterlesen...</button>
                                   @else
-                                    {{$programText}}   
+                                  {{-- Making Gratis-Coaching bold --}}
+                                    @php
+                                      $pos = strpos($programText, 'Gratis-Coaching');
+                                      $length = strlen('Gratis-Coaching');
+                                    @endphp
+                                    @if ($pos !== false)
+                                      {{substr($programText, 0, $pos)}} <strong>Gratis-Coaching</strong> {{substr($programText, $pos + $length)}}
+                                    @else
+                                      {{$programText}}
+                                    @endif
                                   @endif
-
-                                  {{-- <span>
-                                    {{substr($symptom->recom_program_description, 0, 300)}}
-                                  </span>
-                                  <span id="{{($areaKey + 1) *100 + $key}}" style="display:none">
-                                      {{substr($symptom->recom_program_description, 300)}}
-                                  </span>
-                                  @if(strlen($symptom->recom_program_description) > 300)
-                                    <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">Weiterlesen...</button>
-                                  @endif --}}
                                 </p>
                                 <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
                               </div>
@@ -420,16 +397,6 @@
                                   @else
                                     {{$bookText}}   
                                   @endif
-
-                                {{-- <span>
-                                  {{substr($symptom->recom_book_description, 0, 300)}}
-                                </span>
-                                <span id="{{($areaKey + 1) *1000 + $key}}" style="display:none">
-                                    {{substr($symptom->recom_book_description, 300)}}
-                                </span>
-                                @if(strlen($symptom->recom_book_description) > 300)
-                                  <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">Weiterlesen...</button>
-                                @endif --}}
                               </p>
                               <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Kaufen...</a></div> 
                             </div>
