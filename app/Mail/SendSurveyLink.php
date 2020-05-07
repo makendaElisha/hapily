@@ -32,7 +32,7 @@ class SendSurveyLink extends Mailable
     {
         //Shmock code = =?utf-8?Q?=26=23x2618=3B?=   OR =?utf-8?Q?=E2=98=98=EF=B8=8F?=
         //return $this->from('hallo@hapily.de',  'Denis von hapily')
-        return $this->from('hallo@hapily.de',  'hapily')
+        return $this->from('hallo@hapily.de',  'Denis von hapily')
                     ->subject('=?utf-8?Q?=E2=98=98=EF=B8=8F?= Dein Glücks-Bericht') //Added Emoji
                     ->view('surveys.email')
                     ->with('data', $this->data);
