@@ -767,30 +767,30 @@ class SurveyController extends Controller
         }
         
         if($customerData->time_invest_willingness == null){
-            $timeInvest = 0;
+            $timeInvest = '';
         }else {
             $timeInvest = $customerData->time_invest_willingness;
         }
         
         if($customerData->money_invest_willingness == null){
-            $moneyInvest = 0;
+            $moneyInvest = '';
         }else {
             $moneyInvest = $customerData->money_invest_willingness;
         }
         
-        if($customerData->newsletter_opt_in == null){
+        if($customerData->newsletter_opt_in == 0){
             $newsletter = 0;
         }else {
             $newsletter = $customerData->newsletter_opt_in;
         }
         
-        if($customerData->call_opt_in == null){
+        if($customerData->call_opt_in == 0){
             $callOptin = 0;
         }else {
             $callOptin = $customerData->call_opt_in;
         }
         
-        if(($customerData->call_opt_in == null) && (is_null($customerData->phone_number))){
+        if(($customerData->call_opt_in == 0) || (is_null($customerData->phone_number))){
             $phoneNumber = '';
         } else {
             $phoneNumber = $customerData->phone_number; //Should not be null
