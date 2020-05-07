@@ -224,7 +224,8 @@
                                   //Making Gratis-Coaching bold
                                   if(strpos($symptom->recom_program_description, 'Gratis-Coaching') !== false){
                                     //$programText = htmlspecialchars(str_replace('Gratis-Coaching', '<b>Gratis-Coaching</b>', $symptom->recom_program_description));
-                                    $programText = $symptom->recom_program_description;
+                                    //$programText = $symptom->recom_program_description;
+                                    $programText = "Du wünschst dir schnelle Unterstützung? Buche jetzt ein <span style='font-weight: bold;'>Gratis-Coaching mit einem unserer Experten!";
                                   } else {
                                     $programText = $symptom->recom_program_description;
                                   }
@@ -354,7 +355,8 @@
                                       //Making Gratis-Coaching bold
                                       if(strpos($symptom->recom_program_description, 'Gratis-Coaching') !== false){
                                          //$programText = htmlspecialchars(str_replace('Gratis-Coaching', '<b>Gratis-Coaching</b>', $symptom->recom_program_description));
-                                         $programText = $symptom->recom_program_description;
+                                         //$programText = $symptom->recom_program_description;
+                                         $programText = "Du wünschst dir schnelle Unterstützung? Buche jetzt ein <span style='font-weight: bold;'>Gratis-Coaching mit einem unserer Experten!";
                                       } else {
                                         $programText = $symptom->recom_program_description;
                                       }
