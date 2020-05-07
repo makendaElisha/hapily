@@ -535,7 +535,7 @@
     //need to use class as there many divs to turn display from none to block
     var divBlock = document.getElementsByClassName("hidden-symptoms-"+id); 
     var symptonMoreText = document.getElementById('symptomShowMoreText-'+id);
-    var symptomCount = document.getElementById('totalSymptoms-'+id);
+    var symptomCount = document.getElementById('totalSymptoms-'+id).innerHtml;
     console.log('Count ' + symptomCount);
     
     if(symptomCount == 1){
