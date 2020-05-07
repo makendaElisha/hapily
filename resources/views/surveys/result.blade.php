@@ -307,7 +307,7 @@
               </div>
             </div>
             @if(count($area->symptoms) > 2  && $key == 1)
-              <p class="purple-header moreSymtpoms" onclick="showMoreSymptoms({{($areaKey + 1)}})">&gt; {{ count($area->symptoms) - 2 }} <span id="totalSymptoms-{{($areaKey + 1)}}" style="display: none;">{{ count($area->symptoms) - 2 }} </span> <span id="symptomShowMoreText-{{($areaKey + 1)}}">weitere </span>@if(count($area->symptoms) - 2 == 1)<span id="showLessTextSingular-{{ ($areaKey + 1) }}">Herausforderung</span> @else <span id="showLessTextPlural-{{ ($areaKey + 1) }}">Herausforderungen</span> @endif anzeigen</p>
+              <p class="purple-header moreSymtpoms" onclick="showMoreSymptoms({{($areaKey + 1)}})">&gt; {{ count($area->symptoms) - 2 }} <span id="totalSymptoms-{{($areaKey + 1)}}" style="display: none;">{{ count($area->symptoms) - 2 }}</span> <span id="symptomShowMoreText-{{($areaKey + 1)}}">weitere </span>@if(count($area->symptoms) - 2 == 1)<span id="showLessTextSingular-{{ ($areaKey + 1) }}">Herausforderung</span> @else <span id="showLessTextPlural-{{ ($areaKey + 1) }}">Herausforderungen</span> @endif anzeigen</p>
             @endif
           @endif
           <!-- hidden symptoms start here -->
@@ -535,7 +535,7 @@
     //need to use class as there many divs to turn display from none to block
     var divBlock = document.getElementsByClassName("hidden-symptoms-"+id); 
     var symptonMoreText = document.getElementById('symptomShowMoreText-'+id);
-    var symptomCount = document.getElementById('totalSymptoms-'+id).innerHtml;
+    var symptomCount = document.getElementById('totalSymptoms-'+id).value;
     console.log('Count ' + symptomCount);
     
     if(symptomCount == 1){
