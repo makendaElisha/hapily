@@ -221,7 +221,12 @@
                           <div class="coach-box-conent">
                             <p class="coach-box-content-paragraph">
                               @php
-                                  $programText = $symptom->recom_program_description;
+                                  //Making Gratis-Coaching bold
+                                  if(strpos($symptom->recom_program_description, 'Gratis-Coaching') !== false){
+                                    $programText = str_replace('Gratis-Coaching', '<strong>Gratis-Coaching</strong>', $symptom->recom_program_description);
+                                  } else {
+                                    $programText = $symptom->recom_program_description;
+                                  }
                                   $position = false;
                                   if (strlen($programText) > 301) {
                                       $position = strpos($programText, ' ', 300);
@@ -345,11 +350,12 @@
                                 <p class="coach-box-content-paragraph">
 
                                   @php
-                                    $programText = $symptom->recom_program_description;
-                                    $position = false;
-                                    if (strlen($programText) > 301) {
-                                        $position = strpos($programText, ' ', 300);
-                                    }
+                                      //Making Gratis-Coaching bold
+                                      if(strpos($symptom->recom_program_description, 'Gratis-Coaching') !== false){
+                                        $programText = str_replace('Gratis-Coaching', '<strong>Gratis-Coaching</strong>', $symptom->recom_program_description);
+                                      } else {
+                                        $programText = $symptom->recom_program_description;
+                                      }
                                   @endphp
                                   @if ($position !== false)
                                     <span>
