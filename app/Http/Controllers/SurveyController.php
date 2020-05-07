@@ -798,7 +798,7 @@ class SurveyController extends Controller
         
         $leadContent = [
             'FirstName'                         => $customerData->prename,
-            'LastName'                          => $customerData->prename,
+            //'LastName'                          => $customerData->prename,
             'Company'                           => $customerData->prename,
             'Email'                             => $customerData->email,
             'Title'                             => $title,
