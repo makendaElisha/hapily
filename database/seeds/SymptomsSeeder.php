@@ -407,7 +407,7 @@ class SymptomsSeeder extends Seeder
                     'belief' => 'Ich darf mich nicht zeigen wie ich bin',
                     'recom_book_url' => 'https://amzn.to/2XiL7y1',
                     'recom_book_image' => 'https://images-na.ssl-images-amazon.com/images/I/51RYMKf%2BHjL._SX327_BO1,204,203,200_.jpg',
-                    'recom_book_description' => 'Rocking relationships with your family and friends. A soulmate who gets you on the deepest level. And the best soulful sex of your life. Anything is possible with Melissa Ambrosini by your side!',
+                    'recom_book_description' => 'Mit ihrem Bestseller "Open Wide" zeigt dir Melissa Ambrosini auf unvergleichlich authentische und ehrliche Art und Weise, wie du tiefe und liebevolle Beziehungen mit Familie und Freunden findest; was einen echten Selenverwandten ausmacht und wie du den besten, leidenschaftlichsten Sex deines Lebens haben kannst! (Das Buch ist auf Englisch).',
                     'recom_program_url' => 'http://beducate.me/dm2020-all',
                     'recom_program_image' => 'https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/AoCOZrlQbqCaoykbiewR',
                     'recom_program_description' => 'Sexuelles Selbstbewusstsein kann man trainieren! Entdecke die hochwertig produzierten Online-Kurse von "beducated" und bringe deine Sexualität auf ein völlig neues Level! Bringe ab sofort mehr *WOW* Momente in dein Schlafzimmer.',
