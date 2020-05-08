@@ -797,10 +797,10 @@ class SurveyController extends Controller
         }
         
         $leadContent = [
-            //'FirstName'                         => $customerData->prename,
+            'FirstName'                         => $customerData->prename, //required by Salesforce
             'LastName'                          => $customerData->prename, //required by Salesforce
-            'Company'                           => $customerData->prename,
-            'Email'                             => $customerData->email,
+            'Company'                           => $customerData->prename, //required by Salesforce
+            'Email'                             => $customerData->email, //required by Salesforce
             'Title'                             => $title,
             'Gender__c'                         => $gender,
             'Date_of_Birth__c'                  => $customerData->birth,
