@@ -585,9 +585,6 @@ class SurveyController extends Controller
             $score->total_areas = $userScore;
             $score->save();
         }
-
-        //Create Salesforce Lead N.B. This wont work when using webhook test because webhook doesn't create score and all of that
-        $this->createLead($customer); //Using curl
     
         //send survey email with its own data using Mailjet
         $data = [
@@ -597,6 +594,9 @@ class SurveyController extends Controller
 
         Mail::to($customer->email)
             ->send(new SendSurveyLink($data));
+        
+        //Create Salesforce Lead N.B. This wont work when using webhook test because webhook doesn't create score and all of that
+        $this->createLead($customer); //Using curl
 
        return redirect('/survey')->with("success", "Survey received and saved successfully");
     }
@@ -797,8 +797,8 @@ class SurveyController extends Controller
         }
         
         $leadContent = [
-            'FirstName'                         => $customerData->prename,
-            //'LastName'                          => $customerData->prename,
+            //'FirstName'                         => $customerData->prename,
+            'LastName'                          => $customerData->prename, //required by Salesforce
             'Company'                           => $customerData->prename,
             'Email'                             => $customerData->email,
             'Title'                             => $title,
