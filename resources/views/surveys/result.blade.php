@@ -398,7 +398,7 @@
                                     {{$bookText}}   
                                   @endif
                               </p>
-                              <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Kaufen...</a></div> 
+                              <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Bestellen...</a></div> 
                             </div>
                           </div>
                         </div>
