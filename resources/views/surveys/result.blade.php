@@ -231,10 +231,10 @@
                                   <span>
                                       {{substr($programText, 0, $position)}}
                                   </span>
-                                  <span id="{{($areaKey + 1) *100 + $key}}" style="display:none">
+                                  <span id="{{$areaKey + 1}}-program-{{$key + 1}}" style="display:none">
                                       {{substr($programText, $position)}}
                                   </span>
-                                  <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *100 + $key}})">Weiterlesen...</button>
+                                  <button class="btn btn-link" onclick="showMore('{{$areaKey + 1}}-program-{{$key + 1}}')">Weiterlesen...</button>
                               @else
                               {{-- Making Gratis-Coaching bold --}}
                                 @php
@@ -278,10 +278,10 @@
                                   <span>
                                       {{substr($bookText, 0, $position)}}
                                   </span>
-                                  <span id="{{($areaKey + 1) *500 + $key}}" style="display:none">
+                                  <span id="{{$areaKey + 1}}-book-{{$key + 1}}" style="display:none">
                                       {{substr($bookText, $position)}}
                                   </span>
-                                  <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *500 + $key}})">Weiterlesen...</button>
+                                  <button class="btn btn-link" onclick="showMore('{{$areaKey + 1}}-book-{{$key + 1}}')">Weiterlesen...</button>
                               @else
                                   {{$bookText}}   
                               @endif
@@ -343,10 +343,10 @@
                                     <span>
                                         {{substr($programText, 0, $position)}}
                                     </span>
-                                    <span id="{{($areaKey + 1) *1000 + $key}}" style="display:none">
+                                    <span id="{{$areaKey + 1}}-program-{{$key + 1}}" style="display:none">
                                         {{substr($programText, $position)}}
                                     </span>
-                                    <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1000 + $key}})">Weiterlesen...</button>
+                                    <button class="btn btn-link" onclick="showMore('{{$areaKey + 1}}-program-{{$key + 1}}')">Weiterlesen...</button>
                                   @else
                                   {{-- Making Gratis-Coaching bold --}}
                                     @php
@@ -390,10 +390,10 @@
                                     <span>
                                         {{substr($bookText, 0, $position)}}
                                     </span>
-                                    <span id="{{($areaKey + 1) *1500 + $key}}" style="display:none">
+                                    <span id="{{$areaKey + 1}}-book-{{$key + 1}}" style="display:none">
                                         {{substr($bookText, $position)}}
                                     </span>
-                                    <button class="btn btn-link" onclick="showMore({{($areaKey + 1) *1500 + $key}})">Weiterlesen...</button>
+                                    <button class="btn btn-link" onclick="showMore('{{$areaKey + 1}}-book-{{$key + 1}}')">Weiterlesen...</button>
                                   @else
                                     {{$bookText}}   
                                   @endif
