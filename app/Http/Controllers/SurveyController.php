@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
+use Carbon\Carbon;
 use App\Entities\Lead;
 use App\Entities\Score;
 use App\Entities\Answer;
@@ -9,18 +11,17 @@ use App\Entities\Survey;
 use App\Entities\Symptom;
 use App\Entities\Customer;
 use App\Entities\Question;
+
 use App\Entities\AreaOfLife;
 use App\Mail\SendSurveyLink;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-
 use Omniphx\Forrest\Providers\Laravel\Facades\Forrest;
-use Carbon\Carbon;
-use DateTime;
 
 class SurveyController extends Controller
 {
@@ -264,7 +265,7 @@ class SurveyController extends Controller
                         break;
     
                     case 'date_of_birth_user':
-                        $customer->birth = $answer['date'];
+                        $customer->birth = $answer['date']; //N.B. If date is giving issues, send a null or '' to SF
                         break;
     
                     case 'gender_user':
@@ -598,7 +599,8 @@ class SurveyController extends Controller
         //Create Salesforce Lead N.B. This wont work when using webhook test because webhook doesn't create score and all of that
         $this->createLead($customer); //Using curl
 
-       return redirect('/survey')->with("success", "Survey received and saved successfully");
+       //return redirect('/survey')->with("success", "Survey received and saved successfully");
+       return 'Survey received and saved successfully';
     }
 
 
@@ -797,14 +799,14 @@ class SurveyController extends Controller
         }
         
         $leadContent = [
-            'FirstName'                         => $customerData->prename ?? '', //required by Salesforce
-            'LastName'                          => $customerData->prename ?? '', //required by Salesforce
-            'Company'                           => $customerData->prename ?? '', //required by Salesforce
-            'Email'                             => $customerData->email ?? '', //required by Salesforce
-            'Title'                             => $title ?? '',
-            'Gender__c'                         => $gender ?? '',
-            'Date_of_Birth__c'                  => $customerData->birth ?? '',
-            'MobilePhone'                       => $phoneNumber ?? '',
+            'FirstName'                         => $customerData->prename, //required by Salesforce
+            'LastName'                          => $customerData->prename, //required by Salesforce
+            'Company'                           => $customerData->prename, //required by Salesforce
+            'Email'                             => $customerData->email, //required by Salesforce
+            'Title'                             => $title,
+            'Gender__c'                         => $gender,
+            'Date_of_Birth__c'                  => $customerData->birth,
+            'MobilePhone'                       => $phoneNumber,
             'Overall_Happiness_Score__c'        => $scoreCustomer->total_areas ?? 0,
             'Happiness_Score_Career__c'         => $scoreCustomer->beruf_und_karriere ?? 0,
             'Happiness_Score_Love__c'           => $scoreCustomer->partnerschaft ?? 0,
@@ -820,11 +822,11 @@ class SurveyController extends Controller
             'Symptoms_Friendship__c'            => $symptomsFriendship ?? '',
             'Symptoms_Family__c'                => $symptomsFamily ?? '',
             'Symptoms_Spirituality__c'          => $symptomsSpirituality ?? '',
-            'Time_Invest_Willingness__c'        => $timeInvest ?? '',
-            'Money_Invest_Willingness__c'       => $moneyInvest ?? '',
-            'Newsletter_Opt_in__c'              => $newsletter ?? 0,
-            'Call_Opt_in__c'                    => $callOptin ?? 0,
-            'Survey_Result_URL__c'              => url($customerData->survey_url) ?? '',
+            'Time_Invest_Willingness__c'        => $timeInvest,
+            'Money_Invest_Willingness__c'       => $moneyInvest,
+            'Newsletter_Opt_in__c'              => $newsletter,
+            'Call_Opt_in__c'                    => $callOptin,
+            'Survey_Result_URL__c'              => url($customerData->survey_url),
         ];
     
         $content = json_encode($leadContent);
@@ -843,6 +845,7 @@ class SurveyController extends Controller
         $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     
         if ( $status != 201 ) {
+            Log::error("Error: call to URL $postUrl failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl), ['context' => 'Salesforce API Create Lead']);
             die("Error: call to URL $postUrl failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
         }
         
