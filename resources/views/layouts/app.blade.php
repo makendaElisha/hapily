@@ -1,8 +1,10 @@
 @include('layouts.header')
 <style>
-    /* body {
-        font-family: Poppins, sans-serif !important;
-    } */
+    table.dataTable thead .sorting { background: url("/all/datatable/sort_both.png") no-repeat center right; }
+    table.dataTable thead .sorting_asc { background: url("/all/datatable/sort_asc.png") no-repeat center right; }
+    table.dataTable thead .sorting_desc { background: url("/all/datatable/sort_desc.png") no-repeat center right; }
+    table.dataTable thead .sorting_asc_disabled { background: url("/all/datatable/sort_asc_disabled.png") no-repeat center right; }
+    table.dataTable thead .sorting_desc_disabled { background: url("/all/datatable/sort_desc_disabled.png") no-repeat center right; }
 </style>
 <body class="app">
     <div id="loader">
