@@ -3,13 +3,13 @@
 @section('content')
 
 <div class="container-fluid">
-    <h4 class="c-grey-900 mT-10 mB-20">Data Tables</h4>
-    <a href="/survey/submit" type="button" class="btn btn-primary c-white mB-10" style="background-color:purple;">Simulate Survey :)</a>
+    <h4 class="c-grey-900 mT-10 mB-20">Survey Results</h4>
+    {{-- <a href="/survey/submit" type="button" class="btn btn-primary c-white mB-10" style="background-color:purple;">Simulate Survey :)</a> --}}
 
     <div class="row">
         <div class="col-md-12">
             <div class="bgc-white bd bdrs-3 p-20 mB-20">
-                <h4 class="c-grey-900 mB-20">Survey Results</h4>
+                {{-- <h4 class="c-grey-900 mB-20">Survey Results</h4> --}}
                 <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -39,21 +39,3 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable({
-
-            columns: [
-                {
-                    data: 'submit_date',
-                    type: 'num',
-                    render: {
-                        _: 'display',
-                        sort: 'timestamp'
-                    }
-                }
-            ]
-        });
-    });
-</script>
