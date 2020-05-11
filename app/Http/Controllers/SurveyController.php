@@ -286,6 +286,18 @@ class SurveyController extends Controller
                         ]);
                         break;
                         
+                    case 'priority_area_of_life_user':
+                        if(array_key_exists('other', $answer['choice'])) {
+                            $customer->priority_area_of_life = $answer['choice']['other'];
+                        }
+
+                        if(array_key_exists('label', $answer['choice'])){
+                            $customer->priority_area_of_life = $answer['choice']['label'];
+                        }
+
+                        break;
+
+                    
                     case 'score_beruf_und_karriere_user':
                         Answer::create([
                             'name' => $answer['number'],
@@ -921,6 +933,17 @@ class SurveyController extends Controller
                             'customer_id' => $customer->id,
                             'question_id' => $question_id,
                         ]);
+                        break;
+
+                    case 'priority_area_of_life_user':
+                        if(array_key_exists('other', $answer['choice'])) {
+                            $customer->priority_area_of_life = $answer['choice']['other'];
+                        }
+
+                        if(array_key_exists('label', $answer['choice'])){
+                            $customer->priority_area_of_life = $answer['choice']['label'];
+                        }
+
                         break;
                         
                     case 'score_beruf_und_karriere_user':
