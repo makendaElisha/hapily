@@ -285,20 +285,6 @@ class SurveyController extends Controller
                             'question_id' => $question_id,
                         ]);
                         break;
-                        
-                    case 'priority_area_of_life_user':
-                        if(!is_null($answer['choices']['labels'])) {
-                            foreach ($answer['choices']['labels'] as $item) {
-                                Answer::create([
-                                    'name' =>$item,
-                                    'reference' => $answer['field']['ref'],
-                                    'customer_id' => $customer->id,
-                                    'question_id' => $question_id,
-                                ]);
-                            }
-                        }
-
-                        break;
                     
                     case 'score_beruf_und_karriere_user':
                         Answer::create([
@@ -513,6 +499,19 @@ class SurveyController extends Controller
                                 'question_id' => $question_id,
                             ]);
                         }
+                        break;
+
+                    case 'priority_area_of_life_user':
+                        if(!is_null($answer['choices']['labels'])) {
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
+                        }
 
                         break;
     
@@ -712,6 +711,8 @@ class SurveyController extends Controller
         $symptomsFamily         = '';
         $symptomsSpirituality   = '';
         $symptomDefault         = '';
+
+        $priorityAreaOfLife     = '';
     
         //Normal Symptoms
         foreach($answersCustomer as $answer) {
@@ -771,6 +772,16 @@ class SurveyController extends Controller
             }
         }
 
+        //saving priority area of life
+        foreach($answersCustomer as $answer) {
+            switch ($answer->reference) {
+                case 'priority_area_of_life_user':
+                    $priorityAreaOfLife .= $answer->name . PHP_EOL;
+                    break;
+                default:
+                    $priorityAreaOfLife = '';
+            }
+        }
     
         if($customerData->gender == 'Männlich'){
             $gender = 'Male';
@@ -837,6 +848,7 @@ class SurveyController extends Controller
             'Symptoms_Friendship__c'            => $symptomsFriendship ?? '',
             'Symptoms_Family__c'                => $symptomsFamily ?? '',
             'Symptoms_Spirituality__c'          => $symptomsSpirituality ?? '',
+            'Priority_Area_of_Life__c'          => $priorityAreaOfLife ?? '',
             'Time_Invest_Willingness__c'        => $timeInvest,
             'Money_Invest_Willingness__c'       => $moneyInvest,
             'Newsletter_Opt_in__c'              => $newsletter,
