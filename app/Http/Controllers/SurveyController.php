@@ -287,16 +287,18 @@ class SurveyController extends Controller
                         break;
                         
                     case 'priority_area_of_life_user':
-                        if(array_key_exists('other', $answer['choice'])) {
-                            $customer->priority_area_of_life = $answer['choice']['other'];
-                        }
-
-                        if(array_key_exists('label', $answer['choice'])){
-                            $customer->priority_area_of_life = $answer['choice']['label'];
+                        if(!is_null($answer['choices']['labels'])) {
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
                         }
 
                         break;
-
                     
                     case 'score_beruf_und_karriere_user':
                         Answer::create([
@@ -936,14 +938,16 @@ class SurveyController extends Controller
                         break;
 
                     case 'priority_area_of_life_user':
-                        if(array_key_exists('other', $answer['choice'])) {
-                            $customer->priority_area_of_life = $answer['choice']['other'];
-                        }
-
-                        if(array_key_exists('label', $answer['choice'])){
-                            $customer->priority_area_of_life = $answer['choice']['label'];
-                        }
-
+                        if(!is_null($answer['choices']['labels'])) {
+                            foreach ($answer['choices']['labels'] as $item) {
+                                Answer::create([
+                                    'name' =>$item,
+                                    'reference' => $answer['field']['ref'],
+                                    'customer_id' => $customer->id,
+                                    'question_id' => $question_id,
+                                ]);
+                            }
+                        }                        
                         break;
                         
                     case 'score_beruf_und_karriere_user':
