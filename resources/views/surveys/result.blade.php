@@ -157,14 +157,14 @@
               <div class="score-column1-col1 w-col w-col-6">
                 <div class="life-area-score-container1">
                   <h5 class="score-column-heading5-centered">Dein <br>Happiness-Score</h5>
-                  <div class="organge-score-life-area-score">{{$area->areaScore}}</div>
+                  <div class="red-score">{{$area->areaScore}}</div>
                   <div class="score-grey-text">Durchschnitt aller <br>Teilnehmer: {{$area->averageAreaScore}}</div>
                 </div>
               </div>
               <div class="score-column1-col2 w-col w-col-6">
                 <div class="life-area-score-container2">
                   <h5 class="score-column-heading5-centered">Herausforderungen<br></h5>
-                  <div class="red-score">{{$area->userSelectedSymptoms}}</div>
+                  <div class="organge-score-life-area-score">{{$area->userSelectedSymptoms}}</div>
                   <div class="score-grey-text">Deine Herausforderungen stellen gleichzeitig dein Potenzial dar</div>
                 </div>
               </div>
