@@ -1567,7 +1567,8 @@
     padding-top: 30px;
     padding-bottom: 40px;
     font-family: Poppins, sans-serif;
-    color: #dd3b33;
+    /* color: #dd3b33; */
+    color: #ff9f42;
     font-size: 50px;
     line-height: 0px;
     font-weight: 600;
@@ -2377,7 +2378,8 @@
     padding-top: 50px;
     padding-bottom: 40px;
     font-family: Poppins, sans-serif;
-    color: #ff9f42;
+    /* color: #ff9f42; */
+    color: #dd3b33;
     font-size: 50px;
     line-height: 0px;
     font-weight: 600;
