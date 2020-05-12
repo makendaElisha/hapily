@@ -22,7 +22,6 @@
       text-decoration: underline;
       cursor: pointer;
     }
-
     #myBtn {
       display: none;
       position: fixed;
@@ -39,12 +38,10 @@
       border-radius: 4px;
       margin-right: 5.5%;
     }
-
     #myBtn:hover {
       color: blue;
       text-decoration: underline;
     }
-
   </style>
 
 </head>
@@ -160,14 +157,14 @@
               <div class="score-column1-col1 w-col w-col-6">
                 <div class="life-area-score-container1">
                   <h5 class="score-column-heading5-centered">Dein <br>Happiness-Score</h5>
-                  <div class="red-score">{{$area->areaScore}}</div>
+                  <div class="organge-score-life-area-score">{{$area->areaScore}}</div>
                   <div class="score-grey-text">Durchschnitt aller <br>Teilnehmer: {{$area->averageAreaScore}}</div>
                 </div>
               </div>
               <div class="score-column1-col2 w-col w-col-6">
                 <div class="life-area-score-container2">
                   <h5 class="score-column-heading5-centered">Herausforderungen<br></h5>
-                  <div class="organge-score-life-area-score">{{$area->userSelectedSymptoms}}</div>
+                  <div class="red-score">{{$area->userSelectedSymptoms}}</div>
                   <div class="score-grey-text">Deine Herausforderungen stellen gleichzeitig dein Potenzial dar</div>
                 </div>
               </div>
@@ -506,7 +503,6 @@
           nextBtn.innerHTML = "Weiterlesen...";
       }
   }
-
   function showMoreSymptoms(id) {
     // var divBlock = document.getElementById('symptom-div-'+id);
     //need to use class as there many divs to turn display from none to block
@@ -519,7 +515,6 @@
     } else {
       var showLessTextPlural = document.getElementById('showLessTextPlural-'+id);
     }
-
     for (var i = 0; i < divBlock.length; i++) {
       if (divBlock[i].style.display === "none") {
         divBlock[i].style.display = "block";
@@ -540,14 +535,11 @@
       }
     }
   }
-
   //Scroll top button
   //Get the button
   var mybutton = document.getElementById("myBtn");
-
   // When the user scrolls down 20px from the top of the document, show the button
   window.onscroll = function() {scrollFunction()};
-
   function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       mybutton.style.display = "block";
@@ -555,7 +547,6 @@
       mybutton.style.display = "none";
     }
   }
-
   // When the user clicks on the button, scroll to the top of the document (To the div with id="top")
   function topFunction() {
     var topDiv = document.getElementById('top');
@@ -563,5 +554,4 @@
     //document.documentElement.scrollTop = 600;
     topDiv.scrollIntoView();
   }
-
 </script>
