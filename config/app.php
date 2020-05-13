@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Omniphx\Forrest\Providers\Laravel\ForrestServiceProvider::class,
+        Mailjet\LaravelMailjet\MailjetServiceProvider::class,
+        Mailjet\LaravelMailjet\MailjetMailServiceProvider::class,
     ],
 
     /*
@@ -227,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Forrest' => Omniphx\Forrest\Providers\Laravel\Facades\Forrest::class,
+        'Mailjet' => Mailjet\LaravelMailjet\Facades\Mailjet::class,
     ],
 
 ];

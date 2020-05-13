@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Omniphx\Forrest\Providers\Laravel\Facades\Forrest;
 
+use App\Services\Mailjet\ContactSubscriptionService;
+
+
 class SurveyController extends Controller
 {
     /**
@@ -36,6 +39,13 @@ class SurveyController extends Controller
         $customers = Customer::orderBy('submit_date', 'desc')->get();
 
         return view('surveys.index', compact('customers'));
+    }
+
+
+    public function listSubscribe()
+    {
+        $customer = Customer::find(24);
+        (new ContactSubscriptionService)->handleSubscription($customer);
     }
 
     /**
@@ -612,6 +622,9 @@ class SurveyController extends Controller
         
         //Create Salesforce Lead N.B. This wont work when using webhook test because webhook doesn't create score and all of that
         $this->createLead($customer); //Using curl
+
+        //Subscribe User to list for automation
+        (new ContactSubscriptionService)->handleSubscription($customer);
 
        //return redirect('/survey')->with("success", "Survey received and saved successfully");
        return 'Survey received and saved successfully';

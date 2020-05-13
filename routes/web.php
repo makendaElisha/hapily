@@ -54,3 +54,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::post('/callback/survey', 'SurveyController@surveyHook')->name('survey.surveyHook');
+
+
+Route::get('/mailjet', 'SurveyController@listSubscribe')->name('subscribe.list');

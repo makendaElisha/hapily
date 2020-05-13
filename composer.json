@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "mailjet/laravel-mailjet": "^2.1",
         "omniphx/forrest": "2.*",
         "rob-lester-jr04/eloquent-sales-force": "^2.6",
         "spatie/laravel-permission": "^3.11"

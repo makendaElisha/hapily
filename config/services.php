@@ -34,4 +34,9 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
+    'mailjet' => [
+        'key' => env('MAILJET_APIKEY'),
+        'secret' => env('MAILJET_APISECRET'),
+    ],
+
 ];
