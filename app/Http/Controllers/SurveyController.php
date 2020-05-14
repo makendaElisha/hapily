@@ -48,10 +48,11 @@ class SurveyController extends Controller
         //(new ContactSubscriptionService)->handleAutomationSubscription($customer);
         //(new ContactSubscriptionService)->handleNewsletterSubscription($customer);
         $customers = Customer::where('newsletter_opt_in', 1)->get();
-        
+
         foreach ($customers as $customer){
             if ($customer->newsletter_opt_in == 1) {
-                (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
+                //(new ContactSubscriptionService)->handleNewsletterSubscription($customer);
+                dd($customer);
             }
             return 'success';
         }
@@ -857,6 +858,7 @@ class SurveyController extends Controller
             'Company'                           => $customerData->prename, //required by Salesforce
             'Email'                             => $customerData->email, //required by Salesforce
             'Title'                             => $title,
+            'PostalCode'                        => $customerData->postal_code,
             'Gender__c'                         => $gender,
             'Date_of_Birth__c'                  => $customerData->birth,
             'MobilePhone'                       => $phoneNumber,
