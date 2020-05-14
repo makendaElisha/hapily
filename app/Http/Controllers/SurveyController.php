@@ -48,15 +48,13 @@ class SurveyController extends Controller
         //(new ContactSubscriptionService)->handleAutomationSubscription($customer);
         //(new ContactSubscriptionService)->handleNewsletterSubscription($customer);
         $customers = Customer::where('newsletter_opt_in', 1)->get();
-
-        dd($customers);
         
-        // foreach ($customers as $customer){
-        //     if ($customer->newsletter_opt_in == 1) {
-        //         (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
-        //     }
-        //     return 'success';
-        // }
+        foreach ($customers as $customer){
+            if ($customer->newsletter_opt_in == 1) {
+                (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
+            }
+            return 'success';
+        }
     }
 
     /**
