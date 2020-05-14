@@ -44,8 +44,19 @@ class SurveyController extends Controller
 
     public function listSubscribe()
     {
-        $customer = Customer::find(24);
-        (new ContactSubscriptionService)->handleSubscription($customer);
+        //$customer = Customer::find(24);
+        //(new ContactSubscriptionService)->handleAutomationSubscription($customer);
+        //(new ContactSubscriptionService)->handleNewsletterSubscription($customer);
+        $customers = Customer::where('newsletter_opt_in', 1)->get();
+
+        dd($customers);
+        
+        // foreach ($customers as $customer){
+        //     if ($customer->newsletter_opt_in == 1) {
+        //         (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
+        //     }
+        //     return 'success';
+        // }
     }
 
     /**
@@ -624,7 +635,12 @@ class SurveyController extends Controller
         $this->createLead($customer); //Using curl
 
         //Subscribe User to list for automation
-        (new ContactSubscriptionService)->handleSubscription($customer);
+        (new ContactSubscriptionService)->handleAutomationSubscription($customer);
+
+        //Subscribe User to newsletter if opted to newsletter
+        if ($customer->newsletter_opt_in == 1) {
+            (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
+        }
 
        //return redirect('/survey')->with("success", "Survey received and saved successfully");
        return 'Survey received and saved successfully';
