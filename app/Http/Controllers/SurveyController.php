@@ -21,9 +21,11 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-use Omniphx\Forrest\Providers\Laravel\Facades\Forrest;
+use Illuminate\Support\Facades\Notification;
 
+use App\Notifications\SurveySlackNotification;
 use App\Services\Mailjet\ContactSubscriptionService;
+use Omniphx\Forrest\Providers\Laravel\Facades\Forrest;
 
 
 class SurveyController extends Controller
@@ -50,12 +52,16 @@ class SurveyController extends Controller
         //$customers = Customer::where('newsletter_opt_in', 1)->get();
         $customers = Customer::where('id', '<', 293)->get(); //ID 293 Julia was already added to newsletter list
 
-        foreach ($customers as $customer){
-            if ($customer->newsletter_opt_in == 1) {
-                (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
-            }
-            return 'success';
-        }
+        // foreach ($customers as $customer){
+        //     if ($customer->newsletter_opt_in == 1) {
+        //         (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
+        //     }
+        //     return 'success';
+        // }
+        
+        $customer = Customer::find(1);
+
+        Notification::route('slack', env('SLACK_HOOK'))->notify(new SurveySlackNotification($customer));
     }
 
     /**
@@ -640,6 +646,9 @@ class SurveyController extends Controller
         if ($customer->newsletter_opt_in == 1) {
             (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
         }
+
+        //Send a slack notification
+        Notification::route('slack', env('SLACK_HOOK'))->notify(new SurveySlackNotification($customer));
 
        //return redirect('/survey')->with("success", "Survey received and saved successfully");
        return 'Survey received and saved successfully';
