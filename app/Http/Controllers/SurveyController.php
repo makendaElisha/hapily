@@ -61,7 +61,7 @@ class SurveyController extends Controller
         
         $customer = Customer::find(1);
 
-        Notification::route('slack', env('SLACK_HOOK'))->notify(new SurveySlackNotification($customer));
+        Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
     }
 
     /**
@@ -648,7 +648,7 @@ class SurveyController extends Controller
         }
 
         //Send a slack notification
-        Notification::route('slack', env('SLACK_HOOK'))->notify(new SurveySlackNotification($customer));
+        Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
 
        //return redirect('/survey')->with("success", "Survey received and saved successfully");
        return 'Survey received and saved successfully';

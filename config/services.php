@@ -38,5 +38,9 @@ return [
         'key' => env('MAILJET_APIKEY'),
         'secret' => env('MAILJET_APISECRET'),
     ],
+    
+    'slack' => [
+        'webhook' => env('SLACK_HOOK')
+    ],
 
 ];
