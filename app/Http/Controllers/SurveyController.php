@@ -50,19 +50,18 @@ class SurveyController extends Controller
         //(new ContactSubscriptionService)->handleAutomationSubscription($customer);
         //(new ContactSubscriptionService)->handleNewsletterSubscription($customer);
         //$customers = Customer::where('newsletter_opt_in', 1)->get();
-        $customers = Customer::where('id', '<', 293)->get(); //ID 293 Julia was already added to newsletter list
+        // $customers = Customer::where('id', '<', 293)->get(); //ID 293 Julia was already added to newsletter list
 
-        foreach ($customers as $customer){
-            if ($customer->newsletter_opt_in == 1) {
-                (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
-                echo 'Customer is ' . $customer->prename . '<br />'; //works
-            }
-        }
+        // foreach ($customers as $customer){
+        //     if ($customer->newsletter_opt_in == 1) {
+        //         (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
+        //         echo 'Customer is ' . $customer->prename . '<br />'; //works
+        //     }
+        // }
 
-        return '<br />===========Successfull inserting!===========';
+        // return '<br />===========Successfull inserting!===========';
         
         //$customer = Customer::find(1);
-
         //Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
     }
 
