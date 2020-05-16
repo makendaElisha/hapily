@@ -38,7 +38,7 @@ class SurveyController extends Controller
     public function index()
     {
         //$customers = Customer::all();
-        $customers = Customer::orderBy('submit_date', 'desc')->get();
+        $customers = Customer::orderBy('id', 'desc')->get();
 
         return view('surveys.index', compact('customers'));
     }
