@@ -20,8 +20,6 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/survey/result/{token}', 'SurveyController@userResult')->name('survey.result');
 
-Route::get('/saleforce/token', 'SurveyController@curlGetTokenSalesForce');
-
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
