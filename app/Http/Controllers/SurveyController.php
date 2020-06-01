@@ -720,8 +720,20 @@ class SurveyController extends Controller
 
         $response = json_decode(curl_exec($curl), true); //true to get array
         curl_close($curl);
+        
+        $responseData = [
+           'password'  => env("SF_PASSWORD"),
+           'token'    => env("SF_TOKEN_PASS"),
+           'passwordAndToken' => $passwordAndToken,
+           'client_id'     => env("SF_CONSUMER_KEY"),
+           'client_secret' => env("SF_CONSUMER_SECRET"),
+           'username'      => env("SF_USERNAME"),
+           'response' => $response,
+        ];
+        
+        return $responseData;
 
-        return $response;
+        //return $response;
     }
 
     /**
