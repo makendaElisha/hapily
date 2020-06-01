@@ -81,7 +81,7 @@ class SurveySlackNotification extends Notification
                                ->fields([
                                     'Name'      => $customer->prename,
                                     'Email'     => $customer->email,
-                                    'Date/Time' => Carbon::parse($customer->submit_date)->format('m/d/Y @ H:i')
+                                    'Date/Time' => Carbon::parse($customer->submit_date)->addHours(2)->format('m/d/Y @ H:i')
                                ]);
                 });
     }
