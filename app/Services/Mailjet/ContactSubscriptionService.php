@@ -17,6 +17,7 @@ class ContactSubscriptionService
 
     protected const AUTOMATION_USER_LIST = 25221;
     protected const NEWSLETTER_USER_LIST = 25335;
+    protected const WEBINAR_PAID_USER_LIST = 28521;
 
 
     /**
@@ -66,4 +67,27 @@ class ContactSubscriptionService
             logger()->error('error adding subscriber to list: ' . $e->getMessage(), $customer->prename);
         }
     }
+
+    /**
+     * @param mixed $handlePaidUserSubscription
+     * @param mixed $payment
+     */
+
+    public function handlePaidUserSubscription($payment)
+    {
+        /* Body request */
+        $body = [
+            'Name' => $payment->address_first_name,
+            'Properties' => ['vorname' => $payment->address_first_name, 'webinar-credential' => ''],
+            'Action' => "addnoforce",
+            'Email' => $payment->buyer_email,
+        ];
+
+        try {
+            $response = Mailjet::post(Resources::$ContactslistManagecontact, ['id' => self::WEBINAR_PAID_USER_LIST, 'body' => $body]);
+        } catch (\Exception $e) {
+            logger()->error('error adding subscriber to list: ' . $e->getMessage(), $payment->address_first_name);
+        }
+    }
+
 }
