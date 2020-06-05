@@ -70,6 +70,23 @@ window['_fs_namespace'] = 'FS';
 })(window,document,window['_fs_namespace'],'script','user');
 </script>
 
+
+<!-- Start VWO Async Smartcode -->
+<script type='text/javascript'>
+window._vwo_code = window._vwo_code || (function(){
+var account_id=501159,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+is_spa=1,
+hide_element='body',
+
+/* DO NOT EDIT BELOW THIS LINE */
+f=false,d=document,code={use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){
+window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b=hide_element?hide_element+'{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}':'',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&f='+(+is_spa)+'&r='+Math.random());return settings_timer; }};window._vwo_settings_timer = code.init(); return code; }());
+</script>
+<!-- End VWO Async Smartcode -->
+
 </head>
 <body>
   <button onclick="topFunction()" id="myBtn" title="Go to top">> Zur Übersicht</button>
@@ -77,7 +94,7 @@ window['_fs_namespace'] = 'FS';
     <h1 class="heading-5">Dein Glücks-Bericht<br></h1>
   </div>
   <div class="side-green-container">
-    <h4 class="side-green-container-header">Kostenloses Online-Training - Entfalte jetzt dein Glücks-Potenzial!</h4><a href="https://webinaris.co/customer/seminar/11797_managing_happiness/17426/11797/30346.html?mode=N" target="_blank" class="side-green-container-button w-button">&gt; Kostenlos anmelden</a>
+    <h4 class="side-green-container-header">Kostenloses Online-Training - Entfalte jetzt dein Glücks-Potenzial!</h4><a href="https://event.webinarjam.com/register/1/8r85qtn" target="_blank" class="side-green-container-button w-button">&gt; Kostenlos anmelden</a>
     <h5 class="side-green-container-header-small">Was du im Training <br>lernen wirst:</h5>
     <ul class="side-green-list w-list-unstyled">
       <li class="side-green-list-item">Was Glück wirklich bedeutet und was ein erfülltes Leben ausmacht.</li>
@@ -204,7 +221,7 @@ window['_fs_namespace'] = 'FS';
             <p class="normal-text" ><br />
               Im Bereich <strong>{{$area->name}}</strong> hast du scheinbar keine offensichtlichen Themen, die dich unglücklich machen. Im Besten Fall gibt es hier demnach einfach wenig Verbesserungspotential für dich. Manchmal sind Themen, die uns unglücklich machen, allerdings auch unterbewusst vorhanden. Regelmäßige Reflektion und Journaling können uns dabei helfen, solche möglichen Herausforderungen aus dem Unterbewusstsein offenzulegen. Mehr dazu erfährst du in unserem kostenlosen Online-Training.
             </p>
-            <div class="recommanded-book-purple-link" style="text-align: left;"><a href="https://zoom.us/meeting/register/tJApdO-gqz0tG92IvTglSlVXSF-EPdCU6A3_" class="recommanded-book-purple-link" target="_blank">&gt; Jetzt kostenlos anmelden...</a></div>
+            <div class="recommanded-book-purple-link" style="text-align: left;"><a href="https://event.webinarjam.com/register/1/8r85qtn" class="recommanded-book-purple-link" target="_blank">&gt; Jetzt kostenlos anmelden...</a></div>
           </div>
       @else
         @php
@@ -480,9 +497,9 @@ window['_fs_namespace'] = 'FS';
     <div class="section-green-container">
       <h3 class="section-green-header"><span class="green-text">Die gute Nachricht ist :</span> Du bist deinen negativen Glaubenssätzen und den damit verbundenen Gefühlen nicht hilflos ausgeliefert.</h3>
       <div class="section-green-normal-text">Aus der Neurowissenschaft sowie aus unzähligen Coachings wissen wir, dass es möglich ist, aus seinem aktuellen Leben auszubrechen und sich systematisch ein erfülltes und glückliches Leben zu erschaffen. Und zwar mit sofortigen Ergebnissen!<br><br>Aus diesem Grund haben wir ein <strong>kostenloses Glücks-Training entwickelt</strong>, in dem wir dir zeigen, wie du deine negativen Glaubenssätze durch positive Überzeugungen ersetzen kannst. Lerne noch HEUTE, was Glück wirklich bedeutet und wie du <strong>dir Schritt für Schritt dein Wunschleben</strong> kreierst.</div>
-      <div class="section-green-image-text-container"><img src="{{ asset('all/images/online_traning_image.png')}}" width="320" height="216" srcset="{{ asset('all/images/online_traning_image-p-500.png')}} 500w, images/online_traning_image.png')}} 642w" sizes="(max-width: 479px) 92vw, (max-width: 767px) 346.671875px, 320px" alt="" class="section-green-lady-image">
+      <div class="section-green-image-text-container"><img src="{{ asset('all/images/online_traning_image.png')}}" width="320" height="216" sizes="(max-width: 479px) 92vw, (max-width: 767px) 346.671875px, 320px" alt="" class="section-green-lady-image">
         <div class="section-green-right-content">
-          <div class="sectionn-green-right-content-text"><strong>Gratis Online-Training<br></strong><br>In dir steckt so viel Potenzial - Mache jetzt den ersten Schritt und melde dich für das kostenlose Glücks-Training an.</div><a href="https://webinaris.co/customer/seminar/11797_managing_happiness/17426/11797/30346.html?mode=N" target="_blank" class="section-green-purple-button w-button">&gt; Ich bin dabei!</a>
+          <div class="sectionn-green-right-content-text"><strong>Gratis Online-Training<br></strong><br>In dir steckt so viel Potenzial - Mache jetzt den ersten Schritt und melde dich für das kostenlose Glücks-Training an.</div><a href="https://event.webinarjam.com/register/1/8r85qtn" target="_blank" class="section-green-purple-button w-button">&gt; Ich bin dabei!</a>
           <p class="section-green-right-content-small-text">Nur 100 Gratis-Plätze verfügbar - <strong>Jetzt anmelden!</strong></p>
         </div>
       </div>

@@ -15,7 +15,7 @@ use Mailjet\LaravelMailjet\Contracts\CampaignDraftContract;
 class ContactSubscriptionService
 {
 
-    protected const AUTOMATION_USER_LIST = 25221;
+    protected const AUTOMATION_USER_LIST = 25890;
     protected const NEWSLETTER_USER_LIST = 25335;
     protected const WEBINAR_PAID_USER_LIST = 28521;
 
