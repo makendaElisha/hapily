@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use App\Entities\Payment;
 use App\Entities\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Services\Mailjet\ContactSubscriptionService;
 
 class PaymentController extends Controller
 {
-    //define( 'IPN_PASSPHRASE', '' );
-    //CONST IPN_PASSPHRASE = 'IPN_PASS_#_2020';
     CONST IPN_PASSPHRASE ='';
-
 
     /**
      * Display a listing of the resource.
@@ -21,73 +19,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $payments = Payment::all();
+        return view('payments.index', compact('payments'));
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Entities\Payment  $payment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Payment $payment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Entities\Payment  $payment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Payment $payment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Entities\Payment  $payment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Payment $payment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Entities\Payment  $payment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Payment $payment)
-    {
-        //
     }
 
 
@@ -172,11 +106,12 @@ class PaymentController extends Controller
             $payment->payment_type          = $request->post('event');
             $payment->payment_method        = $request->post('pay_method');
             $payment->product_name          = $request->post('product_name');
-            $payment->order_date_time       = $request->post('order_date');
+            $payment->order_date            = $request->post('order_date_time');
             $payment->transaction_amount    = $request->post('transaction_amount');
+            $payment->order_id              = $request->post('order_id');
             $payment->buyer_email           = $request->post('email');
-            $payment->address_first_name    = $request->post('address_first_name');
-            $payment->address_last_name     = $request->post('address_last_name');
+            $payment->buyer_first_name      = $request->post('address_first_name');
+            $payment->buyer_last_name       = $request->post('address_last_name');
             $payment->save();
 
 
@@ -208,4 +143,72 @@ class PaymentController extends Controller
             Storage::put('error.txt', $e);
        }
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Entities\Payment  $payment
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Payment $payment)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Entities\Payment  $payment
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Payment $payment)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Entities\Payment  $payment
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Payment $payment)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Entities\Payment  $payment
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Payment $payment)
+    {
+        //
+    }
+
+
 }

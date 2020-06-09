@@ -42,7 +42,12 @@
             </li>
 
             <li class="nav-item">
-                <a class="sidebar-link" href="{{url('/profile')}}"><span class="icon-holder"><i class="c-orange-500 ti-face-smile"></i> </span><span class="title">My Profile</span>
+                <a class="sidebar-link" href="{{route('payment.index')}}"><span class="icon-holder"><i class="c-orange-500 ti-money"></i> </span><span class="title">Payments</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="sidebar-link" href="{{url('/profile')}}"><span class="icon-holder"><i class="c-purple-500 ti-face-smile"></i> </span><span class="title">My Profile</span>
                 </a>
             </li>
 

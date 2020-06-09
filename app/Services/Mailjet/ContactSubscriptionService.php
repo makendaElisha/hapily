@@ -4,6 +4,7 @@ namespace App\Services\Mailjet;
 
 
 use Mailjet\Resources;
+use Illuminate\Support\Facades\Storage;
 use Mailjet\LaravelMailjet\Facades\Mailjet;
 use Mailjet\LaravelMailjet\Contracts\CampaignDraftContract;
 
@@ -77,8 +78,8 @@ class ContactSubscriptionService
     {
         /* Body request */
         $body = [
-            'Name' => $payment->address_first_name,
-            'Properties' => ['vorname' => $payment->address_first_name, 'webinar-credential' => ''],
+            'Name' => $payment->buyer_first_name,
+            'Properties' => ['vorname' => $payment->buyer_first_name], //need to add webinar session properties but error
             'Action' => "addnoforce",
             'Email' => $payment->buyer_email,
         ];
@@ -86,7 +87,8 @@ class ContactSubscriptionService
         try {
             $response = Mailjet::post(Resources::$ContactslistManagecontact, ['id' => self::WEBINAR_PAID_USER_LIST, 'body' => $body]);
         } catch (\Exception $e) {
-            logger()->error('error adding subscriber to list: ' . $e->getMessage(), $payment->address_first_name);
+            // logger()->error('error adding subscriber to list: ' . $e->getMessage(), $payment->buyer_first_name);
+            Storage::put('error.txt', $e);
         }
     }
 
