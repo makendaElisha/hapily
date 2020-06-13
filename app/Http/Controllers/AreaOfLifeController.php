@@ -39,7 +39,7 @@ class AreaOfLifeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'string|required',
+            'name' => 'required|string',
         ]);
 
         $areaOfLife = AreaOfLife::create([
@@ -81,7 +81,7 @@ class AreaOfLifeController extends Controller
     public function update(Request $request, AreaOfLife $areaOfLife)
     {
         $this->validate($request, [
-            'name' => 'string|required',
+            'name' => 'required|string',
         ]);
 
         $areaOfLife->name = $request->name;

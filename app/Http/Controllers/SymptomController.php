@@ -40,19 +40,16 @@ class SymptomController extends Controller
     {
         //validation
         $this->validate($request, [
-            'name' => 'string|required',
-            'instant_help' => 'string|required',
+            'name' => 'required|string',
+            'instant_help' => 'required|string',
             'res_prio' => 'required',
-            // 'fear' => 'required',
-            // 'anger' => 'required',
-            // 'sadness' => 'required',
-            'belief' => 'string|required',
-            'recom_book_url' => 'string|required',
-            'recom_book_image' => 'string|required',
-            'recom_book_description' => 'string|required',
-            'recom_program_url' => 'string|required',
-            'recom_program_image' => 'string|required',
-            'recom_program_description' => 'string|required',
+            'belief' => 'required|string',
+            'recom_book_url' => 'required|string',
+            'recom_book_image' => 'required|string',
+            'recom_book_description' => 'required|string',
+            'recom_program_url' => 'required|string',
+            'recom_program_image' => 'required|string',
+            'recom_program_description' => 'required|string',
         ]);
 
         //Create Symptom
@@ -61,9 +58,6 @@ class SymptomController extends Controller
             'area_of_life_id' => $areaOfLife->id,
             'instant_help' => Request('instant_help'),
             'res_prio' => Request('res_prio'),
-            // 'fear' => Request('fear'),
-            // 'anger' => Request('anger'),
-            // 'sadness' => Request('sadness'),
             'belief' => Request('belief'),
             'recom_book_url' => Request('recom_book_url'),
             'recom_book_image' => Request('recom_book_image'),
@@ -110,28 +104,22 @@ class SymptomController extends Controller
 
         //validation
         $this->validate($request, [
-            'name' => 'string|required',
-            'instant_help' => 'string|required',
+            'name' => 'required|string',
+            'instant_help' => 'required|string',
             'res_prio' => 'required',
-            // 'fear' => 'required',
-            // 'anger' => 'required',
-            // 'sadness' => 'required',
-            'belief' => 'string|required',
-            'recom_book_url' => 'string|required',
-            'recom_book_image' => 'string|required',
-            'recom_book_description' => 'string|required',
-            'recom_program_url' => 'string|required',
-            'recom_program_image' => 'string|required',
-            'recom_program_description' => 'string|required',
+            'belief' => 'required|string',
+            'recom_book_url' => 'required|string',
+            'recom_book_image' => 'required|string',
+            'recom_book_description' => 'required|string',
+            'recom_program_url' => 'required|string',
+            'recom_program_image' => 'required|string',
+            'recom_program_description' => 'required|string',
         ]);
 
         //Update Symptom
             $symptom->name = Request('name');
             $symptom->instant_help = Request('instant_help');
             $symptom->res_prio = Request('res_prio');
-            // $symptom->fear = Request('fear');
-            // $symptom->anger = Request('anger');
-            // $symptom->sadness = Request('sadness');
             $symptom->belief = Request('belief');
             $symptom->recom_book_url = Request('recom_book_url');
             $symptom->recom_book_image = Request('recom_book_image');

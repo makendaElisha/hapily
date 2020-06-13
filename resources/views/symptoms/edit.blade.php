@@ -15,14 +15,16 @@
                         <div class="form-group">
                             <label for="name">Symptom name</label>
                             <input type="text" name="name" value="{{old('name', $symptom->name)}}" class="form-control" id="name" placeholder="Enter Symptom">
+                            <p style="color: red;"> @error('name') {{$message}} @enderror</p>
                         </div>
                         <div class="form-group">
-                            <label for="name">Instant Help</label>
-                            <input type="text" name="instant_help" value="{{old('instant_help', $symptom->instant_help)}}" class="form-control" placeholder="Enter Instant Help">
+                            <label for="instant_help">Instant Help</label>
+                            <input type="text" name="instant_help" value="{{old('instant_help', $symptom->instant_help)}}" class="form-control" id="instant_help" placeholder="Enter Instant Help">
+                            <p style="color: red;"> @error('instant_help') {{$message}} @enderror</p>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-1">
-                                <label for="inputCity">Res Prio</label>
+                                <label for="res_prio">Res Prio</label>
                                 <select class="custom-select" id="res_prio" name="res_prio">
                                     <option value="1" {{$symptom->res_prio == 1 ? "selected" : ''}}>1</option>
                                     <option value="2" {{$symptom->res_prio == 2 ? "selected" : ''}}>2</option>
@@ -36,89 +38,41 @@
                                     <option value="10" {{$symptom->res_prio == 10 ? "selected" : ''}}>10</option>
                                 </select>
                             </div>
-                            {{-- <div class="form-group col-md-1">
-                                <label for="inputCity">Fear</label>
-                                <select class="custom-select" id="fear" name="fear">
-                                    <option selected>Res Prio...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
-                            </div> --}}
-                            {{-- <div class="form-group col-md-1">
-                                <label for="inputCity">Anger</label>
-                                <select class="custom-select" id="anger" name="anger">
-                                    <option selected>Res Prio...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-1">
-                                <label for="inputCity">Sadness</label>
-                                <select class="custom-select" id="sadness" name="sadness">
-                                    <option selected>Res Prio...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
-                            </div> --}}
                         </div>
-                        
-                                               
                         <div class="form-group">
-                            <label for="name">Belief</label>
+                            <label for="belief">Belief</label>
                             <input type="text" name="belief" value="{{old('belief', $symptom->belief)}}" class="form-control" id="belief" placeholder="Enter belief">
+                            <p style="color: red;"> @error('belief') {{$message}} @enderror</p>
                         </div>
                         <div class="form-group">
-                            <label for="name">Recommanded book url</label>
+                            <label for="recom_book_url">Recommanded book url</label>
                             <input type="text" name="recom_book_url" value="{{old('recom_book_url', $symptom->recom_book_url)}}" class="form-control" id="recom_book_url" placeholder="Enter book url">
+                            <p style="color: red;"> @error('recom_book_url') {{$message}} @enderror</p>
                         </div>
                         <div class="form-group">
-                            <label for="name">Recommanded book image</label>
+                            <label for="recom_book_image">Recommanded book image</label>
                             <input type="text" name="recom_book_image" value="{{old('recom_book_image', $symptom->recom_book_image)}}" class="form-control" id="recom_book_image" placeholder="Enter book image">
+                            <p style="color: red;"> @error('recom_book_image') {{$message}} @enderror</p>
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="name">Recommanded book description</label>
-                            <input type="text" name="recom_book_description" value="{{old('recom_book_description', $symptom->recom_book_description)}}" class="form-control" id="recom_book_description" placeholder="Enter book description">
-                        </div> --}}
                         <div class="form-group">
-                            <label for="name">Recommanded book description</label>
+                            <label for="recom_book_description">Recommanded book description</label>
                             <textarea class="form-control" rows="4" name="recom_book_description" class="form-control" id="recom_book_description">{{old('recom_book_description', $symptom->recom_book_description)}}</textarea>
+                            <p style="color: red;"> @error('recom_book_description') {{$message}} @enderror</p>
                         </div>
                         <div class="form-group">
-                            <label for="name">Recommanded program url</label>
-                            <input type="text" name="recom_program_url" value="{{old('recom_program_url', $symptom->recom_program_url)}}" class="form-control" id="recom_program" placeholder="Enter program">
+                            <label for="recom_program_url">Recommanded program url</label>
+                            <input type="text" name="recom_program_url" value="{{old('recom_program_url', $symptom->recom_program_url)}}" class="form-control" id="recom_program_url" placeholder="Enter program">
+                            <p style="color: red;"> @error('recom_program_url') {{$message}} @enderror</p>
                         </div>
                         <div class="form-group">
-                            <label for="name">Recommanded program image</label>
-                            <input type="text" name="recom_program_image" value="{{old('recom_program_image', $symptom->recom_program_image)}}" class="form-control" id="recom_program" placeholder="Enter program">
+                            <label for="recom_program_image">Recommanded program image</label>
+                            <input type="text" name="recom_program_image" value="{{old('recom_program_image', $symptom->recom_program_image)}}" class="form-control" id="recom_program_image" placeholder="Enter program">
+                            <p style="color: red;"> @error('recom_program_image') {{$message}} @enderror</p>
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="name">Recommanded program description</label>
-                            <input type="text" name="recom_program_description" value="{{old('recom_program_description', $symptom->recom_program_description)}}" class="form-control" id="recom_program" placeholder="Enter program">
-                        </div> --}}
                         <div class="form-group">
-                            <label for="name">Recommanded program description</label>
-                            <textarea class="form-control" rows="3" name="recom_program_description" class="form-control" id="recom_program">{{old('recom_program_description', $symptom->recom_program_description)}}</textarea>
+                            <label for="recom_program_description">Recommanded program description</label>
+                            <textarea class="form-control" rows="3" name="recom_program_description" class="form-control" id="recom_program_description">{{old('recom_program_description', $symptom->recom_program_description)}}</textarea>
+                            <p style="color: red;"> @error('recom_program_description') {{$message}} @enderror</p>
                         </div>
    
                         <button type="submit" class="btn btn-primary">Update Symptom</button>

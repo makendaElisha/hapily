@@ -13,7 +13,8 @@
 
                         <div class="form-group">
                             <label for="name">name</label>
-                            <input type="text" name="name" value="{{old('symptom')}}" class="form-control" id="name" placeholder="Enter text">
+                            <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" placeholder="Enter text">
+                            <p style="color: red;"> @error('name') {{$message}} @enderror</p>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
