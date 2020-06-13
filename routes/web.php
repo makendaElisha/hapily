@@ -51,9 +51,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/survey/submit', 'SurveyController@receiveSurvey')->name('survey.simulate');
     Route::view('/profile', 'profile.index');
 
+    //Payment
+    Route::get('/payments', 'PaymentController@index')->name('payment.index');
+
 });
 
+//Survey Callback
 Route::post('/callback/survey', 'SurveyController@surveyHook')->name('survey.surveyHook');
 
+//Digistore Webhook
+Route::post('digistore/webhook', 'PaymentController@digiStore');
 
 Route::get('/mailjet', 'SurveyController@listSubscribe')->name('subscribe.list');

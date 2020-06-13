@@ -4,6 +4,7 @@ namespace App\Services\Mailjet;
 
 
 use Mailjet\Resources;
+use Illuminate\Support\Facades\Storage;
 use Mailjet\LaravelMailjet\Facades\Mailjet;
 use Mailjet\LaravelMailjet\Contracts\CampaignDraftContract;
 
@@ -17,6 +18,7 @@ class ContactSubscriptionService
 
     protected const AUTOMATION_USER_LIST = 25890;
     protected const NEWSLETTER_USER_LIST = 25335;
+    protected const WEBINAR_PAID_USER_LIST = 28521;
 
 
     /**
@@ -66,4 +68,28 @@ class ContactSubscriptionService
             logger()->error('error adding subscriber to list: ' . $e->getMessage(), $customer->prename);
         }
     }
+
+    /**
+     * @param mixed $handlePaidUserSubscription
+     * @param mixed $payment
+     */
+
+    public function handlePaidUserSubscription($payment)
+    {
+        /* Body request */
+        $body = [
+            'Name' => $payment->buyer_first_name,
+            'Properties' => ['vorname' => $payment->buyer_first_name], //need to add webinar session properties but error
+            'Action' => "addnoforce",
+            'Email' => $payment->buyer_email,
+        ];
+
+        try {
+            $response = Mailjet::post(Resources::$ContactslistManagecontact, ['id' => self::WEBINAR_PAID_USER_LIST, 'body' => $body]);
+        } catch (\Exception $e) {
+            // logger()->error('error adding subscriber to list: ' . $e->getMessage(), $payment->buyer_first_name);
+            Storage::put('error.txt', $e);
+        }
+    }
+
 }
