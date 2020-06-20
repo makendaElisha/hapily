@@ -55,6 +55,90 @@
                 </div>
             </div>
         </div>
+
+        <div class="masonry-item col-12">
+            <div class="bgc-white p-20 bd">
+               <h6 class="c-grey-900">Participants per age group</h6>
+               <div class="mT-30">
+                  <div class="peers mT-20 fxw-nw@lg+ jc-sb ta-c gap-10">
+                    @foreach ($customersPerAgeRanges as $key => $ageRange)
+                        <canvas class="peer">
+                            <div class="easy-pie-chart" data-size="{{ round($ageRange)  }}" data-percent="{{ round($ageRange)  }}" data-bar-color="#f44336">
+                            <span>{{ round($ageRange) }} % </span>
+                            <canvas height="{{ round($ageRange)  }}" width="{{ round($ageRange)  }}"></canvas>
+                            </div>
+                            <h6 class="fsz-sm">{{ $key }} years</h6>
+                        </canvas>
+                    @endforeach
+
+                    <canvas id="chart-sample">
+
+                    </canvas >
+
+                     {{-- <div class="peer">
+                        <div class="easy-pie-chart" data-size="80" data-percent="50" data-bar-color="#2196f3">
+                           <span>50 %</span>
+                           <canvas height="80" width="80"></canvas>
+                        </div>
+                        <h6 class="fsz-sm">New Purchases</h6>
+                     </div>
+                     <div class="peer">
+                        <div class="easy-pie-chart" data-size="80" data-percent="65" data-bar-color="#f44336">
+                           <span>65 %</span>
+                           <canvas height="80" width="80"></canvas>
+                        </div>
+                        <h6 class="fsz-sm">New Customers</h6>
+                     </div>
+                     <div class="peer">
+                        <div class="easy-pie-chart" data-size="80" data-percent="90" data-bar-color="#ff9800">
+                           <span>90 %</span>
+                           <canvas height="80" width="80"></canvas>
+                        </div>
+                        <h6 class="fsz-sm">Bounce Rate</h6>
+                     </div> --}}
+                  </div>
+               </div>
+            </div>
+        </div>
+
+        <div class="masonry-item col-md-6" style="position: absolute; left: 50%; top: 1310px;">
+            <div class="bgc-white p-20 bd">
+               <h6 class="c-grey-900">Participants per age group</h6>
+               <div class="mT-30">
+                  <div class="peers mT-20 fxw-nw@lg+ jc-sb ta-c gap-10">
+                     <div class="peer">
+                        <div class="easy-pie-chart" data-size="80" data-percent="75" data-bar-color="#f44336">
+                           <span>75 %</span>
+                           <canvas height="80" width="80"></canvas>
+                        </div>
+                        <h6 class="fsz-sm">New Users</h6>
+                     </div>
+                     <div class="peer">
+                        <div class="easy-pie-chart" data-size="80" data-percent="50" data-bar-color="#2196f3">
+                           <span>50 %</span>
+                           <canvas height="80" width="80"></canvas>
+                        </div>
+                        <h6 class="fsz-sm">New Purchases</h6>
+                     </div>
+                     <div class="peer">
+                        <div class="easy-pie-chart" data-size="80" data-percent="65" data-bar-color="#f44336">
+                           <span>65 %</span>
+                           <canvas height="80" width="80"></canvas>
+                        </div>
+                        <h6 class="fsz-sm">New Customers</h6>
+                     </div>
+                     <div class="peer">
+                        <div class="easy-pie-chart" data-size="80" data-percent="90" data-bar-color="#ff9800">
+                           <span>90 %</span>
+                           <canvas height="80" width="80"></canvas>
+                        </div>
+                        <h6 class="fsz-sm">Bounce Rate</h6>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
         <div class="masonry-item col-12">
             <div class="bd bgc-white">
                 <div class="peers fxw-nw@lg+ ai-s">
@@ -68,6 +152,83 @@
                         </div>
                     </div>
                     <div class="peer bdL p-20 w-70p@lg+ w-100p@lg-">
+
+                        {{-- <div class="masonry-item col-md-6" style="position: absolute; left: 50%; top: 1310px;">
+                            <div class="bgc-white p-20 bd"><h6 class="c-grey-900">Easy Pie Charts</h6>
+                                <div class="mT-30">
+                                    <div class="peers mT-20 fxw-nw@lg+ jc-sb ta-c gap-10">
+                                        <div class="peer">
+                                            <div class="easy-pie-chart" data-size="80" data-percent="75" data-bar-color="#f44336">
+                                                <span>75 %</span><canvas height="80" width="80"></canvas>
+                                            </div>
+                                            <h6 class="fsz-sm">New Users</h6>
+                                        </div>
+                                        <div class="peer">
+                                            <div class="easy-pie-chart" data-size="80" data-percent="50" data-bar-color="#2196f3">
+                                                <span>50 %</span>canvas height="80" width="80"></canvas>
+                                            </div>
+                                            <h6 class="fsz-sm">New Purchases</h6>
+                                        </div>
+                                        <div class="peer">
+                                            <div class="easy-pie-chart" data-size="80" data-percent="65" data-bar-color="#f44336">
+                                                <span>65 %</span><canvas height="80" width="80"></canvas>
+                                            </div>
+                                            <h6 class="fsz-sm">New Customers</h6>
+                                        </div>
+                                        <div class="peer">
+                                            <div class="easy-pie-chart" data-size="80" data-percent="90" data-bar-color="#ff9800">
+                                                <span>90 %</span><canvas height="80" width="80"></canvas>
+                                            </div>
+                                            <h6 class="fsz-sm">Bounce Rate</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         --}}
+
+                        <div class="peers pT-20 mT-20 bdT fxw-nw@lg+ jc-sb ta-c gap-10 mB-20">
+
+                            
+                            @foreach ($customersPerAgeRanges as $key => $ageRange)
+                                <div class="peer">
+                                    <div class="easy-pie-chart" data-size="80" data-percent="" data-bar-color="#f44336"><span></span></div>
+                                    <h6 class="fsz-sm">{{ $key }} years: <strong><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500">{{ $ageRange }} Participants</span></strong></h6>
+                                </div>
+                            @endforeach
+                            <br />
+                        </div>
+
+                        {{-- <div class="mT-30">
+                            <div class="peers mT-20 fxw-nw@lg+ jc-sb ta-c gap-10">
+                                <div class="peer">
+                                    <div class="easy-pie-chart" data-size="80" data-percent="75" data-bar-color="#f44336">
+                                        <span>75 %</span><canvas height="80" width="80"></canvas>
+                                    </div>
+                                    <h6 class="fsz-sm">New Users</h6>
+                                </div>
+                                <div class="peer">
+                                    <div class="easy-pie-chart" data-size="80" data-percent="50" data-bar-color="#2196f3">
+                                        <span>50 %</span><canvas height="80" width="80"></canvas>
+                                    </div>
+                                    <h6 class="fsz-sm">New Purchases</h6>
+                                </div>
+                                <div class="peer">
+                                    <div class="easy-pie-chart" data-size="80" data-percent="65" data-bar-color="#f44336">
+                                        <span>65 %</span><canvas height="80" width="80"></canvas>
+                                    </div>
+                                    <h6 class="fsz-sm">New Customers</h6>
+                                </div>
+                                <div class="peer">
+                                    <div class="easy-pie-chart" data-size="80" data-percent="90" data-bar-color="#ff9800">
+                                        <span>90 %</span><canvas height="80" width="80"></canvas>
+                                    </div>
+                                    <h6 class="fsz-sm">Bounce Rate</h6>
+                                </div>
+                            </div>
+                        </div> --}}
+
+                        <br />
                         <div class="layers">
                             <div class="layer w-100">
                                 <div class="layers">
@@ -415,3 +576,47 @@
         </div> --}}
     </div>
 @endsection
+
+
+<script>
+
+    window.addEventListener('load', (event) => {
+        var ctx = document.getElementById('chart-sample').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+</script>

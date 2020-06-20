@@ -38,6 +38,14 @@ return [
         'key' => env('MAILJET_APIKEY'),
         'secret' => env('MAILJET_APISECRET'),
     ],
+
+    'salesforce' => [
+        'client_id' => env("SF_CONSUMER_KEY"),
+        'client_secret' => env("SF_CONSUMER_SECRET"),
+        'username' => env("SF_USERNAME"),
+        'password' => env("SF_PASSWORD"),
+        'token' => env("SF_TOKEN_PASS")
+    ],
     
     'slack' => [
         'webhook' => env('SLACK_HOOK')

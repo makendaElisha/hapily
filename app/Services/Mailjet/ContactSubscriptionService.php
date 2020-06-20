@@ -10,7 +10,7 @@ use Mailjet\LaravelMailjet\Contracts\CampaignDraftContract;
 
 
 /**
- * Class VideoPaymentService
+ * Class ContactSubscriptionService
  * @package App\Services\Mailjet
  */
 class ContactSubscriptionService
@@ -19,6 +19,7 @@ class ContactSubscriptionService
     protected const AUTOMATION_USER_LIST = 25890;
     protected const NEWSLETTER_USER_LIST = 25335;
     protected const WEBINAR_PAID_USER_LIST = 28521;
+    protected const AUTOMATION_NON_SUBSCRIBER_USER_LIST = null;
 
 
     /**
@@ -28,9 +29,6 @@ class ContactSubscriptionService
 
     public function handleAutomationSubscription($customer)
     {
-
-        // Survey_Users;
-        //$list_id = 25221;
         // Body request
         $body = [
             'Name' => $customer->prename,
@@ -68,6 +66,30 @@ class ContactSubscriptionService
             logger()->error('error adding subscriber to list: ' . $e->getMessage(), $customer->prename);
         }
     }
+
+
+    /**
+     * @param mixed $handleNonSubscribersAutomation
+     * @param mixed $payment
+     */
+
+    public function handleNonSubscribersAutomation($customer)
+    {
+        // Body request
+        $body = [
+            'Name' => $customer->prename,
+            'Properties' => ['vorname' => $customer->prename], //use Vorname to match the list vorname
+            'Action' => "addnoforce",
+            'Email' => $customer->email,
+        ];
+
+        try {
+            $response = Mailjet::post(Resources::$ContactslistManagecontact, ['id' => self::AUTOMATION_NON_SUBSCRIBER_USER_LIST, 'body' => $body]);
+        } catch (\Exception $e) {
+            logger()->error('Error adding subscriber to list: ' . $e->getMessage(), $customer->prename);
+        }
+    }
+    
 
     /**
      * @param mixed $handlePaidUserSubscription
