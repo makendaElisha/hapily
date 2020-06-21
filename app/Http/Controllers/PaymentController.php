@@ -124,20 +124,20 @@ class PaymentController extends Controller
             //table can have customer_id that we can find using the email / 
             //customer_id will be nullable and on the payment, customer will take to survey result
 
-            $file_name = 'payment-result.txt';   
-            $is_created = Storage::put($file_name, "==== PAYMENT DETAILS ====");
-            Storage::append($file_name, '<br />API Mode: ' . $request->post('api_mode'));
-            Storage::append($file_name, '<br />Payment Type: ' . $request->post('event'));
-            Storage::append($file_name, '<br />Payment Method: ' . $request->post('pay_method'));
-            Storage::append($file_name, '<br />Product Name: ' . $request->post('product_name'));
-            Storage::append($file_name, '<br />Order Date: ' . $request->post('order_date_time'));
-            Storage::append($file_name, '<br />Transaction Amount: ' . $request->post('transaction_amount'));
-            Storage::append($file_name, '<br /> Buyer Email: ' . $request->post('email'));
-            Storage::append($file_name, '<br /> Buyer First Name: ' . $request->post('address_first_name'));
-            Storage::append($file_name, '<br /> Buyer Last Name: ' . $request->post('address_last_name'));
-            Storage::append($file_name, '<br />================<br />');
+            // $file_name = 'payment-result.txt';   
+            // $is_created = Storage::put($file_name, "==== PAYMENT DETAILS ====");
+            // Storage::append($file_name, '<br />API Mode: ' . $request->post('api_mode'));
+            // Storage::append($file_name, '<br />Payment Type: ' . $request->post('event'));
+            // Storage::append($file_name, '<br />Payment Method: ' . $request->post('pay_method'));
+            // Storage::append($file_name, '<br />Product Name: ' . $request->post('product_name'));
+            // Storage::append($file_name, '<br />Order Date: ' . $request->post('order_date_time'));
+            // Storage::append($file_name, '<br />Transaction Amount: ' . $request->post('transaction_amount'));
+            // Storage::append($file_name, '<br /> Buyer Email: ' . $request->post('email'));
+            // Storage::append($file_name, '<br /> Buyer First Name: ' . $request->post('address_first_name'));
+            // Storage::append($file_name, '<br /> Buyer Last Name: ' . $request->post('address_last_name'));
+            // Storage::append($file_name, '<br />================<br />');
 
-            Storage::put('request.txt', $request->post());
+            // Storage::put('request.txt', $request->post());
             response()->json(['success' => 'success'], 200);
        } catch (\Exception $e) {
             Storage::put('error.txt', $e);
