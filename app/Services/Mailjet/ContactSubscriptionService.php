@@ -19,7 +19,7 @@ class ContactSubscriptionService
     protected const AUTOMATION_USER_LIST = 25890;
     protected const NEWSLETTER_USER_LIST = 25335;
     protected const WEBINAR_PAID_USER_LIST = 28521;
-    protected const AUTOMATION_NON_SUBSCRIBER_USER_LIST = null;
+    protected const AUTOMATION_NON_SUBSCRIBER_USER_LIST = 29766; //29766 for non subscribers transational list
 
 
     /**
@@ -70,7 +70,7 @@ class ContactSubscriptionService
 
     /**
      * @param mixed $handleNonSubscribersAutomation
-     * @param mixed $payment
+     * @param mixed $customer
      */
 
     public function handleNonSubscribersAutomation($customer)
