@@ -210,7 +210,7 @@ class SurveyController extends Controller
         $values = [];
 
         foreach ($customersPerAgeRanges as $key => $ageRange) {
-            $labels[] = $key . ' years';
+            $labels[] = $key . ' years (' . number_format($ageRange * 100 / Customer::count(), 2) . '%)'; //get percentage here
             $values[] = $ageRange;
         }
     
