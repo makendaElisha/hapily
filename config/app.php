@@ -178,6 +178,7 @@ return [
         Omniphx\Forrest\Providers\Laravel\ForrestServiceProvider::class,
         Mailjet\LaravelMailjet\MailjetServiceProvider::class,
         Mailjet\LaravelMailjet\MailjetMailServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
     ],
 
     /*
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Forrest' => Omniphx\Forrest\Providers\Laravel\Facades\Forrest::class,
         'Mailjet' => Mailjet\LaravelMailjet\Facades\Mailjet::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
     ],
 
 ];

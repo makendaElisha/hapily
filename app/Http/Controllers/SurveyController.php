@@ -10,7 +10,6 @@ use App\Entities\Survey;
 use App\Entities\Symptom;
 use App\Entities\Customer;
 use App\Entities\Question;
-
 use App\Entities\AreaOfLife;
 use App\Mail\SendSurveyLink;
 use Illuminate\Http\Request;
@@ -25,6 +24,10 @@ use App\Notifications\SurveySlackNotification;
 use App\Services\Mailjet\ContactSubscriptionService;
 use App\Services\Survey\ReceivedSurveyDataService;
 use App\Services\Salesforce\LeadCreationService;
+
+use App\Charts\UserChart;
+
+
 
 class SurveyController extends Controller
 {
@@ -173,7 +176,7 @@ class SurveyController extends Controller
      */
     public function dashboard()
     {
-        // the start of each age-range.
+        //Chart for age group
         $ranges = [
             '18-30' => 18,
             '31-45' => 31,
@@ -202,6 +205,21 @@ class SurveyController extends Controller
                 return count($group);
             })
             ->sortKeys();
+
+        $labels = [];
+        $values = [];
+
+        foreach ($customersPerAgeRanges as $key => $ageRange) {
+            $labels[] = $key . ' years';
+            $values[] = $ageRange;
+        }
+    
+        $usersPieChart = new UserChart;
+        $usersPieChart->labels($labels);
+        $usersPieChart->dataset('Participants per age range', 'pie', $values)
+                    ->color(collect(['#7d5fff','#32ff7e', '#ff4d4d', '#1EA1E4']))
+                    ->backgroundcolor(collect(['#7158e2','#3ae374', '#ff3838', '#1EA1E4']));
+    
 
         //Today's surveys
         $today = Carbon::now()->toArray();        
@@ -264,7 +282,7 @@ class SurveyController extends Controller
             'femaleSexSurveys',
             'otherSexSurveys',
             'areasOfLife',
-            'customersPerAgeRanges',
+            'usersPieChart'
         ]));
     }
 
