@@ -15,6 +15,13 @@ class CreateTeachablesTable extends Migration
     {
         Schema::create('teachables', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('customer_id')->nullable();
+            $table->string('event_type');
+            $table->dateTime('enrollment_date');
+            $table->string('student_name');
+            $table->string('student_email');
+            $table->string('course_name');
+            $table->text('course_description');
             $table->timestamps();
         });
     }

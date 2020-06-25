@@ -64,6 +64,6 @@ Route::post('digistore/webhook', 'PaymentController@digiStore');
 
 //Teachable Webhook
 Route::post('teachable/webhook', 'TeachableController@store');
-Route::get('teachable/api', 'TeachableController@index');
+Route::get('teachable/api', 'TeachableController@testApp');
 
 Route::get('/mailjet', 'SurveyController@listSubscribe')->name('subscribe.list');

@@ -190,7 +190,7 @@
                     <td align="left" vertical-align="middle" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                       <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
                         <tr>
-                          <td align="center" bgcolor="#dd22ef" role="presentation" style="border:none;border-radius:24px;cursor:auto;mso-padding-alt:10px 25px;background:#dd22ef;" valign="middle"> <a href="{{ $data['schooLink'] }}" style="display:inline-block;background:#dd22ef;color:white;font-family:helvetica;font-size:13px;font-weight:bolder;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:24px;"
+                          <td align="center" bgcolor="#dd22ef" role="presentation" style="border:none;border-radius:24px;cursor:auto;mso-padding-alt:10px 25px;background:#dd22ef;" valign="middle"> <a href="{{ $data['schoolLink'] }}" style="display:inline-block;background:#dd22ef;color:white;font-family:helvetica;font-size:13px;font-weight:bolder;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:24px;"
                               target="_blank">
               > Greifen Sie auf Ihren Kurs zu
             </a> </td>
