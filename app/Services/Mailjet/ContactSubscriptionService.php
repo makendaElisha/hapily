@@ -20,6 +20,7 @@ class ContactSubscriptionService
     protected const NEWSLETTER_USER_LIST = 25335;
     protected const WEBINAR_PAID_USER_LIST = 28521;
     protected const AUTOMATION_NON_SUBSCRIBER_USER_LIST = 29767; //29766 for non subscribers transational list
+    protected const WEBSITE_SUBSCRIBER_LIST = 31227;
 
 
     /**
@@ -113,5 +114,28 @@ class ContactSubscriptionService
             Storage::put('error.txt', $e);
         }
     }
+
+    /**
+     * @param mixed $handlePaidUserSubscription
+     * @param mixed $payment
+     */
+
+    public function handleWebsiteSubscription($request)
+    {
+        /* Body request */
+        $body = [
+            'Name' => $request->firstName . " " . $request->lastName,
+            'Properties' => ['vorname' => $request->firstName],
+            'Action' => "addnoforce",
+            'Email' => $request->email,
+        ];
+
+        try {
+            $response = Mailjet::post(Resources::$ContactslistManagecontact, ['id' => self::WEBSITE_SUBSCRIBER_LIST, 'body' => $body]);
+        } catch (\Exception $e) {
+            logger()->error('Error adding subscriber to list: ' . $e->getMessage(), $request->firstName);
+        }
+    }
+
 
 }

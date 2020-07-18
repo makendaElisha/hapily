@@ -63,3 +63,5 @@ Route::post('/callback/survey', 'SurveyController@surveyHook')->name('survey.sur
 Route::post('digistore/webhook', 'PaymentController@digiStore');
 
 Route::get('/mailjet', 'SurveyController@listSubscribe')->name('subscribe.list');
+
+Route::post('/website/subcriber/webhook', 'SubscriptionController@newsletterWebsiteSubscription');

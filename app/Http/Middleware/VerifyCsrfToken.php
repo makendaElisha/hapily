@@ -21,5 +21,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'callback/*',
         'digistore/webhook',
+        '/website/subcriber/webhook',
     ];
 }
