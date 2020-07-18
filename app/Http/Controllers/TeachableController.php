@@ -40,15 +40,13 @@ class TeachableController extends Controller
      */
     public function store(Request $request)
     {
-        //Getting data from the webhook post
-        // $webhookData    = json_decode($request->all(), true);
-        $webhookData    = $request->all(); //update json array
-        $event_type     = $webhookData[0]['type'];
-        $event_id       = $webhookData[0]['id'];
-        $event_livemode = $webhookData[0]['livemode'];
-        $event_date     = $webhookData[0]['created'];
 
-        $event_data     = $webhookData[0]['object'];
+        $event_type     = $request->get('type');
+        $event_id       = $request->get('id');
+        $event_livemode = $request->get('livemode');
+        $event_date     = $request->get('created');
+
+        $event_data     = $request->get('object');
         $student        = $event_data['user'];
         $student_name   = $student['name'];
         $student_email  = $student['email'];
