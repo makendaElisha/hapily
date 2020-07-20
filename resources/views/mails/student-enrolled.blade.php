@@ -108,7 +108,7 @@
                       <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                         <tbody>
                           <tr>
-                            <td style="width:550px;"> <img height="auto" src="https://dt9xom8irs6kr.cloudfront.net/u241603/HP7QjJhYwwYI99dXf3ON1590688039.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="550" />                              </td>
+                            <td style="width:550px;"> <img height="auto" src="https://s12.directupload.net/images/200720/hkc7g6i5.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="550" />                              </td>
                           </tr>
                         </tbody>
                       </table>
@@ -172,19 +172,16 @@
                     </td>
                   </tr>
                   <tr>
-                    <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:40px;word-break:break-word;">
-                      <div style="font-family:helvetica;font-size:36px;line-height:1;text-align:left;color:#33DD93;">hapily Academy</div>
-                    </td>
-                  </tr>
-                  <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                       <div style="font-family:helvetica;font-size:20px;font-weight:bold;line-height:1;text-align:left;color:#333333;">Hallo {{ $data['name'] }},</div>
                     </td>
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:30px;word-break:break-word;">
-                      <div style="font-family:helvetica;font-size:14px;line-height:24px;text-align:left;color:#333333;">Vielen Dank, dass Sie sich unserer hapily academy angeschlossen haben. Um auf Ihren Kurs zuzugreifen, klicken Sie bitte auf die Schaltfläche unten und erstellen Sie ein Passwort:</div>
-                    </td>
+                      <div style="font-family:helvetica;font-size:14px;line-height:24px;text-align:left;color:#333333;">wir freuen uns riesig, dass du dich für die Glücks-Challenge entschieden hast, um mehr Glück und persönlichen Erfolg in dein Leben zu bringen.<br /><br /> Um dir die bestmögliche Nutzererfahrung zu bieten, haben wir uns für einen
+                        der weltweit besten Anbieter für Online-Kurse "teachable" entschieden. Teachable ist ein englischsprachiger Anbieter, weshalb die Navigation innerhalb des Mitgliederbereichs auf Englisch ist - nur damit du dich nicht wunderst :).
+                        Die Bedienung ist kinderleicht, sodass du dich vom ersten Moment an zurechtfinden wirst. Bist du bereit? Dann lass uns loslegen!<br /><br /> Damit du auf die Inhalte des Online-Kurses im Mitgliederbereich zugreifen kannst, klicke
+                        unten auf den Button und erstelle dir dein individuelles Passwort. Schön, dass du dabei bist und bis gleich, im Mitgliederbereich der hapily Academy.</div>                    </td>
                   </tr>
                   <tr>
                     <td align="left" vertical-align="middle" style="font-size:0px;padding:10px 25px;word-break:break-word;">
