@@ -28,7 +28,7 @@ class StudentEnrolled extends Mailable
      */
     public function build()
     {
-        return $this->from('hallo@hapily.de',  'Denis von hapily')
+        return $this->from('gluecks-challenge@hapily.de',  'Die hapily Academy')
                     ->subject('=?utf-8?Q?=E2=98=98=EF=B8=8F?= Herzlich Willkommen bei deiner hapily Glücks-Challenge')
                     ->view('mails.student-enrolled')
                     ->with('data', $this->data);
