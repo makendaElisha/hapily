@@ -80,7 +80,7 @@ class TeachableController extends Controller
         //send email to the student - create an event listener or something an send an email
         $data = [
             'name'          => $student_name,
-            'schoolLink'    => url("https://hapily.teachable.com/")
+            'schoolLink'    => url("https://academy.hapily.de/")
         ];
 
         Mail::to($student_email)
@@ -177,7 +177,7 @@ class TeachableController extends Controller
         //send email to the student - create an event listener or something an send an email
         $data = [
             'name'          => $student_name,
-            'schoolLink'    => url("https://hapily.teachable.com/")
+            'schoolLink'    => url("https://academy.hapily.de/")
         ];
 
         Mail::to($student_email)
