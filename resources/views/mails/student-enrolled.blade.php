@@ -54,21 +54,15 @@
           .mj-outlook-group-fix { width:100% !important; }
         </style>
         <![endif]-->
-  <!--[if !mso]><!-->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet" type="text/css">
-  <style type="text/css">
-    @import url(https://fonts.googleapis.com/css?family=Roboto:300,500);
-  </style>
-  <!--<![endif]-->
   <style type="text/css">
     @media only screen and (min-width:480px) {
       .mj-column-per-100 {
         width: 100% !important;
         max-width: 100%;
       }
-      .mj-column-px-50 {
-        width: 50px !important;
-        max-width: 50px;
+      .mj-column-per-10 {
+        width: 10% !important;
+        max-width: 10%;
       }
     }
   </style>
@@ -163,7 +157,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto, Helvetica, sans-serif;font-size:14px;font-weight:300;line-height:24px;text-align:left;color:#616161;">
+                      <div style="font-family:Helvetica, sans-serif;font-size:14px;font-weight:300;line-height:24px;text-align:left;color:#333333;">
                         <p><strong>Hallo {{ $data['name'] }},</strong></p>
                         <p> wir freuen uns riesig, dass du dich für die Glücks-Challenge entschieden hast - deinen Online-Kurs für mehr Glück und persönlichen Erfolg in deinem Leben.</p>
                         <p>Um dir als Teilnehmer/in ein tolle Nutzererfahrung zu bieten, haben wir eine Online-Akademie gebaut - die hapily Academy. Du kannst von jedem Gerät (PC, Laptop, Smartphone, Tablet) auf den internen Mitgliederbereich der hapily
@@ -214,7 +208,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto, Helvetica, sans-serif;font-size:14px;font-weight:300;line-height:24px;text-align:left;color:#616161;">
+                      <div style="font-family:Helvetica, sans-serif;font-size:14px;font-weight:300;line-height:24px;text-align:left;color:#333333;">
                         <p><strong>Deine nächsten Schritte:</strong></p>
                         <ol>
                           <li> Du hast, neben dieser Email, eine weitere Email erhalten, in der du dazu aufgefordert wirst, deine Email Adresse zu bestätigen und ein Passwort für die hapily Academy zu erstellen -> Bitte tue dies. </li>
@@ -274,7 +268,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto, Helvetica, sans-serif;font-size:14px;font-weight:300;line-height:24px;text-align:left;color:#616161;">
+                      <div style="font-family:Helvetica, sans-serif;font-size:14px;font-weight:300;line-height:24px;text-align:left;color:#333333;">
                         <p>Ok, das waren die wichtigsten Informationen für den Anfang.<br />Bist du bereit? Dann lass uns loslegen!<br />Schön, dass du dabei bist und bis gleich, im Mitgliederbereich der hapily Academy.</p>
                       </div>
                     </td>
@@ -384,14 +378,25 @@
         <tr>
       
             <td
-               class="" style="vertical-align:top;width:50px;"
+               class="" style="width:600px;"
             >
           <![endif]-->
-              <div class="mj-column-px-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                  <tr>
-                    <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <!--[if mso | IE]>
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;">
+                <!--[if mso | IE]>
+        <table
+           border="0" cellpadding="0" cellspacing="0" role="presentation"
+        >
+          <tr>
+        
+              <td
+                 style="vertical-align:top;width:60px;"
+              >
+              <![endif]-->
+                <div class="mj-column-per-10 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:10%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tr>
+                      <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <!--[if mso | IE]>
       <table
          align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
       >
@@ -399,43 +404,43 @@
       
               <td>
             <![endif]-->
-                      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
-                        <tr>
-                          <td style="padding:4px;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
-                              <tr>
-                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.facebook.com/hapily.academy" target="_blank">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
+                          <tr>
+                            <td style="padding:4px;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
+                                <tr>
+                                  <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.facebook.com/hapily.academy" target="_blank">
                     <img
                        height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/facebook.png" style="border-radius:3px;display:block;" width="20"
                     />
                   </a> </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                      <!--[if mso | IE]>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <!--[if mso | IE]>
               </td>
             
           </tr>
         </table>
       <![endif]-->
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <!--[if mso | IE]>
-            </td>
-          
-            <td
-               class="" style="vertical-align:top;width:50px;"
-            >
-          <![endif]-->
-              <div class="mj-column-px-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                  <tr>
-                    <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <!--[if mso | IE]>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <!--[if mso | IE]>
+              </td>
+              
+              <td
+                 style="vertical-align:top;width:60px;"
+              >
+              <![endif]-->
+                <div class="mj-column-per-10 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:10%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tr>
+                      <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <!--[if mso | IE]>
       <table
          align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
       >
@@ -443,43 +448,43 @@
       
               <td>
             <![endif]-->
-                      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
-                        <tr>
-                          <td style="padding:4px;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
-                              <tr>
-                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="http://instagram.com/hapily.de" target="_blank">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
+                          <tr>
+                            <td style="padding:4px;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
+                                <tr>
+                                  <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="http://instagram.com/hapily.de" target="_blank">
                     <img
                        height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/instagram.png" style="border-radius:3px;display:block;" width="20"
                     />
                   </a> </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                      <!--[if mso | IE]>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <!--[if mso | IE]>
               </td>
             
           </tr>
         </table>
       <![endif]-->
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <!--[if mso | IE]>
-            </td>
-          
-            <td
-               class="" style="vertical-align:top;width:50px;"
-            >
-          <![endif]-->
-              <div class="mj-column-px-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                  <tr>
-                    <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <!--[if mso | IE]>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <!--[if mso | IE]>
+              </td>
+              
+              <td
+                 style="vertical-align:top;width:60px;"
+              >
+              <![endif]-->
+                <div class="mj-column-per-10 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:10%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tr>
+                      <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <!--[if mso | IE]>
       <table
          align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
       >
@@ -487,30 +492,37 @@
       
               <td>
             <![endif]-->
-                      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
-                        <tr>
-                          <td style="padding:4px;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
-                              <tr>
-                                <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.linkedin.com/company/hapily" target="_blank">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
+                          <tr>
+                            <td style="padding:4px;">
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
+                                <tr>
+                                  <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.linkedin.com/company/hapily" target="_blank">
                     <img
                        height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/linkedin.png" style="border-radius:3px;display:block;" width="20"
                     />
                   </a> </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                      <!--[if mso | IE]>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                        <!--[if mso | IE]>
               </td>
             
           </tr>
         </table>
       <![endif]-->
-                    </td>
-                  </tr>
-                </table>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <!--[if mso | IE]>
+              </td>
+              
+          </tr>
+          </table>
+        <![endif]-->
               </div>
               <!--[if mso | IE]>
             </td>
