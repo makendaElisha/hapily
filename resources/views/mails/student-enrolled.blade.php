@@ -269,7 +269,9 @@
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                       <div style="font-family:Helvetica, sans-serif;font-size:14px;font-weight:300;line-height:24px;text-align:left;color:#333333;">
-                        <p>Ok, das waren die wichtigsten Informationen für den Anfang.<br />Bist du bereit? Dann lass uns loslegen!<br />Schön, dass du dabei bist und bis gleich, im Mitgliederbereich der hapily Academy.</p>
+                        <p>Ok, das waren die wichtigsten Informationen für den Anfang.</p>
+                        <p>Bist du bereit? Dann lass uns loslegen!</p>
+                        <p>Schön, dass du dabei bist und bis gleich, im Mitgliederbereich der hapily Academy.</p>
                       </div>
                     </td>
                   </tr>
