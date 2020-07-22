@@ -180,7 +180,7 @@ class TeachableController extends Controller
             'schoolLink'    => url("https://academy.hapily.de/")
         ];
 
-        Mail::to('python.gralf@gmail.com')
+        Mail::to('ubuntu.le.kush@gmail.com')
             ->send(new StudentEnrolled($data));
         
         return 'All processing done!';
