@@ -411,7 +411,7 @@
                             <td style="padding:4px;">
                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#333333;border-radius:3px;width:20px;">
                                 <tr>
-                                  <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.facebook.com/hapily.academy" target="_blank">
+                                  <td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.facebook.com/hapily.de" target="_blank">
                     <img
                        height="20" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/facebook.png" style="border-radius:3px;display:block;" width="20"
                     />
