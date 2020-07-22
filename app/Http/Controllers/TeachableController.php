@@ -136,7 +136,7 @@ class TeachableController extends Controller
 
     public function testApp()
     {
-        $fileApi = Storage::get("teachable-api.txt");
+        /* $fileApi = Storage::get("teachable-api.txt");
         $webhookData = json_decode($fileApi, true);
 
         $event_type     = $webhookData[0]['type'];
@@ -172,15 +172,15 @@ class TeachableController extends Controller
         $teachable->student_email               = $student_email;
         $teachable->course_name                 = $course_name;
         $teachable->course_description          = $course_description;
-        $teachable->save();
+        $teachable->save(); */
 
         //send email to the student - create an event listener or something an send an email
         $data = [
-            'name'          => $student_name,
+            'name'          => 'Dev Testing',
             'schoolLink'    => url("https://academy.hapily.de/")
         ];
 
-        Mail::to($student_email)
+        Mail::to('python.gralf@gmail.com')
             ->send(new StudentEnrolled($data));
         
         return 'All processing done!';
