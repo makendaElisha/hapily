@@ -54,6 +54,12 @@
           .mj-outlook-group-fix { width:100% !important; }
         </style>
         <![endif]-->
+  <!--[if !mso]><!-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Roboto:300,500);
+  </style>
+  <!--<![endif]-->
   <style type="text/css">
     @media only screen and (min-width:480px) {
       .mj-column-per-100 {
@@ -91,7 +97,7 @@
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
@@ -143,7 +149,7 @@
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:0px;padding-top:30px;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
@@ -157,22 +163,62 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:helvetica;font-size:20px;font-weight:bold;line-height:1;text-align:left;color:#333333;">Hallo {{ $data['name'] }},</div>
+                      <div style="font-family:Roboto, Helvetica, sans-serif;font-size:14px;font-weight:300;line-height:24px;text-align:left;color:#616161;">
+                        <p><strong>Hallo {{ $data['name'] }},</strong></p>
+                        <p> wir freuen uns riesig, dass du dich für die Glücks-Challenge entschieden hast - deinen Online-Kurs für mehr Glück und persönlichen Erfolg in deinem Leben.</p>
+                        <p>Um dir als Teilnehmer/in ein tolle Nutzererfahrung zu bieten, haben wir eine Online-Akademie gebaut - die hapily Academy. Du kannst von jedem Gerät (PC, Laptop, Smartphone, Tablet) auf den internen Mitgliederbereich der hapily
+                          Academy zugreifen. Dazu brauchst du lediglich eine Internetverbindung. Die Bedienung ist kinderleicht, sodass du dich vom ersten Moment an zurechtfinden wirst :)</p>
+                      </div>
                     </td>
                   </tr>
+                </table>
+              </div>
+              <!--[if mso | IE]>
+            </td>
+          
+        </tr>
+      
+                  </table>
+                <![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]>
+          </td>
+        </tr>
+      </table>
+      
+      <table
+         align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+      >
+        <tr>
+          <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+      <![endif]-->
+    <div style="margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
+              <!--[if mso | IE]>
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                
+        <tr>
+      
+            <td
+               class="" style="vertical-align:top;width:600px;"
+            >
+          <![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
-                    <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:30px;word-break:break-word;">
-                      <div style="font-family:helvetica;font-size:14px;line-height:24px;text-align:left;color:#333333;">wir freuen uns riesig, dass du dich für die Glücks-Challenge entschieden hast - deinen Online-Kurs für mehr Glück und persönlichen Erfolg in deinem Leben.<br /><br /> Um dir als Teilnehmer/in ein tolle Nutzererfahrung zu bieten,
-                        haben wir eine Online-Akademie gebaut - die hapily Academy. Du kannst von jedem Gerät (PC, Laptop, Smartphone, Tablet) auf den internen Mitgliederbereich der hapily Academy zugreifen. Dazu brauchst du lediglich eine Internetverbindung.
-                        Die Bedienung ist kinderleicht, sodass du dich vom ersten Moment an zurechtfinden wirst :)</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:30px;word-break:break-word;">
-                      <div style="font-family:helvetica;font-size:14px;line-height:24px;text-align:left;color:#333333;"><strong>Deine nächsten Schritte:</strong>
+                    <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                      <div style="font-family:Roboto, Helvetica, sans-serif;font-size:14px;font-weight:300;line-height:24px;text-align:left;color:#616161;">
+                        <p><strong>Deine nächsten Schritte:</strong></p>
                         <ol>
-                          <li> Du hast, neben dieser Email, eine weitere Email erhalten, in der du dazu aufgefordert wirst, deine Email Adresse zu bestätigen und ein Passwort für die hapily Academy zu erstellen -> Bitte tue dies. </li><br />
-                          <li> Damit du auf die Inhalte der Glücks-Challenge im Mitgliederbereich zugreifen kannst, klicke unten auf den Button und logge dich mit deinem in Schritt 1 erstellten Account ein. </li><br />
+                          <li> Du hast, neben dieser Email, eine weitere Email erhalten, in der du dazu aufgefordert wirst, deine Email Adresse zu bestätigen und ein Passwort für die hapily Academy zu erstellen -> Bitte tue dies. </li>
+                          <li> Damit du auf die Inhalte der Glücks-Challenge im Mitgliederbereich zugreifen kannst, klicke unten auf den Button und logge dich mit deinem in Schritt 1 erstellten Account ein. </li>
                           <li> Innerhalb des Mitgliederbereichs wirst du Schritt für Schritt durch die einzelnen Lektionen der Glücks-Challenge geführt.
                             <ul>
                               <li>Jede Lektion beinhaltet Trainings-Videos, in denen du sowohl theoretische Inhalte erhältst als auch konkrete Arbeitsaufträge.</li>
@@ -181,10 +227,100 @@
                               <li>Außerdem haben wir das Workbook in den Online-Kurs integriert, sodass du dir in jeder Lektion zunächst das Video anschauen und anschließend die passenden Passagen aus dem Workbook bearbeiten kannst. </li>
                             </ul>
                           </li>
-                        </ol> Ok, das waren die wichtigsten Informationen für den Anfang.<br /><br />Bist du bereit? Dann lass uns loslegen!<br /><br /> Schön, dass du dabei bist und bis gleich, im Mitgliederbereich der hapily Academy.</div>
+                        </ol>
+                      </div>
                     </td>
                   </tr>
-                  <tr>..
+                </table>
+              </div>
+              <!--[if mso | IE]>
+            </td>
+          
+        </tr>
+      
+                  </table>
+                <![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]>
+          </td>
+        </tr>
+      </table>
+      
+      <table
+         align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+      >
+        <tr>
+          <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+      <![endif]-->
+    <div style="margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
+              <!--[if mso | IE]>
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                
+        <tr>
+      
+            <td
+               class="" style="vertical-align:top;width:600px;"
+            >
+          <![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tr>
+                    <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                      <div style="font-family:Roboto, Helvetica, sans-serif;font-size:14px;font-weight:300;line-height:24px;text-align:left;color:#616161;">
+                        <p>Ok, das waren die wichtigsten Informationen für den Anfang.<br />Bist du bereit? Dann lass uns loslegen!<br />Schön, dass du dabei bist und bis gleich, im Mitgliederbereich der hapily Academy.</p>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <!--[if mso | IE]>
+            </td>
+          
+        </tr>
+      
+                  </table>
+                <![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]>
+          </td>
+        </tr>
+      </table>
+      
+      <table
+         align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+      >
+        <tr>
+          <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+      <![endif]-->
+    <div style="margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
+              <!--[if mso | IE]>
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                
+        <tr>
+      
+            <td
+               class="" style="vertical-align:top;width:600px;"
+            >
+          <![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tr>
                     <td align="left" vertical-align="middle" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                       <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
                         <tr>
@@ -196,9 +332,20 @@
                       </table>
                     </td>
                   </tr>
+                </table>
+              </div>
+              <!--[if mso | IE]>
+            </td>
+          
+            <td
+               class="" style="vertical-align:top;width:600px;"
+            >
+          <![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;padding-top:30px;padding-bottom:30px;word-break:break-word;">
-                      <div style="font-family:helvetica;font-size:14px;line-height:24px;text-align:left;color:#333333;">Glückliche Grüße,<br /> dein hapily-Team</div>
+                      <div style="font-family:helvetica;font-size:14px;font-weight:300;line-height:24px;text-align:left;color:#333333;">Glückliche Grüße,<br /> dein hapily-Team</div>
                     </td>
                   </tr>
                 </table>
@@ -230,7 +377,7 @@
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#eafbf4;background-color:#eafbf4;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
@@ -392,7 +539,7 @@
       <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#eafbf4;background-color:#eafbf4;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:20px 0;padding-top:0px;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:0px;padding-top:0px;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
@@ -422,7 +569,7 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;padding-top:20px;padding-bottom:30px;word-break:break-word;">
-                      <div style="font-family:helvetica;font-size:10px;line-height:14px;text-align:left;color:#333333;">© 2020 hapily. All rights reserved. <a href="www.hapily.de">www.hapily.de</a><br /> <a href="https://www.hapily.de/impressum">Impressum</a> . <a href="https://www.hapily.de/datenschutz">Datenschutzerklärung</a></div>
+                      <div style="font-family:helvetica;font-size:10px;font-weight:300;line-height:14px;text-align:left;color:#333333;">© 2020 hapily. All rights reserved. <a href="www.hapily.de">www.hapily.de</a><br /> <a href="https://www.hapily.de/impressum">Impressum</a> . <a href="https://www.hapily.de/datenschutz">Datenschutzerklärung</a></div>
                     </td>
                   </tr>
                 </table>
