@@ -174,13 +174,17 @@ class TeachableController extends Controller
         $teachable->course_description          = $course_description;
         $teachable->save(); */
 
+        //$email = Customer::where('email', 'denismartin82@gmail.com')->first();
+
+        $user = Customer::where('id', 19)->first();
+
         //send email to the student - create an event listener or something an send an email
         $data = [
-            'name'          => 'Dev Testing',
+            'name'          => 'Dev Testing Email Essues',
             'schoolLink'    => url("https://academy.hapily.de/")
         ];
 
-        Mail::to('ubuntu.le.kush@gmail.com')
+        Mail::to($user->email)
             ->send(new StudentEnrolled($data));
         
         return 'All processing done!';
