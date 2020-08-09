@@ -20,7 +20,7 @@ class ContactSubscriptionService
     protected const NEWSLETTER_USER_LIST = 25335;
     protected const WEBINAR_PAID_USER_LIST = 28521;
     protected const AUTOMATION_NON_SUBSCRIBER_USER_LIST = 29767; //29766 for non subscribers transational list
-
+    protected const NON_CALL_USERS_LIST = 33405;
 
     /**
      * @param mixed $handleAutomationSubscription
@@ -111,6 +111,28 @@ class ContactSubscriptionService
         } catch (\Exception $e) {
             // logger()->error('error adding subscriber to list: ' . $e->getMessage(), $payment->buyer_first_name);
             Storage::put('error.txt', $e);
+        }
+    }
+
+    /**
+     * @param mixed $handleNonCallOptinUsers
+     * @param mixed $payment
+     */
+
+    public function handleNonCallOptinUsers($customer)
+    {
+        // Body request
+        $body = [
+            'Name' => $customer->prename,
+            'Properties' => ['vorname' => $customer->prename], //use Vorname to match the list vorname
+            'Action' => "addnoforce",
+            'Email' => $customer->email,
+        ];
+
+        try {
+            $response = Mailjet::post(Resources::$ContactslistManagecontact, ['id' => self::NON_CALL_USERS_LIST, 'body' => $body]);
+        } catch (\Exception $e) {
+            logger()->error('Error adding subscriber to list: ' . $e->getMessage(), $customer->prename);
         }
     }
 
