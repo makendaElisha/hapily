@@ -435,14 +435,14 @@ class SurveyController extends Controller
         // $customer = Customer::find(1);
         // Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
 
-        $customers = Customer::where('call_opt_in', 0)->get();
+        // $customers = Customer::where('call_opt_in', 0)->get();
 
-        foreach ($customers as $customer){
-            if ($customer->call_opt_in === 0) {
-                (new ContactSubscriptionService)->handleNonCallOptinUsers($customer);
-                echo 'Customer is ' . $customer->prename . '<br />'; //works
-            }
-        }
+        // foreach ($customers as $customer){
+        //     if ($customer->call_opt_in === 0) {
+        //         (new ContactSubscriptionService)->handleNonCallOptinUsers($customer);
+        //         echo 'Customer is ' . $customer->prename . '<br />'; //works
+        //     }
+        // }
 
         return "server up and running...";
     }
