@@ -22,5 +22,6 @@ class VerifyCsrfToken extends Middleware
         'callback/*',
         'digistore/webhook',
         '/website/subcriber/webhook',
+        'teachable/webhook',
     ];
 }
