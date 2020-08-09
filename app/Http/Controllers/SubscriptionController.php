@@ -9,8 +9,10 @@ class SubscriptionController extends Controller
 {
     public function newsletterWebsiteSubscription(Request $request) {
 
-        (new ContactSubscriptionService)->handleWebsiteSubscription($request);
+        // (new ContactSubscriptionService)->handleWebsiteSubscription($request);
 
-        response()->json(['success' => 'success'], 200);
+        // response()->json(['success' => 'success'], 200);
+
+        return $request->json()->all();
     }
 }
