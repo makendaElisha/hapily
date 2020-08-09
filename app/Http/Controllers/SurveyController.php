@@ -293,11 +293,11 @@ class SurveyController extends Controller
      */
     public function surveyHook(Request $request)
     {
-        try {
-            Storage::prepend('survey_submission.txt', '----' . json_encode($request->all()) . '----');
-        } catch (\Exception $e) {
-            logger()->error('Error appending new survey to file: ' . $e->getMessage());
-        }
+        // try {
+        //     Storage::prepend('survey_submission.txt', '----' . json_encode($request->all()) . '----');
+        // } catch (\Exception $e) {
+        //     logger()->error('Error appending new survey to file: ' . $e->getMessage());
+        // }
 
         $dataArray = json_decode(json_encode($request->all()), true);
 
