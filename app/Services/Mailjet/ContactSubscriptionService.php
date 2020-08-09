@@ -116,8 +116,8 @@ class ContactSubscriptionService
     }
 
     /**
-     * @param mixed $handlePaidUserSubscription
-     * @param mixed $payment
+     * @param mixed $handleWebsiteOptinMonster Subscription
+     * @param mixed $request
      */
 
     public function handleWebsiteSubscription($request)
