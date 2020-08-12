@@ -444,7 +444,18 @@ class SurveyController extends Controller
         //     }
         // }
 
-        return "server up and running...";
+        $user = [
+            'prename' => 'Denis Test',
+            'email' => 'denismartin.coaching@gmail.com'
+        ];
+
+        $userObject = (object) $user;
+        (new ContactSubscriptionService)->handleNewsletterSubscription($userObject);
+
+        echo 'User ' . $userObject->prename . ' has been added to the list.<br />'; //works
+
+
+        //return "server up and running...";
     }
     
 }
