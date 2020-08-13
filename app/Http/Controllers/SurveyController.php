@@ -328,6 +328,11 @@ class SurveyController extends Controller
             (new ContactSubscriptionService)->handleNonSubscribersAutomation($customer);
         }
 
+        //If customer subscribed but didn't optin for the call
+        if ($customer->newsletter_opt_in == 1 && $customer->call_opt_in == 0) {
+            (new ContactSubscriptionService)->handleNonCallOptinUsersAutomation($customer);
+        }
+
         //Send a slack notification
         Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
 
@@ -435,7 +440,27 @@ class SurveyController extends Controller
         // $customer = Customer::find(1);
         // Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
 
-        return "server up and running...";
+        // $customers = Customer::where('call_opt_in', 0)->get();
+
+        // foreach ($customers as $customer){
+        //     if ($customer->call_opt_in === 0) {
+        //         (new ContactSubscriptionService)->handleNonCallOptinUsers($customer);
+        //         echo 'Customer is ' . $customer->prename . '<br />'; //works
+        //     }
+        // }
+
+
+        $user = [
+            'prename' => 'Denis Martin',
+            'email' => 'denismartin.coaching@gmail.com'
+        ];
+
+        $userObject = (object) $user;
+        (new ContactSubscriptionService)->handleTestSubscription($userObject);
+
+        echo 'User ' . $userObject->prename . ' has been added to the list.<br />'; //works
+
+        //return "server up and running...";
     }
     
 }
