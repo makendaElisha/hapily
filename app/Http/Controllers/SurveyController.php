@@ -446,8 +446,8 @@ class SurveyController extends Controller
 
 
         $user = [
-            'prename' => 'Denis Test',
-            'email' => 'ubuntu.le.kush@gmail.com'
+            'prename' => 'Denis Martin',
+            'email' => 'denismartin.coaching@gmail.com'
         ];
 
         $userObject = (object) $user;
@@ -455,7 +455,7 @@ class SurveyController extends Controller
 
         echo 'User ' . $userObject->prename . ' has been added to the list.<br />'; //works
 
-        return "server up and running...";
+        //return "server up and running...";
     }
     
 }
