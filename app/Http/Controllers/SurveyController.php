@@ -328,6 +328,11 @@ class SurveyController extends Controller
             (new ContactSubscriptionService)->handleNonSubscribersAutomation($customer);
         }
 
+        //If customer subscribed but didn't optin for the call
+        if ($customer->newsletter_opt_in == 1 && $customer->call_opt_in == 0) {
+            (new ContactSubscriptionService)->handleNonCallOptinUsersAutomation($customer);
+        }
+
         //Send a slack notification
         Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
 
