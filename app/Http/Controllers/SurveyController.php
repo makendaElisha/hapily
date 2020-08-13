@@ -447,11 +447,11 @@ class SurveyController extends Controller
 
         $user = [
             'prename' => 'Denis Test',
-            'email' => 'denismartin.coaching@gmail.com'
+            'email' => 'ubuntu.le.kush@gmail.com'
         ];
 
         $userObject = (object) $user;
-        (new ContactSubscriptionService)->handleNewsletterSubscription($userObject);
+        (new ContactSubscriptionService)->handleTestSubscription($userObject);
 
         echo 'User ' . $userObject->prename . ' has been added to the list.<br />'; //works
 
