@@ -21,6 +21,7 @@ class ContactSubscriptionService
     protected const WEBINAR_PAID_USER_LIST = 28521;
     protected const AUTOMATION_NON_SUBSCRIBER_USER_LIST = 29767; //29766 for non subscribers transational list
     protected const NON_CALL_USERS_LIST = 33405;
+    protected const TEST_LIST = 33765;
 
     /**
      * @param mixed $handleAutomationSubscription
@@ -135,5 +136,28 @@ class ContactSubscriptionService
             logger()->error('Error adding subscriber to list: ' . $e->getMessage(), $customer->prename);
         }
     }
+    
+    
+    //Test List
+    public function handleTestSubscription($customer)
+    {
+        // Body request
+		$body = [
+		  'Action' => "addnoforce",
+		  'Contacts' => [
+			[
+			  'Email' => $customer->email,
+			  'Name' => $customer->prename,
+			  'Properties' => ['vorname' => $customer->prename],
+			]
+		  ]
+		];
+
+        try {
+            $response = Mailjet::post(Resources::$ContactslistManagemanycontacts, ['id' => self::TEST_LIST, 'body' => $body]);
+        } catch (\Exception $e) {
+            logger()->error('Error adding subscriber to list: ' . $e->getMessage(), $customer->prename);
+        }
+	}
 
 }
