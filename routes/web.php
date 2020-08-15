@@ -67,3 +67,5 @@ Route::post('teachable/webhook', 'TeachableController@store');
 Route::get('teachable/api', 'TeachableController@testApp');
 
 Route::get('/mailjet', 'SurveyController@listSubscribe')->name('subscribe.list');
+
+Route::post('/website/subcriber/webhook', 'SubscriptionController@newsletterWebsiteSubscription');
