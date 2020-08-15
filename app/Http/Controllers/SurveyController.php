@@ -450,17 +450,31 @@ class SurveyController extends Controller
         // }
 
 
-        $user = [
-            'prename' => 'Denis Martin',
-            'email' => 'denismartin.coaching@gmail.com'
-        ];
+        // $user = [
+        //     'prename' => 'Denis Martin',
+        //     'email' => 'denismartin.coaching@gmail.com'
+        // ];
 
-        $userObject = (object) $user;
-        (new ContactSubscriptionService)->handleTestSubscription($userObject);
+        // $userObject = (object) $user;
+        // (new ContactSubscriptionService)->handleTestSubscription($userObject);
 
-        echo 'User ' . $userObject->prename . ' has been added to the list.<br />'; //works
+        // echo 'User ' . $userObject->prename . ' has been added to the list.<br />'; //works
 
-        //return "server up and running...";
+        // //return "server up and running...";
+
+
+        //Customers subscribed but didn't opt in for call in
+        //$customers = Customer::where('id', '<', 293)->get(); //ID 293 Julia was already added to newsletter list
+        //1st of june to 14 august 2020
+        $customers = Customer::whereBetween("submit_date", array(Carbon::now()->subDays(74), Carbon::now()->subDays(1)))->get();
+
+        foreach ($customers as $customer){
+            if ($customer->newsletter_opt_in === 1 && $customer->call_opt_in === 0) {
+                (new ContactSubscriptionService)->handleNonCallOptinUsers($customer);
+                echo 'Customer is ' . $customer->prename . '<br />'; //works
+            }
+        }
+
     }
     
 }

@@ -221,7 +221,7 @@ class ContactSubscriptionService
         ];
 
         try {
-            $response = Mailjet::post(Resources::$ContactslistManagemanycontacts, ['id' => self::NON_CALL_USERS_LIST_TRANSACTIONAL, 'body' => $body]);
+            $response = Mailjet::post(Resources::$ContactslistManagemanycontacts, ['id' => self::NON_CALL_USERS_LIST_AUTOMATION, 'body' => $body]);
         } catch (\Exception $e) {
             logger()->error('Error adding subscriber to list: ' . $e->getMessage(), $customer->prename);
         }
