@@ -20,12 +20,8 @@ class ContactSubscriptionService
     protected const NEWSLETTER_USER_LIST = 25335;
     protected const WEBINAR_PAID_USER_LIST = 28521;
     protected const AUTOMATION_NON_SUBSCRIBER_USER_LIST = 29767; //29766 for non subscribers transational list
-<<<<<<< HEAD
-    protected const NON_CALL_USERS_LIST = 33405;
-=======
     protected const NON_CALL_USERS_LIST_TRANSACTIONAL = 33405;
     protected const NON_CALL_USERS_LIST_AUTOMATION = 33840;
->>>>>>> c6464576ea39e0866f5f326d85dece5e8d40c03d
     protected const TEST_LIST = 33765;
 
     /**
@@ -231,11 +227,6 @@ class ContactSubscriptionService
         }
     }
     
-    
-<<<<<<< HEAD
-=======
-    
->>>>>>> c6464576ea39e0866f5f326d85dece5e8d40c03d
     //Test List
     public function handleTestSubscription($customer)
     {

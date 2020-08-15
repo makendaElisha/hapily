@@ -450,19 +450,6 @@ class SurveyController extends Controller
         // }
 
 
-<<<<<<< HEAD
-        $user = [
-            'prename' => 'Denis Test',
-            'email' => 'ubuntu.le.kush@gmail.com'
-        ];
-
-        $userObject = (object) $user;
-        (new ContactSubscriptionService)->handleTestSubscription($userObject);
-
-        echo 'User ' . $userObject->prename . ' has been added to the list.<br />'; //works
-
-        return "server up and running...";
-=======
         // $user = [
         //     'prename' => 'Denis Martin',
         //     'email' => 'denismartin.coaching@gmail.com'
@@ -487,8 +474,6 @@ class SurveyController extends Controller
                 echo 'Customer is ' . $customer->prename . '<br />'; //works
             }
         }
-
->>>>>>> c6464576ea39e0866f5f326d85dece5e8d40c03d
     }
     
 }
