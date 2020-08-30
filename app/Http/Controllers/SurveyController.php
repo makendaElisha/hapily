@@ -324,7 +324,10 @@ class SurveyController extends Controller
         //If subscriber didn't opt, put him in the non subscriber list for one automation only
         if ($customer->newsletter_opt_in == 1) {
             (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
-        } else {
+        } 
+        
+        //If customer didn't subscribe to newsletter and to call
+        if ($customer->newsletter_opt_in == 0 &&  $customer->call_opt_in == 0) {
             (new ContactSubscriptionService)->handleNonSubscribersAutomation($customer);
         }
 
