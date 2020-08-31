@@ -52,6 +52,7 @@ class ReceivedSurveyDataService
 
                     case 'become_coach':
                         $customer->become_coach = $answer['choice']['label'];
+                        break;
                         
                     case 'postal_code_user':
                         $customer->postal_code = $answer['number'];
