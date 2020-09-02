@@ -302,7 +302,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
                   <p class="normal-text"><strong>Buch-Tipp</strong></p>
                   <div class="coach-image-box">
                     <div class="coach-box-columns w-row">
-                      <div class="coach-box-col1 w-col w-col-3"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-image"></a></div>
+                      <div class="coach-box-col1 w-col w-col-3"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank" rel="nofollow"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-image"></a></div>
                       <div class="coach-box-col2 w-col w-col-9">
                         <div class="coach-box-conent">
                           <p class="coach-box-content-paragraph">
@@ -326,7 +326,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
                                   {{$bookText}}   
                               @endif
                           </p>
-                          <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Bestellen...</a></div> 
+                          <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank" rel="nofollow">&gt; Bestellen...</a></div> 
                         </div>
                       </div>
                     </div>
@@ -414,7 +414,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
                       <p class="normal-text"><strong>Buch-Tipp</strong></p>
                       <div class="coach-image-box">
                         <div class="coach-box-columns w-row">
-                          <div class="coach-box-col1 w-col w-col-3"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-image"></a></div>
+                          <div class="coach-box-col1 w-col w-col-3"><a href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank" rel="nofollow"><img src="{{ $symptom->recom_book_image ? $symptom->recom_book_image : asset('all/images/book-cover.png')}}" alt="" class="book-image"></a></div>
                           <div class="coach-box-col2 w-col w-col-9">
                             <div class="coach-box-conent">
                               <p class="coach-box-content-paragraph">
@@ -438,7 +438,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
                                     {{$bookText}}   
                                   @endif
                               </p>
-                              <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank">&gt; Bestellen...</a></div> 
+                              <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_book_url ? $symptom->recom_book_url : '#'}}"  target="_blank" rel="nofollow">&gt; Bestellen...</a></div> 
                             </div>
                           </div>
                         </div>
