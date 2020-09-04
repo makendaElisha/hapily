@@ -469,10 +469,14 @@ class SurveyController extends Controller
         //Customers subscribed but didn't opt in for call in
         //$customers = Customer::where('id', '<', 293)->get(); //ID 293 Julia was already added to newsletter list
         //1st of june to 14 august 2020
-        $customers = Customer::whereBetween("submit_date", array(Carbon::now()->subDays(44), Carbon::now()->subDays(1)))->get();
+        $june = Carbon::parse('2020-06-01');
+        $august = Carbon::parse('2020-08-31');
+
+        //$customers = Customer::whereBetween("submit_date", array(Carbon::now()->subDays(44), Carbon::now()->subDays(1)))->get();
+        $customers = Customer::whereBetween("submit_date", array($june, $august))->get();
 
         foreach ($customers as $customer){
-            if ($customer->newsletter_opt_in === 1) {
+            if ($customer->newsletter_opt_in == 0 &&  $customer->call_opt_in == 0) {
                 (new ContactSubscriptionService)->handleTestSubscription($customer);
                 echo 'Customer is ' . $customer->prename . '<br />'; //works
             }

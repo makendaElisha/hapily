@@ -22,7 +22,7 @@ class ContactSubscriptionService
     protected const AUTOMATION_NON_SUBSCRIBER_USER_LIST = 34235; //29766 for non subscribers transational list
     protected const NON_CALL_USERS_LIST_TRANSACTIONAL = 33405;
     protected const NON_CALL_USERS_LIST_AUTOMATION = 33840;
-    protected const TEST_LIST = 33765;
+    protected const TEST_LIST = 35338;
 
     /**
      * @param mixed $handleAutomationSubscription
