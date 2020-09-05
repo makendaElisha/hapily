@@ -483,17 +483,6 @@ class SurveyController extends Controller
             }
         }*/
 
-
-        $customers = Customer::whereIn('email', array('reniwankenobi@yahoo.de', 'alekos.behrens@gmail.com', 'robin.ansorge@gmail.com', 'a.bakowski@me.com'))->get();
-        foreach ($customers as $customer){
-            (new LeadCreationService)->createLead($customer);
-            echo 'Customer is ' . $customer->prename . '<br />'; //works
-        }
-
-        $maria = Customer::where('id', 1537)->first();
-        (new LeadCreationService)->createLead($customer);
-        echo 'Customer is ' . $maria->prename . '<br />'; //works
-
     }
     
 }
