@@ -469,6 +469,7 @@ class SurveyController extends Controller
         //Customers subscribed but didn't opt in for call in
         //$customers = Customer::where('id', '<', 293)->get(); //ID 293 Julia was already added to newsletter list
         //1st of june to 14 august 2020
+        /*
         $june = Carbon::parse('2020-06-01');
         $august = Carbon::parse('2020-08-31');
 
@@ -480,7 +481,19 @@ class SurveyController extends Controller
                 (new ContactSubscriptionService)->handleTestSubscription($customer);
                 echo 'Customer is ' . $customer->prename . '<br />'; //works
             }
+        }*/
+
+
+        $customers = Customer::whereIn('email', array('reniwankenobi@yahoo.de', 'alekos.behrens@gmail.com', 'robin.ansorge@gmail.com', 'a.bakowski@me.com'))->get();
+        foreach ($customers as $customer){
+            (new LeadCreationService)->createLead($customer);
+            echo 'Customer is ' . $customer->prename . '<br />'; //works
         }
+
+        $maria = Customer::where('id', 1537)->first();
+        (new LeadCreationService)->createLead($customer);
+        echo 'Customer is ' . $maria->prename . '<br />'; //works
+
     }
     
 }
