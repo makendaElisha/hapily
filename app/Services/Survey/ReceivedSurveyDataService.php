@@ -51,11 +51,11 @@ class ReceivedSurveyDataService
                         break;
 
                     case 'become_coach':
-                        if(array_key_exists('label', $answer['choices']) && !is_null($answer['choices']['label'])){
+                        if(array_key_exists('label', $answer['choice']) && !is_null($answer['choice']['label'])){
                             $customer->become_coach = $answer['choice']['label'];
                         } else {
-                            if(array_key_exists('other', $answer['choices'])) {
-                                $customer->become_coach = $answer['choice']['label'];
+                            if(array_key_exists('other', $answer['choice'])) {
+                                $customer->become_coach = $answer['choice']['other'];
                             } else {
                                 $customer->become_coach = null;
                             }
