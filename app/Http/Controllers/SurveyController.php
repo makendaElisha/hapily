@@ -318,7 +318,7 @@ class SurveyController extends Controller
         (new LeadCreationService)->createLead($customer);
 
         //Subscribe User to list for automation
-        (new ContactSubscriptionService)->handleAutomationSubscription($customer);
+        //(new ContactSubscriptionService)->handleAutomationSubscription($customer);
 
         //Subscribe User to newsletter if opted to newsletter
         //If subscriber didn't opt, put him in the non subscriber list for one automation only
