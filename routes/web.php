@@ -68,4 +68,6 @@ Route::get('teachable/api', 'TeachableController@testApp');
 
 Route::get('/mailjet', 'SurveyController@listSubscribe')->name('subscribe.list');
 
+Route::get('/testemail', 'SurveyController@testEmail')->name('test.email');
+
 Route::post('/website/subcriber/webhook', 'SubscriptionController@newsletterWebsiteSubscription');
