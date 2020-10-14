@@ -488,15 +488,24 @@ class SurveyController extends Controller
         }*/
 
 
-        $test = new Customer;
-        $test->prename = 'Test MJET';
-        $test->email = 'testmjet@example.com';
+        $customer = Customer::find(3039);
 
-        (new ContactSubscriptionService)->handleAutomationSubscription($test);
-        (new ContactSubscriptionService)->handleNewsletterSubscription($test);
+        if ($customer->newsletter_opt_in == 1) {
+            (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
+        } 
+        
+        //If customer didn't subscribe to newsletter and to call
+        if ($customer->newsletter_opt_in == 0 &&  $customer->call_opt_in == 0) {
+            (new ContactSubscriptionService)->handleNonSubscribersAutomation($customer);
+        }
+
+        //If customer subscribed but didn't optin for the call
+        if ($customer->newsletter_opt_in == 1 && $customer->call_opt_in == 0) {
+            (new ContactSubscriptionService)->handleNonCallOptinUsersAutomation($customer);
+        }
         
         echo "Success delivery!";
-        
+
         /*
         $date1 = Carbon::parse("2020-10-06");
         $date2 = Carbon::parse("2020-10-08");
