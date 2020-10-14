@@ -487,6 +487,44 @@ class SurveyController extends Controller
             }
         }*/
 
+        $date1 = Carbon::parse("2020-10-05");
+        $date2 = Carbon::parse("2020-10-08");
+        $customers = Customer::whereBetween("submit_date", array($date1, $date2))->get();
+
+        $customer = $customers->first();
+
+        //Survey result
+        $data = [
+            'name'          => $customer->prename,
+            'surveyLink'    => url($customer->survey_url)
+        ];
+
+        Mail::to($customer->email)
+            ->send(new SendSurveyLink($data));
+
+        //Create salesforce lead
+        (new LeadCreationService)->createLead($customer);
+
+        //Subscription
+        if ($customer->newsletter_opt_in == 1) {
+            (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
+        } 
+        
+        //If customer didn't subscribe to newsletter and to call
+        if ($customer->newsletter_opt_in == 0 &&  $customer->call_opt_in == 0) {
+            (new ContactSubscriptionService)->handleNonSubscribersAutomation($customer);
+        }
+
+        //If customer subscribed but didn't optin for the call
+        if ($customer->newsletter_opt_in == 1 && $customer->call_opt_in == 0) {
+            (new ContactSubscriptionService)->handleNonCallOptinUsersAutomation($customer);
+        }
+
+        //Send a slack notification
+        Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
+
+        echo "Success delivery!";
+
     }
 
 
