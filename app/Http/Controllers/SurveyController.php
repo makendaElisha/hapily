@@ -587,8 +587,6 @@ class SurveyController extends Controller
         }
 
         echo "Success delivery!";
-    }
 
     }
-    
 }
