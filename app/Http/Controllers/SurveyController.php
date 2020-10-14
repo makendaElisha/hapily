@@ -487,8 +487,8 @@ class SurveyController extends Controller
             }
         }*/
 
-
-        $customer = Customer::find(3039);
+        /*
+        $customer = Customer::find(3039); //last contact for the 5th
 
         if ($customer->newsletter_opt_in == 1) {
             (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
@@ -505,10 +505,10 @@ class SurveyController extends Controller
         }
         
         echo "Success delivery!";
+        */
 
-        /*
         $date1 = Carbon::parse("2020-10-06");
-        $date2 = Carbon::parse("2020-10-08");
+        $date2 = Carbon::parse("2020-10-09");
         $customers = Customer::whereBetween("submit_date", array($date1, $date2))->get();
 
         foreach ($customers as $customer){
@@ -544,7 +544,6 @@ class SurveyController extends Controller
 
             echo "Success delivery!";
         }
-        */
     }
 
 
