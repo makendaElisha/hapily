@@ -510,7 +510,7 @@ class SurveyController extends Controller
         $date1 = Carbon::parse("2020-10-06");
         $date2 = Carbon::parse("2020-10-09");
         //$customers = Customer::whereBetween("submit_date", array($date1, $date2))->get();
-        $customers = Customer::whereBetween('id', [3170, 3194])->get(); //up to last one submission for the 6th
+        $customers = Customer::whereBetween('id', [3195, 3230])->get(); //up to last one submission for the 6th
 
 
         foreach ($customers as $customer){
@@ -553,16 +553,45 @@ class SurveyController extends Controller
     public function testEmail()
     {
         //send survey email with its own data
-        $customer = Customer::where("id", 1)->first();
-        $data = [
-            'name'          => $customer->prename,
-            'surveyLink'    => url($customer->survey_url) //url helper to take the base url of the project
-        ];
+        $customers = Customer::whereBetween('id', [3231, 3255])->get(); //up to last one submission for the 6th
 
-        Mail::to('email@example.com')
-            ->send(new SendSurveyLink($data));
 
-        echo "success email sent";
+        foreach ($customers as $customer){
+            //Survey result
+            $data = [
+                'name'          => $customer->prename,
+                'surveyLink'    => url($customer->survey_url)
+            ];
+
+            Mail::to($customer->email)
+                ->send(new SendSurveyLink($data));
+
+            //Create salesforce lead
+            (new LeadCreationService)->createLead($customer);
+
+            //Subscription
+            if ($customer->newsletter_opt_in == 1) {
+                (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
+            } 
+            
+            //If customer didn't subscribe to newsletter and to call
+            if ($customer->newsletter_opt_in == 0 &&  $customer->call_opt_in == 0) {
+                (new ContactSubscriptionService)->handleNonSubscribersAutomation($customer);
+            }
+
+            //If customer subscribed but didn't optin for the call
+            if ($customer->newsletter_opt_in == 1 && $customer->call_opt_in == 0) {
+                (new ContactSubscriptionService)->handleNonCallOptinUsersAutomation($customer);
+            }
+
+            //Send a slack notification
+            Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
+
+        }
+
+        echo "Success delivery!";
+    }
+
     }
     
 }
