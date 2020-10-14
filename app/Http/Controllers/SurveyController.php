@@ -323,8 +323,6 @@ class SurveyController extends Controller
         //Subscribe User to newsletter if opted to newsletter
         //If subscriber didn't opt, put him in the non subscriber list for one automation only
 
-        /* commented for mailjet */
-        /*
         if ($customer->newsletter_opt_in == 1) {
             (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
         } 
@@ -338,7 +336,6 @@ class SurveyController extends Controller
         if ($customer->newsletter_opt_in == 1 && $customer->call_opt_in == 0) {
             (new ContactSubscriptionService)->handleNonCallOptinUsersAutomation($customer);
         }
-        */
 
         //Send a slack notification
         Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
