@@ -509,7 +509,9 @@ class SurveyController extends Controller
 
         $date1 = Carbon::parse("2020-10-06");
         $date2 = Carbon::parse("2020-10-09");
-        $customers = Customer::whereBetween("submit_date", array($date1, $date2))->get();
+        //$customers = Customer::whereBetween("submit_date", array($date1, $date2))->get();
+        $customers = Customer::whereBetween('id', [3121, 3194])->get(); //up to last one for the 6th
+
 
         foreach ($customers as $customer){
             //Survey result
@@ -542,8 +544,9 @@ class SurveyController extends Controller
             //Send a slack notification
             Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
 
-            echo "Success delivery!";
         }
+
+        echo "Success delivery!";
     }
 
 
