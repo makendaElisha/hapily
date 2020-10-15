@@ -509,7 +509,7 @@ class SurveyController extends Controller
         //$customers = Customer::whereBetween("submit_date", array($date1, $date2))->get();
         //$customers = Customer::whereBetween('id', [3195, 3230])->get(); //up to last one submission for the 6th
 
-        $customers = Customer::whereBetween('id', [2656, 2670])->get();
+        $customers = Customer::whereBetween('id', [2671, 2685])->get();
 
         foreach ($customers as $customer){
             //Survey result
