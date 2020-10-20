@@ -550,9 +550,14 @@ class SurveyController extends Controller
 
     public function testEmail()
     {
+
+        $customer = Customer::where('id', 3314)->first();
+
+        (new LeadCreationService)->createLead($customer);
+
+        /*
         //send survey email with its own data
         $customers = Customer::whereBetween('id', [3231, 3255])->get(); //up to last one submission for the 6th
-
 
         foreach ($customers as $customer){
             //Survey result
@@ -586,6 +591,7 @@ class SurveyController extends Controller
             Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
 
         }
+        */
 
         echo "Success delivery!";
 
