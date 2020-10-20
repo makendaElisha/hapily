@@ -553,7 +553,22 @@ class SurveyController extends Controller
 
         $customer = Customer::where('id', 3314)->first();
 
-        (new LeadCreationService)->createLead($customer);
+        if ($customer->newsletter_opt_in == 1) {
+            (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
+        } 
+        
+        //If customer didn't subscribe to newsletter and to call
+        if ($customer->newsletter_opt_in == 0 &&  $customer->call_opt_in == 0) {
+            (new ContactSubscriptionService)->handleNonSubscribersAutomation($customer);
+        }
+
+        //If customer subscribed but didn't optin for the call
+        if ($customer->newsletter_opt_in == 1 && $customer->call_opt_in == 0) {
+            (new ContactSubscriptionService)->handleNonCallOptinUsersAutomation($customer);
+        }
+
+        //Send a slack notification
+        Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
 
         /*
         //send survey email with its own data
