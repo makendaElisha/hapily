@@ -567,9 +567,6 @@ class SurveyController extends Controller
             (new ContactSubscriptionService)->handleNonCallOptinUsersAutomation($customer);
         }
 
-        //Send a slack notification
-        Notification::route('slack', config('services.slack.webhook'))->notify(new SurveySlackNotification($customer));
-
         /*
         //send survey email with its own data
         $customers = Customer::whereBetween('id', [3231, 3255])->get(); //up to last one submission for the 6th
