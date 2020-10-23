@@ -2301,6 +2301,7 @@
     border-radius: 24px;
     background-color: #eafbf4;
     box-shadow: 3px 0 10px 1px #cccece;
+    display: none;
   }
   
   .side-green-container-header {
@@ -2983,6 +2984,168 @@
     padding-bottom: 20px;
     border-bottom: 1px solid #dd22ef;
   }
+
+    
+.survey_header_columns {
+  width: 800px;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.survey_header_col1_container {
+  display: block;
+  padding-left: 20px;
+}
+
+.surveh_header_col1_h1 {
+  font-family: Poppins, sans-serif;
+  color: #dd22ef;
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.survey_header_paragraph {
+  font-family: Poppins, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.survey_signature {
+  display: block;
+  text-align: left;
+}
+
+.survey_header_col2_container {
+  padding-top: 20px;
+}
+
+.section-survey-checkboxes {
+  margin-bottom: 40px;
+  padding-top: 10px;
+  padding-left: 20px;
+  border: 1px solid #000;
+}
+
+.survey_checkbox_label {
+  padding-left: 10px;
+  font-family: Poppins, sans-serif;
+}
+
+.survey_check_box_item {
+  width: 20px;
+  height: 20px;
+  border-color: #32383a;
+}
+
+.survey_check_link {
+  color: #dd22ef;
+}
+
+.survey_check_field {
+  margin-bottom: 10px;
+}
+
+
+.w-checkbox {
+  display: block;
+  margin-bottom: 5px;
+  padding-left: 20px;
+}
+
+.w-checkbox::before {
+  content: ' ';
+  display: table;
+  -ms-grid-column-span: 1;
+  grid-column-end: 2;
+  -ms-grid-column: 1;
+  grid-column-start: 1;
+  -ms-grid-row-span: 1;
+  grid-row-end: 2;
+  -ms-grid-row: 1;
+  grid-row-start: 1;
+}
+
+.w-checkbox::after {
+  content: ' ';
+  display: table;
+  -ms-grid-column-span: 1;
+  grid-column-end: 2;
+  -ms-grid-column: 1;
+  grid-column-start: 1;
+  -ms-grid-row-span: 1;
+  grid-row-end: 2;
+  -ms-grid-row: 1;
+  grid-row-start: 1;
+  clear: both;
+}
+
+.w-checkbox-input {
+  float: left;
+  margin-bottom: 0px;
+  margin-left: -20px;
+  margin-right: 0px;
+  margin-top: 4px;
+  line-height: normal;
+}
+
+.w-checkbox-input--inputType-custom {
+  border: 1px solid #32383a !important;
+  border-color: #32383a !important;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-color: #ccc;
+  border-bottom-color: #ccc;
+  border-left-color: #ccc;
+  border-right-color: #ccc;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  width: 20px;
+  height: 20px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.w-checkbox-input--inputType-custom.w--redirected-checked {
+  background-color: #B6FF58;
+  border-top-color: #B6FF58;
+  border-bottom-color: #B6FF58;
+  border-left-color: #B6FF58;
+  border-right-color: #B6FF58;
+  /*background-image: url('https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg');*/
+  background-image: url("/all/images/tick.svg");
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #33DD93 !important;
+}
+
+.w-checkbox-input--inputType-custom.w--redirected-focus {
+  box-shadow: 0px 0px 3px 1px #B6FF58;
+}
+
+.w-layout-grid {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-columns: 1fr;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto auto;
+  grid-template-rows: auto auto;
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+}
+
+
   
   @media screen and (max-width: 991px) {
     .navigation-bar {
@@ -3972,6 +4135,24 @@
       display: block;
       width: 50%;
     }
+
+    .survey_header_columns {
+      width: 100%;
+    }
+    .survey_header_columns_col1 {
+      display: block;
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+    }
+    .survey_header_col1_container {
+      width: 100%;
+    }
+    .surveh_header_col1_h1 {
+      font-size: 22px;
+    }
+
   }
   
   @media screen and (max-width: 479px) {
@@ -4606,7 +4787,7 @@
       text-align: left;
     }
   }
-  
+
   @font-face {
     font-family: 'Poppins';
     src: url('../fonts/Poppins-Black.otf') format('opentype');

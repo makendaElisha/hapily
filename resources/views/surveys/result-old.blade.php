@@ -86,21 +86,12 @@ f=false,d=document,code={use_existing_jquery:function(){return use_existing_jque
 window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b=hide_element?hide_element+'{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}':'',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&f='+(+is_spa)+'&r='+Math.random());return settings_timer; }};window._vwo_settings_timer = code.init(); return code; }());
 </script>
 <!-- End VWO Async Smartcode -->
-  <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 </head>
 <body>
   <button onclick="topFunction()" id="myBtn" title="Go to top">> Zur Übersicht</button>
   <div class="section-header"><img src="{{ asset('all/images/hapily_logoprimary.svg')}}" alt="" class="survey-logo">
-    <div class="survey_header_columns w-row">
-      <div class="survey_header_columns_col1 w-col w-col-6 w-col-medium-6 w-col-small-6">
-        <div class="survey_header_col1_container">
-          <h1 class="surveh_header_col1_h1">Hier is dein persönlicher Glücksbericht.</h1>
-          <p class="survey_header_paragraph">Wir wünschen dir spannende Erkenntnisse!</p><img src="{{ asset('all/images/survey_signature.png')}}" loading="lazy" alt="" class="survey_signature"></div>
-      </div>
-      <div class="survey_header_columns_col2 w-col w-col-6 w-col-medium-6 w-col-small-6">
-        <div class="survey_header_col2_container"><img src="{{ asset('all/images/survey_header_image.png')}}" loading="lazy" alt=""></div>
-      </div>
-    </div>
+    <h1 class="heading-5">Dein Glücks-Bericht<br></h1>
   </div>
   <div class="side-green-container">
     <h4 class="side-green-container-header">Kostenloses Online-Training - Entfalte jetzt dein Glücks-Potenzial!</h4><a href="https://event.webinarjam.com/register/1/8r85qtn" target="_blank" class="side-green-container-button w-button">&gt; Kostenlos anmelden</a>
@@ -117,59 +108,11 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
     <div class="section-greeting-container">
       <div class="greeting-text">
         <div class="bold-text">Hey {{$customer->prename}},</div>
-        <p class="paragraph">schön, dass du den Test abgeschlossen hast und mehr darüber erfahren möchtest, wie glücklich du momentan in deinem Leben bist und wie du dein persönliches Glück positiv beeinflussen kannst.</p>
+        <p class="paragraph">schön, dass du den Test abgeschlossen hast und deinem Glück auf die Sprünge helfen willst :-) Deine aktuelle Situation sowie die Ursachen dafür besser zu verstehen, ist der erste Schritt in Richtung eines erfüllteren und zufriedeneren Lebens.</p>
         <p class="paragraph-4">Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$userScore}} von {{$numberAreas * 10}} Punkten.</strong></p>
-        <p class="paragraph-2">Struktur macht glücklich 🍀 😊 Nutze deshalb folgende Checkliste für deine nächsten Schritte und hake ab:</p>
+        <p class="paragraph-2">Im Durchschnitt erreichen Teilnehmer einen Score von {{$averageHappinessAllParticipants}}. In der folgenden Grafik kannst du dein Glücks-Level pro Lebensbereich ablesen und mit dem Durchschnitt der anderen Teilnehmer vergleichen.</p>
+        <p class="paragraph-2">Hier noch ein Tipp, wie du für dich das Beste aus dem Glücks-Bericht herausholst: Du kannst dir entweder einen Lebensbereich nach dem anderen anschauen oder gelangst direkt zu einem bestimmten Lebensbereich, indem du diesen im Balkendiagramm anklickst. Für jede von dir im Glücks-Test angekreuzte Herausforderung erhältst du einen Sofort-Tipp von unseren Experten sowie weiterführende Hinweise. Trage dich unbedingt auch rechts für das kostenlose Online-Training ein. Darin erfährst du u.a. 3 praktische Tipps, mit denen du dein Glücks-Level sofort steigern kannst.</p>
       </div>
-
-      <div class="section-survey-checkboxes">
-        <div class="survey_checkboxes_form w-form">
-          <form id="email-form" name="email-form" data-name="Email Form" class="survey_form">
-            <label class="w-checkbox survey_check_field">
-              <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option1) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_one" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">1. Du hast den Glückstest abgeschlossen. Deine Ergebnisse findest du weiter unten.</span>
-            </label>
-
-            <label class="w-checkbox survey_check_field">
-              <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option2) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_two" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">2. Folge uns auf <a href="https://www.instagram.com/hapily.de/" target="_blank" class="survey_check_link">&gt; Instagram</a> und tritt unserer <a href="https://www.facebook.com/groups/2616756118542821" target="_blank" class="survey_check_link">&gt; Facebook-Gruppe</a> bei - für regelmäßige Glücksimpulse</span>
-            </label>
-              
-            <label class="w-checkbox survey_check_field">
-              <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option3) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_three" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">3. Nimm an unserem kostenlosen Webinar teil und lerne mehr über das Thema Glück <a href="https://event.webinarjam.com/register/1/8r85qtn?_ga=2.126112840.455767265.1603307356-1514692214.1600091757" target="_blank" class="survey_check_link">&gt; Jetzt anmelden</a></span>
-            </label>
-            
-            <label class="w-checkbox survey_check_field">
-              <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option4) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_four" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">4. <strong>Unser TIPP:</strong> Vereinbare ein kostenloses Telefon-Coaching <a href="https://calendly.com/hapily-gratis-coaching/15min?back=1&amp;month=2020-10" target="_blank" class="survey_check_link">&gt; Termin vereinbaren</a></span>
-            </label>
-            
-            <label class="w-checkbox survey_check_field">
-              <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option5) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_five" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">5. Falls du unseren Newsletter noch nicht abonniert hast, hole das jetzt nach und erhalte wertvolle Impulse rund um das Thema Glück <a href="#" class="survey_check_link">&gt; Newsletter abonnieren</a></span>
-            </label>
-            
-            <label class="w-checkbox"><div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option6) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_six" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">6. War der Test hilfreich? Wir wollen uns fortlaufend verbessern und brauchen dafür dein Feedback <a href="https://hapily.typeform.com/to/rSGaWr" target="_blank" class="survey_check_link">&gt; Feedback geben</a></span>
-            </label>
-          </form>          
-          
-          <div class="w-form-done">
-            <div>Thank you! Your submission has been received!</div>
-          </div>
-          <div class="w-form-fail">
-            <div>Oops! Something went wrong while submitting the form.</div>
-          </div>
-        </div>
-      </div>
-
       <div class="score-elements" id="top">
         <h3 class="heading-6">Dein Happiness-Score pro Lebensbereich</h3>
         <div class="score-columns w-row">
@@ -585,196 +528,11 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e87229d1e5bbf88766c2782" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="{{ asset('all/js/webflow.js')}}" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-  {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
-  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
-
-<script type="text/javascript">
-  $("#checkbox_one").change(function(event) {
-    let thisCheck = $(this);
-    let url = window.location.href;
-    let token = window.location.href.split("/").pop();
-    let option = "option1";
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            //console.log(response);
-            //if unchecked, check else uncheck
-            if(response.message == 'set-to-true') {
-              thisCheck.prop("checked", true);
-              console.log('response okay');
-            } else {
-              console.log('response not okay');
-              thisCheck.prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-
-  $("#checkbox_two").change(function(event) {
-    let thisCheck = $(this);
-    let url = window.location.href;
-    let token = window.location.href.split("/").pop();
-    let option = "option2";
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            if(response.message == 'set-to-true') {
-              thisCheck.prop("checked", true);
-              console.log('response okay');
-            } else {
-              console.log('response not okay');
-              thisCheck.prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-
-  $("#checkbox_three").change(function(event) {
-    let thisCheck = $(this);
-    let url = window.location.href;
-    let token = window.location.href.split("/").pop();
-    let option = "option3";
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            if(response.message == 'set-to-true') {
-              thisCheck.prop("checked", true);
-              console.log('response okay');
-            } else {
-              console.log('response not okay');
-              thisCheck.prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-
-  $("#checkbox_four").change(function(event) {
-    let thisCheck = $(this);
-    let url = window.location.href;
-    let token = window.location.href.split("/").pop();
-    let option = "option4";
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            if(response.message == 'set-to-true') {
-              thisCheck.prop("checked", true);
-              console.log('response okay');
-            } else {
-              console.log('response not okay');
-              thisCheck.prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-
-  $("#checkbox_five").change(function(event) {
-    let thisCheck = $(this);
-    let url = window.location.href;
-    let token = window.location.href.split("/").pop();
-    let option = "option5";
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            if(response.message == 'set-to-true') {
-              thisCheck.prop("checked", true);
-              console.log('response okay');
-            } else {
-              console.log('response not okay');
-              thisCheck.prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-
-  $("#checkbox_six").change(function(event) {
-    let thisCheck = $(this);
-    let url = window.location.href;
-    let token = window.location.href.split("/").pop();
-    let option = "option6";
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            if(response.message == 'set-to-true') {
-              thisCheck.prop("checked", true);
-              console.log('response okay');
-            } else {
-              console.log('response not okay');
-              thisCheck.prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-</script>
 
 <script>
   function showMore(id) {

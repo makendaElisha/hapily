@@ -71,3 +71,5 @@ Route::get('/mailjet', 'SurveyController@listSubscribe')->name('subscribe.list')
 Route::get('/testemail', 'SurveyController@testEmail')->name('test.email');
 
 Route::post('/website/subcriber/webhook', 'SubscriptionController@newsletterWebsiteSubscription');
+
+Route::post('/survey/feedback', 'FeedbackController@feedback');
