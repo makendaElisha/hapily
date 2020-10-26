@@ -1427,7 +1427,7 @@
     height: auto;
     margin-top: 0px;
     padding-top: 30px;
-    padding-bottom: 34px;
+    /* padding-bottom: 34px; */
     -webkit-box-pack: start;
     -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
@@ -1479,7 +1479,7 @@
     display: block;
     width: 800px;
     margin-right: auto;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     margin-left: auto;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -2996,6 +2996,7 @@
 .survey_header_col1_container {
   display: block;
   padding-left: 20px;
+  margin-top: 20px;
 }
 
 .surveh_header_col1_h1 {
@@ -3027,7 +3028,8 @@
   margin-bottom: 40px;
   padding-top: 10px;
   padding-left: 20px;
-  border: 1px solid #000;
+  border-radius: 24px;
+  box-shadow: 1px 1px 10px 0 #cccece;
 }
 
 .survey_checkbox_label {
@@ -3116,13 +3118,14 @@
 }
 
 .w-checkbox-input--inputType-custom.w--redirected-checked {
-  background-color: #B6FF58;
-  border-top-color: #B6FF58;
-  border-bottom-color: #B6FF58;
-  border-left-color: #B6FF58;
-  border-right-color: #B6FF58;
+  background-color: #EAFBF4;
+  border-top-color: #EAFBF4;
+  border-bottom-color: #EAFBF4;
+  border-left-color: #EAFBF4;
+  border-right-color: #EAFBF4;
   /*background-image: url('https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg');*/
-  background-image: url("/all/images/tick.svg");
+  /* background-image: url("/all/images/tick.svg"); */
+  background-image: url("/all/images/tickpurple.svg");
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3130,7 +3133,7 @@
 }
 
 .w-checkbox-input--inputType-custom.w--redirected-focus {
-  box-shadow: 0px 0px 3px 1px #B6FF58;
+  box-shadow: 0px 0px 3px 1px #EAFBF4;
 }
 
 .w-layout-grid {

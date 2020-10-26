@@ -149,15 +149,16 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
               <span class="survey_checkbox_label w-form-label">4. <strong>Unser TIPP:</strong> Vereinbare ein kostenloses Telefon-Coaching <a href="https://calendly.com/hapily-gratis-coaching/15min?back=1&amp;month=2020-10" target="_blank" class="survey_check_link">&gt; Termin vereinbaren</a></span>
             </label>
             
+            <!--
             <label class="w-checkbox survey_check_field">
               <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option5) w--redirected-checked @endif"></div>
               <input type="checkbox" id="checkbox_five" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
               <span class="survey_checkbox_label w-form-label">5. Falls du unseren Newsletter noch nicht abonniert hast, hole das jetzt nach und erhalte wertvolle Impulse rund um das Thema Glück <a href="#" class="survey_check_link">&gt; Newsletter abonnieren</a></span>
             </label>
-            
+            -->
             <label class="w-checkbox"><div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option6) w--redirected-checked @endif"></div>
               <input type="checkbox" id="checkbox_six" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">6. War der Test hilfreich? Wir wollen uns fortlaufend verbessern und brauchen dafür dein Feedback <a href="https://hapily.typeform.com/to/rSGaWr" target="_blank" class="survey_check_link">&gt; Feedback geben</a></span>
+              <span class="survey_checkbox_label w-form-label">5. War der Test hilfreich? Wir wollen uns fortlaufend verbessern und brauchen dafür dein Feedback <a href="https://hapily.typeform.com/to/rSGaWr" target="_blank" class="survey_check_link">&gt; Feedback geben</a></span>
             </label>
           </form>          
           
