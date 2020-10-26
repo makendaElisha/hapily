@@ -94,7 +94,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
     <div class="survey_header_columns w-row">
       <div class="survey_header_columns_col1 w-col w-col-6 w-col-medium-6 w-col-small-6">
         <div class="survey_header_col1_container">
-          <h1 class="surveh_header_col1_h1">Hier is dein persönlicher Glücksbericht.</h1>
+          <h1 class="surveh_header_col1_h1">Hier ist dein persönlicher Glücksbericht.</h1>
           <p class="survey_header_paragraph">Wir wünschen dir spannende Erkenntnisse!</p><img src="{{ asset('all/images/survey_signature.png')}}" loading="lazy" alt="" class="survey_signature"></div>
       </div>
       <div class="survey_header_columns_col2 w-col w-col-6 w-col-medium-6 w-col-small-6">
