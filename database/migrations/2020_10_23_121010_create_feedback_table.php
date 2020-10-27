@@ -17,7 +17,7 @@ class CreateFeedbackTable extends Migration
             $table->bigIncrements('id');
             $table->string('customer_id');
             $table->string('token');
-            $table->boolean('option1')->default(false);
+            $table->boolean('option1')->default(true);
             $table->boolean('option2')->default(false);
             $table->boolean('option3')->default(false);
             $table->boolean('option4')->default(false);
