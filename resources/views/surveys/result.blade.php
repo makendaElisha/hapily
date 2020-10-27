@@ -127,7 +127,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
           <form id="email-form" name="email-form" data-name="Email Form" class="survey_form">
             <label class="w-checkbox survey_check_field">
               <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer || $customer->feedback->option1) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_one" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
+              <input type="checkbox" id="checkbox_one" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1" disabled>
               <span class="survey_checkbox_label w-form-label">1. Du hast den Glückstest abgeschlossen. Deine Ergebnisse findest du weiter unten.</span>
             </label>
 
