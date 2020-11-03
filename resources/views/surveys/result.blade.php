@@ -42,10 +42,125 @@
       color: blue;
       text-decoration: underline;
     }
+
+      /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+  
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 0 auto;
+      padding: 30px;
+      border: 1px solid #888;
+      width: 600px;
+      text-align: center;
+      padding-top: 15px;
+    }
+    
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* model 2 */
+
+    .model2header {
+      color: #65DE94;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .model2text {
+      color: #212121;
+      font-size: 24px;
+      line-height: 24px;
+      margin-bottom: 30px;
+    }
+
+    .modalTextContent {
+      width: 70%;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .model2YesButton {
+      background: #DF52E8;
+      color: #fff;
+      font-size: 16px;
+      width: 100%;
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 20px;
+      border-radius: 5px;
+      -webkit-border-radius: 5px; 
+      -moz-border-radius: 5px; 
+    }
+
+
+    .model2YesButton:hover {
+      background: #A225B6;
+      color: #fff;
+      font-size: 16px;
+      width: 100%;
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 20px;
+    }
+
+
+    .closeSpanThankYou {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .closeSpanThankYou {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .closeSpanThankYou:hover,
+    .closeSpanThankYou:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }    
+
+    @media screen and (max-width: 400px) {
+      .modal-content {
+        padding: 20px;
+        width: 300px;
+      }
+    }
   </style>
   
-  
-  <script>
+<script>
   //click-heatmap snippet
 window['_fs_debug'] = false;
 window['_fs_host'] = 'fullstory.com';
@@ -89,6 +204,25 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
   <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 <body>
+  <!-- Trigger/Open The Modal -->
+  {{-- <button id="myBtn2">Open Modal</button> --}}
+
+
+      <!-- The Modal -->
+      <div id="myModal2" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <p style="text-align: right;"><span class="close">&times;</span>
+          <div class="modalTextContent">
+            <h2 class="model2header">GRATIS eBook</h2>
+            <p class="model2text">"Die 9 größten Karriere-Irrtümer un <strong>27 erprobte Tipps,</strong> die dich deinem Traumjob näher bringen"</p>
+            <p>Mit einem Klick auf den Button meldest du dich für unseren Newsletter an und erhältst das eBook!</p>
+            <input type="hidden" id="user_token" value="{{$customer->token}}">
+            <button class="model2YesButton" id="agreeBtn"> > JETZT ANMELDEN</button>
+          </div>
+        </div>
+      </div>
+
   <button onclick="topFunction()" id="myBtn" title="Go to top">> Zur Übersicht</button>
   <div class="section-header"><img src="{{ asset('all/images/hapily_logoprimary.svg')}}" alt="" class="survey-logo">
     <div class="survey_header_columns w-row">
@@ -128,37 +262,40 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
             <label class="w-checkbox survey_check_field">
               <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer || $customer->feedback->option1) w--redirected-checked @endif"></div>
               <input type="checkbox" id="checkbox_one" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1" disabled>
-              <span class="survey_checkbox_label w-form-label">1. Du hast den Glückstest abgeschlossen. Deine Ergebnisse findest du weiter unten.</span>
+              <span class="survey_checkbox_label w-form-label">Du hast den Glückstest abgeschlossen. Deine Ergebnisse findest du weiter unten.</span>
             </label>
 
             <label class="w-checkbox survey_check_field">
               <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option2) w--redirected-checked @endif"></div>
               <input type="checkbox" id="checkbox_two" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">2. Folge uns auf <a href="https://www.instagram.com/hapily.de/" target="_blank" class="survey_check_link">&gt; Instagram</a> und tritt unserer <a href="https://www.facebook.com/groups/2616756118542821" target="_blank" class="survey_check_link">&gt; Facebook-Gruppe</a> bei - für regelmäßige Glücksimpulse</span>
+              <span class="survey_checkbox_label w-form-label">Folge uns auf <a href="https://www.instagram.com/hapily.de/" target="_blank" class="survey_check_link">&gt; Instagram</a> und tritt unserer <a href="https://www.facebook.com/groups/2616756118542821" target="_blank" class="survey_check_link">&gt; Facebook-Gruppe</a> bei - für regelmäßige Glücksimpulse</span>
             </label>
               
             <label class="w-checkbox survey_check_field">
               <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option3) w--redirected-checked @endif"></div>
               <input type="checkbox" id="checkbox_three" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">3. Nimm an unserem kostenlosen Webinar teil und lerne mehr über das Thema Glück <a href="https://event.webinarjam.com/register/1/8r85qtn?_ga=2.126112840.455767265.1603307356-1514692214.1600091757" target="_blank" class="survey_check_link">&gt; Jetzt anmelden</a></span>
+              <span class="survey_checkbox_label w-form-label">Nimm an unserem kostenlosen Webinar teil und lerne mehr über das Thema Glück <a href="https://event.webinarjam.com/register/1/8r85qtn?_ga=2.126112840.455767265.1603307356-1514692214.1600091757" target="_blank" class="survey_check_link">&gt; Jetzt anmelden</a></span>
             </label>
             
             <label class="w-checkbox survey_check_field">
               <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option4) w--redirected-checked @endif"></div>
               <input type="checkbox" id="checkbox_four" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">4. <strong>Unser TIPP:</strong> Vereinbare ein kostenloses Telefon-Coaching <a href="https://calendly.com/hapily-gratis-coaching/15min?back=1&amp;month=2020-10" target="_blank" class="survey_check_link">&gt; Termin vereinbaren</a></span>
+              <span class="survey_checkbox_label w-form-label"><strong>Unser TIPP:</strong> Vereinbare ein kostenloses Telefon-Coaching <a href="https://calendly.com/hapily-gratis-coaching/15min?back=1&amp;month=2020-10" target="_blank" class="survey_check_link">&gt; Termin vereinbaren</a></span>
             </label>
             
-            <!--
-            <label class="w-checkbox survey_check_field">
-              <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option5) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_five" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">5. Falls du unseren Newsletter noch nicht abonniert hast, hole das jetzt nach und erhalte wertvolle Impulse rund um das Thema Glück <a href="#" class="survey_check_link">&gt; Newsletter abonnieren</a></span>
-            </label>
-            -->
+            <!-- option5 to show only if $customer->newsletter_opt_in 0 -->
+
+            @if($customer->newsletter_opt_in == 0)
+              <label class="w-checkbox survey_check_field">
+                <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->newsletter_opt_in == 1 || $customer->feedback && $customer->feedback->option5) w--redirected-checked @endif"></div>
+                <input type="checkbox" id="checkbox_five" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1"  @if($customer->newsletter_opt_in == 1 || $customer->feedback && $customer->feedback->option5) disabled @else disabled @endif>
+                <span class="survey_checkbox_label w-form-label">Falls du unseren Newsletter noch nicht abonniert hast, hole das jetzt nach und erhalte wertvolle Impulse rund um das Thema Glück <a href="#" class="survey_check_link" id="subscription_trigger">&gt; Newsletter abonnieren</a></span>
+              </label>
+            @endif
+
             <label class="w-checkbox"><div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option6) w--redirected-checked @endif"></div>
               <input type="checkbox" id="checkbox_six" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">5. War der Test hilfreich? Wir wollen uns fortlaufend verbessern und brauchen dafür dein Feedback <a href="https://hapily.typeform.com/to/rSGaWr" target="_blank" class="survey_check_link">&gt; Feedback geben</a></span>
+              <span class="survey_checkbox_label w-form-label">War der Test hilfreich? Wir wollen uns fortlaufend verbessern und brauchen dafür dein Feedback <a href="https://hapily.typeform.com/to/rSGaWr" target="_blank" class="survey_check_link">&gt; Feedback geben</a></span>
             </label>
           </form>          
           
@@ -583,6 +720,24 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       </div>
     </div>
   </div>
+
+  <!-- popup modals here -->
+
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <p style="text-align: right;"><span class="closeSpanThankYou">&times;</span>
+      <p style="text-align: center;"><img src="{{ asset('all/images/subscriptioncheckmark.svg')}}" alt="" height="100" width="100" /></p>
+      <h2>Prima, das hat geklappt!</h2>
+      <p>Du bist jetzt für unseren Newsletter angemeldet<p>
+    </div>
+  </div>
+
+
+  <!-- end popup modals here -->
+
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e87229d1e5bbf88766c2782" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="{{ asset('all/js/webflow.js')}}" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
@@ -592,6 +747,96 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<script>
+  // Get the modal for thank
+  var modalThankYou = document.getElementById("myModal");
+
+  // Get modal for confirmation
+  var modal = document.getElementById("myModal2");
+  
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn2");
+
+  // The subscription trigger in option 5
+  var subscriptionTrigger = document.getElementById("subscription_trigger");
+  
+  // Get the <span> element that closes the thank you modal
+  var span = document.getElementsByClassName("closeSpanThankYou")[0];
+
+  var spanCloseConfirm = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks the button, open the modal 
+  subscriptionTrigger.onclick = function() {
+    modal.style.display = "block";
+  }
+
+
+  //subscribe functionalities
+  $('#agreeBtn').click(function(event) {
+    let token = $('#user_token').val();
+    let option = "option5"; //to subscribe
+    let _token   = $('meta[name="csrf-token"]').attr('content');
+
+    let modalConfirm = document.getElementById("myModal2");
+    let modalThankYouToDisplay = document.getElementById("myModal");
+
+    //do ajax here and response will hide the modal and display the thank you one.
+    $.ajax({
+          url: "/survey/feedback",
+          type:"POST",
+          data:{
+            token:token,
+            option:option,
+            _token: _token,
+          },
+          success:function(response){
+            //console.log(response);
+            //if unchecked, check else uncheck
+            if(response.message == 'set-to-true') {
+              $("#checkbox_five").prop("checked", true);
+              $("#checkbox_five").prop('disabled', true);
+              modalConfirm.style.display = "none";
+              setTimeout(function(){ 
+                modalThankYouToDisplay.style.display = "block";
+              }, 3000);
+
+              //$("#checkbox_five").style.display = "none";
+            } else {
+              alert('There was a problem. Please try again later...');
+              console.log('response not okay');
+              $("#checkbox_one").prop("checked", false);
+            }
+          },
+          error: function(){
+            console.log("something went wrong");
+          }
+    });
+    event.preventDefault();
+  });
+
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modalThankYou.style.display = "none";
+    
+    location.reload(); //reload the page
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modalThankYou.style.display = "none";
+      location.reload(); //reload the page
+    }
+  }
+
+  spanCloseConfirm.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+</script>
+
 
 <script type="text/javascript">
   $("#checkbox_one").change(function(event) {
@@ -715,6 +960,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
     });
     event.preventDefault();
   });
+  
 
   $("#checkbox_five").change(function(event) {
     let thisCheck = $(this);
