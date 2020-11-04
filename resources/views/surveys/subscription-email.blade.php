@@ -118,13 +118,13 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:helvetica;font-size:20px;font-weight:bold;line-height:1;text-align:left;color:#333333;">Hallo Marcus,</div>
+                      <div style="font-family:helvetica;font-size:20px;font-weight:bold;line-height:1;text-align:left;color:#333333;">Hallo {{ $data['name'] }},</div>
                     </td>
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:30px;word-break:break-word;">
                       <div style="font-family:helvetica;font-size:14px;line-height:24px;text-align:left;color:#333333;">wie versprochen erhältst du mit dieser Email dein eBook "Die 9 größten Karriere-Irrtümer und 27 erprobte Tipps, die dich deinem Traumjob näher bringen". <br /><br />
-                      Klicke auf folgenden Link, um darauf zuzugreifen: <a href="#" style="color: #dd22ef; text-decoration: none; font-weight: bold;" target="_blank"> eBook herunterladen </a> <br /><br />
+                      Klicke auf folgenden Link, um darauf zuzugreifen: <a href="{{ $data['bookLink'] }}" style="color: #dd22ef; text-decoration: none; font-weight: bold;" target="_blank" download="eBook_hapily"> eBook herunterladen </a> <br /><br />
                       
                       Ich wünsche dir viele spannende Erkenntnisse und Freude beim Lesen.<br /><br />
 

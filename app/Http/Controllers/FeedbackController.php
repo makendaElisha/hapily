@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendPdfBook;
 use App\Entities\Customer;
 use App\Entities\Feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Services\Mailjet\ContactSubscriptionService;
 
 class FeedbackController extends Controller
@@ -37,6 +39,18 @@ class FeedbackController extends Controller
             (new ContactSubscriptionService)->handleNewsletterSubscription($customer);
 
             //send pdf email
+            $data = [
+                'name'          => $customer->prename,
+                'bookLink'    => "https://drive.google.com/file/d/1wbCcpje5X_8bEZE4sPBUlGfS4bHU4j9f/view"
+            ];
+    
+            try{
+                Mail::to($customer->email)
+                    ->send(new SendPdfBook($data));
+            } catch (\Exception $e) {
+                // Never reached
+            }
+
             $response = [
                 'message' => 'set-to-true'
             ];
