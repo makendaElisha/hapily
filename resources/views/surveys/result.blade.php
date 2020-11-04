@@ -95,7 +95,7 @@
     .model2text {
       color: #212121;
       font-size: 24px;
-      line-height: 24px;
+      line-height: 30px;
       margin-bottom: 30px;
     }
 
@@ -274,13 +274,13 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
             <label class="w-checkbox survey_check_field">
               <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option3) w--redirected-checked @endif"></div>
               <input type="checkbox" id="checkbox_three" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">Nimm an unserem kostenlosen Webinar teil und lerne mehr über das Thema Glück <a href="https://event.webinarjam.com/register/1/8r85qtn?_ga=2.126112840.455767265.1603307356-1514692214.1600091757" target="_blank" class="survey_check_link">&gt; Jetzt anmelden</a></span>
+              <span class="survey_checkbox_label w-form-label">Melde dich für unser kostenloses Webinar an und lerne 3 erprobte Glücks-Strategien <a href="https://event.webinarjam.com/register/1/8r85qtn?_ga=2.126112840.455767265.1603307356-1514692214.1600091757" target="_blank" class="survey_check_link">&gt; Jetzt anmelden</a></span>
             </label>
             
             <label class="w-checkbox survey_check_field">
               <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option4) w--redirected-checked @endif"></div>
               <input type="checkbox" id="checkbox_four" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label"><strong>Unser TIPP:</strong> Vereinbare ein kostenloses Telefon-Coaching <a href="https://calendly.com/hapily-gratis-coaching/15min?back=1&amp;month=2020-10" target="_blank" class="survey_check_link">&gt; Termin vereinbaren</a></span>
+              <span class="survey_checkbox_label w-form-label"><strong>Unser TIPP:</strong> Wir schenken dir 50,-€ für ein Telefon-Coaching <a href="https://calendly.com/hapily-gratis-coaching/15min?back=1&amp;month=2020-10" target="_blank" class="survey_check_link">&gt; Termin vereinbaren</a></span>
             </label>
             
             <!-- option5 to show only if $customer->newsletter_opt_in 0 -->
@@ -289,7 +289,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
               <label class="w-checkbox survey_check_field">
                 <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->newsletter_opt_in == 1 || $customer->feedback && $customer->feedback->option5) w--redirected-checked @endif"></div>
                 <input type="checkbox" id="checkbox_five" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1"  @if($customer->newsletter_opt_in == 1 || $customer->feedback && $customer->feedback->option5) disabled @else disabled @endif>
-                <span class="survey_checkbox_label w-form-label">Falls du unseren Newsletter noch nicht abonniert hast, hole das jetzt nach und erhalte wertvolle Impulse rund um das Thema Glück <a href="#" class="survey_check_link" id="subscription_trigger">&gt; Newsletter abonnieren</a></span>
+                <span class="survey_checkbox_label w-form-label">Abonniere jetzt unseren Newsletter und sichere dir ein kostenloses eBook <a href="#" class="survey_check_link" id="subscription_trigger">&gt; Newsletter abonnieren</a></span>
               </label>
             @endif
 
@@ -731,7 +731,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       <p style="text-align: right;"><span class="closeSpanThankYou">&times;</span>
       <p style="text-align: center;"><img src="{{ asset('all/images/subscriptioncheckmark.svg')}}" alt="" height="100" width="100" /></p>
       <h2>Prima, das hat geklappt!</h2>
-      <p>Du bist jetzt für unseren Newsletter angemeldet<p>
+      <p>Du bist jetzt für unseren Newsletter angemeldet.<p>
     </div>
   </div>
 
@@ -772,6 +772,11 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
   }
 
 
+  // $(document).ready(function() {
+  //   document.getElementById("myModal2").style.display = "block";
+  // });
+
+
   //subscribe functionalities
   $('#agreeBtn').click(function(event) {
     let token = $('#user_token').val();
@@ -799,7 +804,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
               modalConfirm.style.display = "none";
               setTimeout(function(){ 
                 modalThankYouToDisplay.style.display = "block";
-              }, 3000);
+              }, 1500);
 
               //$("#checkbox_five").style.display = "none";
             } else {
