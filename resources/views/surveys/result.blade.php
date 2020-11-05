@@ -215,7 +215,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
           <p style="text-align: right;"><span class="close">&times;</span>
           <div class="modalTextContent">
             <h2 class="model2header">GRATIS eBook</h2>
-            <p class="model2text">"Die 9 größten Karriere-Irrtümer un <strong>27 erprobte Tipps,</strong> die dich deinem Traumjob näher bringen"</p>
+            <p class="model2text">"Die 9 größten Karriere-Irrtümer und <strong>27 erprobte Tipps,</strong> die dich deinem Traumjob näher bringen"</p>
             <p>Mit einem Klick auf den Button meldest du dich für unseren Newsletter an und erhältst das eBook!</p>
             <input type="hidden" id="user_token" value="{{$customer->token}}">
             <button class="model2YesButton" id="agreeBtn"> > JETZT ANMELDEN</button>
