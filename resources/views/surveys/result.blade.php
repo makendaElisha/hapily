@@ -268,7 +268,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
             <label class="w-checkbox survey_check_field">
               <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option4) w--redirected-checked @endif"></div>
               <input type="checkbox" id="checkbox_four" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label"><strong>Unser TIPP:</strong> Wir schenken dir 50,-€ für ein Telefonanalyse <a href="https://calendly.com/hapily-gratis-coaching/15min?back=1&amp;month=2020-10" target="_blank" class="survey_check_link">&gt; Termin vereinbaren</a></span>
+              <span class="survey_checkbox_label w-form-label"><strong>Unser TIPP:</strong> Wir schenken dir 50,-€ für eine Telefonanalyse <a href="https://calendly.com/hapily-gratis-coaching/15min?back=1&amp;month=2020-10" target="_blank" class="survey_check_link">&gt; Termin vereinbaren</a></span>
             </label>
 
             <!-- option5 to show only if $customer->newsletter_opt_in 0 -->
