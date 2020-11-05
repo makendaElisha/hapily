@@ -268,7 +268,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
             <label class="w-checkbox survey_check_field">
               <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option4) w--redirected-checked @endif"></div>
               <input type="checkbox" id="checkbox_four" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label"><strong>Unser TIPP:</strong> Wir schenken dir 50,-€ für ein Telefon-Coaching <a href="https://calendly.com/hapily-gratis-coaching/15min?back=1&amp;month=2020-10" target="_blank" class="survey_check_link">&gt; Termin vereinbaren</a></span>
+              <span class="survey_checkbox_label w-form-label"><strong>Unser TIPP:</strong> Wir schenken dir 50,-€ für ein Telefonanalyse <a href="https://calendly.com/hapily-gratis-coaching/15min?back=1&amp;month=2020-10" target="_blank" class="survey_check_link">&gt; Termin vereinbaren</a></span>
             </label>
 
             <!-- option5 to show only if $customer->newsletter_opt_in 0 -->
@@ -291,7 +291,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
               <input type="checkbox" id="checkbox_three" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
               <span class="survey_checkbox_label w-form-label">Melde dich für unser kostenloses Webinar an und lerne 3 erprobte Glücks-Strategien <a href="https://event.webinarjam.com/register/1/8r85qtn?_ga=2.126112840.455767265.1603307356-1514692214.1600091757" target="_blank" class="survey_check_link">&gt; Jetzt anmelden</a></span>
             </label>
-            
+
             <label class="w-checkbox"><div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option6) w--redirected-checked @endif"></div>
               <input type="checkbox" id="checkbox_six" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
               <span class="survey_checkbox_label w-form-label">War der Test hilfreich? Wir wollen uns fortlaufend verbessern und brauchen dafür dein Feedback <a href="https://hapily.typeform.com/to/rSGaWr" target="_blank" class="survey_check_link">&gt; Feedback geben</a></span>
