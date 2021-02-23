@@ -282,7 +282,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
   <div class="section-greeting">
     <div class="section-greeting-container">
       <div class="greeting-text">
-        <div class="bold-text">Hallo {{$customer->prename}},</div>
+        <div class="bold-text">Hey {{$customer->prename}},</div>
         <p class="paragraph">schön, dass du den Test abgeschlossen hast und mehr darüber erfahren möchtest, wie glücklich du momentan in deinem Leben bist und wie du dein persönliches Glück positiv beeinflussen kannst.</p>
         <p class="paragraph-4">Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$userScore}} von {{$numberAreas * 10}} Punkten.</strong></p>
         <p class="paragraph-2">Weiter unten findest du deine ausführliche Glücksanalyse.</p>
