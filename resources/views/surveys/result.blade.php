@@ -11,6 +11,7 @@
   {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"> --}}
   <link href="{{ asset('all/css/normalize.css')}}" rel="stylesheet" type="text/css">
   <link href="{{ asset('all/css/webflow.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('all/css/updated-site-style.css')}}" rel="stylesheet" type="text/css">
   <link href="{{ asset('all/css/hapily-website.webflow.css')}}" rel="stylesheet" type="text/css">
   <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
@@ -224,6 +225,9 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       </div>
 
   <button onclick="topFunction()" id="myBtn" title="Go to top">> Zur Übersicht</button>
+
+  <!-- old header -->
+  <!--
   <div class="section-header"><img src="{{ asset('all/images/hapily_logoprimary.svg')}}" alt="" class="survey-logo">
     <div class="survey_header_columns w-row">
       <div class="survey_header_columns_col1 w-col w-col-6 w-col-medium-6 w-col-small-6">
@@ -236,6 +240,34 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       </div>
     </div>
   </div>
+  -->
+  <!-- end old header -->
+
+  <!-- new header -->
+  <div class="survey-result-header-section">
+    <div class="survey-result-header-container w-container">
+      <div class="survey-result-header-grid">
+        <div id="w-node-_91eb4818-e27c-4790-2ba9-2bd2a55a052d-28617fbb" class="survey-result-header-text-wrapper"><img src="{{ asset('all/images/hapily_logoprimary.svg')}}" alt="" class="survey-logo">
+          <h1 class="survey-result-h1">Hier ist dein persönlicher<br>Glücksbericht!</h1>
+          <h1 class="survey-result-h1-mobile">Hier ist dein<br>persönlicher<br>Glücksbericht!</h1>
+        </div>
+        <div id="w-node-_9f2eef30-d1de-46c9-9ca2-a2d43a238bd9-28617fbb" class="survey-result-header-image-wrapper">
+          <img src="{{ asset('all/images/Picture-Woman-laughing.png')}}" loading="lazy" width="350" height="350" alt="" class="image-34">
+          <img src="{{ asset('all/images/woman-laughing.png')}}" loading="lazy" width="350" height="350" alt="" class="image-34-mobile">
+        </div>
+          <div id="w-node-eecc9a16-eade-70be-dc10-cd27926da580-28617fbb" class="survey-result-header-badges-wrapper">
+          <div class="hero-section-survey-result-icon-trust">
+            <a href="https://de.trustpilot.com/review/hapily.de" target="_blank" class="hero-section-survey-result-icon-trust-image w-inline-block"><img src="{{ asset('all/images/trustpilot-badge-mit-schatten-3.svg')}}" alt="Trustpilot hapily Badge" class="hero-section-survey-result-icon-trust-badge"></a>
+          </div>
+          <div class="hero-section-survey-result-icon-1"><img src="{{ asset('all/images/gluecks-garantie-badge.svg')}}" alt="" class="hero-section-survey-result-icon-1-image">
+            <p class="hero-section-survey-result-icon-1-text dark-grey">Mehr als 20.000<br>Glückstest -Teilnehmer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end new header -->
+
   <div class="side-green-container">
     <h4 class="side-green-container-header">Kostenloses Online-Training - Entfalte jetzt dein Glücks-Potenzial!</h4><a href="https://event.webinarjam.com/register/1/8r85qtn" target="_blank" class="side-green-container-button w-button">&gt; Kostenlos anmelden</a>
     <h5 class="side-green-container-header-small">Was du im Training <br>lernen wirst:</h5>
@@ -253,9 +285,56 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
         <div class="bold-text">Hallo {{$customer->prename}},</div>
         <p class="paragraph">schön, dass du den Test abgeschlossen hast und mehr darüber erfahren möchtest, wie glücklich du momentan in deinem Leben bist und wie du dein persönliches Glück positiv beeinflussen kannst.</p>
         <p class="paragraph-4">Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$userScore}} von {{$numberAreas * 10}} Punkten.</strong></p>
-        <p class="paragraph-2">Struktur macht glücklich 🍀 😊 Nutze deshalb folgende Checkliste für deine nächsten Schritte und hake ab:</p>
+        <p class="paragraph-2">Weiter unten findest du deine ausführliche Glücksanalyse.</p>
+        <h2 class="heading-16"><strong class="bold-text-10">Wie du das Beste aus deinem Glücksbericht herausholst<br></strong></h2>
+        <p class="paragraph-18">Bewirb dich jetzt auf eine kostenlose Telefonanalyse, in der sich der erfahrene Life Coach und <span class="hapily-green-color">hapily</span> Gründer - Denis Martin - Zeit nimmt, um mit dir deinen Glücksbericht zu analysieren.</p>
       </div>
 
+      <div class="greeting-cta">
+        <a href="https://forms.gle/pJ3QjM9GSSoAnnev5" target="_blank" class="jetzt-bewerben-cta w-button">&gt; Jetzt bewerben</a>
+      </div>
+
+      <div class="greeting-telefonanalyse">
+        <p class="paragraph-18"><strong class="bold-text-11">Die Telefonanalyse, die dein Leben verändern wird</strong></p>
+        <div class="greeting-telefonanalyse-steps-container">
+          <div class="greeting-telefonanalyse-step-wrapper">
+            <div class="greeting-telefonanalyse-step-number"><img src="{{ asset('all/images/icon-1.svg')}}" loading="lazy" alt="" class="image-35"></div>
+            <div class="greeting-telefonanalyse-step-text-wrapper">
+              <p class="greeting-telefonanalyse-step-text">Wir besprechen deine Ist-Situation und finden mögliche Lösungen für das Thema, das dich in deinem Leben gerade am stärksten beschäftigt</p>
+            </div>
+          </div>
+          <div class="greeting-telefonanalyse-step-wrapper">
+            <div class="greeting-telefonanalyse-step-number"><img src="{{ asset('all/images/icon-2.svg')}}" loading="lazy" alt="" class="image-35"></div>
+            <div class="greeting-telefonanalyse-step-text-wrapper">
+              <p class="greeting-telefonanalyse-step-text">Du hast die einmalige Gelegenheit, Denis die Fragen zu stellen, auf die du vielleicht schon länger eine Antwort suchst und du bekommst wertvolle Impulse dazu</p>
+            </div>
+          </div>
+          <div class="greeting-telefonanalyse-step-wrapper">
+            <div class="greeting-telefonanalyse-step-number"><img src="{{ asset('all/images/icon-3.svg')}}" loading="lazy" alt="" class="image-35"></div>
+            <div class="greeting-telefonanalyse-step-text-wrapper">
+              <p class="greeting-telefonanalyse-step-text">Du gehst mit einer klaren Strategie aus dem Gespräch, wie deine nächsten Schritte aussehen können</p>
+            </div>
+          </div>
+        </div>
+        <p class="paragraph">Nimm dein Glück in die Hand und klicke jetzt auf den folgenden Button, um dich auf das Analysegespräch zu bewerben.</p>
+      </div>
+      <div class="greeting-cta">
+        <a href="https://forms.gle/pJ3QjM9GSSoAnnev5" target="_blank" class="jetzt-bewerben-cta w-button">&gt; Jetzt bewerben</a>
+      </div>
+
+      <div class="greeting-woran-wir">
+        <div class="greeting-woran-wir-bild-wrapper">
+          <h2 class="heading-14-mobile">Woran wir glauben</h2><img src="{{ asset('all/images/Picture-Denis.png')}}" loading="lazy" alt="" class="greeting-woran-wir-image">
+        </div>
+        <div class="greeting-woran-wir-text-wrapper">
+          <h2 class="heading-14">Woran wir glauben</h2>
+          <p>&quot;Wir stellen uns eine Welt vor, in der die Menschen jeden Abend voller Vorfreude auf den nächsten Tag ins Bett gehen, weil sie ihre Arbeit lieben, gute Beziehungen führen und einen tiefen Sinn in ihrem Leben sehen.&quot;<br><span class="text-span-24">-Denis Martin (Life Coach und Gründer von </span><span class="hapily-green-color semi-bold">hapily</span><span class="text-span-25">)</span></p>
+        </div>
+      </div>
+
+      <!-- survey checkboxes / removed in new design -->
+
+      <!--
       <div class="section-survey-checkboxes">
         <div class="survey_checkboxes_form w-form">
           <form id="email-form" name="email-form" data-name="Email Form" class="survey_form">
@@ -271,7 +350,6 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
               <span class="survey_checkbox_label w-form-label"><strong>Unser TIPP:</strong> Wir schenken dir 50,-€ für eine Telefonanalyse <a href="https://calendly.com/hapily-gratis-coaching/15min?back=1&amp;month=2020-10" target="_blank" class="survey_check_link">&gt; Termin vereinbaren</a></span>
             </label>
 
-            <!-- option5 to show only if $customer->newsletter_opt_in 0 -->
             @if($customer->newsletter_opt_in == 0)
               <label class="w-checkbox survey_check_field">
                 <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->newsletter_opt_in == 1 || $customer->feedback && $customer->feedback->option5) w--redirected-checked @endif"></div>
@@ -306,6 +384,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
           </div>
         </div>
       </div>
+      -->
 
       <div class="score-elements" id="top">
         <h3 class="heading-6">Dein Happiness-Score pro Lebensbereich</h3>
@@ -648,14 +727,60 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       @endif
     </div>
     @endforeach
-
   </div>
+
+
+  <div class="section-wie-geht-weiter">
+    <div class="section-wie-geht-weiter-container">
+      <h2 class="heading-15">Wie geht es jetzt weiter?</h2>
+      <p class="paragraph">Weißt du, was der Unterschied zwischen glücklichen und weniger glücklichen Menschen ist? Glückliche Menschen überlassen ihr Glück nicht dem Zufall, sondern nehmen es aktiv in die eigene Hand. Egal ob du unzufrieden im Beruf, in der Liebe oder in einem anderen Lebensbereich bist - mache jetzt den ersten kleinen Schritt und nutze die wertvolle Chance auf eine Telefonanalyse.</p>
+      <p class="paragraph">In diesem 30-minütigen Telefonat nimmt sich der erfahrene Life Coach und <span class="hapily-green-color">hapily</span> Gründer, Denis Martin, Zeit für dich und analysiert mit dir gemeinsam, wo du gerade stehst und wie du da hin kommst, wo du gerne wärst.</p>
+      <p class="paragraph">Indem du dich für die kostenlose Telefonanalyse bewirbst, machst du den ersten Schritt in Richtung eines erfüllteren Lebens.</p>
+    </div>
+    <div class="greeting-cta">
+      <a href="https://forms.gle/pJ3QjM9GSSoAnnev5" target="_blank" class="jetzt-bewerben-cta w-button">&gt; Jetzt bewerben</a>
+    </div>
+  </div>
+
+
+  <div class="section-teilnehmerstimmen">
+    <div class="section-teilnehmerstimmen-container"><img src="{{ asset('all/images/trustpilot-badge-mit-schatten-3.svg')}}" loading="lazy" alt="Trustpilot hapily Badge" class="trustpilot-badge-big">
+      <h2 class="heading-teilnehmerstimme">Was Teilnehmer über hapily sagen</h2>
+      <div class="teilnehmerstimmen-content-wrapper">
+        <div class="teilnehmerstimmen-badge-wrapper">
+          <div class="teilnehmerstimmen-badge">
+            <p class="teilnehmer-badge-text">&quot;Es ist so wichtig, mit erfahrenen und aufmerksamen Gesprächspartnern sprechen zu können -ortsunabhängig und zeitlich dann, wenn es nötig ist! Danke Hapily Coaching&quot;</p>
+            <p class="teilnehmer-name-pink">Sabine</p>
+          </div>
+          <div class="teilnehmerstimmen-badge">
+            <p class="teilnehmer-badge-text">&quot;Beim Coaching mit Denis habe ich viele wertvolle Tipps erhalten, mich super aufgehoben gefühlt und sehr viel für mich mitnehmen können. Definitiv weiterzuempfehlen!&quot;</p>
+            <p class="teilnehmer-name-pink">Deborah</p>
+          </div>
+          <div class="teilnehmerstimmen-badge">
+            <p class="teilnehmer-badge-text">&quot;Kompetente, professionelle und persönliche Beratung. Die Adresse für alle, die sich mit Hilfe von Coaching persönlich und beruflich weiterentwickeln wollen.&quot;</p>
+            <p class="teilnehmer-name-pink">Annette</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-ueberuns">
+    <div class="section-ueberuns-container">
+      <h2 class="section-ueberuns-header">Über uns</h2>
+      <div class="section-ueberuns-text">hapily.de ist die Nr. 1 Plattform für modernes Life Coaching im deutschsprachigen Raum. Jeden Tag unterstützen wir Menschen dabei, sich ein glückliches und erfülltes Leben zu erschaffen. Mehr als 15.000 Menschen haben bereits an unserem einzigartigen <span class="text-span-18">hapily</span> Glückstest teilgenommen, um herauszufinden, was sie <em>wirklich</em> wollen.<br></div>
+      <div class="section-ueberuns-text">Mit unserem Pool an erstklassigen Life Coaches stellen wir sicher, dass unsere Klienten die bestmögliche Begleitung erhalten - für ein glücklicheres Leben.<br></div><img src="{{ asset('all/images/unsere-mission-coaches-bild.jpg')}}" loading="lazy" alt="" class="section-ueberuns-image">
+    </div>
+  </div>
+
+
+  <!-- belief sections -->
+  <!--
   <div class="section-text-after-analyse">
     <div class="section-text-after-analyse-container">
       <h3 class="section-analyse-header heading-6">Deine Glaubenssätze<br></h3>
       <p class="paragraph">In einigen Fällen sind unsere Herausforderungen von äußeren Faktoren bestimmt, die wir nicht beeinflussen können. Oftmals sind sie aber auch hausgemacht - weil wir Überzeugungen von uns selbst haben, die uns einschränken. Lass uns daher einmal schauen, wie es in deinem Fall aussieht…</p>
       <p class="paragraph">Könnte es sein, dass du schon einmal eine oder mehrere der folgenden Aussagen über dich geglaubt hast?</p><br />
-      <!-- belief content starts here -->
       @php
         count($userBelives) > 9 ? $believesToShow = array_slice($userBelives, 0, 9) : $believesToShow = $userBelives;
         $believesChunks = array_chunk($believesToShow, 3, "preserve_keys");
@@ -668,7 +793,6 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
           @endforeach
         </div>
       @endforeach
-      <!-- belief content ends here -->
 
       {{-- <h3 class="h3-black-heading">Könnte es sein, dass du schon einmal eine oder mehrere der folgenden Aussagen über dich geglaubt hast?</h3>
       <div class="_3-columns-text-separated">
@@ -687,6 +811,9 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       </div>
     </div>
   </div>
+  -->
+
+  <!--
   <div class="section-green-background">
     <div class="section-green-container">
       <h3 class="section-green-header"><span class="green-text">Die gute Nachricht ist :</span> Du bist deinen negativen Glaubenssätzen und den damit verbundenen Gefühlen nicht hilflos ausgeliefert.</h3>
@@ -699,6 +826,9 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       </div>
     </div>
   </div>
+  -->
+  
+  <!--
   <div class="section-before-footer">
     <div class="section-before-footer-container">
       <h3 class="section-before-footer-header heading-6">Wer steckt hinter dem Glücks-Test?</h3>
@@ -708,6 +838,10 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       <div class="section-before-footer-separator"></div>
     </div>
   </div>
+  -->
+  
+
+
   <div class="footer-section-container">
     <div class="section-footer">
       <div class="section-footer-wrapper"><a href="https://hapily.de"><img src="{{ asset('all/images/hapily_logo_primary.svg')}}" alt="" class="footer-logo"></a>
