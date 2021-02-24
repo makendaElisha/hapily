@@ -561,7 +561,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
                                 @endif
                               @endif
                             </p>
-                            <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
+                            <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="https://calendly.com/hapily-gratis-coaching/15min?month=2021-02"  target="_blank">&gt; Mehr erfahren...</a></div> 
                           </div>
                         </div>
                       </div>
