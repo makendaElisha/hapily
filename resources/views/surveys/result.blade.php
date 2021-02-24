@@ -291,7 +291,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       </div>
 
       <div class="greeting-cta">
-        <a href="https://forms.gle/pJ3QjM9GSSoAnnev5" target="_blank" class="jetzt-bewerben-cta w-button">&gt; Jetzt bewerben</a>
+        <a href="https://calendly.com/hapily-gratis-coaching/15min?month=2021-02" target="_blank" class="jetzt-bewerben-cta w-button">&gt; Jetzt bewerben</a>
       </div>
 
       <div class="greeting-telefonanalyse">
@@ -319,7 +319,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
         <p class="paragraph">Nimm dein Glück in die Hand und klicke jetzt auf den folgenden Button, um dich auf das Analysegespräch zu bewerben.</p>
       </div>
       <div class="greeting-cta">
-        <a href="https://forms.gle/pJ3QjM9GSSoAnnev5" target="_blank" class="jetzt-bewerben-cta w-button">&gt; Jetzt bewerben</a>
+        <a href="https://calendly.com/hapily-gratis-coaching/15min?month=2021-02" target="_blank" class="jetzt-bewerben-cta w-button">&gt; Jetzt bewerben</a>
       </div>
 
       <div class="greeting-woran-wir">
@@ -738,7 +738,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       <p class="paragraph">Indem du dich für die kostenlose Telefonanalyse bewirbst, machst du den ersten Schritt in Richtung eines erfüllteren Lebens.</p>
     </div>
     <div class="greeting-cta">
-      <a href="https://forms.gle/pJ3QjM9GSSoAnnev5" target="_blank" class="jetzt-bewerben-cta w-button">&gt; Jetzt bewerben</a>
+      <a href="https://calendly.com/hapily-gratis-coaching/15min?month=2021-02" target="_blank" class="jetzt-bewerben-cta w-button">&gt; Jetzt bewerben</a>
     </div>
   </div>
 
