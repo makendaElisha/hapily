@@ -551,11 +551,11 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
                               @else
                               {{-- Making Gratis-Coaching bold --}}
                                 @php
-                                  $pos = strpos($programText, 'Gratis-Coaching');
-                                  $length = strlen('Gratis-Coaching');
+                                  $pos = strpos($programText, 'kostenlose Telefonanalyse');
+                                  $length = strlen('kostenlose Telefonanalyse');
                                 @endphp
                                 @if ($pos !== false)
-                                  {{substr($programText, 0, $pos)}} <strong>Gratis-Coaching</strong> {{substr($programText, $pos + $length)}}
+                                  {{substr($programText, 0, $pos)}} <strong>kostenlose Telefonanalyse</strong> {{substr($programText, $pos + $length)}}
                                 @else
                                   {{$programText}}
                                 @endif
@@ -663,11 +663,11 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
                                   @else
                                   {{-- Making Gratis-Coaching bold --}}
                                     @php
-                                      $pos = strpos($programText, 'Gratis-Coaching');
-                                      $length = strlen('Gratis-Coaching');
+                                      $pos = strpos($programText, 'kostenlose Telefonanalyse');
+                                      $length = strlen('kostenlose Telefonanalyse');
                                     @endphp
                                     @if ($pos !== false)
-                                      {{substr($programText, 0, $pos)}} <strong>Gratis-Coaching</strong> {{substr($programText, $pos + $length)}}
+                                      {{substr($programText, 0, $pos)}} <strong>kostenlose Telefonanalyse</strong> {{substr($programText, $pos + $length)}}
                                     @else
                                       {{$programText}}
                                     @endif
