@@ -492,7 +492,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       @if (count($area->symptoms) == 0)
           <div class="section-analyse-purple-header-container">
             <p class="normal-text" ><br />
-              Im Bereich <strong>{{$area->name}}</strong> hast du scheinbar keine offensichtlichen Themen, die dich unglücklich machen. Im Besten Fall gibt es hier demnach einfach wenig Verbesserungspotential für dich. Manchmal sind Themen, die uns unglücklich machen, allerdings auch unterbewusst vorhanden. Regelmäßige Reflektion und Journaling können uns dabei helfen, solche möglichen Herausforderungen aus dem Unterbewusstsein offenzulegen. Mehr dazu erfährst du in unserem kostenlosen Online-Training.
+              Im Bereich <strong>{{$area->name}}</strong> hast du scheinbar keine offensichtlichen Themen, die dich unglücklich machen. Im besten Fall gibt es hier demnach einfach wenig Verbesserungspotenzial für dich. Manchmal sind Themen, die uns unglücklich machen, allerdings auch unterbewusst vorhanden. Regelmäßige Reflexion und z.B. Journaling können uns dabei helfen, solche möglichen Herausforderungen aus dem Unterbewusstsein offenzulegen. Mehr dazu erfährst du in unserem kostenlosen Online-Training.
             </p>
             <div class="recommanded-book-purple-link" style="text-align: left;"><a href="https://event.webinarjam.com/register/1/8r85qtn" class="recommanded-book-purple-link" target="_blank">&gt; Jetzt kostenlos anmelden...</a></div>
           </div>
