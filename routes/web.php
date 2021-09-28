@@ -20,6 +20,10 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/survey/result/{token}', 'SurveyController@userResult')->name('survey.result');
 
+Route::get('/subscription', function() {
+    return view('surveys.subscription-email');
+});
+
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
@@ -68,4 +72,8 @@ Route::get('teachable/api', 'TeachableController@testApp');
 
 Route::get('/mailjet', 'SurveyController@listSubscribe')->name('subscribe.list');
 
+Route::get('/testemail', 'SurveyController@testEmail')->name('test.email');
+
 Route::post('/website/subcriber/webhook', 'SubscriptionController@newsletterWebsiteSubscription');
+
+Route::post('/survey/feedback', 'FeedbackController@feedback');

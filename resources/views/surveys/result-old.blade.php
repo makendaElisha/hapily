@@ -11,7 +11,6 @@
   {{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"> --}}
   <link href="{{ asset('all/css/normalize.css')}}" rel="stylesheet" type="text/css">
   <link href="{{ asset('all/css/webflow.css')}}" rel="stylesheet" type="text/css">
-  <link href="{{ asset('all/css/updated-site-style.css')}}" rel="stylesheet" type="text/css">
   <link href="{{ asset('all/css/hapily-website.webflow.css')}}" rel="stylesheet" type="text/css">
   <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
@@ -43,125 +42,10 @@
       color: blue;
       text-decoration: underline;
     }
-
-      /* The Modal (background) */
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 1; /* Sit on top */
-      padding-top: 100px; /* Location of the box */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgb(0,0,0); /* Fallback color */
-      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
-  
-    /* Modal Content */
-    .modal-content {
-      background-color: #fefefe;
-      margin: 0 auto;
-      padding: 30px;
-      border: 1px solid #888;
-      width: 600px;
-      text-align: center;
-      padding-top: 15px;
-    }
-    
-    /* The Close Button */
-    .close {
-      color: #aaaaaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    /* model 2 */
-
-    .model2header {
-      color: #65DE94;
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-
-    .model2text {
-      color: #212121;
-      font-size: 24px;
-      line-height: 30px;
-      margin-bottom: 30px;
-    }
-
-    .modalTextContent {
-      width: 70%;
-      text-align: center;
-      margin: 0 auto;
-    }
-
-    .model2YesButton {
-      background: #DF52E8;
-      color: #fff;
-      font-size: 16px;
-      width: 100%;
-      text-align: center;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-top: 20px;
-      border-radius: 5px;
-      -webkit-border-radius: 5px; 
-      -moz-border-radius: 5px; 
-    }
-
-
-    .model2YesButton:hover {
-      background: #A225B6;
-      color: #fff;
-      font-size: 16px;
-      width: 100%;
-      text-align: center;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-top: 20px;
-    }
-
-
-    .closeSpanThankYou {
-      color: #aaaaaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    .closeSpanThankYou {
-      color: #aaaaaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    
-    .closeSpanThankYou:hover,
-    .closeSpanThankYou:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }    
-
-    @media screen and (max-width: 400px) {
-      .modal-content {
-        padding: 20px;
-        width: 300px;
-      }
-    }
   </style>
   
-<script>
+  
+  <script>
   //click-heatmap snippet
 window['_fs_debug'] = false;
 window['_fs_host'] = 'fullstory.com';
@@ -202,72 +86,13 @@ f=false,d=document,code={use_existing_jquery:function(){return use_existing_jque
 window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b=hide_element?hide_element+'{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}':'',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&f='+(+is_spa)+'&r='+Math.random());return settings_timer; }};window._vwo_settings_timer = code.init(); return code; }());
 </script>
 <!-- End VWO Async Smartcode -->
-  <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 </head>
 <body>
-  <!-- Trigger/Open The Modal -->
-  {{-- <button id="myBtn2">Open Modal</button> --}}
-
-
-      <!-- The Modal -->
-      <div id="myModal2" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-          <p style="text-align: right;"><span class="close">&times;</span>
-          <div class="modalTextContent">
-            <h2 class="model2header">GRATIS eBook</h2>
-            <p class="model2text">"Die 9 größten Karriere-Irrtümer und <strong>27 erprobte Tipps,</strong> die dich deinem Traumjob näher bringen"</p>
-            <p>Mit einem Klick auf den Button meldest du dich für unseren Newsletter an und erhältst das eBook!</p>
-            <input type="hidden" id="user_token" value="{{$customer->token}}">
-            <button class="model2YesButton" id="agreeBtn"> > JETZT ANMELDEN</button>
-          </div>
-        </div>
-      </div>
-
   <button onclick="topFunction()" id="myBtn" title="Go to top">> Zur Übersicht</button>
-
-  <!-- old header -->
-  <!--
   <div class="section-header"><img src="{{ asset('all/images/hapily_logoprimary.svg')}}" alt="" class="survey-logo">
-    <div class="survey_header_columns w-row">
-      <div class="survey_header_columns_col1 w-col w-col-6 w-col-medium-6 w-col-small-6">
-        <div class="survey_header_col1_container">
-          <h1 class="surveh_header_col1_h1">Hier ist dein persönlicher Glücksbericht.</h1>
-          <p class="survey_header_paragraph">Wir wünschen dir spannende Erkenntnisse!</p><img src="{{ asset('all/images/survey_signature.png')}}" loading="lazy" alt="" class="survey_signature"></div>
-      </div>
-      <div class="survey_header_columns_col2 w-col w-col-6 w-col-medium-6 w-col-small-6">
-        <div class="survey_header_col2_container"><img src="{{ asset('all/images/survey_header_image.png')}}" loading="lazy" alt=""></div>
-      </div>
-    </div>
+    <h1 class="heading-5">Dein Glücks-Bericht<br></h1>
   </div>
-  -->
-  <!-- end old header -->
-
-  <!-- new header -->
-  <div class="survey-result-header-section">
-    <div class="survey-result-header-container w-container">
-      <div class="survey-result-header-grid">
-        <div id="w-node-_91eb4818-e27c-4790-2ba9-2bd2a55a052d-28617fbb" class="survey-result-header-text-wrapper"><img src="{{ asset('all/images/hapily_logoprimary.svg')}}" alt="" class="survey-logo">
-          <h1 class="survey-result-h1">Hier ist dein persönlicher<br>Glücksbericht!</h1>
-          <h1 class="survey-result-h1-mobile">Hier ist dein<br>persönlicher<br>Glücksbericht!</h1>
-        </div>
-        <div id="w-node-_9f2eef30-d1de-46c9-9ca2-a2d43a238bd9-28617fbb" class="survey-result-header-image-wrapper">
-          <img src="{{ asset('all/images/Picture-Woman-laughing.png')}}" loading="lazy" width="350" height="350" alt="" class="image-34">
-          <img src="{{ asset('all/images/woman-laughing.png')}}" loading="lazy" width="350" height="350" alt="" class="image-34-mobile">
-        </div>
-          <div id="w-node-eecc9a16-eade-70be-dc10-cd27926da580-28617fbb" class="survey-result-header-badges-wrapper">
-          <div class="hero-section-survey-result-icon-trust">
-            <a href="https://de.trustpilot.com/review/hapily.de" target="_blank" class="hero-section-survey-result-icon-trust-image w-inline-block"><img src="{{ asset('all/images/trustpilot-badge-mit-schatten-3.svg')}}" alt="Trustpilot hapily Badge" class="hero-section-survey-result-icon-trust-badge"></a>
-          </div>
-          <div class="hero-section-survey-result-icon-1"><img src="{{ asset('all/images/gluecks-garantie-badge.svg')}}" alt="" class="hero-section-survey-result-icon-1-image">
-            <p class="hero-section-survey-result-icon-1-text dark-grey">Mehr als 20.000<br>Glückstest -Teilnehmer</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end new header -->
-
   <div class="side-green-container">
     <h4 class="side-green-container-header">Kostenloses Online-Training - Entfalte jetzt dein Glücks-Potenzial!</h4><a href="https://event.webinarjam.com/register/1/8r85qtn" target="_blank" class="side-green-container-button w-button">&gt; Kostenlos anmelden</a>
     <h5 class="side-green-container-header-small">Was du im Training <br>lernen wirst:</h5>
@@ -283,109 +108,11 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
     <div class="section-greeting-container">
       <div class="greeting-text">
         <div class="bold-text">Hey {{$customer->prename}},</div>
-        <p class="paragraph">schön, dass du den Test abgeschlossen hast und mehr darüber erfahren möchtest, wie glücklich du momentan in deinem Leben bist und wie du dein persönliches Glück positiv beeinflussen kannst.</p>
+        <p class="paragraph">schön, dass du den Test abgeschlossen hast und deinem Glück auf die Sprünge helfen willst :-) Deine aktuelle Situation sowie die Ursachen dafür besser zu verstehen, ist der erste Schritt in Richtung eines erfüllteren und zufriedeneren Lebens.</p>
         <p class="paragraph-4">Dein berechneter <strong>Happiness Score</strong> liegt bei <strong>{{$userScore}} von {{$numberAreas * 10}} Punkten.</strong></p>
-        <p class="paragraph-2">Weiter unten findest du deine ausführliche Glücksanalyse.</p>
-        <h2 class="heading-16"><strong class="bold-text-10">Wie du das Beste aus deinem Glücksbericht herausholst<br></strong></h2>
-        <p class="paragraph-18">Bewirb dich jetzt auf eine kostenlose Telefonanalyse, in der sich der erfahrene Life Coach und <span class="hapily-green-color">hapily</span> Gründer - Denis Martin - Zeit nimmt, um mit dir deinen Glücksbericht zu analysieren.</p>
+        <p class="paragraph-2">Im Durchschnitt erreichen Teilnehmer einen Score von {{$averageHappinessAllParticipants}}. In der folgenden Grafik kannst du dein Glücks-Level pro Lebensbereich ablesen und mit dem Durchschnitt der anderen Teilnehmer vergleichen.</p>
+        <p class="paragraph-2">Hier noch ein Tipp, wie du für dich das Beste aus dem Glücks-Bericht herausholst: Du kannst dir entweder einen Lebensbereich nach dem anderen anschauen oder gelangst direkt zu einem bestimmten Lebensbereich, indem du diesen im Balkendiagramm anklickst. Für jede von dir im Glücks-Test angekreuzte Herausforderung erhältst du einen Sofort-Tipp von unseren Experten sowie weiterführende Hinweise. Trage dich unbedingt auch rechts für das kostenlose Online-Training ein. Darin erfährst du u.a. 3 praktische Tipps, mit denen du dein Glücks-Level sofort steigern kannst.</p>
       </div>
-
-      <div class="greeting-cta">
-        <a href="https://calendly.com/hapily-gratis-coaching/15min?month=2021-02" target="_blank" class="jetzt-bewerben-cta w-button">&gt; Jetzt bewerben</a>
-      </div>
-
-      <div class="greeting-telefonanalyse">
-        <p class="paragraph-18"><strong class="bold-text-11">Die Telefonanalyse, die dein Leben verändern wird</strong></p>
-        <div class="greeting-telefonanalyse-steps-container">
-          <div class="greeting-telefonanalyse-step-wrapper">
-            <div class="greeting-telefonanalyse-step-number"><img src="{{ asset('all/images/icon-1.svg')}}" loading="lazy" alt="" class="image-35"></div>
-            <div class="greeting-telefonanalyse-step-text-wrapper">
-              <p class="greeting-telefonanalyse-step-text">Wir besprechen deine Ist-Situation und finden mögliche Lösungen für das Thema, das dich in deinem Leben gerade am stärksten beschäftigt</p>
-            </div>
-          </div>
-          <div class="greeting-telefonanalyse-step-wrapper">
-            <div class="greeting-telefonanalyse-step-number"><img src="{{ asset('all/images/icon-2.svg')}}" loading="lazy" alt="" class="image-35"></div>
-            <div class="greeting-telefonanalyse-step-text-wrapper">
-              <p class="greeting-telefonanalyse-step-text">Du hast die einmalige Gelegenheit, Denis die Fragen zu stellen, auf die du vielleicht schon länger eine Antwort suchst und du bekommst wertvolle Impulse dazu</p>
-            </div>
-          </div>
-          <div class="greeting-telefonanalyse-step-wrapper">
-            <div class="greeting-telefonanalyse-step-number"><img src="{{ asset('all/images/icon-3.svg')}}" loading="lazy" alt="" class="image-35"></div>
-            <div class="greeting-telefonanalyse-step-text-wrapper">
-              <p class="greeting-telefonanalyse-step-text">Du gehst mit einer klaren Strategie aus dem Gespräch, wie deine nächsten Schritte aussehen können</p>
-            </div>
-          </div>
-        </div>
-        <p class="paragraph">Nimm dein Glück in die Hand und klicke jetzt auf den folgenden Button, um dich auf das Analysegespräch zu bewerben.</p>
-      </div>
-      <div class="greeting-cta">
-        <a href="https://calendly.com/hapily-gratis-coaching/15min?month=2021-02" target="_blank" class="jetzt-bewerben-cta w-button">&gt; Jetzt bewerben</a>
-      </div>
-
-      <div class="greeting-woran-wir">
-        <div class="greeting-woran-wir-bild-wrapper">
-          <h2 class="heading-14-mobile">Woran wir glauben</h2><img src="{{ asset('all/images/Picture-Denis.png')}}" loading="lazy" alt="" class="greeting-woran-wir-image">
-        </div>
-        <div class="greeting-woran-wir-text-wrapper">
-          <h2 class="heading-14">Woran wir glauben</h2>
-          <p>&quot;Wir stellen uns eine Welt vor, in der die Menschen jeden Abend voller Vorfreude auf den nächsten Tag ins Bett gehen, weil sie ihre Arbeit lieben, gute Beziehungen führen und einen tiefen Sinn in ihrem Leben sehen.&quot;<br><span class="text-span-24">-Denis Martin (Life Coach und Gründer von </span><span class="hapily-green-color semi-bold">hapily</span><span class="text-span-25">)</span></p>
-        </div>
-      </div>
-
-      <!-- survey checkboxes / removed in new design -->
-
-      <!--
-      <div class="section-survey-checkboxes">
-        <div class="survey_checkboxes_form w-form">
-          <form id="email-form" name="email-form" data-name="Email Form" class="survey_form">
-            <label class="w-checkbox survey_check_field">
-              <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer || $customer->feedback->option1) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_one" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1" disabled>
-              <span class="survey_checkbox_label w-form-label">Du hast den Glückstest abgeschlossen. Deine Ergebnisse findest du weiter unten.</span>
-            </label>
-
-            <label class="w-checkbox survey_check_field">
-              <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option4) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_four" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label"><strong>Unser TIPP:</strong> Wir schenken dir 50,-€ für eine Telefonanalyse <a href="https://calendly.com/hapily-gratis-coaching/15min?back=1&amp;month=2020-10" target="_blank" class="survey_check_link">&gt; Termin vereinbaren</a></span>
-            </label>
-
-            @if($customer->newsletter_opt_in == 0)
-              <label class="w-checkbox survey_check_field">
-                <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->newsletter_opt_in == 1 || $customer->feedback && $customer->feedback->option5) w--redirected-checked @endif"></div>
-                <input type="checkbox" id="checkbox_five" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1"  @if($customer->newsletter_opt_in == 1 || $customer->feedback && $customer->feedback->option5) disabled @else disabled @endif>
-                <span class="survey_checkbox_label w-form-label">Abonniere jetzt unseren Newsletter und sichere dir ein kostenloses eBook <a href="#" class="survey_check_link" id="subscription_trigger">&gt; Newsletter abonnieren</a></span>
-              </label>
-            @endif
-
-            <label class="w-checkbox survey_check_field">
-              <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option2) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_two" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">Folge uns auf <a href="https://www.instagram.com/hapily.de/" target="_blank" class="survey_check_link">&gt; Instagram</a> und tritt unserer <a href="https://www.facebook.com/groups/2616756118542821" target="_blank" class="survey_check_link">&gt; Facebook-Gruppe</a> bei - für regelmäßige Glücksimpulse</span>
-            </label>
-              
-            <label class="w-checkbox survey_check_field">
-              <div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option3) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_three" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">Melde dich für unser kostenloses Webinar an und lerne 3 erprobte Glücks-Strategien <a href="https://event.webinarjam.com/register/1/8r85qtn?_ga=2.126112840.455767265.1603307356-1514692214.1600091757" target="_blank" class="survey_check_link">&gt; Jetzt anmelden</a></span>
-            </label>
-
-            <label class="w-checkbox"><div class="w-checkbox-input w-checkbox-input--inputType-custom survey_check_box_item @if($customer->feedback && $customer->feedback->option6) w--redirected-checked @endif"></div>
-              <input type="checkbox" id="checkbox_six" name="checkbox" data-name="Checkbox" style="opacity:0;position:absolute;z-index:-1">
-              <span class="survey_checkbox_label w-form-label">War der Test hilfreich? Wir wollen uns fortlaufend verbessern und brauchen dafür dein Feedback <a href="https://hapily.typeform.com/to/rSGaWr" target="_blank" class="survey_check_link">&gt; Feedback geben</a></span>
-            </label>
-          </form>          
-          
-          <div class="w-form-done">
-            <div>Thank you! Your submission has been received!</div>
-          </div>
-          <div class="w-form-fail">
-            <div>Oops! Something went wrong while submitting the form.</div>
-          </div>
-        </div>
-      </div>
-      -->
-
       <div class="score-elements" id="top">
         <h3 class="heading-6">Dein Happiness-Score pro Lebensbereich</h3>
         <div class="score-columns w-row">
@@ -551,17 +278,17 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
                               @else
                               {{-- Making Gratis-Coaching bold --}}
                                 @php
-                                  $pos = strpos($programText, 'kostenlose Telefonanalyse');
-                                  $length = strlen('kostenlose Telefonanalyse');
+                                  $pos = strpos($programText, 'Gratis-Coaching');
+                                  $length = strlen('Gratis-Coaching');
                                 @endphp
                                 @if ($pos !== false)
-                                  {{substr($programText, 0, $pos)}} <strong>kostenlose Telefonanalyse</strong> {{substr($programText, $pos + $length)}}
+                                  {{substr($programText, 0, $pos)}} <strong>Gratis-Coaching</strong> {{substr($programText, $pos + $length)}}
                                 @else
                                   {{$programText}}
                                 @endif
                               @endif
                             </p>
-                            <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="https://calendly.com/hapily-gratis-coaching/15min?month=2021-02"  target="_blank">&gt; Mehr erfahren...</a></div> 
+                            <div class="recommanded-book-purple-link"><a class="recommanded-book-purple-link" href="{{ $symptom->recom_program_url ? $symptom->recom_program_url : '#'}}"  target="_blank">&gt; Mehr erfahren...</a></div> 
                           </div>
                         </div>
                       </div>
@@ -663,11 +390,11 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
                                   @else
                                   {{-- Making Gratis-Coaching bold --}}
                                     @php
-                                      $pos = strpos($programText, 'kostenlose Telefonanalyse');
-                                      $length = strlen('kostenlose Telefonanalyse');
+                                      $pos = strpos($programText, 'Gratis-Coaching');
+                                      $length = strlen('Gratis-Coaching');
                                     @endphp
                                     @if ($pos !== false)
-                                      {{substr($programText, 0, $pos)}} <strong>kostenlose Telefonanalyse</strong> {{substr($programText, $pos + $length)}}
+                                      {{substr($programText, 0, $pos)}} <strong>Gratis-Coaching</strong> {{substr($programText, $pos + $length)}}
                                     @else
                                       {{$programText}}
                                     @endif
@@ -727,60 +454,14 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       @endif
     </div>
     @endforeach
+
   </div>
-
-
-  <div class="section-wie-geht-weiter">
-    <div class="section-wie-geht-weiter-container">
-      <h2 class="heading-15">Wie geht es jetzt weiter?</h2>
-      <p class="paragraph">Weißt du, was der Unterschied zwischen glücklichen und weniger glücklichen Menschen ist? Glückliche Menschen überlassen ihr Glück nicht dem Zufall, sondern nehmen es aktiv in die eigene Hand. Egal ob du unzufrieden im Beruf, in der Liebe oder in einem anderen Lebensbereich bist - mache jetzt den ersten kleinen Schritt und nutze die wertvolle Chance auf eine Telefonanalyse.</p>
-      <p class="paragraph">In diesem 30-minütigen Telefonat nimmt sich der erfahrene Life Coach und <span class="hapily-green-color">hapily</span> Gründer, Denis Martin, Zeit für dich und analysiert mit dir gemeinsam, wo du gerade stehst und wie du da hin kommst, wo du gerne wärst.</p>
-      <p class="paragraph">Indem du dich für die kostenlose Telefonanalyse bewirbst, machst du den ersten Schritt in Richtung eines erfüllteren Lebens.</p>
-    </div>
-    <div class="greeting-cta">
-      <a href="https://calendly.com/hapily-gratis-coaching/15min?month=2021-02" target="_blank" class="jetzt-bewerben-cta w-button">&gt; Jetzt bewerben</a>
-    </div>
-  </div>
-
-
-  <div class="section-teilnehmerstimmen">
-    <div class="section-teilnehmerstimmen-container"><img src="{{ asset('all/images/trustpilot-badge-mit-schatten-3.svg')}}" loading="lazy" alt="Trustpilot hapily Badge" class="trustpilot-badge-big">
-      <h2 class="heading-teilnehmerstimme">Was Teilnehmer über hapily sagen</h2>
-      <div class="teilnehmerstimmen-content-wrapper">
-        <div class="teilnehmerstimmen-badge-wrapper">
-          <div class="teilnehmerstimmen-badge">
-            <p class="teilnehmer-badge-text">&quot;Es ist so wichtig, mit erfahrenen und aufmerksamen Gesprächspartnern sprechen zu können -ortsunabhängig und zeitlich dann, wenn es nötig ist! Danke Hapily Coaching&quot;</p>
-            <p class="teilnehmer-name-pink">Sabine</p>
-          </div>
-          <div class="teilnehmerstimmen-badge">
-            <p class="teilnehmer-badge-text">&quot;Beim Coaching mit Denis habe ich viele wertvolle Tipps erhalten, mich super aufgehoben gefühlt und sehr viel für mich mitnehmen können. Definitiv weiterzuempfehlen!&quot;</p>
-            <p class="teilnehmer-name-pink">Deborah</p>
-          </div>
-          <div class="teilnehmerstimmen-badge">
-            <p class="teilnehmer-badge-text">&quot;Kompetente, professionelle und persönliche Beratung. Die Adresse für alle, die sich mit Hilfe von Coaching persönlich und beruflich weiterentwickeln wollen.&quot;</p>
-            <p class="teilnehmer-name-pink">Annette</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-ueberuns">
-    <div class="section-ueberuns-container">
-      <h2 class="section-ueberuns-header">Über uns</h2>
-      <div class="section-ueberuns-text">hapily.de ist die Nr. 1 Plattform für modernes Life Coaching im deutschsprachigen Raum. Jeden Tag unterstützen wir Menschen dabei, sich ein glückliches und erfülltes Leben zu erschaffen. Mehr als 15.000 Menschen haben bereits an unserem einzigartigen <span class="text-span-18">hapily</span> Glückstest teilgenommen, um herauszufinden, was sie <em>wirklich</em> wollen.<br></div>
-      <div class="section-ueberuns-text">Mit unserem Pool an erstklassigen Life Coaches stellen wir sicher, dass unsere Klienten die bestmögliche Begleitung erhalten - für ein glücklicheres Leben.<br></div><img src="{{ asset('all/images/unsere-mission-coaches-bild.jpg')}}" loading="lazy" alt="" class="section-ueberuns-image">
-    </div>
-  </div>
-
-
-  <!-- belief sections -->
-  <!--
   <div class="section-text-after-analyse">
     <div class="section-text-after-analyse-container">
       <h3 class="section-analyse-header heading-6">Deine Glaubenssätze<br></h3>
       <p class="paragraph">In einigen Fällen sind unsere Herausforderungen von äußeren Faktoren bestimmt, die wir nicht beeinflussen können. Oftmals sind sie aber auch hausgemacht - weil wir Überzeugungen von uns selbst haben, die uns einschränken. Lass uns daher einmal schauen, wie es in deinem Fall aussieht…</p>
       <p class="paragraph">Könnte es sein, dass du schon einmal eine oder mehrere der folgenden Aussagen über dich geglaubt hast?</p><br />
+      <!-- belief content starts here -->
       @php
         count($userBelives) > 9 ? $believesToShow = array_slice($userBelives, 0, 9) : $believesToShow = $userBelives;
         $believesChunks = array_chunk($believesToShow, 3, "preserve_keys");
@@ -793,6 +474,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
           @endforeach
         </div>
       @endforeach
+      <!-- belief content ends here -->
 
       {{-- <h3 class="h3-black-heading">Könnte es sein, dass du schon einmal eine oder mehrere der folgenden Aussagen über dich geglaubt hast?</h3>
       <div class="_3-columns-text-separated">
@@ -811,9 +493,6 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       </div>
     </div>
   </div>
-  -->
-
-  <!--
   <div class="section-green-background">
     <div class="section-green-container">
       <h3 class="section-green-header"><span class="green-text">Die gute Nachricht ist :</span> Du bist deinen negativen Glaubenssätzen und den damit verbundenen Gefühlen nicht hilflos ausgeliefert.</h3>
@@ -826,9 +505,6 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       </div>
     </div>
   </div>
-  -->
-  
-  <!--
   <div class="section-before-footer">
     <div class="section-before-footer-container">
       <h3 class="section-before-footer-header heading-6">Wer steckt hinter dem Glücks-Test?</h3>
@@ -838,10 +514,6 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       <div class="section-before-footer-separator"></div>
     </div>
   </div>
-  -->
-  
-
-
   <div class="footer-section-container">
     <div class="section-footer">
       <div class="section-footer-wrapper"><a href="https://hapily.de"><img src="{{ asset('all/images/hapily_logo_primary.svg')}}" alt="" class="footer-logo"></a>
@@ -853,313 +525,14 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
       </div>
     </div>
   </div>
-
-  <!-- popup modals here -->
-
-
-  <!-- The Modal -->
-  <div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-      <p style="text-align: right;"><span class="closeSpanThankYou">&times;</span>
-      <p style="text-align: center;"><img src="{{ asset('all/images/subscriptioncheckmark.svg')}}" alt="" height="100" width="100" /></p>
-      <h2>Prima, das hat geklappt!</h2>
-      <p>Du bist jetzt für unseren Newsletter angemeldet.<p>
-    </div>
-  </div>
-
-
-  <!-- end popup modals here -->
-
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e87229d1e5bbf88766c2782" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="{{ asset('all/js/webflow.js')}}" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-  {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
-  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
-
-<script>
-  // Get the modal for thank
-  var modalThankYou = document.getElementById("myModal");
-
-  // Get modal for confirmation
-  var modal = document.getElementById("myModal2");
-  
-  // Get the button that opens the modal
-  var btn = document.getElementById("myBtn2");
-
-  // The subscription trigger in option 5
-  var subscriptionTrigger = document.getElementById("subscription_trigger");
-  
-  // Get the <span> element that closes the thank you modal
-  var span = document.getElementsByClassName("closeSpanThankYou")[0];
-
-  var spanCloseConfirm = document.getElementsByClassName("close")[0];
-  
-  // When the user clicks the button, open the modal 
-  subscriptionTrigger.onclick = function() {
-    modal.style.display = "block";
-  }
-
-
-  // $(document).ready(function() {
-  //   document.getElementById("myModal2").style.display = "block";
-  // });
-
-
-  //subscribe functionalities
-  $('#agreeBtn').click(function(event) {
-    let token = $('#user_token').val();
-    let option = "option5"; //to subscribe
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-
-    let modalConfirm = document.getElementById("myModal2");
-    let modalThankYouToDisplay = document.getElementById("myModal");
-
-    //do ajax here and response will hide the modal and display the thank you one.
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            //console.log(response);
-            //if unchecked, check else uncheck
-            if(response.message == 'set-to-true') {
-              $("#checkbox_five").prop("checked", true);
-              $("#checkbox_five").prop('disabled', true);
-              modalConfirm.style.display = "none";
-              setTimeout(function(){ 
-                modalThankYouToDisplay.style.display = "block";
-              }, 1500);
-
-              //$("#checkbox_five").style.display = "none";
-            } else {
-              alert('There was a problem. Please try again later...');
-              console.log('response not okay');
-              $("#checkbox_one").prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modalThankYou.style.display = "none";
-    
-    location.reload(); //reload the page
-  }
-  
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modalThankYou.style.display = "none";
-      location.reload(); //reload the page
-    }
-  }
-
-  spanCloseConfirm.onclick = function() {
-    modal.style.display = "none";
-  }
-  
-</script>
-
-
-<script type="text/javascript">
-  $("#checkbox_one").change(function(event) {
-    let thisCheck = $(this);
-    let url = window.location.href;
-    let token = window.location.href.split("/").pop();
-    let option = "option1";
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            //console.log(response);
-            //if unchecked, check else uncheck
-            if(response.message == 'set-to-true') {
-              thisCheck.prop("checked", true);
-              console.log('response okay');
-            } else {
-              console.log('response not okay');
-              thisCheck.prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-
-  $("#checkbox_two").change(function(event) {
-    let thisCheck = $(this);
-    let url = window.location.href;
-    let token = window.location.href.split("/").pop();
-    let option = "option2";
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            if(response.message == 'set-to-true') {
-              thisCheck.prop("checked", true);
-              console.log('response okay');
-            } else {
-              console.log('response not okay');
-              thisCheck.prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-
-  $("#checkbox_three").change(function(event) {
-    let thisCheck = $(this);
-    let url = window.location.href;
-    let token = window.location.href.split("/").pop();
-    let option = "option3";
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            if(response.message == 'set-to-true') {
-              thisCheck.prop("checked", true);
-              console.log('response okay');
-            } else {
-              console.log('response not okay');
-              thisCheck.prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-
-  $("#checkbox_four").change(function(event) {
-    let thisCheck = $(this);
-    let url = window.location.href;
-    let token = window.location.href.split("/").pop();
-    let option = "option4";
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            if(response.message == 'set-to-true') {
-              thisCheck.prop("checked", true);
-              console.log('response okay');
-            } else {
-              console.log('response not okay');
-              thisCheck.prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-  
-
-  $("#checkbox_five").change(function(event) {
-    let thisCheck = $(this);
-    let url = window.location.href;
-    let token = window.location.href.split("/").pop();
-    let option = "option5";
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            if(response.message == 'set-to-true') {
-              thisCheck.prop("checked", true);
-              console.log('response okay');
-            } else {
-              console.log('response not okay');
-              thisCheck.prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-
-  $("#checkbox_six").change(function(event) {
-    let thisCheck = $(this);
-    let url = window.location.href;
-    let token = window.location.href.split("/").pop();
-    let option = "option6";
-    let _token   = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-          url: "/survey/feedback",
-          type:"POST",
-          data:{
-            token:token,
-            option:option,
-            _token: _token,
-          },
-          success:function(response){
-            if(response.message == 'set-to-true') {
-              thisCheck.prop("checked", true);
-              console.log('response okay');
-            } else {
-              console.log('response not okay');
-              thisCheck.prop("checked", false);
-            }
-          },
-          error: function(){
-            console.log("something went wrong");
-          }
-    });
-    event.preventDefault();
-  });
-</script>
 
 <script>
   function showMore(id) {

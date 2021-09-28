@@ -49,7 +49,19 @@ class ReceivedSurveyDataService
                     case 'gender_user':
                         $customer->gender = $answer['choice']['label'];
                         break;
-                        
+
+                    case 'become_coach':
+                        if(array_key_exists('label', $answer['choice']) && !is_null($answer['choice']['label'])){
+                            $customer->become_coach = $answer['choice']['label'];
+                        } else {
+                            if(array_key_exists('other', $answer['choice'])) {
+                                $customer->become_coach = $answer['choice']['other'];
+                            } else {
+                                $customer->become_coach = null;
+                            }
+                        }
+                        break;
+
                     case 'postal_code_user':
                         $customer->postal_code = $answer['number'];
                         break;

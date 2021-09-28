@@ -121,6 +121,12 @@ class LeadCreationService
             $gender = 'Other';
             $title = 'Other';
         }
+
+        if($customerData->become_coach == null){
+            $becomeCoach = '';
+        }else {
+            $becomeCoach = $customerData->become_coach;
+        }
         
         if($customerData->time_invest_willingness == null){
             $timeInvest = '';
@@ -182,6 +188,7 @@ class LeadCreationService
             'Money_Invest_Willingness__c'       => $moneyInvest,
             'Newsletter_Opt_in__c'              => $newsletter,
             'Call_Opt_in__c'                    => $callOptin,
+            'become_coach__c'                   => $becomeCoach,
             'Survey_Result_URL__c'              => url($customerData->survey_url),
         ];
     

@@ -44,4 +44,12 @@ class Customer extends Model
     {
         return $this->hasMany(Survey::class);
     }
+
+    /**
+     * @return HasOne|Feedback[]
+     */
+    public function feedback()
+    {
+        return $this->hasOne(Feedback::class);
+    }
 }
