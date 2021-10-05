@@ -260,7 +260,7 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
             <a href="https://de.trustpilot.com/review/hapily.de" target="_blank" class="hero-section-survey-result-icon-trust-image w-inline-block"><img src="{{ asset('all/images/trustpilot-badge-mit-schatten-3.svg')}}" alt="Trustpilot hapily Badge" class="hero-section-survey-result-icon-trust-badge"></a>
           </div>
           <div class="hero-section-survey-result-icon-1"><img src="{{ asset('all/images/gluecks-garantie-badge.svg')}}" alt="" class="hero-section-survey-result-icon-1-image">
-            <p class="hero-section-survey-result-icon-1-text dark-grey">Mehr als 20.000<br>Glückstest -Teilnehmer</p>
+            <p class="hero-section-survey-result-icon-1-text dark-grey">Mehr als 30.000<br>Glückstest -Teilnehmer</p>
           </div>
         </div>
       </div>
@@ -768,8 +768,9 @@ window.settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=
   <div class="section-ueberuns">
     <div class="section-ueberuns-container">
       <h2 class="section-ueberuns-header">Über uns</h2>
-      <div class="section-ueberuns-text">hapily.de ist die Nr. 1 Plattform für modernes Life Coaching im deutschsprachigen Raum. Jeden Tag unterstützen wir Menschen dabei, sich ein glückliches und erfülltes Leben zu erschaffen. Mehr als 15.000 Menschen haben bereits an unserem einzigartigen <span class="text-span-18">hapily</span> Glückstest teilgenommen, um herauszufinden, was sie <em>wirklich</em> wollen.<br></div>
-      <div class="section-ueberuns-text">Mit unserem Pool an erstklassigen Life Coaches stellen wir sicher, dass unsere Klienten die bestmögliche Begleitung erhalten - für ein glücklicheres Leben.<br></div><img src="{{ asset('all/images/unsere-mission-coaches-bild.jpg')}}" loading="lazy" alt="" class="section-ueberuns-image">
+      <div class="section-ueberuns-text">hapily.de ist die führende Plattform für individuelles Life Coaching im deutschsprachigen Raum.
+Jeden Tag unterstützen wir Menschen dabei, sich ein glückliches und erfülltes Leben zu erschaffen. Mehr als 30.000 Menschen haben bereits an unserem praxisorientierten Glückstest teilgenommen und ihr Glückslevel gemessen.<br></div>
+      <div class="section-ueberuns-text">Mit unserem Pool an erstklassigen Life Coaches stellen wir sicher, dass unsere Klient:innen die bestmögliche Begleitung erhalten - für ein glückliches Leben.<br></div><img src="{{ asset('all/images/unsere-mission-coaches-bild.jpg')}}" loading="lazy" alt="" class="section-ueberuns-image">
     </div>
   </div>
 
